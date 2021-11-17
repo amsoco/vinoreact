@@ -14,7 +14,9 @@ class AddForeignKeysToBouteillesTable extends Migration
     public function up()
     {
         Schema::table('bouteilles', function (Blueprint $table) {
-            $table->foreign(['categorie_id'])->references(['id'])->on('categories');
+            $table->foreign(['store_item_id'], 'bouteilles_ibfk_1')->references(['id'])->on('store_items');
+            $table->foreign(['user_id'], 'bouteilles_ibfk_2')->references(['id'])->on('users');
+            $table->foreign(['cellier_id'], 'bouteilles_ibfk_3')->references(['id'])->on('celliers');
         });
     }
 
@@ -26,7 +28,9 @@ class AddForeignKeysToBouteillesTable extends Migration
     public function down()
     {
         Schema::table('bouteilles', function (Blueprint $table) {
-            $table->dropForeign('bouteilles_categorie_id_foreign');
+            $table->dropForeign('bouteilles_ibfk_1');
+            $table->dropForeign('bouteilles_ibfk_2');
+            $table->dropForeign('bouteilles_ibfk_3');
         });
     }
 }

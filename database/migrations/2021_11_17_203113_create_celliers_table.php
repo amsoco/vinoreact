@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeysToUsersTable extends Migration
+class CreateCelliersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddForeignKeysToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign(['privilege_id'], 'users_ibfk_1')->references(['id'])->on('privileges');
+        Schema::create('celliers', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nom_cellier', 100);
         });
     }
 
@@ -25,8 +26,6 @@ class AddForeignKeysToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('users_ibfk_1');
-        });
+        Schema::dropIfExists('celliers');
     }
 }
