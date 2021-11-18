@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bouteille;
+use App\Models\Store_item;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class BouteilleController extends Controller
@@ -15,7 +17,7 @@ class BouteilleController extends Controller
      */
     public function index()
     {
-        return Bouteille::all();
+        //
     }
 
     /**

@@ -20,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/bouteilles', [BouteilleController::class,'index']);
+Route::get('/bouteilles/{cellieId}', [BouteilleController::class,'show']);
 Route::get('/store', [Store_itemController::class,'index']);
 
