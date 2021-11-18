@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Bouteille extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom', 'pays', 'description', 'url_saq','format','millesime', 'categorie_id'];
+    protected $fillable = ['date_achat', 'prix_achat', 'note', 'commentaire','quantite','url_img', 'store_item_id','user_id', 'cellier_id'];
 }
