@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BouteilleController;
+use App\Http\Controllers\Store_itemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/bouteilles', [BouteilleController::class,'index']);
+Route::get('/store', [Store_itemController::class,'index']);
+
