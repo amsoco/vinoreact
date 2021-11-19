@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BouteilleController;
+use App\Http\Controllers\Store_itemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+//Public routes
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+//Protected routes
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/bouteilles/{cellieId}', [BouteilleController::class,'show']);
+    Route::get('/store', [Store_itemController::class,'index']);
 });
+

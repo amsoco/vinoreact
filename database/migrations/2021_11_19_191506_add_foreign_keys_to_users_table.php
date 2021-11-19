@@ -14,7 +14,7 @@ class AddForeignKeysToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign(['privilege_id'], 'users_ibfk_1')->references(['id'])->on('privileges');
+            $table->foreign(['privilege_id'], 'fk_users_privileges1')->references(['id'])->on('privileges')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
@@ -26,7 +26,7 @@ class AddForeignKeysToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('users_ibfk_1');
+            $table->dropForeign('fk_users_privileges1');
         });
     }
 }

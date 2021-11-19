@@ -15,16 +15,8 @@ class CreateCelliersTable extends Migration
     {
         Schema::create('celliers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom_cellier', 45);
-            $table->date('date_achat');
-            $table->decimal('prix_achat', 5)->nullable();
-            $table->integer('note')->nullable();
-            $table->string('commentaire', 500)->nullable();
-            $table->integer('quantite');
-            $table->string('url_img')->nullable();
-            $table->unsignedInteger('bouteille_id')->index('celliers_bouteille_id_foreign');
-            $table->string('user_email')->index('fk_celliers_users1_idx');
-            $table->timestamps();
+            $table->string('nom_cellier', 100);
+            $table->unsignedInteger('user_id')->index('fk_celliers_users1_idx');
         });
     }
 

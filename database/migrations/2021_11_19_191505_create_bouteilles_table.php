@@ -17,11 +17,18 @@ class CreateBouteillesTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('pays');
-            $table->string('description');
+            $table->string('description')->nullable();
+            $table->date('date_achat');
+            $table->decimal('prix_achat', 5)->nullable();
             $table->string('url_saq')->nullable();
-            $table->string('format')->nullable();
+            $table->tinyInteger('note')->nullable();
+            $table->string('commentaire', 500)->nullable();
+            $table->tinyInteger('quantite');
             $table->tinyInteger('millesime')->nullable();
-            $table->unsignedInteger('categorie_id')->index('bouteilles_categorie_id_foreign');
+            $table->string('format')->nullable();
+            $table->string('url_img')->nullable();
+            $table->unsignedInteger('categorie_id')->index('fk_bouteilles_categories1_idx');
+            $table->unsignedInteger('cellier_id')->index('fk_bouteilles_celliers1_idx');
             $table->timestamps();
         });
     }
