@@ -45,11 +45,12 @@ class AuthController extends Controller
         //Check password
         if(!$user || !Hash::check($fields['password'], $user->password)) {
             return response([
-                'message' => 'Le nom ou mot de passe est incorrect' 
+                'message' => 'Le nom ou mot de passe est incorrect'
             ], 401);
         }
 
         $token = $user->createToken('myapptoken')->plainTextToken;
+        setcookie('token', $token, "/");
 
         $response = [
             'user' => $user,
@@ -62,6 +63,8 @@ class AuthController extends Controller
 
     public function logout(Request $request) {
         auth()->user()->tokens()->delete();
+
+        setcookie('token', time() - 3600);
 
         return [
             'message' => 'Logged out'
