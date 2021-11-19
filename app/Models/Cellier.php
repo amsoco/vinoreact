@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Cellier extends Model
 {
     use HasFactory;
-    protected $fillable = ['nom_cellier'];
+    protected $fillable = ['nom_cellier', 'user_id'];
 
 }
