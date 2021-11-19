@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeysToStoreItemsTable extends Migration
+class AddForeignKeysToCelliersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddForeignKeysToStoreItemsTable extends Migration
      */
     public function up()
     {
-        Schema::table('store_items', function (Blueprint $table) {
-            $table->foreign(['categorie_id'], 'bouteilles_categorie_id_foreign')->references(['id'])->on('categories');
+        Schema::table('celliers', function (Blueprint $table) {
+            $table->foreign(['user_id'], 'fk_celliers_users1')->references(['id'])->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
@@ -25,8 +25,8 @@ class AddForeignKeysToStoreItemsTable extends Migration
      */
     public function down()
     {
-        Schema::table('store_items', function (Blueprint $table) {
-            $table->dropForeign('bouteilles_categorie_id_foreign');
+        Schema::table('celliers', function (Blueprint $table) {
+            $table->dropForeign('fk_celliers_users1');
         });
     }
 }
