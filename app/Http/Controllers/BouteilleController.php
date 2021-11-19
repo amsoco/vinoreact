@@ -17,7 +17,7 @@ class BouteilleController extends Controller
      */
     public function index()
     {
-        //
+        // here is where  the index goes....
     }
 
     /**
