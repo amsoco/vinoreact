@@ -23,7 +23,9 @@ Route::post('/login', [AuthController::class, 'login']);
 
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/bouteilles/{cellieId}', [BouteilleController::class,'show']);
-    Route::get('/store', [Store_itemController::class,'index']);
+    Route::get('/bouteilles/{cellieId}', [BouteilleController::class, 'show']);
+    Route::get('/store', [Store_itemController::class, 'index']);
+    Route::get('/user', function (Request $request) {
+        return $request->user()->only(['id', 'email']);
+    });
 });
-
