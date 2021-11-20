@@ -3,6 +3,7 @@ cloner le repo: git clone
 renommer le fichier .env.example en .env
 
 INSTALLER LES DEPENDANCES DU BACKEND: aller dans le dossier vinoreact que vous avez cloné et exécuter: composer install && composer update
+Excéuter: php artisan key:generate
 
 INSTALLER LES DEPENDANCES DU FRONTEND: si votre version de npm est < 7, exécuter: npm install && npm run dev Pour connaitre votre version de npm: npm -v si votre version de npm est > 7, exécuter: npm install --legacy-peer-deps && npm run dev
 
