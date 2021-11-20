@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('app');
-});
+// peu importe la route, render le template app.blade.php
+// permet de donner à react-router-dom la gestion du routing
+Route::view('/{any}', 'app')->where('any', '.*');
