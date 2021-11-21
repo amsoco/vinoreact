@@ -10,4 +10,8 @@ export default {
         await Csrf.getCookie();
         return Api.post("login", data);
     },
+    async getUsager() {
+        await Csrf.getCookie();
+        return Api.get("user");
+    },
 };

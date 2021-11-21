@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import User from "../apis/User";
 
 const SeConnecter = () => {
     const [loginForm, setLoginForm] = useState({
         email: "",
-        password: ""
+        password: "",
     });
 
     const handleChange = (e) => {
