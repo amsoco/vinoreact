@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import User from "../apis/User";
-import Csrf from "../apis/Csrf";
 
 const CreerCompte = () => {
     const [registerForm, setRegisterForm] = useState({
@@ -20,9 +19,7 @@ const CreerCompte = () => {
 
     const registerUser = async (e) => {
         e.preventDefault();
-        // créer le csrf token dans un cookie
-        await Csrf.getCookie();
-        User.creerCompte(registerForm);
+        await User.creerCompte(registerForm);
     };
 
     return (
