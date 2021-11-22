@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import User from "../apis/User";
+import { useUser } from "../context/user";
 
 const SeConnecter = () => {
     const [loginForm, setLoginForm] = useState({
