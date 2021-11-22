@@ -1,6 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import User from "../apis/User";
 import { useUser } from "../context/user";
+import styled from 'styled-components'
+
+// styled components
+const Legend = styled.legend`
+    color: hotpink;
+    font-size: 3rem;
+`
 
 const SeConnecter = () => {
     const [loginForm, setLoginForm] = useState({
@@ -21,8 +28,12 @@ const SeConnecter = () => {
         await User.seConnecter(loginForm);
     };
 
+    const { user } = useUser()
+    console.log('user', user)
+
     return (
         <form onSubmit={loginUser}>
+            <Legend>Login Form</Legend>
             <label htmlFor="email">Email</label>
             <input
                 type="email"
