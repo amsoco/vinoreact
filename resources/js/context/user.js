@@ -13,6 +13,7 @@ export const UserProvider = ({ children }) => {
 
         getCurrentUser().then(({ data: user }) => setUser(user));
     }, []);
+
     return (
         <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
     );
