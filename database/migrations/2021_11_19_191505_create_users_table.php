@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('name');
             $table->string('password');
-            $table->unsignedInteger('privilege_id')->index('fk_users_privileges1_idx');
+            $table->unsignedInteger('privilege_id')->default('1')->index('fk_users_privileges1_idx');
             $table->timestamps();
         });
     }
