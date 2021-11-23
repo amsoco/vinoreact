@@ -16,6 +16,13 @@ const SeConnecter = () => {
         password: "",
     });
 
+    const resetForm = () => {
+        setLoginForm({
+            email: "",
+            password: "",
+        });
+    };
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setLoginForm((prevState) => ({
@@ -24,26 +31,30 @@ const SeConnecter = () => {
         }));
     };
 
-
     const loginUser = async (e) => {
         e.preventDefault();
         await User.seConnecter(loginForm);
-        navigate("/accueil");
+        resetForm();
+        navigate("/vino");
     };
 
     return (
         <form onSubmit={loginUser}>
             <Legend>Login Form</Legend>
+
             <label htmlFor="email">Email</label>
             <input
                 type="email"
+                id="emai"
                 name="email"
                 value={loginForm.email}
                 onChange={handleChange}
             />
+
             <label htmlFor="password">Password</label>
             <input
                 type="password"
+                id="password"
                 name="password"
                 value={loginForm.password}
                 onChange={handleChange}

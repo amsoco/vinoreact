@@ -12,6 +12,16 @@ module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/
 
 /***/ }),
 
+/***/ "./node_modules/axios-auth-refresh/dist/index.min.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/axios-auth-refresh/dist/index.min.js ***!
+  \***********************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t(__webpack_require__(/*! axios */ "./node_modules/axios/index.js")):0}(this,(function(e){return function(){"use strict";var t={593:function(e,t,r){Object.defineProperty(t,"__esModule",{value:!0}),t.resendFailedRequest=t.getRetryInstance=t.unsetCache=t.createRequestQueueInterceptor=t.createRefreshCall=t.shouldInterceptError=t.mergeOptions=t.defaultOptions=void 0;const s=r(300);t.defaultOptions={statusCodes:[401],pauseInstanceWhileRefreshing:!1},t.mergeOptions=function(e,t){return Object.assign(Object.assign(Object.assign({},e),{pauseInstanceWhileRefreshing:t.skipWhileRefreshing}),t)},t.shouldInterceptError=function(e,t,r,s){var n,o;return!!e&&(!(null===(n=e.config)||void 0===n?void 0:n.skipAuthRefresh)&&(!!(t.interceptNetworkError&&!e.response&&0===e.request.status||e.response&&(null===(o=t.statusCodes)||void 0===o?void 0:o.includes(parseInt(e.response.status))))&&(e.response||(e.response={config:e.config}),!t.pauseInstanceWhileRefreshing||!s.skipInstances.includes(r))))},t.createRefreshCall=function(e,t,r){return r.refreshCall||(r.refreshCall=t(e),"function"==typeof r.refreshCall.then)?r.refreshCall:(console.warn("axios-auth-refresh requires `refreshTokenCall` to return a promise."),Promise.reject())},t.createRequestQueueInterceptor=function(e,t,r){return void 0===t.requestQueueInterceptorId&&(t.requestQueueInterceptorId=e.interceptors.request.use((e=>(null==e?void 0:e.skipAuthRefresh)?e:t.refreshCall.catch((()=>{throw new s.default.Cancel("Request call failed")})).then((()=>r.onRetry?r.onRetry(e):e))))),t.requestQueueInterceptorId},t.unsetCache=function(e,t){e.interceptors.request.eject(t.requestQueueInterceptorId),t.requestQueueInterceptorId=void 0,t.refreshCall=void 0,t.skipInstances=t.skipInstances.filter((t=>t!==e))},t.getRetryInstance=function(e,t){return t.retryInstance||e},t.resendFailedRequest=function(e,t){return e.config.skipAuthRefresh=!0,t(e.response.config)}},300:function(t){t.exports=e}},r={};function s(e){var n=r[e];if(void 0!==n)return n.exports;var o=r[e]={exports:{}};return t[e](o,o.exports,s),o.exports}var n={};return function(){var e=n;Object.defineProperty(e,"__esModule",{value:!0});const t=s(593);e.default=function(e,r,s={}){if("function"!=typeof r)throw new Error("axios-auth-refresh requires `refreshAuthCall` to be a function that returns a promise.");const n={skipInstances:[],refreshCall:void 0,requestQueueInterceptorId:void 0};return e.interceptors.response.use((e=>e),(o=>{if(s=(0,t.mergeOptions)(t.defaultOptions,s),!(0,t.shouldInterceptError)(o,s,e,n))return Promise.reject(o);s.pauseInstanceWhileRefreshing&&n.skipInstances.push(e);const u=(0,t.createRefreshCall)(o,r,n);return(0,t.createRequestQueueInterceptor)(e,n,s),u.finally((()=>(0,t.unsetCache)(e,n))).catch((e=>Promise.reject(e))).then((()=>(0,t.resendFailedRequest)(o,(0,t.getRetryInstance)(e,s))))}))}}(),n}()}));
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2078,11 +2088,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios_auth_refresh__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios-auth-refresh */ "./node_modules/axios-auth-refresh/dist/index.min.js");
+/* harmony import */ var axios_auth_refresh__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios_auth_refresh__WEBPACK_IMPORTED_MODULE_1__);
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (axios__WEBPACK_IMPORTED_MODULE_0___default().create({
+
+var Api = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
   baseURL: "http://127.0.0.1:8000/api/",
   withCredentials: true
-}));
+});
+
+var refreshAuthLogic = function refreshAuthLogic(failedRequest) {
+  return Api.get("csrf-cookie").then(function (response) {
+    return Promise.resolve();
+  });
+};
+
+axios_auth_refresh__WEBPACK_IMPORTED_MODULE_1___default()(Api, refreshAuthLogic, {
+  statusCodes: [419]
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Api);
 
 /***/ }),
 
@@ -2097,12 +2121,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Api */ "./resources/js/apis/Api.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Api */ "./resources/js/apis/Api.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   // set the csrf cookie in the browser
   getCookie: function getCookie() {
-    return _Api__WEBPACK_IMPORTED_MODULE_0__["default"].get("csrf-cookie");
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              return _context.abrupt("return", _Api__WEBPACK_IMPORTED_MODULE_1__["default"].get("csrf-cookie"));
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
   }
 });
 
@@ -2178,13 +2223,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              _context3.next = 2;
-              return _Csrf__WEBPACK_IMPORTED_MODULE_2__["default"].getCookie();
-
-            case 2:
               return _context3.abrupt("return", _Api__WEBPACK_IMPORTED_MODULE_1__["default"].get("user"));
 
-            case 3:
+            case 1:
             case "end":
               return _context3.stop();
           }
@@ -2198,13 +2239,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              _context4.next = 2;
-              return _Csrf__WEBPACK_IMPORTED_MODULE_2__["default"].getCookie();
-
-            case 2:
               return _context4.abrupt("return", _Api__WEBPACK_IMPORTED_MODULE_1__["default"].post("logout"));
 
-            case 3:
+            case 1:
             case "end":
               return _context4.stop();
           }
@@ -2282,7 +2319,7 @@ var App = function App() {
               path: "/nouveau-compte",
               element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CreerCompte, {})
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
-              path: "/accueil",
+              path: "/vino",
               element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Accueil, {})
             })]
           })
@@ -2349,7 +2386,7 @@ var UserProvider = function UserProvider(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var getCurrentUser = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var _yield$User$getUsager, user;
+        var _yield$User$getUsager, currentUser;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
@@ -2360,8 +2397,8 @@ var UserProvider = function UserProvider(_ref) {
 
               case 2:
                 _yield$User$getUsager = _context.sent;
-                user = _yield$User$getUsager.data;
-                setUser(user);
+                currentUser = _yield$User$getUsager.data;
+                setUser(currentUser);
 
               case 5:
               case "end":
@@ -2377,7 +2414,6 @@ var UserProvider = function UserProvider(_ref) {
     }();
 
     getCurrentUser();
-    console.log('user', user);
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(UserContext.Provider, {
     value: {
@@ -35904,7 +35940,7 @@ function _extends() {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"/Applications/MAMP/htdocs/ProjectWeb_2/vinoreact","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","/Applications/XAMPP/xamppfiles/htdocs/vinoreact"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"/Applications/XAMPP/xamppfiles/htdocs/vinoreact","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 
@@ -35928,7 +35964,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;

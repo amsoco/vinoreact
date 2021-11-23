@@ -794,6 +794,7 @@ var Accueil = function Accueil() {
   var _useUser = (0,_context_user__WEBPACK_IMPORTED_MODULE_2__.useUser)(),
       user = _useUser.user;
 
+  console.log("uuuu", user);
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)(); // logout le user
 
   var logout = /*#__PURE__*/function () {
@@ -821,7 +822,7 @@ var Accueil = function Accueil() {
     };
   }();
 
-  if (user === null) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+  if (!user) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
     children: "Loading user..."
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {

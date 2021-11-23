@@ -11,11 +11,9 @@ export default {
         return Api.post("login", data);
     },
     async getUsager() {
-        await Csrf.getCookie();
         return Api.get("user");
     },
     async logout() {
-        await Csrf.getCookie();
         return Api.post("logout");
     },
 };

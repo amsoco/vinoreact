@@ -816,6 +816,13 @@ var SeConnecter = function SeConnecter() {
       loginForm = _useState2[0],
       setLoginForm = _useState2[1];
 
+  var resetForm = function resetForm() {
+    setLoginForm({
+      email: "",
+      password: ""
+    });
+  };
+
   var handleChange = function handleChange(e) {
     var _e$target = e.target,
         name = _e$target.name,
@@ -836,9 +843,10 @@ var SeConnecter = function SeConnecter() {
               return _apis_User__WEBPACK_IMPORTED_MODULE_2__["default"].seConnecter(loginForm);
 
             case 3:
-              navigate("/accueil");
+              resetForm();
+              navigate("/vino");
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -860,6 +868,7 @@ var SeConnecter = function SeConnecter() {
       children: "Email"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
       type: "email",
+      id: "emai",
       name: "email",
       value: loginForm.email,
       onChange: handleChange
@@ -868,6 +877,7 @@ var SeConnecter = function SeConnecter() {
       children: "Password"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
       type: "password",
+      id: "password",
       name: "password",
       value: loginForm.password,
       onChange: handleChange

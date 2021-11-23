@@ -17,6 +17,7 @@ const Email = styled.p`
 // React Component
 const Accueil = () => {
     const { user } = useUser();
+    console.log("uuuu", user);
     const navigate = useNavigate();
 
     // logout le user
@@ -25,7 +26,7 @@ const Accueil = () => {
         navigate("/");
     };
 
-    if (user === null) return <p>Loading user...</p>;
+    if (!user) return <p>Loading user...</p>;
     return (
         <div>
             <Message>Salut {user.name}</Message>

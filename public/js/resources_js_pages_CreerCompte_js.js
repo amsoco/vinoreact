@@ -80,7 +80,7 @@ var CreerCompte = function CreerCompte() {
               return _apis_User__WEBPACK_IMPORTED_MODULE_2__["default"].creerCompte(registerForm);
 
             case 3:
-              navigate("/accueil");
+              navigate("/vino");
 
             case 4:
             case "end":
@@ -111,6 +111,7 @@ var CreerCompte = function CreerCompte() {
       children: "Email"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
       type: "email",
+      id: "email",
       name: "email",
       value: registerForm.emai,
       onChange: handleChange
@@ -119,6 +120,7 @@ var CreerCompte = function CreerCompte() {
       children: "Password"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
       type: "password",
+      id: "password",
       name: "password",
       value: registerForm.password,
       onChange: handleChange
@@ -127,6 +129,7 @@ var CreerCompte = function CreerCompte() {
       children: "Confirm Password"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
       type: "password",
+      id: "password_confirmation",
       name: "password_confirmation",
       value: registerForm.password_confirmation,
       onChange: handleChange

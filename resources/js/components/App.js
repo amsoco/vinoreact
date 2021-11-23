@@ -17,7 +17,7 @@ const App = () => (
                 <Routes>
                     <Route path="/" element={<SeConnecter />} />
                     <Route path="/nouveau-compte" element={<CreerCompte />} />
-                    <Route path="/accueil" element={<Accueil />} />
+                    <Route path="/vino" element={<Accueil />} />
                 </Routes>
             </Suspense>
         </Router>

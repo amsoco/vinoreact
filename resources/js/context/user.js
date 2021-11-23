@@ -11,11 +11,10 @@ export const UserProvider = ({ children }) => {
     // fetch le user
     useEffect(() => {
         const getCurrentUser = async () => {
-            const { data: user } = await User.getUsager();
-            setUser(user);
+            const { data: currentUser } = await User.getUsager();
+            setUser(currentUser);
         };
         getCurrentUser();
-        console.log('user', user)
     }, []);
 
     return (
