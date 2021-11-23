@@ -72,7 +72,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _components_styles_Button_styled__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/styles/Button.styled */ "./resources/js/components/styles/Button.styled.js");
 /* harmony import */ var _components_styles_Input_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/styles/Input.styled */ "./resources/js/components/styles/Input.styled.js");
-/* harmony import */ var _assets_svg_bouteilleBlack_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/svg/bouteilleBlack.png */ "./resources/js/assets/svg/bouteilleBlack.png");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module '../assets/svg/bouteilleBlack.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -106,27 +106,13 @@ var TestStyle = function TestStyle() {
         children: "Cellier"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-      src: _assets_svg_bouteilleBlack_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+      src: Object(function webpackMissingModule() { var e = new Error("Cannot find module '../assets/svg/bouteilleBlack.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
       alt: "logo"
     })]
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TestStyle);
-
-/***/ }),
-
-/***/ "./resources/js/assets/svg/bouteilleBlack.png":
-/*!****************************************************!*\
-  !*** ./resources/js/assets/svg/bouteilleBlack.png ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/bouteilleBlack.png?86cb879b19976d39739d118321269307");
 
 /***/ })
 

@@ -2,7 +2,7 @@ import React from "react";
 //import User from "../apis/User";
 import { Input, Select } from '../components/styles/Input.styled';
 import { AccueilMain } from '../components/styles/Accueil.styled';
-import BouteilleBlackLogo from "../assets/svg/bouteilleBlack.png";
+import BouteilleBlackLogo from "../assets/images/bouteilleBlack.png";
 import TacheHaut from "../assets/svg/tacheHaut.svg";
 import TacheBas from "../assets/svg/tacheBas.svg";
 import LogoVino from "../assets/svg/logo.svg";

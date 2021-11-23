@@ -56,7 +56,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _components_styles_Input_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/styles/Input.styled */ "./resources/js/components/styles/Input.styled.js");
 /* harmony import */ var _components_styles_Accueil_styled__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/styles/Accueil.styled */ "./resources/js/components/styles/Accueil.styled.js");
-/* harmony import */ var _assets_svg_bouteilleBlack_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/svg/bouteilleBlack.png */ "./resources/js/assets/svg/bouteilleBlack.png");
+/* harmony import */ var _assets_images_bouteilleBlack_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/images/bouteilleBlack.png */ "./resources/js/assets/images/bouteilleBlack.png");
 /* harmony import */ var _assets_svg_tacheHaut_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/svg/tacheHaut.svg */ "./resources/js/assets/svg/tacheHaut.svg");
 /* harmony import */ var _assets_svg_tacheBas_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../assets/svg/tacheBas.svg */ "./resources/js/assets/svg/tacheBas.svg");
 /* harmony import */ var _assets_svg_logo_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../assets/svg/logo.svg */ "./resources/js/assets/svg/logo.svg");
@@ -80,7 +80,7 @@ var Accueil = function Accueil(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("h2", {
       children: ["Bienvenue dans ton cellier ", props.usagerNom, " "]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
-      src: _assets_svg_bouteilleBlack_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+      src: _assets_images_bouteilleBlack_png__WEBPACK_IMPORTED_MODULE_3__["default"],
       alt: "Logo Bouteille vino"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
       src: _assets_svg_logo_svg__WEBPACK_IMPORTED_MODULE_6__["default"],
@@ -100,10 +100,10 @@ var Accueil = function Accueil(props) {
 
 /***/ }),
 
-/***/ "./resources/js/assets/svg/bouteilleBlack.png":
-/*!****************************************************!*\
-  !*** ./resources/js/assets/svg/bouteilleBlack.png ***!
-  \****************************************************/
+/***/ "./resources/js/assets/images/bouteilleBlack.png":
+/*!*******************************************************!*\
+  !*** ./resources/js/assets/images/bouteilleBlack.png ***!
+  \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
