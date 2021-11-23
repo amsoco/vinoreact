@@ -14,4 +14,8 @@ export default {
         await Csrf.getCookie();
         return Api.get("user");
     },
+    async logout() {
+        await Csrf.getCookie();
+        return Api.post("logout");
+    },
 };

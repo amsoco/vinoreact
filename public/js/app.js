@@ -2191,6 +2191,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       }, _callee3);
     }))();
+  },
+  logout: function logout() {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return _Csrf__WEBPACK_IMPORTED_MODULE_2__["default"].getCookie();
+
+            case 2:
+              return _context4.abrupt("return", _Api__WEBPACK_IMPORTED_MODULE_1__["default"].post("logout"));
+
+            case 3:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }))();
   }
 });
 
@@ -2240,6 +2260,9 @@ var SeConnecter = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(funct
 var CreerCompte = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_pages_CreerCompte_js").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/CreerCompte */ "./resources/js/pages/CreerCompte.js"));
 });
+var Accueil = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_pages_Accueil_js").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Accueil */ "./resources/js/pages/Accueil.js"));
+});
 
 var App = function App() {
   return (
@@ -2258,6 +2281,9 @@ var App = function App() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
               path: "/nouveau-compte",
               element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CreerCompte, {})
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+              path: "/accueil",
+              element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Accueil, {})
             })]
           })
         })
@@ -2282,9 +2308,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "UserProvider": () => (/* binding */ UserProvider),
 /* harmony export */   "useUser": () => (/* binding */ useUser)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _apis_User__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../apis/User */ "./resources/js/apis/User.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _apis_User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../apis/User */ "./resources/js/apis/User.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2298,36 +2332,63 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
+ // création du contexte User
 
 
-var UserContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);
+var UserContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)(null); // fonction pour rendre disponible notre User via le context API
+
 var UserProvider = function UserProvider(_ref) {
   var children = _ref.children;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       user = _useState2[0],
-      setUser = _useState2[1];
+      setUser = _useState2[1]; // fetch le user
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var getCurrentUser = function getCurrentUser() {
-      return _apis_User__WEBPACK_IMPORTED_MODULE_1__["default"].getUsager();
-    };
 
-    getCurrentUser().then(function (_ref2) {
-      var user = _ref2.data;
-      return setUser(user);
-    });
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var getCurrentUser = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var _yield$User$getUsager, user;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _apis_User__WEBPACK_IMPORTED_MODULE_2__["default"].getUsager();
+
+              case 2:
+                _yield$User$getUsager = _context.sent;
+                user = _yield$User$getUsager.data;
+                setUser(user);
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function getCurrentUser() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+
+    getCurrentUser();
+    console.log('user', user);
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(UserContext.Provider, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(UserContext.Provider, {
     value: {
       user: user
     },
     children: children
   });
-};
+}; // custom hook qui retourne le user connecté - à appeler à l'intérieur du Provider
+
 var useUser = function useUser() {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(UserContext);
+  return (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(UserContext);
 };
 
 /***/ }),
@@ -35951,7 +36012,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/Applications/XAMPP/xamp
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_SeConnecter_js":1,"resources_js_pages_CreerCompte_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_SeConnecter_js":1,"resources_js_pages_CreerCompte_js":1,"resources_js_pages_Accueil_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

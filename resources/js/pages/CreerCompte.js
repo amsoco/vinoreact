@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import User from "../apis/User";
 
 const CreerCompte = () => {
+    const navigate = useNavigate();
     const [registerForm, setRegisterForm] = useState({
         name: "",
         email: "",
@@ -20,6 +22,7 @@ const CreerCompte = () => {
     const registerUser = async (e) => {
         e.preventDefault();
         await User.creerCompte(registerForm);
+        navigate("/accueil");
     };
 
     return (

@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import User from "../apis/User";
-import { useUser } from "../context/user";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 // styled components
 const Legend = styled.legend`
     color: hotpink;
     font-size: 3rem;
-`
+`;
 
 const SeConnecter = () => {
+    const navigate = useNavigate();
     const [loginForm, setLoginForm] = useState({
         email: "",
         password: "",
@@ -23,13 +24,12 @@ const SeConnecter = () => {
         }));
     };
 
+
     const loginUser = async (e) => {
         e.preventDefault();
         await User.seConnecter(loginForm);
+        navigate("/accueil");
     };
-
-    const { user } = useUser()
-    console.log('user', user)
 
     return (
         <form onSubmit={loginUser}>
