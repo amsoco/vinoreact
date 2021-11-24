@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/user";
 import styled from "styled-components";
@@ -16,8 +16,17 @@ const Email = styled.p`
 
 // React Component
 const Accueil = () => {
-    const { user } = useUser();
-    console.log("uuuu", user);
+    const [user, setUser] = useState(null)
+    // fetch le user
+    useEffect(() => {
+        const getCurrentUser = async () => {
+            const { data: currentUser } = await User.getUsager();
+            setUser(currentUser);
+        };
+        getCurrentUser();
+    }, []);
+
+    //const { user } = useUser();
     const navigate = useNavigate();
 
     // logout le user

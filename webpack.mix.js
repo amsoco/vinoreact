@@ -1,5 +1,4 @@
 const mix = require("laravel-mix");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 /*
  |--------------------------------------------------------------------------
@@ -14,15 +13,4 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 mix.js("resources/js/app.js", "public/js")
     .react()
-    .css("resources/css/app.css", "public/css")
-    .webpackConfig({
-        plugins: [
-            new CleanWebpackPlugin({
-                verbose: true,
-                dry: true,
-                cleanStaleWebpackAssets: false,
-                protectWebpackAssets: false,
-                cleanOnceBeforeBuildPatterns: ["public/css/*.css", "public/js/*.js"],
-            }),
-        ],
-    });
+    .css("resources/css/app.css", "public/css");

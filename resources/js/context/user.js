@@ -1,21 +1,12 @@
-import { createContext, useState, useEffect, useContext } from "react";
-import User from "../apis/User";
+import { createContext, useContext } from "react";
+import useProvideUser from "../hooks/useProvideUser";
 
 // création du contexte User
-const UserContext = createContext(null);
+const UserContext = createContext();
 
 // fonction pour rendre disponible notre User via le context API
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-
-    // fetch le user
-    useEffect(() => {
-        const getCurrentUser = async () => {
-            const { data: currentUser } = await User.getUsager();
-            setUser(currentUser);
-        };
-        getCurrentUser();
-    }, []);
+    const { user } = useProvideUser();
 
     return (
         <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
