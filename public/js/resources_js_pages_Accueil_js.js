@@ -38,7 +38,7 @@ var _templateObject, _templateObject2;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var Input = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].input(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    max-width: 350px;\n    height: 40px;\n    background-color: #D8D8D8;\n    border-radius: 3px;\n    border: 1px solid #303031;\n    margin-top:20px;\n    font-family: 'Gotham Thin';\n    font-weight: 500;\n    font-style: italic;\n    padding-left:10px;\n    box-sizing: border-box;\n    font-size: 0.833rem;\n "])));
+var Input = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].input(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    max-width: 350px;\n    height: 40px;\n    background-color: #D8D8D8;\n    border-radius: 3px;\n    border: 1px solid #303031;\n    margin-top:20px;\n    font-family: 'Gotham Thin';\n    font-weight: 500;\n    font-style: italic;\n    padding-left:10px;\n    box-sizing: border-box;\n    font-size: 0.833rem;\n    display:block;\n "])));
 var Select = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].select(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n    width: 100%;\n    max-width: 350px;\n    height: 40px;\n    background-color: #D8D8D8;\n    border-radius: 3px;\n    border: 1px solid #303031;\n    margin-top:20px;\n    font-family: 'Gotham Thin';\n    font-weight: 500;\n    font-style: italic;\n    padding-left:10px;\n    box-sizing: border-box;\n    font-size: 0.833rem;\n"])));
 
 /***/ }),

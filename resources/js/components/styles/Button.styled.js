@@ -34,4 +34,15 @@ export const ButtonBackUp = styled.div`
   color: #fff;
   display:block;
   margin-top:20px;
+  position:fixed;
+  bottom: 20px;
+  right:20px;
+
+
+  img {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+  }
+  
 `
