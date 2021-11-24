@@ -4,11 +4,9 @@ import BouteilleBlackLogo from "../assets/images/bouteilleBlack.png";
 import Chevron from "../assets/svg/chevron.svg";
 
 const TestStyle = () => {
-
-
     const test = () => {
-        console.log('test');
-    }
+        console.log("test");
+    };
 
     const backTop = () => {
         document.body.scrollTop = 0; 
@@ -16,10 +14,19 @@ const TestStyle = () => {
     }
 
     return (
-        
         <div>
-            <Button  onClick={()=>test()} bg="#fff" color="#303031" colorHover='#fff' bgHover="#303031">AJOUTER</Button>
-            <Button bg="#303031" color="#fff">BOIRE</Button>
+            <Button
+                onClick={() => test()}
+                bg="#fff"
+                color="#303031"
+                colorHover="#fff"
+                bgHover="#303031"
+            >
+                AJOUTER
+            </Button>
+            <Button bg="#303031" color="#fff">
+                BOIRE
+            </Button>
             <Input placeholder="Nom Usager"></Input>
             <p>Bitters activated charcoal waistcoat, skateboard hella asymmetrical taxidermy stumptown. Everyday carry small batch keffiyeh pinterest, butcher intelligentsia occupy photo booth subway tile echo park. Man bun lumbersexual schlitz kale chips. Gluten-free banh mi distillery affogato hammock edison bulb vape small batch pabst plaid everyday carry umami pop-up. Neutra typewriter glossier meh, tofu locavore intelligentsia fixie chia mumblecore try-hard put a bird on it.
 
@@ -61,10 +68,14 @@ Hell of offal hashtag literally hella post-ironic. Biodiesel single-origin coffe
             <Select>
                 <option>Cellier</option>
             </Select>
+<<<<<<< HEAD
             <img src={BouteilleBlackLogo} alt="logo" /> 
             <ButtonBackUp onClick={()=> backTop()}> <img src={Chevron} alt="chevron" /> </ButtonBackUp>
+=======
+            <img src={BouteilleBlackLogo} alt="logo" />
+>>>>>>> upstream/main
         </div>
-    )
-}
+    );
+};
 
 export default TestStyle;

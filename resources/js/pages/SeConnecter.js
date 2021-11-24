@@ -1,19 +1,28 @@
 import React, { useState } from "react";
-import User from "../apis/User";
+import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/user";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 // styled components
 const Legend = styled.legend`
     color: hotpink;
     font-size: 3rem;
-`
+`;
 
 const SeConnecter = () => {
+    const {user, login} = useUser();
+    const navigate = useNavigate();
     const [loginForm, setLoginForm] = useState({
         email: "",
         password: "",
     });
+
+    const resetForm = () => {
+        setLoginForm({
+            email: "",
+            password: "",
+        });
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,11 +34,10 @@ const SeConnecter = () => {
 
     const loginUser = async (e) => {
         e.preventDefault();
-        await User.seConnecter(loginForm);
+        await login(loginForm);
+        resetForm();
+        navigate("/vino");
     };
-
-    const { user } = useUser()
-    console.log('user', user)
 
     return (
         <form onSubmit={loginUser}>
@@ -37,13 +45,16 @@ const SeConnecter = () => {
             <label htmlFor="email">Email</label>
             <input
                 type="email"
+                id="emai"
                 name="email"
                 value={loginForm.email}
                 onChange={handleChange}
             />
+
             <label htmlFor="password">Password</label>
             <input
                 type="password"
+                id="password"
                 name="password"
                 value={loginForm.password}
                 onChange={handleChange}
