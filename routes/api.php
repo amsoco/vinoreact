@@ -28,6 +28,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/bouteilles', [BouteilleController::class, 'index']);
     Route::get('/store', [Wiki_vinController::class, 'index']);
     Route::get('/user', function (Request $request) {
-        return $request->user()->only(['id', 'name', 'email']);
+        return $request->user()->only(['id', 'name', 'email', 'privilege_id']);
     });
 });
