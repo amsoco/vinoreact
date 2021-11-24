@@ -17,7 +17,7 @@ class BouteilleController extends Controller
      */
     public function index()
     {
-        // here is where  the index goes....
+        return Bouteille::all();
     }
 
     /**
@@ -38,7 +38,23 @@ class BouteilleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $response = Bouteille::create([
+        'nom' => $request->nom,
+        'pays' => $request->pays,
+        'description' => $request->description,
+        'date_achat' => $request->date_achat,
+        'prix_achat' => $request->prix_achat,
+        'url_saq' => $request->url_saq,
+        'note' => $request->note,
+        'commentaire' => $request->commentaire,
+        'quantite' => $request->quantite,
+        'millesime' => $request->millesime,
+        'format' => $request->format,
+        'url_img' => $request->url_img,
+        'categorie_id' => $request->categorie_id,
+        'cellier_id' => $request->cellier_id,
+        ]);
+        return response($response, 201);
     }
 
     /**
@@ -49,7 +65,7 @@ class BouteilleController extends Controller
      */
     public function show($id)
     {
-        //
+        return Bouteille::find($id);
     }
 
     /**
@@ -60,7 +76,7 @@ class BouteilleController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Bouteille::find($id);
     }
 
     /**
