@@ -21,16 +21,6 @@ class BouteilleController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //xxxxxxxxxxx
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -38,7 +28,7 @@ class BouteilleController extends Controller
      */
     public function store(Request $request)
     {
-        $response = Bouteille::create([
+        return Bouteille::create([
         'nom' => $request->nom,
         'pays' => $request->pays,
         'description' => $request->description,
@@ -54,7 +44,6 @@ class BouteilleController extends Controller
         'categorie_id' => $request->categorie_id,
         'cellier_id' => $request->cellier_id,
         ]);
-        return response($response, 201);
     }
 
     /**
@@ -77,6 +66,7 @@ class BouteilleController extends Controller
     public function edit($id)
     {
         return Bouteille::find($id);
+
     }
 
     /**
@@ -86,9 +76,24 @@ class BouteilleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        return Bouteille::where('id', $request->id)->update([
+        'nom' => $request->nom,
+        'pays' => $request->pays,
+        'description' => $request->description,
+        'date_achat' => $request->date_achat,
+        'prix_achat' => $request->prix_achat,
+        'url_saq' => $request->url_saq,
+        'note' => $request->note,
+        'commentaire' => $request->commentaire,
+        'quantite' => $request->quantite,
+        'millesime' => $request->millesime,
+        'format' => $request->format,
+        'url_img' => $request->url_img,
+        'categorie_id' => $request->categorie_id,
+        'cellier_id' => $request->cellier_id,
+        ]);
     }
 
     /**
@@ -99,6 +104,6 @@ class BouteilleController extends Controller
      */
     public function destroy($id)
     {
-        //
+       return Bouteille::where('id', $id)->delete();
     }
 }
