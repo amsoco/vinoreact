@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bouteille;
-use App\Models\Store_item;
+use App\Models\Wiki_vin;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +27,7 @@ class BouteilleController extends Controller
      */
     public function create()
     {
-        //
+        //xxxxxxxxxxx
     }
 
     /**
