@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import User from "../apis/User";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/user";
 
 const CreerCompte = () => {
+    const { register } = useUser();
+    const navigate = useNavigate();
     const [registerForm, setRegisterForm] = useState({
         name: "",
         email: "",
@@ -19,7 +22,8 @@ const CreerCompte = () => {
 
     const registerUser = async (e) => {
         e.preventDefault();
-        await User.creerCompte(registerForm);
+        await register(registerForm)
+        navigate("/vino");
     };
 
     return (
@@ -35,6 +39,7 @@ const CreerCompte = () => {
             <label htmlFor="email">Email</label>
             <input
                 type="email"
+                id="email"
                 name="email"
                 value={registerForm.emai}
                 onChange={handleChange}
@@ -42,6 +47,7 @@ const CreerCompte = () => {
             <label htmlFor="password">Password</label>
             <input
                 type="password"
+                id="password"
                 name="password"
                 value={registerForm.password}
                 onChange={handleChange}
@@ -49,6 +55,7 @@ const CreerCompte = () => {
             <label htmlFor="password_confirmation">Confirm Password</label>
             <input
                 type="password"
+                id="password_confirmation"
                 name="password_confirmation"
                 value={registerForm.password_confirmation}
                 onChange={handleChange}
