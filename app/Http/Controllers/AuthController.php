@@ -41,7 +41,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return response()->json(["user" => Auth::user()->name], 200);
+            return response()->json(["user" => Auth::user()], 200);
         }
 
         throw ValidationException::withMessages(([
@@ -53,6 +53,5 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        die();
     }
 }

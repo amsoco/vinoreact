@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import User from "../apis/User";
+import { useUser } from "../context/user";
 
 const CreerCompte = () => {
+    const { register } = useUser();
     const navigate = useNavigate();
     const [registerForm, setRegisterForm] = useState({
         name: "",
@@ -21,7 +22,7 @@ const CreerCompte = () => {
 
     const registerUser = async (e) => {
         e.preventDefault();
-        await User.creerCompte(registerForm);
+        await register(registerForm)
         navigate("/vino");
     };
 

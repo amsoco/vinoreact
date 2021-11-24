@@ -1,15 +1,45 @@
-import { createContext, useContext } from "react";
-import useProvideUser from "../hooks/useProvideUser";
+import { createContext, useContext, useState, useEffect } from "react";
+import Http from "../HttpClient";
 
 // création du contexte User
 const UserContext = createContext();
 
-// fonction pour rendre disponible notre User via le context API
+// fonction pour rendre disponible le user et les méthodes d'auth via le context API
 export const UserProvider = ({ children }) => {
-    const { user } = useProvideUser();
+    const [user, setUser] = useState(null);
+
+    // fetch l'utilisateur connecté
+    useEffect(() => {
+        getMe().then(({ data: user }) => setUser(user));
+    }, []);
+
+    // get user
+    const getMe = () => Http.get("user");
+
+    // log l'utilisateur
+    const login = async (creds) => {
+        await Http.get("csrf-cookie");
+        const { data } = await Http.post("login", creds);
+        setUser(data.user);
+    };
+
+    // enregistre le nouvel utilisateur
+    const register = async (creds) => {
+        await Http.get("csrf-cookie");
+        const { data } = await Http.post("register", creds);
+        setUser(data.user);
+    };
+
+    // déconnecte l'utilisateur
+    const logout = async () => {
+        await Http.post("logout");
+        setUser(null);
+    };
 
     return (
-        <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+        <UserContext.Provider value={{ user, login, register, logout }}>
+            {children}
+        </UserContext.Provider>
     );
 };
 

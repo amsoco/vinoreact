@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import User from "../apis/User";
+import { useUser } from "../context/user";
 import styled from "styled-components";
 
 // styled components
@@ -10,6 +10,7 @@ const Legend = styled.legend`
 `;
 
 const SeConnecter = () => {
+    const {user, login} = useUser();
     const navigate = useNavigate();
     const [loginForm, setLoginForm] = useState({
         email: "",
@@ -33,7 +34,7 @@ const SeConnecter = () => {
 
     const loginUser = async (e) => {
         e.preventDefault();
-        await User.seConnecter(loginForm);
+        await login(loginForm);
         resetForm();
         navigate("/vino");
     };
@@ -41,7 +42,6 @@ const SeConnecter = () => {
     return (
         <form onSubmit={loginUser}>
             <Legend>Login Form</Legend>
-
             <label htmlFor="email">Email</label>
             <input
                 type="email"

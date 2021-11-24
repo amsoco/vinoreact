@@ -765,7 +765,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var _apis_User__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../apis/User */ "./resources/js/apis/User.js");
+/* harmony import */ var _context_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/user */ "./resources/js/context/user.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 var _templateObject;
@@ -806,6 +806,10 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var Legend = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].legend(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    color: hotpink;\n    font-size: 3rem;\n"])));
 
 var SeConnecter = function SeConnecter() {
+  var _useUser = (0,_context_user__WEBPACK_IMPORTED_MODULE_2__.useUser)(),
+      user = _useUser.user,
+      login = _useUser.login;
+
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
@@ -840,7 +844,7 @@ var SeConnecter = function SeConnecter() {
             case 0:
               e.preventDefault();
               _context.next = 3;
-              return _apis_User__WEBPACK_IMPORTED_MODULE_2__["default"].seConnecter(loginForm);
+              return login(loginForm);
 
             case 3:
               resetForm();
