@@ -2997,6 +2997,10 @@ var TestStyle = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(functio
 });
 var Accueil = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_pages_Accueil_js").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Accueil */ "./resources/js/pages/Accueil.js"));
+}); //Teste Accordeon pas un vrai chemin
+
+var Accordeon = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_Accordeon_js").then(__webpack_require__.bind(__webpack_require__, /*! ./Accordeon */ "./resources/js/components/Accordeon.js"));
 });
 
 var App = function App() {
@@ -3023,6 +3027,11 @@ var App = function App() {
               path: "/vino",
               element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Accueil, {
                 usagerNom: "Claude"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+              path: "/accordeon",
+              element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Accordeon, {
+                titre: "Titre Accordeon"
               })
             })]
           })
@@ -37160,7 +37169,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/Applications/MAMP/htdoc
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_SeConnecter_js":1,"resources_js_pages_CreerCompte_js":1,"resources_js_pages_TestStyle_js":1,"resources_js_pages_Accueil_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_SeConnecter_js":1,"resources_js_pages_CreerCompte_js":1,"resources_js_pages_TestStyle_js":1,"resources_js_pages_Accueil_js":1,"resources_js_components_Accordeon_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
