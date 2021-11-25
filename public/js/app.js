@@ -2949,7 +2949,7 @@ Le rythme général est de 20px
 40px
 60px
 80px
-120px
+120px 
 
 font-size
 ---------------------------------------------
