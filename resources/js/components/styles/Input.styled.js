@@ -38,7 +38,7 @@ export const Input = styled.input`
     display:block;
 
     &:focus ~ ${Label} {
-        left: -4px;
+        left: 1px;
         top: -18px;
         color: #fff;
         font-size: 0.8rem;
@@ -52,7 +52,7 @@ export const Select = styled.select`
     background-color: #d8d8d8;
     border-radius: 3px;
     border: 1px solid #303031;
-    margin-top: 20px;
+   // margin-top: 20px;
     font-family: "Gotham Thin";
     font-weight: 500;
     font-style: italic;

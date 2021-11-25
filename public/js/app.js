@@ -2941,9 +2941,32 @@ var _templateObject;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
- //font-family: "LincolnMillerBanner-Roman"
 
-var GlobalStyles = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.createGlobalStyle)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n@import url('http://fonts.cdnfonts.com/css/gotham');\n@import url(//db.onlinewebfonts.com/c/a6e1f9c1f231a9d282a89b950b66509d?family=LincolnMillerBanner-Roman);\n  * {\n    margin:0;\n    padding:0;\n  }\n\n  // couleur\n  body {\n    color:\n  }\n\n  // rythme g\xE9n\xE9ral\n  h3,\n  button,\n  input {\n    margin-top:20px;\n  }\n\n"])));
+/*
+
+
+
+
+font-family: "LincolnMillerBanner-Roman"
+
+
+Texte Générique
+font-family: 'Gotham Black';
+font-weight: 500;
+font-style: normal;
+
+Placeholder
+font-family: "Gotham Thin";
+font-weight: 500;
+font-style: italic;
+
+Bouton
+font-family: 'Gotham Black';
+font-weight: 300;
+
+*/
+
+var GlobalStyles = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.createGlobalStyle)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n@import url('http://fonts.cdnfonts.com/css/gotham');\n@import url(//db.onlinewebfonts.com/c/a6e1f9c1f231a9d282a89b950b66509d?family=LincolnMillerBanner-Roman);\n\n  * {\n    margin:0;\n    padding:0;\n  }\n\n  body {\n    font-family: 'Gotham Black';\n    font-weight: 500;\n    font-style: normal;\n  }\n\n  // rythme g\xE9n\xE9ral\n  h3,\n  select {\n    margin-top:20px;\n  }\n\n  a{\n    font-family: 'Gotham Black';\n    font-weight: 500;\n    font-style: normal;\n  }\n\n  h1 {\n    font-size: 2.488rem;\n  }\n\n  h2 {\n    font-size: 2.074rem;\n  }\n\n  h3 {\n    font-size: 2.488rem;\n  }\n\n  h4 {\n    font-size: 1.728rem;\n  }\n\n  h5 {\n    font-size: 1.44rem;\n  }\n\n  a,\n  h6 {\n    font-size: 1rem;\n  }\n\n  span,\n  p {\n    font-size:0.833rem;\n  }\n\n  \n\n"])));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GlobalStyles);
 
 /***/ }),
