@@ -9,7 +9,7 @@ import { useUser } from "../../../context/user";
 // validation du formulaire
 import loginFormValidate from "./loginFormValidate";
 import { useNavigate } from "react-router";
-import BouteilleBlackLogo from "../../../assets/images/bouteilleBlack.png";
+import BouteilleBlanche from "../../../assets/images/bouteilleBlanche.png";
 
 const LoginForm = () => {
     const { login } = useUser();
@@ -41,7 +41,7 @@ const LoginForm = () => {
         <Form onSubmit={handleFormSubmit}>
             <Legend>
                 Vino
-                <img src={BouteilleBlackLogo} alt="Logo Bouteille vino" />
+                <img src={BouteilleBlanche} alt="Logo Bouteille vino" />
             </Legend>
 
             <FormInput

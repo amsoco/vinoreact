@@ -8,4 +8,8 @@ export const AuthLayout = styled.main`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    img {
+        max-width: 50px;
+    }
 `;

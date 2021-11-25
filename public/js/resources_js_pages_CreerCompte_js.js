@@ -283,7 +283,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
  // Layout commun aux pages de Login et Register
 
-var AuthLayout = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].main(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    background-color: #303030;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n"])));
+var AuthLayout = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].main(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    background-color: #303030;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    img {\n        max-width: 50px;\n    }\n"])));
 
 /***/ }),
 

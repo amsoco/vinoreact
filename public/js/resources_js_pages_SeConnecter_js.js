@@ -86,7 +86,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _context_user__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../context/user */ "./resources/js/context/user.js");
 /* harmony import */ var _loginFormValidate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./loginFormValidate */ "./resources/js/components/Forms/LoginForm/loginFormValidate.js");
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/index.js");
-/* harmony import */ var _assets_images_bouteilleBlack_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../assets/images/bouteilleBlack.png */ "./resources/js/assets/images/bouteilleBlack.png");
+/* harmony import */ var _assets_images_bouteilleBlanche_png__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../assets/images/bouteilleBlanche.png */ "./resources/js/assets/images/bouteilleBlanche.png");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -158,7 +158,7 @@ var LoginForm = function LoginForm() {
     onSubmit: handleFormSubmit,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_styles_Form_styled__WEBPACK_IMPORTED_MODULE_4__.Legend, {
       children: ["Vino", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("img", {
-        src: _assets_images_bouteilleBlack_png__WEBPACK_IMPORTED_MODULE_9__["default"],
+        src: _assets_images_bouteilleBlanche_png__WEBPACK_IMPORTED_MODULE_9__["default"],
         alt: "Logo Bouteille vino"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -250,7 +250,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
  // Layout commun aux pages de Login et Register
 
-var AuthLayout = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].main(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    background-color: #303030;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n"])));
+var AuthLayout = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].main(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    background-color: #303030;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    img {\n        max-width: 50px;\n    }\n"])));
 
 /***/ }),
 
@@ -623,10 +623,10 @@ var SeConnecter = function SeConnecter() {
 
 /***/ }),
 
-/***/ "./resources/js/assets/images/bouteilleBlack.png":
-/*!*******************************************************!*\
-  !*** ./resources/js/assets/images/bouteilleBlack.png ***!
-  \*******************************************************/
+/***/ "./resources/js/assets/images/bouteilleBlanche.png":
+/*!*********************************************************!*\
+  !*** ./resources/js/assets/images/bouteilleBlanche.png ***!
+  \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -634,7 +634,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/bouteilleBlack.png?86cb879b19976d39739d118321269307");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/bouteilleBlanche.png?0be9c92ff1ef287b047c23a296d31fb9");
 
 /***/ }),
 
