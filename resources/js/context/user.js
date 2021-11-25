@@ -10,7 +10,9 @@ export const UserProvider = ({ children }) => {
 
     // fetch l'utilisateur connecté
     useEffect(() => {
+        let disposed = false;
         getMe().then(({ data: user }) => setUser(user));
+        return () => (disposed = true);
     }, []);
 
     // get user
@@ -33,7 +35,7 @@ export const UserProvider = ({ children }) => {
     // déconnecte l'utilisateur
     const logout = async () => {
         await Http.post("logout");
-        setUser(null);
+        setUser(false);
     };
 
     return (
