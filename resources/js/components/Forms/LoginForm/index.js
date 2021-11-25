@@ -40,7 +40,7 @@ const LoginForm = () => {
     return (
         <Form onSubmit={handleFormSubmit}>
             <Legend>
-                Vino
+                vino
                 <img src={BouteilleBlanche} alt="Logo Bouteille vino" />
             </Legend>
 

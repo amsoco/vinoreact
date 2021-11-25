@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const InputErrorMessage = styled.span`
     width: fit-content;
-    font-size: 0.9rem;
+    font-weight: 300;
+    //font-size: 0.9rem;
     color: red;
-    margin-top: 0.3rem;
+    margin: 0.3rem 0 0 0.1rem;
 `;
