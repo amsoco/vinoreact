@@ -25,6 +25,11 @@ class CellierController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nom_cellier' => 'required|string|max:100',
+            'user_id' => 'required||integer|min:1',
+        ]);
+
         return Cellier::create([
         'nom_cellier' => $request->nom_cellier,
         'user_id' => $request->user_id
@@ -63,6 +68,11 @@ class CellierController extends Controller
      */
     public function update(Request $request)
     {
+        $request->validate([
+            'nom_cellier' => 'required|string|max:100',
+            'user_id' => 'required||integer|min:1',
+        ]);
+
         return Cellier::where('id', $request->id)->update([
         'nom_cellier' => $request->nom_cellier,
         'user_id' => $request->user_id
