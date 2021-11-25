@@ -2912,9 +2912,7 @@ var App = function App() {
               element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(TestStyle, {})
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
               path: "/vino",
-              element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Accueil, {
-                usagerNom: "Claude"
-              })
+              element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Accueil, {})
             })]
           })
         })
@@ -3001,10 +2999,14 @@ var UserProvider = function UserProvider(_ref) {
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var disposed = false;
     getMe().then(function (_ref2) {
       var user = _ref2.data;
       return setUser(user);
     });
+    return function () {
+      return disposed = true;
+    };
   }, []); // get user
 
   var getMe = function getMe() {
@@ -3090,7 +3092,7 @@ var UserProvider = function UserProvider(_ref) {
               return _HttpClient__WEBPACK_IMPORTED_MODULE_2__["default"].post("logout");
 
             case 2:
-              setUser(null);
+              setUser(false);
 
             case 3:
             case "end":
