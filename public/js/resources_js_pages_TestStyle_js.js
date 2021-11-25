@@ -96,16 +96,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _styles_Navbar_styled_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/Navbar.styled.js */ "./resources/js/components/styles/Navbar.styled.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _assets_svg_logo_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/svg/logo.svg */ "./resources/js/assets/svg/logo.svg");
+/* harmony import */ var _assets_svg_rondX_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/svg/rondX.svg */ "./resources/js/assets/svg/rondX.svg");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
 
 
 
 
 var navBar = function navBar(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_styles_Navbar_styled_js__WEBPACK_IMPORTED_MODULE_1__.NavBarCountainer, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-      children: "Nav"
-    })
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_styles_Navbar_styled_js__WEBPACK_IMPORTED_MODULE_1__.NavBarCountainer, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+      src: _assets_svg_logo_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+      alt: "chevronBlack"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+      src: _assets_svg_rondX_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+      alt: "chevronBlack"
+    })]
   });
 };
 
@@ -217,7 +228,7 @@ var _templateObject;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var NavBarCountainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].nav(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    position: sticky;\n    top;0;\n    height:\n"])));
+var NavBarCountainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].nav(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n\n    position: sticky;\n    top: 0;\n    display:flex;\n    justify-content: space-between;\n    padding:20px;\n    box-shadow: rgba(0, 0, 0, 0.10) 1.95px 1.95px 2.6px;\n    background:#fff;\n    z-index:1;\n\n    div {\n        display:flex;\n        flex-direction: column;\n\n        div {\n            width:20px;\n            background:#303031;\n            height: 3px;\n            margin:0.09375rem;\n        }\n    }\n\n    img {\n        max-height: 20px;\n    }\n"])));
 
 /***/ }),
 
@@ -269,6 +280,39 @@ var TestStyle = function TestStyle() {
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
       titre: "Notes",
+      content: "patate"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Notes",
+      content: "laiture"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Notes",
+      content: "Je suis un amateur alors je connais \xE7a"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Notes",
+      content: "Je suis un amateur alors je connais \xE7a"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Notes",
+      content: "Je suis un amateur alors je connais \xE7a"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Notes",
+      content: "Je suis un amateur alors je connais \xE7a"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Notes",
+      content: "Je suis un amateur alors je connais \xE7a"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Notes",
+      content: "Je suis un amateur alors je connais \xE7a"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Notes",
+      content: "Je suis un amateur alors je connais \xE7a"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Notes",
+      content: "Je suis un amateur alors je connais \xE7a"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Notes",
+      content: "Je suis un amateur alors je connais \xE7a"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Notes",
       content: "Je suis un amateur alors je connais \xE7a"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
       titre: "Yesss",
@@ -317,6 +361,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/chevronBlack.svg?122cca7512d3a55e8676620514202557");
+
+/***/ }),
+
+/***/ "./resources/js/assets/svg/logo.svg":
+/*!******************************************!*\
+  !*** ./resources/js/assets/svg/logo.svg ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logo.svg?2408999eb7bb9c6927562ff3e6e86225");
+
+/***/ }),
+
+/***/ "./resources/js/assets/svg/rondX.svg":
+/*!*******************************************!*\
+  !*** ./resources/js/assets/svg/rondX.svg ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/rondX.svg?5036883dbddebbac7c00d3e9da4e9f03");
 
 /***/ })
 

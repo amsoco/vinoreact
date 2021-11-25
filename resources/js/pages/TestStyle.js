@@ -31,12 +31,24 @@ const TestStyle = () => {
             </Button >
             <Input placeholder="Nom Usager" ></Input> */}
 
-            <NavBar/>
+            <NavBar></NavBar>
             <Accordeon titre='Description' content="Vin mousseu bon"></Accordeon>
             <Accordeon titre='Modification' content={  <Select>
                     <option>Cellier</option>
                 </Select>}>  
             </Accordeon>
+            
+            <Accordeon titre='Notes' content="patate"></Accordeon>
+            <Accordeon titre='Notes' content="laiture"></Accordeon>
+            <Accordeon titre='Notes' content="Je suis un amateur alors je connais ça"></Accordeon>
+            <Accordeon titre='Notes' content="Je suis un amateur alors je connais ça"></Accordeon>
+            <Accordeon titre='Notes' content="Je suis un amateur alors je connais ça"></Accordeon>
+            <Accordeon titre='Notes' content="Je suis un amateur alors je connais ça"></Accordeon>
+            <Accordeon titre='Notes' content="Je suis un amateur alors je connais ça"></Accordeon>
+            <Accordeon titre='Notes' content="Je suis un amateur alors je connais ça"></Accordeon>
+            <Accordeon titre='Notes' content="Je suis un amateur alors je connais ça"></Accordeon>
+            <Accordeon titre='Notes' content="Je suis un amateur alors je connais ça"></Accordeon>
+            <Accordeon titre='Notes' content="Je suis un amateur alors je connais ça"></Accordeon>
             <Accordeon titre='Notes' content="Je suis un amateur alors je connais ça"></Accordeon>
             <Accordeon titre='Yesss' content="I'm baby xOXO franzen iPhone, hell of paleo selvage slow-carb keytar cardigan green juice. Polaroid fixie distillery alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça"></Accordeon>
             <Accordeon titre='Vino' content="Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur "></Accordeon>
