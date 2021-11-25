@@ -2893,6 +2893,7 @@ var Accueil = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function 
 var Accordeon = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_Accordeon_js").then(__webpack_require__.bind(__webpack_require__, /*! ./Accordeon */ "./resources/js/components/Accordeon.js"));
 });
+var textTest = 'Description';
 
 var App = function App() {
   return (
@@ -2922,7 +2923,8 @@ var App = function App() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
               path: "/accordeon",
               element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Accordeon, {
-                titre: "Titre Accordeon"
+                titre: "Titre Accordeon",
+                content: textTest
               })
             })]
           })
