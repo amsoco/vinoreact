@@ -9,6 +9,19 @@ const GlobalStyles = createGlobalStyle`
     margin:0;
     padding:0;
   }
+
+  // couleur
+  body {
+    color:
+  }
+
+  // rythme général
+  h3,
+  button,
+  input {
+    margin-top:20px;
+  }
+
 `
 
 export default GlobalStyles

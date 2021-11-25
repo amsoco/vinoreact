@@ -2945,7 +2945,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
  //font-family: "LincolnMillerBanner-Roman"
 
-var GlobalStyles = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.createGlobalStyle)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n@import url('http://fonts.cdnfonts.com/css/gotham');\n@import url(//db.onlinewebfonts.com/c/a6e1f9c1f231a9d282a89b950b66509d?family=LincolnMillerBanner-Roman);\n  * {\n    margin:0;\n    padding:0;\n  }\n"])));
+var GlobalStyles = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.createGlobalStyle)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n@import url('http://fonts.cdnfonts.com/css/gotham');\n@import url(//db.onlinewebfonts.com/c/a6e1f9c1f231a9d282a89b950b66509d?family=LincolnMillerBanner-Roman);\n  * {\n    margin:0;\n    padding:0;\n  }\n\n  // couleur\n  body {\n    color:\n  }\n\n  // rythme g\xE9n\xE9ral\n  h3,\n  button,\n  input {\n    margin-top:20px;\n  }\n\n"])));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GlobalStyles);
 
 /***/ }),
