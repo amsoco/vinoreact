@@ -84,6 +84,35 @@ var Accordeon = function Accordeon(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/NavBar.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/NavBar.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _styles_Navbar_styled_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/Navbar.styled.js */ "./resources/js/components/styles/Navbar.styled.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var navBar = function navBar(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_styles_Navbar_styled_js__WEBPACK_IMPORTED_MODULE_1__.NavBarCountainer, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+      children: "Nav"
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (navBar);
+
+/***/ }),
+
 /***/ "./resources/js/components/styles/Accordeon.styled.js":
 /*!************************************************************!*\
   !*** ./resources/js/components/styles/Accordeon.styled.js ***!
@@ -172,6 +201,26 @@ var Select = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].select(_t
 
 /***/ }),
 
+/***/ "./resources/js/components/styles/Navbar.styled.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/styles/Navbar.styled.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "NavBarCountainer": () => (/* binding */ NavBarCountainer)
+/* harmony export */ });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+var NavBarCountainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].nav(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    position: sticky;\n    top;0;\n    height:\n"])));
+
+/***/ }),
+
 /***/ "./resources/js/pages/TestStyle.js":
 /*!*****************************************!*\
   !*** ./resources/js/pages/TestStyle.js ***!
@@ -186,9 +235,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_styles_Input_styled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/styles/Input.styled */ "./resources/js/components/styles/Input.styled.js");
 /* harmony import */ var _assets_svg_chevron_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/svg/chevron.svg */ "./resources/js/assets/svg/chevron.svg");
 /* harmony import */ var _components_Accordeon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Accordeon */ "./resources/js/components/Accordeon.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_NavBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/NavBar */ "./resources/js/components/NavBar.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
  //import BouteilleBlackLogo from "../assets/images/bouteilleBlack.png";
+
 
 
 
@@ -205,31 +256,31 @@ var TestStyle = function TestStyle() {
     document.documentElement.scrollTop = 0;
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
       titre: "Description",
       content: "Vin mousseu bon"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
       titre: "Modification",
-      content: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_styles_Input_styled__WEBPACK_IMPORTED_MODULE_1__.Select, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+      content: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_styles_Input_styled__WEBPACK_IMPORTED_MODULE_1__.Select, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
           children: "Cellier"
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
       titre: "Notes",
       content: "Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
       titre: "Yesss",
       content: "I'm baby xOXO franzen iPhone, hell of paleo selvage slow-carb keytar cardigan green juice. Polaroid fixie distillery alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
       titre: "Vino",
       content: "Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur "
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_components_styles_Button_styled__WEBPACK_IMPORTED_MODULE_0__.ButtonBackUp, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components_styles_Button_styled__WEBPACK_IMPORTED_MODULE_0__.ButtonBackUp, {
       onClick: function onClick() {
         return backTop();
       },
-      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
         src: _assets_svg_chevron_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
         alt: "chevron"
       }), " "]

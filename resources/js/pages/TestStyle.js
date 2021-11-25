@@ -3,6 +3,7 @@ import { Input, Select } from '../components/styles/Input.styled';
 //import BouteilleBlackLogo from "../assets/images/bouteilleBlack.png";
 import Chevron from "../assets/svg/chevron.svg";
 import Accordeon from "../components/Accordeon";
+import NavBar from "../components/NavBar";
 
 const TestStyle = () => {
     const test = () => {
@@ -30,6 +31,7 @@ const TestStyle = () => {
             </Button >
             <Input placeholder="Nom Usager" ></Input> */}
 
+            <NavBar/>
             <Accordeon titre='Description' content="Vin mousseu bon"></Accordeon>
             <Accordeon titre='Modification' content={  <Select>
                     <option>Cellier</option>
