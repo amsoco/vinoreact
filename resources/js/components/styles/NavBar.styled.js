@@ -14,16 +14,40 @@ export const NavBarCountainer = styled.nav`
     div {
         display:flex;
         flex-direction: column;
+        cursor: pointer;
 
+        ${({ translateDown }) => console.log(translateDown)}
         div {
             width:20px;
             background:#303031;
             height: 3px;
             margin:0.09375rem;
         }
+
+        div:first-child {
+            transition: transform 0.6s ease;
+            transform: rotate(${({ rotate }) => rotate || '0'}) translate(-${({ translateDown }) => translateDown || '0'} , ${({ translateDown }) => translateDown || '0'} );
+        }
+        
+        div:nth-of-type(2){
+            transition: opacity 0.6s ease;
+            opacity: ${({ display }) => display || '100%'};
+        }
+        div:nth-of-type(3){
+            transition: transform 0.6s ease;
+            transform: rotate(${({ rotateNegative}) => rotateNegative|| '0'}) translate(${({ translateUp }) => translateUp || '0'} , ${({ translateUp }) => translateUp || '0'} );
+        }
+
+
+
+
     }
 
     img {
         max-height: 20px;
+    }
+
+    img:last-child {
+        cursor: pointer;
     }
 `
