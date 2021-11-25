@@ -16,7 +16,7 @@ export const Button = styled.button`
   font-weight: 300;
   border: 1px solid ${({ borderColor }) => borderColor || '#303031'};
   display:block;
-  margin-top:20px;
+ // margin-top:20px;
   &:hover {
     background-color: ${({ bgHover }) => bgHover || '#58111A'};
     color: ${({ colorHover }) => colorHover || '#FFF'};
@@ -33,7 +33,7 @@ export const ButtonBackUp = styled.div`
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px;
   color: #fff;
   display:block;
-  margin-top:20px;
+  //margin-top:20px;
   position:fixed;
   bottom: 20px;
   right:20px;

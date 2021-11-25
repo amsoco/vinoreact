@@ -21,7 +21,7 @@ const Accordeon = (props) => {
         console.log(content.current.scrollHeight);
         setRotateState(
             setActive === "active" ? "0" : "-90deg"
-            );
+        );
     }
 
     return (
