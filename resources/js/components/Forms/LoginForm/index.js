@@ -71,7 +71,7 @@ const LoginForm = () => {
                 color="#fff"
                 borderColor="#fff"
                 bgHover="white"
-                colorHover="maroon"
+                colorHover="#303030"
                 disabled={isSubmitting}
             >
                 CONNECTER

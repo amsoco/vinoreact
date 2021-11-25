@@ -185,7 +185,7 @@ var LoginForm = function LoginForm() {
       color: "#fff",
       borderColor: "#fff",
       bgHover: "white",
-      colorHover: "maroon",
+      colorHover: "#303030",
       disabled: isSubmitting,
       children: "CONNECTER"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_styles_Link_styled__WEBPACK_IMPORTED_MODULE_5__.CustomLink, {

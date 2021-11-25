@@ -15,4 +15,4 @@ yarn-error.log
 /.vscode
 .DS_Store
 resources/.DS_Store
-public
+/public

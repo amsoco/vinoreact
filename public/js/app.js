@@ -3092,7 +3092,7 @@ var UserProvider = function UserProvider(_ref) {
               return _HttpClient__WEBPACK_IMPORTED_MODULE_2__["default"].post("logout");
 
             case 2:
-              setUser(null);
+              setUser(false);
 
             case 3:
             case "end":

@@ -201,7 +201,7 @@ var RegisterForm = function RegisterForm() {
       color: "#fff",
       borderColor: "#fff",
       bgHover: "white",
-      colorHover: "maroon",
+      colorHover: "#303030",
       disabled: isSubmitting,
       children: "CR\xC9ER"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_styles_Link_styled__WEBPACK_IMPORTED_MODULE_5__.CustomLink, {

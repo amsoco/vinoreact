@@ -35,7 +35,7 @@ export const UserProvider = ({ children }) => {
     // déconnecte l'utilisateur
     const logout = async () => {
         await Http.post("logout");
-        setUser(null);
+        setUser(false);
     };
 
     return (
