@@ -2,11 +2,29 @@ import { createGlobalStyle } from 'styled-components'
 
 /*
 
+Le rythme général est de 20px
+30px
+40px
+60px
+80px
+120px
+
+font-size
+---------------------------------------------
+
+font-size: 2.488rem;
+font-size: 2.074rem;
+font-size: 1.728rem;
+font-size: 1.44rem;
+font-size:1.2rem;
+font-size: 1rem;
+font-size:0.833rem;
 
 
+Font 
+---------------------------------------------
 
 font-family: "LincolnMillerBanner-Roman"
-
 
 Texte Générique
 font-family: 'Gotham Black';
@@ -21,6 +39,16 @@ font-style: italic;
 Bouton
 font-family: 'Gotham Black';
 font-weight: 300;
+
+
+Couleur
+---------------------------------------------
+
+Anthracite : #303031
+Gris Doux : #D8D8D8 
+Blanc : #FFF
+Gris Image: #898989
+Rouge Vin : #58111A
 
 */
 
@@ -52,6 +80,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
+    font-family: "LincolnMillerBanner-Roman
     font-size: 2.488rem;
   }
 
@@ -60,28 +89,26 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h3 {
-    font-size: 2.488rem;
-  }
-
-  h4 {
+    font-family: "LincolnMillerBanner-Roman
     font-size: 1.728rem;
   }
 
-  h5 {
+  h4 {
     font-size: 1.44rem;
   }
 
-  a,
-  h6 {
+  h5 {
+    font-size:1.2rem;
+  }
+
+ p {
     font-size: 1rem;
   }
 
-  span,
-  p {
+  a,
+  span {
     font-size:0.833rem;
   }
-
-  
 
 `
 

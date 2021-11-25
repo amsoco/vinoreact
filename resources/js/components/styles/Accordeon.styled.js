@@ -8,7 +8,7 @@ export const AccordeonSection = styled.section`
     flex-direction: column;
 
     // pour bien voir 
-    margin-top:-1px;
+    //margin-top:-1px;
     margin-left: 40px;
     margin-right: 40px;
 
@@ -25,9 +25,10 @@ export const AccordeonSection = styled.section`
 
     button{
         background: #fff;
-        border: 1px solid #D8D8D8;
+        border-top: 1px solid #D8D8D8;
         border-left: none;
         border-right: none;
+        border-bottom: none;
         padding: 10px;
         padding-top:18px;
         padding-bottom:8px;
