@@ -13,17 +13,13 @@ export const AccordeonSection = styled.section`
     margin-right: 40px;
 
     div {
-        //height:${({ height }) => height || '0'} ;
-       // max-height:0;
         overflow: hidden;
-        transition: max-height 0.6s ease-in;
-        //transition: transform 0.4s ease;
-        //transform: scaleY(${({ scaleY }) => scaleY || '0'});
-        //transform-origin: top;
+        transition: height 0.6s ease-out;
 
-        p  {
+            p  {
             padding: 20px;
             font-family: 'Gotham';
+
         }
     }
 
@@ -33,13 +29,15 @@ export const AccordeonSection = styled.section`
         border-left: none;
         border-right: none;
         padding: 10px;
+        padding-top:18px;
+        padding-bottom:8px;
         display:flex;
 
         img {
             height : 12px;
             margin-left: auto;
             transition: transform 0.6s ease;
-            margin-top: auto;
+
             margin-bottom: auto;
             transform: rotate(${({ rotate }) => rotate || '0'});
         }

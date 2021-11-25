@@ -42,28 +42,21 @@ var Accordeon = function Accordeon(props) {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0px"),
       _useState4 = _slicedToArray(_useState3, 2),
       setHeight = _useState4[0],
-      setHeightState = _useState4[1]; // const [setScaleY, setScaleYState] = useState("0");
-
+      setHeightState = _useState4[1];
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0"),
       _useState6 = _slicedToArray(_useState5, 2),
       setRotate = _useState6[0],
       setRotateState = _useState6[1];
 
+  var content = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
   var ouvrirAccordeon = function ouvrirAccordeon() {
     setActiveState(setActive === "" ? "active" : "");
-    setHeightState( // setActive === "active" ? "0px" : "auto"
-    setActive === "active" ? "0px" : "500px");
-    /*
-    setScaleYState(
-        setActive === "active" ? "0" : `1`
-      );
-    */
-
+    setHeightState(setActive === "active" ? "0px" : "".concat(content.current.scrollHeight, "px"));
+    console.log(content.current.scrollHeight);
     setRotateState(setActive === "active" ? "0" : "-90deg");
-  }; // scaleY={setScaleY}
-  //height={setHeight}
-
+  };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_styles_Accordeon_styled_js__WEBPACK_IMPORTED_MODULE_1__.AccordeonSection, {
     rotate: setRotate,
@@ -76,8 +69,9 @@ var Accordeon = function Accordeon(props) {
         alt: "chevronBlack"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      ref: content,
       style: {
-        maxHeight: "".concat(setHeight)
+        height: "".concat(setHeight)
       },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
         children: props.content
@@ -107,14 +101,8 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
  //console.log(height)
 
-var AccordeonSection = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].section(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n\n    // pour bien voir \n    margin-top:-1px;\n    margin-left: 40px;\n    margin-right: 40px;\n\n    div {\n        //height:", " ;\n       // max-height:0;\n        overflow: hidden;\n        transition: max-height 0.6s ease-in;\n        //transition: transform 0.4s ease;\n        //transform: scaleY(", ");\n        //transform-origin: top;\n\n        p  {\n            padding: 20px;\n            font-family: 'Gotham';\n        }\n    }\n\n    button{\n        background: #fff;\n        border: 1px solid #D8D8D8;\n        border-left: none;\n        border-right: none;\n        padding: 10px;\n        display:flex;\n\n        img {\n            height : 12px;\n            margin-left: auto;\n            transition: transform 0.6s ease;\n            margin-top: auto;\n            margin-bottom: auto;\n            transform: rotate(", ");\n        }\n\n        p {\n            font-family: 'Gotham';\n            font-weight: 900;\n            font-style: normal;\n            font-size:1.2rem;\n        }\n    }\n\n"])), function (_ref) {
-  var height = _ref.height;
-  return height || '0';
-}, function (_ref2) {
-  var scaleY = _ref2.scaleY;
-  return scaleY || '0';
-}, function (_ref3) {
-  var rotate = _ref3.rotate;
+var AccordeonSection = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].section(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n\n    // pour bien voir \n    margin-top:-1px;\n    margin-left: 40px;\n    margin-right: 40px;\n\n    div {\n        overflow: hidden;\n        transition: height 0.6s ease-out;\n\n            p  {\n            padding: 20px;\n            font-family: 'Gotham';\n\n        }\n    }\n\n    button{\n        background: #fff;\n        border: 1px solid #D8D8D8;\n        border-left: none;\n        border-right: none;\n        padding: 10px;\n        padding-top:18px;\n        padding-bottom:8px;\n        display:flex;\n\n        img {\n            height : 12px;\n            margin-left: auto;\n            transition: transform 0.6s ease;\n\n            margin-bottom: auto;\n            transform: rotate(", ");\n        }\n\n        p {\n            font-family: 'Gotham';\n            font-weight: 900;\n            font-style: normal;\n            font-size:1.2rem;\n        }\n    }\n\n"])), function (_ref) {
+  var rotate = _ref.rotate;
   return rotate || '0';
 });
 
@@ -226,6 +214,12 @@ var TestStyle = function TestStyle() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
       titre: "Notes",
       content: "Je suis un amateur alors je connais \xE7a"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Yesss",
+      content: "I'm baby xOXO franzen iPhone, hell of paleo selvage slow-carb keytar cardigan green juice. Polaroid fixie distillery alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      titre: "Vino",
+      content: "Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur "
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_components_styles_Button_styled__WEBPACK_IMPORTED_MODULE_0__.ButtonBackUp, {
       onClick: function onClick() {
         return backTop();

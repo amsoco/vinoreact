@@ -11,11 +11,6 @@ const CreerCompte = lazy(() => import("../pages/CreerCompte"));
 const TestStyle = lazy(() => import("../pages/TestStyle"));
 const Accueil = lazy(() => import("../pages/Accueil"));
 
-//Teste Accordeon pas un vrai chemin
-const Accordeon = lazy(() => import("./Accordeon"));
-
-const textTest = 'Description'
-
 const App = () => (
     // le user connecté est rendu disponible dans toute l'app via context
     <UserProvider>
@@ -28,9 +23,6 @@ const App = () => (
                     <Route path="/nouveau-compte" element={<CreerCompte />} />
                     <Route path="/test-style" element={<TestStyle />} />
                     <Route path="/vino"  element={<Accueil usagerNom='Claude'/>} />
-
-                    {/* Teste Accordeon pas un vrai chemin */}
-                    <Route path="/accordeon"  element={<Accordeon titre='Titre Accordeon' content={textTest}/>} />
                 </Routes>
             </Suspense>
         </Router>

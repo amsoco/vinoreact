@@ -36,6 +36,8 @@ const TestStyle = () => {
                 </Select>}>  
             </Accordeon>
             <Accordeon titre='Notes' content="Je suis un amateur alors je connais ça"></Accordeon>
+            <Accordeon titre='Yesss' content="I'm baby xOXO franzen iPhone, hell of paleo selvage slow-carb keytar cardigan green juice. Polaroid fixie distillery alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça"></Accordeon>
+            <Accordeon titre='Vino' content="Je suis un amateur alors je connais ça Je suis un amateur alors je connais ça Je suis un amateur "></Accordeon>
            
            {/* /// <img src={BouteilleBlackLogo} alt="logo" />  */}
             <ButtonBackUp onClick={()=> backTop()}> <img src={Chevron} alt="chevron" /> </ButtonBackUp>
