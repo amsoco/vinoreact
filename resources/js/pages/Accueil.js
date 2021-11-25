@@ -9,11 +9,11 @@ import { useUser } from "../context/user";
 
 const Accueil = () => {
     const { user } = useUser();
-    console.log("u", user);
+
     return (
         <AccueilMain>
             <img src={TacheHaut} alt="Tache Rouge haut" />
-            <h2>Bienvenue dans ton cellier {user?.name} </h2>
+            <h2>Bienvenue dans ton cellier, {user?.name} </h2>
             <img src={BouteilleBlackLogo} alt="Logo Bouteille vino" />
             <img src={LogoVino} alt="Logo Vino" />
             <Select>

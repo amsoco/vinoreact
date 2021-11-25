@@ -17,4 +17,8 @@ export const Legend = styled.legend`
     font-size: 2rem;
     font-family: "Gotham Black";
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
 `

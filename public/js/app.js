@@ -2999,10 +2999,14 @@ var UserProvider = function UserProvider(_ref) {
 
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var disposed = false;
     getMe().then(function (_ref2) {
       var user = _ref2.data;
       return setUser(user);
     });
+    return function () {
+      return disposed = true;
+    };
   }, []); // get user
 
   var getMe = function getMe() {

@@ -10,7 +10,9 @@ export const UserProvider = ({ children }) => {
 
     // fetch l'utilisateur connecté
     useEffect(() => {
+        let disposed = false;
         getMe().then(({ data: user }) => setUser(user));
+        return () => (disposed = true);
     }, []);
 
     // get user

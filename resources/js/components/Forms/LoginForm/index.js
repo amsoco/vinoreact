@@ -3,15 +3,17 @@ import FormInput from "../FormInput";
 import { Button } from "../../styles/Button.styled";
 import { Form } from "../../styles/Form.styled";
 import { Legend } from "../../styles/Form.styled";
+import { CustomLink } from "../../styles/Link.styled";
 import useForm from "../../../hooks/useForm";
 import { useUser } from "../../../context/user";
 // validation du formulaire
 import loginFormValidate from "./loginFormValidate";
 import { useNavigate } from "react-router";
+import BouteilleBlackLogo from "../../../assets/images/bouteilleBlack.png";
 
 const LoginForm = () => {
     const { login } = useUser();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     // INITIAL FORM STATE
     const initialValues = {
@@ -37,7 +39,10 @@ const LoginForm = () => {
 
     return (
         <Form onSubmit={handleFormSubmit}>
-            <Legend>Vino</Legend>
+            <Legend>
+                Vino
+                <img src={BouteilleBlackLogo} alt="Logo Bouteille vino" />
+            </Legend>
 
             <FormInput
                 type="email"
@@ -60,7 +65,6 @@ const LoginForm = () => {
                 onBlur={handleBlur}
                 error={errors?.password}
             />
-
             <Button
                 type="submit"
                 bg="transparent"
@@ -72,6 +76,7 @@ const LoginForm = () => {
             >
                 CONNECTER
             </Button>
+            <CustomLink to="/nouveau-compte">Nouveau membre?</CustomLink>
         </Form>
     );
 };

@@ -3,12 +3,15 @@ import FormInput from "../FormInput";
 import { Button } from "../../styles/Button.styled";
 import { Form } from "../../styles/Form.styled";
 import { Legend } from "../../styles/Form.styled";
+import { CustomLink } from "../../styles/Link.styled";
 import useForm from "../../../hooks/useForm";
 import { useUser } from "../../../context/user";
 // validation du formulaire
 import registerFormValidate from "./registerFormValidate";
+import { useNavigate } from "react-router";
 
 const RegisterForm = () => {
+    const navigate = useNavigate();
     const { register } = useUser();
 
     // INITIAL FORM STATE
@@ -22,7 +25,7 @@ const RegisterForm = () => {
     // FORM LOGIC ON SUBMIT
     const registerUser = async (values) => {
         await register(values);
-        //navigate("/vino");
+        return navigate("/vino");
     };
 
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
@@ -92,6 +95,7 @@ const RegisterForm = () => {
             >
                 CRÉER
             </Button>
+            <CustomLink to="/">J'ai déjà un compte</CustomLink>
         </Form>
     );
 };

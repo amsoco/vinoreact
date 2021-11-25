@@ -7,8 +7,9 @@ const useForm = (initialValues, formLogic, validate) => {
     const [touched, setTouched] = useState([]);
 
     // useEffect executé automatiquement quand le composant mounts
-    // mais c'est uniquement si le form est en train d'être soumis que l'on emvoie les données au serveur
+    // mais c'est uniquement si le form est en train d'être soumis que l'on envoie les données au serveur
     useEffect(() => {
+        let disposed = false;
         // si le user a cliqué sur submit et donc isSubmitting = true
         if (isSubmitting) {
             // on check si on a aucune erreur avant de soumettre
@@ -19,17 +20,28 @@ const useForm = (initialValues, formLogic, validate) => {
                     .then(() => {
                         resetForm(); // on HTTP success, on reset le form
                     })
-                    // gestion des erreurs backend (email déjà pris par exemple)
+                    // gestion des erreurs backend (email déjà pris par exemple pour le register)
                     .catch((error) => {
-                        console.log("erreur", error.response);
-                        setErrors({ ...error }); // set les erreurs du backend dans le state pour affichage
-                        setSubmitting(false);
+                        console.log(error?.response?.data.errors);
+                        // un peu de manip car Laravel renvoie ces erreurs dans un array
+                        const errors = error?.response?.data.errors;
+
+                        if (errors) {
+                            let backendErrors = {};
+                            Object.keys(errors).forEach((field) => {
+                                backendErrors[field] = errors[field].join();
+                            });
+
+                            setErrors({ ...backendErrors }); // set les erreurs du backend dans le state pour affichage
+                            setSubmitting(false);
+                        }
                     });
                 // si des erreurs reviennent backend
             } else {
                 setSubmitting(false);
             }
         }
+        return () => (disposed = true);
     }, [isSubmitting, errors]); // on rerun le useEffect quand ces 2 variables changent
 
     useEffect(() => {

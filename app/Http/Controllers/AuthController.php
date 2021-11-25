@@ -25,9 +25,11 @@ class AuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        $response = [
-            'user' => $user
-        ];
+        if ($user) {
+            $response = [
+                'user' => $user
+            ];
+        }
 
         return response($response, 201);
     }
@@ -45,7 +47,7 @@ class AuthController extends Controller
         }
 
         throw ValidationException::withMessages(([
-            'email' => ['The provided credentials are incorrect']
+            'password' => ["L'authentification a échoué. Veuillez vérifier votre courriel et votre mot de passe."]
         ]));
     }
 
