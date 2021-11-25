@@ -17,17 +17,7 @@ class BouteilleController extends Controller
      */
     public function index()
     {
-        // here is where  the index goes....
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //xxxxxxxxxxx
+        return Bouteille::all();
     }
 
     /**
@@ -38,7 +28,39 @@ class BouteilleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'pays' => 'required|string|max:255',
+            'description' => 'string|max:255',
+            'date_achat' => 'required|date_format:"Y-m-d"',
+            'prix_achat' => 'regex:/^\d+(\.\d{1,2})?$/',
+            'url_saq' => 'string|max:255',
+            'note' => 'integer|max:10',
+            'commentaire' => 'string|max:255',
+            'quantite' => 'required|integer|min:0',
+            'millesime' => 'date_format:"Y"',
+            'format' => 'string|max:255',
+            'url_img' => 'string|max:255',
+            'categorie_id' => 'integer|required',
+            'cellier_id' => 'integer|required',
+        ]);
+
+        return Bouteille::create([
+            'nom' => $request->nom,
+            'pays' => $request->pays,
+            'description' => $request->description,
+            'date_achat' => $request->date_achat,
+            'prix_achat' => $request->prix_achat,
+            'url_saq' => $request->url_saq,
+            'note' => $request->note,
+            'commentaire' => $request->commentaire,
+            'quantite' => $request->quantite,
+            'millesime' => $request->millesime,
+            'format' => $request->format,
+            'url_img' => $request->url_img,
+            'categorie_id' => $request->categorie_id,
+            'cellier_id' => $request->cellier_id,
+        ]);
     }
 
     /**
@@ -49,7 +71,7 @@ class BouteilleController extends Controller
      */
     public function show($id)
     {
-        //
+        return Bouteille::find($id);
     }
 
     /**
@@ -60,7 +82,8 @@ class BouteilleController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Bouteille::find($id);
+
     }
 
     /**
@@ -70,9 +93,41 @@ class BouteilleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'pays' => 'required|string|max:255',
+            'description' => 'string|max:255',
+            'date_achat' => 'required|date_format:"Y-m-d"',
+            'prix_achat' => 'regex:/^\d+(\.\d{1,2})?$/',
+            'url_saq' => 'string|max:255',
+            'note' => 'integer|max:10',
+            'commentaire' => 'string|max:255',
+            'quantite' => 'required|integer|min:0',
+            'millesime' => 'date_format:"Y"',
+            'format' => 'string|max:255',
+            'url_img' => 'string|max:255',
+            'categorie_id' => 'integer|required',
+            'cellier_id' => 'integer|required',
+        ]);
+
+        return Bouteille::where('id', $request->id)->update([
+        'nom' => $request->nom,
+        'pays' => $request->pays,
+        'description' => $request->description,
+        'date_achat' => $request->date_achat,
+        'prix_achat' => $request->prix_achat,
+        'url_saq' => $request->url_saq,
+        'note' => $request->note,
+        'commentaire' => $request->commentaire,
+        'quantite' => $request->quantite,
+        'millesime' => $request->millesime,
+        'format' => $request->format,
+        'url_img' => $request->url_img,
+        'categorie_id' => $request->categorie_id,
+        'cellier_id' => $request->cellier_id,
+        ]);
     }
 
     /**
@@ -83,6 +138,6 @@ class BouteilleController extends Controller
      */
     public function destroy($id)
     {
-        //
+       return Bouteille::where('id', $id)->delete();
     }
 }

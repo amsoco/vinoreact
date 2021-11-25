@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Wiki_vin;
+
+use App\Models\Cellier;
 use Illuminate\Http\Request;
 
-class Wiki_vinController extends Controller
+class CellierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +14,7 @@ class Wiki_vinController extends Controller
      */
     public function index()
     {
-        return Wiki_vin::all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Cellier::all();
     }
 
     /**
@@ -34,7 +25,15 @@ class Wiki_vinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom_cellier' => 'required|string|max:100',
+            'user_id' => 'required||integer|min:1',
+        ]);
+
+        return Cellier::create([
+        'nom_cellier' => $request->nom_cellier,
+        'user_id' => $request->user_id
+        ]);
     }
 
     /**
@@ -45,7 +44,7 @@ class Wiki_vinController extends Controller
      */
     public function show($id)
     {
-        //
+        return Cellier::find($id);
     }
 
     /**
@@ -56,7 +55,8 @@ class Wiki_vinController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Cellier::find($id);
+
     }
 
     /**
@@ -66,9 +66,17 @@ class Wiki_vinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'nom_cellier' => 'required|string|max:100',
+            'user_id' => 'required||integer|min:1',
+        ]);
+
+        return Cellier::where('id', $request->id)->update([
+        'nom_cellier' => $request->nom_cellier,
+        'user_id' => $request->user_id
+        ]);
     }
 
     /**
@@ -79,6 +87,6 @@ class Wiki_vinController extends Controller
      */
     public function destroy($id)
     {
-        //
+       return Cellier::where('id', $id)->delete();
     }
 }

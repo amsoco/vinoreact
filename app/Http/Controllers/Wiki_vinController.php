@@ -41,12 +41,12 @@ class Wiki_vinController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Wiki_vin  $wiki_vin
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Wiki_vin $wiki_vin)
+    public function show($id)
     {
-        //
+        return Wiki_vin::find($id);
     }
 
     /**

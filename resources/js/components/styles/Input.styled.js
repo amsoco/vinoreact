@@ -35,6 +35,7 @@ export const Input = styled.input`
     box-sizing: border-box;
     font-size: 0.833rem;
     outline: none;
+    display:block;
 
     &:focus ~ ${Label} {
         left: -4px;

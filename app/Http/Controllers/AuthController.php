@@ -16,7 +16,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
-            'password' => 'required|string|min:8|confirmed'
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = User::create([
@@ -49,6 +49,7 @@ class AuthController extends Controller
         throw ValidationException::withMessages(([
             'password' => ["L'authentification a échoué. Veuillez vérifier votre courriel et votre mot de passe."]
         ]));
+
     }
 
 
