@@ -12,4 +12,4 @@ export const AuthLayout = styled.main`
     img {
         max-width: 50px;
     }
-`;
+`

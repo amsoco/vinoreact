@@ -11,7 +11,8 @@ export const Button = styled.button`
   background-color: ${({ bg }) => bg || '#fff'};
   color: ${({ color }) => color || '#333'};
   font-family: 'Gotham Black';
-  max-width: 350px;
+  width:100%;
+  max-width: 850px;
   font-size: 1.2rem;
   font-weight: 300;
   border: 1px solid ${({ borderColor }) => borderColor || '#303031'};
