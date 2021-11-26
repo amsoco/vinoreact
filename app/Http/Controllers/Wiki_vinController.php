@@ -73,6 +73,19 @@ class Wiki_vinController extends Controller
     }
 
     /**
+     * Search the request in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $key = trim($request->get('q'));
+        return Wiki_vin::where('nom', 'LIKE', '%' .$key. '%')->get();
+    }
+
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Wiki_vin  $wiki_vin
