@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Cellier;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -25,9 +26,15 @@ class AuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        if ($user) {
+        $cellier = Cellier::create([
+            'nom_cellier' => "Mon Cellier",
+            'user_id' => $user->id,
+        ]);
+
+        if ($user && $cellier) {
             $response = [
-                'user' => $user
+                'user' => $user,
+                'cellier' => $cellier
             ];
         }
 
@@ -58,3 +65,6 @@ class AuthController extends Controller
         Auth::logout();
     }
 }
+
+
+
