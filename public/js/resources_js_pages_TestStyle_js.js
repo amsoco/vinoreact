@@ -97,7 +97,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_Navbar_styled_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/Navbar.styled.js */ "./resources/js/components/styles/Navbar.styled.js");
 /* harmony import */ var _assets_svg_logo_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/svg/logo.svg */ "./resources/js/assets/svg/logo.svg");
 /* harmony import */ var _assets_svg_rondX_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/svg/rondX.svg */ "./resources/js/assets/svg/rondX.svg");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Accordeon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Accordeon */ "./resources/js/components/Accordeon.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -109,6 +111,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -148,6 +152,11 @@ var navBar = function navBar(props) {
       setDisplay = _useState12[0],
       setStateDisplay = _useState12[1];
 
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("0px"),
+      _useState14 = _slicedToArray(_useState13, 2),
+      setWidth = _useState14[0],
+      setWitdthState = _useState14[1];
+
   var ouvrirMenu = function ouvrirMenu(props) {
     console.log('ouvir');
     setActiveState(setActive === "" ? "active" : "");
@@ -156,23 +165,59 @@ var navBar = function navBar(props) {
     setStateTranslateDowm(setActive === "active" ? "0" : "4px");
     setStateTranslateUp(setActive === "active" ? "0" : "-4px");
     setStateDisplay(setActive === "active" ? "100%" : "0");
+    setWitdthState(setActive === "active" ? "0" : "100%");
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_styles_Navbar_styled_js__WEBPACK_IMPORTED_MODULE_1__.NavBarCountainer, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_styles_Navbar_styled_js__WEBPACK_IMPORTED_MODULE_1__.NavBarCountainer, {
     rotate: setRotate,
     rotateNegative: setRotateNegative,
     translateDown: setTranslateDown,
     translateUp: setTranslateUp,
     display: setDisplay,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      onClick: ouvrirMenu,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {})]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-      src: _assets_svg_logo_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-      alt: "chevronBlack"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-      src: _assets_svg_rondX_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
-      alt: "chevronBlack"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("nav", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        onClick: ouvrirMenu,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+        src: _assets_svg_logo_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
+        alt: "chevronBlack"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+        src: _assets_svg_rondX_svg__WEBPACK_IMPORTED_MODULE_3__["default"],
+        alt: "chevronBlack"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("ul", {
+      style: {
+        width: "".concat(setWidth)
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Accordeon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          titre: "Notes",
+          content: "patate"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Accordeon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          titre: "Notes",
+          content: "patate"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Accordeon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          titre: "Notes",
+          content: "patate"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Accordeon__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          titre: "Notes",
+          content: "patate"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+          to: "/",
+          children: "Mon Compte"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+          to: "/",
+          children: "Logout"
+        })]
+      })]
     })]
   });
 };
@@ -198,7 +243,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
  //console.log(height)
 
-var AccordeonSection = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].section(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n\n    // pour bien voir \n    //margin-top:-1px;\n    margin-left: 40px;\n    margin-right: 40px;\n\n    div {\n        overflow: hidden;\n        transition: height 0.6s ease-out;\n\n            p  {\n            padding: 20px;\n            font-family: 'Gotham';\n\n        }\n    }\n\n    button{\n        background: #fff;\n        border-top: 1px solid #D8D8D8;\n        border-left: none;\n        border-right: none;\n        border-bottom: none;\n        padding: 10px;\n        padding-top:18px;\n        padding-bottom:8px;\n        display:flex;\n\n        img {\n            height : 12px;\n            margin-left: auto;\n            transition: transform 0.6s ease;\n\n            margin-bottom: auto;\n            transform: rotate(", ");\n        }\n\n        p {\n            font-family: 'Gotham';\n            font-weight: 900;\n            font-style: normal;\n            font-size:1.2rem;\n        }\n    }\n\n"])), function (_ref) {
+var AccordeonSection = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].section(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n\n    // pour bien voir \n    margin-left: 40px;\n    margin-right: 40px;\n\n    div {\n        overflow: hidden;\n        transition: height 0.6s ease-out;\n\n            p  {\n            padding: 20px;\n            font-family: 'Gotham';\n\n        }\n    }\n\n    button{\n        background: #fff;\n        border-top: 1px solid #D8D8D8;\n        border-left: none;\n        border-right: none;\n        border-bottom: none;\n        padding: 10px;\n        padding-top:18px;\n        padding-bottom:8px;\n        display:flex;\n\n        img {\n            height : 12px;\n            margin-left: auto;\n            transition: transform 0.6s ease;\n            margin-bottom: auto;\n            transform: rotate(", ");\n        }\n\n        p {\n            font-family: 'Gotham';\n            font-weight: 900;\n            font-style: normal;\n            font-size:1.2rem;\n        }\n    }\n\n"])), function (_ref) {
   var rotate = _ref.rotate;
   return rotate || '0';
 });
@@ -285,7 +330,7 @@ var _templateObject;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var NavBarCountainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].nav(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n\n    position: sticky;\n    top: 0;\n    display:flex;\n    justify-content: space-between;\n    padding:20px;\n    box-shadow: rgba(0, 0, 0, 0.10) 1.95px 1.95px 2.6px;\n    background:#fff;\n    z-index:1;\n\n    div {\n        display:flex;\n        flex-direction: column;\n        cursor: pointer;\n\n        ", "\n        div {\n            width:20px;\n            background:#303031;\n            height: 3px;\n            margin:0.09375rem;\n        }\n\n        div:first-child {\n            transition: transform 0.6s ease;\n            transform: rotate(", ") translate(-", " , ", " );\n        }\n        \n        div:nth-of-type(2){\n            transition: opacity 0.6s ease;\n            opacity: ", ";\n        }\n        div:nth-of-type(3){\n            transition: transform 0.6s ease;\n            transform: rotate(", ") translate(", " , ", " );\n        }\n\n\n\n\n    }\n\n    img {\n        max-height: 20px;\n    }\n\n    img:last-child {\n        cursor: pointer;\n    }\n"])), function (_ref) {
+var NavBarCountainer = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].header(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n\n    position: sticky;\n    top: 0;\n    background:#fff;\n    z-index:10;\n\n        nav {\n\n        display:flex;\n        justify-content: space-between;\n        padding:20px;\n        box-shadow: rgba(0, 0, 0, 0.10) 1.95px 1.95px 2.6px;\n        \n       \n\n            div {\n                display:flex;\n                flex-direction: column;\n                cursor: pointer;\n\n                ", "\n                div {\n                    width:20px;\n                    background:#303031;\n                    height: 3px;\n                    margin:0.09375rem;\n                }\n\n                div:first-child {\n                    transition: transform 0.6s ease;\n                    transform: rotate(", ") translate(-", " , ", " );\n                }\n                \n                div:nth-of-type(2){\n                    transition: opacity 0.6s ease;\n                    opacity: ", ";\n                }\n                div:nth-of-type(3){\n                    transition: transform 0.6s ease;\n                    transform: rotate(", ") translate(", " , ", " );\n                }\n\n            }\n\n            img {\n                max-height: 20px;\n            }\n\n            img:last-child {\n                cursor: pointer;\n            }\n        }\n\n        ul {\n            padding-top:60px;\n            position:fixed;\n            overflow: hidden;\n            transition: width 0.6s ease-out;\n            background:#fff;\n            height:100vh;\n\n\n            // ajustement obligatoire\n            li {\n                \n                a {\n                    margin-left:40px;\n                    color:#303031;\n                }\n            }\n        }\n\n"])), function (_ref) {
   var translateDown = _ref.translateDown;
   return console.log(translateDown);
 }, function (_ref2) {

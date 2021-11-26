@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { NavBarCountainer } from './styles/Navbar.styled.js';
 import LogoVino from "../assets/svg/logo.svg";
 import CercleX from "../assets/svg/rondX.svg";
+import Accordeon from "./Accordeon";
+import { Link } from "react-router-dom";
 
 
 const navBar = (props) => {
@@ -12,6 +14,7 @@ const navBar = (props) => {
     const [setTranslateDown, setStateTranslateDowm] = useState("0");
     const [setTranslateUp, setStateTranslateUp] = useState("0");
     const [setDisplay, setStateDisplay] = useState("");
+    const [setWidth, setWitdthState] = useState("0px");
 
     const ouvrirMenu = (props) => {
         console.log('ouvir')
@@ -33,17 +36,33 @@ const navBar = (props) => {
         setStateDisplay(
             setActive === "active" ? "100%" : "0"
         );
+        setWitdthState(
+            setActive === "active" ? "0" : "100%"
+        );
     }
 
     return (
         <NavBarCountainer rotate={setRotate} rotateNegative={setRotateNegative} translateDown={setTranslateDown} translateUp={setTranslateUp} display={setDisplay}>
-            <div onClick={ouvrirMenu}>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <img src={LogoVino}  alt="chevronBlack"/>
-            <img src={CercleX}  alt="chevronBlack"/>
+            <nav>
+                <div onClick={ouvrirMenu}>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <img src={LogoVino}  alt="chevronBlack"/>
+                <img src={CercleX}  alt="chevronBlack"/>
+            </nav>
+            <ul style={{ width: `${setWidth}` }} >
+                <li><Accordeon titre='Notes' content="patate"></Accordeon></li>
+                <li><Accordeon titre='Notes' content="patate"></Accordeon></li>
+                <li><Accordeon titre='Notes' content="patate"></Accordeon></li>
+                <li><Accordeon titre='Notes' content="patate"></Accordeon></li>
+                <li>
+                    <Link to="/">Mon Compte</Link>
+                    <Link to="/">Logout</Link>
+                </li>
+
+            </ul>
         </NavBarCountainer>
     )
 }

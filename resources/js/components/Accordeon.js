@@ -25,7 +25,7 @@ const Accordeon = (props) => {
     }
 
     return (
-        <AccordeonSection   rotate={setRotate}>
+        <AccordeonSection   rotate={setRotate} >
             <button onClick={ouvrirAccordeon}>
                 <p>{props.titre}</p>
                 <img src={Chevron} alt="chevronBlack"/>
