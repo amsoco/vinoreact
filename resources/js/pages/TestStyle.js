@@ -36,8 +36,8 @@ const TestStyle = () => {
             
             {/* <Accordeon titre='Description' content="Vin mousseu bon"></Accordeon>
             <Accordeon titre='Modification' content={  <Select>
-                    <option>Cellier</option>
-                </Select>}>  
+   
+                </Select>}>                   <option>Cellier</option>
             </Accordeon> */}
            
            {/* /// <img src={BouteilleBlackLogo} alt="logo" />  */}
