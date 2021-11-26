@@ -43,8 +43,8 @@ var Label = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].label(_tem
   var shrink = _ref.shrink;
   return shrink && (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n            left: -4px;\n            top: -18px;\n            color: white;\n            font-size: 0.8rem;\n        "])));
 });
-var Input = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].input(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n    width: 100%;\n    max-width: 350px;\n    height: 40px;\n    background-color: #d8d8d8;\n    border-radius: 3px;\n    border: 1px solid #303031;\n    font-family: \"Gotham Thin\";\n    font-weight: 500;\n    font-style: italic;\n    padding-left: 10px;\n    box-sizing: border-box;\n    font-size: 0.833rem;\n    outline: none;\n    display:block;\n\n    &:focus ~ ", " {\n        left: 1px;\n        top: -18px;\n        color: #fff;\n        font-size: 0.8rem;\n    }\n"])), Label);
-var Select = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].select(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n    width: 100%;\n    max-width: 350px;\n    height: 40px;\n    background-color: #d8d8d8;\n    border-radius: 3px;\n    border: 1px solid #303031;\n   // margin-top: 20px;\n    font-family: \"Gotham Thin\";\n    font-weight: 500;\n    font-style: italic;\n    padding-left: 10px;\n    box-sizing: border-box;\n    font-size: 0.833rem;\n"])));
+var Input = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].input(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n    width: 100%;\n    max-width: 350px;\n    height: 40px;\n    background-color: #d8d8d8;\n    border-radius: 3px;\n    border: 1px solid #303031;\n    font-family: \"Gotham Thin\";\n    font-weight: 500;\n    font-style: italic;\n    padding-left: 10px;\n    box-sizing: border-box;\n    font-size: 0.833rem;\n    outline: none;\n    display:block;\n\n    &:focus ~ ", " {\n        left: -4px;\n        top: -18px;\n        color: #fff;\n        font-size: 0.8rem;\n    }\n"])), Label);
+var Select = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].select(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["\n    width: 100%;\n    max-width: 350px;\n    height: 40px;\n    background-color: #d8d8d8;\n    border-radius: 3px;\n    border: 1px solid #303031;\n    margin-top: 20px;\n    font-family: \"Gotham Thin\";\n    font-weight: 500;\n    font-style: italic;\n    padding-left: 10px;\n    box-sizing: border-box;\n    font-size: 0.833rem;\n"])));
 
 /***/ }),
 
@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logo.svg?2408999eb7bb9c6927562ff3e6e86225");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logo.svg?b254839f815b0f33158c6cc03f251a79");
 
 /***/ }),
 
