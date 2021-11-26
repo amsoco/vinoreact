@@ -9,6 +9,9 @@ const SeConnecter = lazy(() => import("../pages/SeConnecter"));
 const CreerCompte = lazy(() => import("../pages/CreerCompte"));
 const TestStyle = lazy(() => import("../pages/TestStyle"));
 const Accueil = lazy(() => import("../pages/Accueil"));
+const Cellier = lazy(() => import("../pages/Cellier"));
+const Bouteille = lazy(() => import("../pages/Bouteille"));
+const AjouterBouteille = lazy(() => import("../pages/AjouterBouteille"));
 
 const App = () => (
     // le user connecté est rendu disponible dans toute l'app via context
@@ -21,10 +24,13 @@ const App = () => (
                     <Route path="/" element={<SeConnecter />} />
                     <Route path="/nouveau-compte" element={<CreerCompte />} />
                     <Route path="/test-style" element={<TestStyle />} />
-                    <Route
-                        path="/vino"
-                        element={<Accueil />}
-                    />
+                    <Route path="/celliers" element={<Accueil />}>
+                        <Route path=":cellierId" element={<Cellier />}>
+                            <Route path=":bouteilleId" element={<Bouteille />} />
+                            <Route path="nouvelle-bouteille" element={<AjouterBouteille />} />
+                        </Route>
+                    </Route>
+                    {/* <Route path="*" element={<NotFound />} /> */}
                 </Routes>
             </Suspense>
         </Router>

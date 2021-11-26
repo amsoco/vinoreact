@@ -8,7 +8,6 @@ export const AccordeonSection = styled.section`
     flex-direction: column;
 
     // pour bien voir 
-    //margin-top:-1px;
     margin-left: 40px;
     margin-right: 40px;
 
@@ -38,7 +37,6 @@ export const AccordeonSection = styled.section`
             height : 12px;
             margin-left: auto;
             transition: transform 0.6s ease;
-
             margin-bottom: auto;
             transform: rotate(${({ rotate }) => rotate || '0'});
         }
