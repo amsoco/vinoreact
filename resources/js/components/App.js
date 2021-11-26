@@ -9,6 +9,9 @@ const SeConnecter = lazy(() => import("../pages/SeConnecter"));
 const CreerCompte = lazy(() => import("../pages/CreerCompte"));
 const TestStyle = lazy(() => import("../pages/TestStyle"));
 const Accueil = lazy(() => import("../pages/Accueil"));
+const Cellier = lazy(() => import("../pages/Cellier"));
+const Bouteille = lazy(() => import("../pages/Bouteille"));
+const AjouterBouteille = lazy(() => import("../pages/AjouterBouteille"));
 
 const App = () => (
     // le user connecté est rendu disponible dans toute l'app via context

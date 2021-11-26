@@ -2889,6 +2889,15 @@ var TestStyle = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(functio
 var Accueil = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_pages_Accueil_js").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Accueil */ "./resources/js/pages/Accueil.js"));
 });
+var Cellier = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_pages_Cellier_js").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Cellier */ "./resources/js/pages/Cellier.js"));
+});
+var Bouteille = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_pages_Bouteille_js").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/Bouteille */ "./resources/js/pages/Bouteille.js"));
+});
+var AjouterBouteille = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_pages_AjouterBouteille_js").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/AjouterBouteille */ "./resources/js/pages/AjouterBouteille.js"));
+});
 
 var App = function App() {
   return (
@@ -37225,7 +37234,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/Applications/MAMP/htdoc
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_SeConnecter_js":1,"resources_js_pages_CreerCompte_js":1,"resources_js_pages_TestStyle_js":1,"resources_js_pages_Accueil_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_SeConnecter_js":1,"resources_js_pages_CreerCompte_js":1,"resources_js_pages_TestStyle_js":1,"resources_js_pages_Accueil_js":1,"resources_js_pages_Cellier_js":1,"resources_js_pages_Bouteille_js":1,"resources_js_pages_AjouterBouteille_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

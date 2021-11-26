@@ -22,4 +22,5 @@ export const Legend = styled.legend`
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
+    line-height:0;
 `
