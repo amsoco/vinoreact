@@ -243,7 +243,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
  //console.log(height)
 
-var AccordeonSection = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].section(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n\n    // pour bien voir \n    margin-left: 40px;\n    margin-right: 40px;\n\n    div {\n        overflow: hidden;\n        transition: height 0.6s ease-out;\n\n            p  {\n            padding: 20px;\n            font-family: 'Gotham';\n\n        }\n    }\n\n    button{\n        background: #fff;\n        border-top: 1px solid #D8D8D8;\n        border-left: none;\n        border-right: none;\n        border-bottom: none;\n        padding: 10px;\n        padding-top:18px;\n        padding-bottom:8px;\n        display:flex;\n\n        img {\n            height : 12px;\n            margin-left: auto;\n            transition: transform 0.6s ease;\n            margin-bottom: auto;\n            transform: rotate(", ");\n        }\n\n        p {\n            font-family: 'Gotham';\n            font-weight: 900;\n            font-style: normal;\n            font-size:1.2rem;\n        }\n    }\n\n"])), function (_ref) {
+var AccordeonSection = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].section(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n\n    // pour bien voir \n    margin-left: 20px;\n    margin-right: 20px;\n\n    div {\n        overflow: hidden;\n        transition: height 0.6s ease-out;\n\n            p  {\n            padding: 20px;\n            font-family: 'Gotham';\n\n        }\n    }\n\n    button{\n        background: #fff;\n        border-top: 1px solid #D8D8D8;\n        border-left: none;\n        border-right: none;\n        border-bottom: none;\n        padding: 10px;\n        padding-top:18px;\n        padding-bottom:8px;\n        display:flex;\n\n        img {\n            height : 12px;\n            margin-left: auto;\n            transition: transform 0.6s ease;\n            margin-bottom: auto;\n            transform: rotate(", ");\n        }\n\n        p {\n            font-family: 'Gotham';\n            font-weight: 900;\n            font-style: normal;\n            font-size:1.2rem;\n        }\n    }\n\n"])), function (_ref) {
   var rotate = _ref.rotate;
   return rotate || '0';
 });
@@ -382,7 +382,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var TestStyle = function TestStyle() {
   var test = function test() {
     console.log("test");
@@ -393,68 +392,8 @@ var TestStyle = function TestStyle() {
     document.documentElement.scrollTop = 0;
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Description",
-      content: "Vin mousseu bon"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Modification",
-      content: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_styles_Input_styled__WEBPACK_IMPORTED_MODULE_1__.Select, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
-          children: "Cellier"
-        })
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "patate"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "laiture"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Notes",
-      content: "Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Yesss",
-      content: "I'm baby xOXO franzen iPhone, hell of paleo selvage slow-carb keytar cardigan green juice. Polaroid fixie distillery alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Accordeon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      titre: "Vino",
-      content: "Je suis un amateur alors je connais \xE7a Je suis un amateur alors je connais \xE7a Je suis un amateur "
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_components_styles_Button_styled__WEBPACK_IMPORTED_MODULE_0__.ButtonBackUp, {
-      onClick: function onClick() {
-        return backTop();
-      },
-      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-        src: _assets_svg_chevron_svg__WEBPACK_IMPORTED_MODULE_2__["default"],
-        alt: "chevron"
-      }), " "]
-    })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_NavBar__WEBPACK_IMPORTED_MODULE_4__["default"], {})
   });
 };
 
