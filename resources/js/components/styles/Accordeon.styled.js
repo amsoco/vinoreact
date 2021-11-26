@@ -8,8 +8,8 @@ export const AccordeonSection = styled.section`
     flex-direction: column;
 
     // pour bien voir 
-    margin-left: 20px;
-    margin-right: 20px;
+   // margin-left: 20px;
+   // margin-right: 20px;
 
     div {
         overflow: hidden;
