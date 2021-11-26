@@ -110,6 +110,10 @@ const GlobalStyles = createGlobalStyle`
     font-size:0.833rem;
   }
 
+  li {
+    list-style: none;
+  }
+
 `
 
 export default GlobalStyles

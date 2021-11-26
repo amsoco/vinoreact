@@ -14,9 +14,7 @@ const Accordeon = (props) => {
     const ouvrirAccordeon = () => {
         setActiveState(setActive === "" ? "active" : "");
         setHeightState(
-
          setActive === "active" ? "0px" : `${content.current.scrollHeight}px`
-
         );
 
         setRotateState(
@@ -25,7 +23,7 @@ const Accordeon = (props) => {
     }
 
     return (
-        <AccordeonSection   rotate={setRotate}>
+        <AccordeonSection   rotate={setRotate} >
             <button onClick={ouvrirAccordeon}>
                 <p>{props.titre}</p>
                 <img src={Chevron} alt="chevronBlack"/>
