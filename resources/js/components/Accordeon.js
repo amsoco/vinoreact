@@ -14,9 +14,7 @@ const Accordeon = (props) => {
     const ouvrirAccordeon = () => {
         setActiveState(setActive === "" ? "active" : "");
         setHeightState(
-
          setActive === "active" ? "0px" : `${content.current.scrollHeight}px`
-
         );
 
         setRotateState(
