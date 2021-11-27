@@ -24,14 +24,13 @@ const App = () => (
                     <Route path="/" element={<SeConnecter />} />
                     <Route path="/nouveau-compte" element={<CreerCompte />} />
                     <Route path="/test-style" element={<TestStyle />} />
-                    <Route path="/bouteille" element={<Bouteille />} />
-                    <Route path="/celliers" element={<Accueil />}>
-                    
-                        <Route path=":cellierId" element={<Cellier />}>
-                            {/* <Route path=":bouteilleId" element={<Bouteille />} /> */}
-                            <Route path="nouvelle-bouteille" element={<AjouterBouteille />} />
-                        </Route>
-                    </Route>
+                    <Route path="/celliers" element={<Accueil />} />
+                    <Route path="/celliers/:cellierId" element={<Cellier />} />
+                    <Route
+                        path="/celliers/:cellierId/nouvelle-bouteille"
+                        element={<AjouterBouteille />}
+                    />
+                    <Route path="/:bouteilleId" element={<Bouteille />} />
                     {/* <Route path="*" element={<NotFound />} /> */}
                 </Routes>
             </Suspense>

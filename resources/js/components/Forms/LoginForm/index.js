@@ -24,7 +24,7 @@ const LoginForm = () => {
     // FORM LOGIC ON SUBMIT
     const loginUser = async (values) => {
         await login(values);
-        return navigate("/vino");
+        return navigate("/celliers");
     };
 
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation

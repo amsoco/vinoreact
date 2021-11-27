@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import Layout from "../components/Layout";
 
 const Cellier = () => {
-    return (
-        <div>
-            TOUTES LES BOUTEILLES D'UN CELLIER
-        </div>
-    )
-}
+    return <Layout>TOUTES LES BOUTEILLES D'UN CELLIER</Layout>;
+};
 
-export default Cellier
+export default Cellier;
