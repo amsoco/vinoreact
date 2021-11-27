@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import Layout from "../components/Layout";
 
 const AjouterBouteille = () => {
-    return (
-        <div>
-            AJOUTER BOUTEILLE
-        </div>
-    )
-}
+    return <Layout>AJOUTER BOUTEILLE</Layout>;
+};
 
-export default AjouterBouteille
+export default AjouterBouteille;
