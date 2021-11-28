@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from "styled-components";
 
 export const Label = styled.label`
     font-size: 1rem;
@@ -35,7 +35,7 @@ export const Input = styled.input`
     box-sizing: border-box;
     font-size: 0.833rem;
     outline: none;
-    display:block;
+    display: block;
 
     &:focus ~ ${Label} {
         left: 1px;
@@ -52,11 +52,12 @@ export const Select = styled.select`
     background-color: #d8d8d8;
     border-radius: 3px;
     border: 1px solid #303031;
-   // margin-top: 20px;
+    // margin-top: 20px;
     font-family: "Gotham Thin";
     font-weight: 500;
     font-style: italic;
     padding-left: 10px;
     box-sizing: border-box;
     font-size: 0.833rem;
+    cursor: pointer;
 `;

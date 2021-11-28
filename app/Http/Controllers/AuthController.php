@@ -33,8 +33,8 @@ class AuthController extends Controller
 
         if ($user && $cellier) {
             $response = [
-                'user' => $user,
-                'cellier' => $cellier
+                'user' => $user->only(['id', 'name', 'email', 'privilege_id']),
+                'celliers' => array($cellier->only(['id', 'nom_cellier']))
             ];
         }
 
@@ -50,13 +50,35 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return response()->json(["user" => Auth::user()], 200);
+            $user = Auth::user();
+            $celliers = Cellier::where('user_id', $user->id)->select('id', 'nom_cellier')->get();
+
+            $response = [
+                'user' => $user,
+                'celliers' => $celliers
+            ];
+
+            return response($response, 201);
         }
 
         throw ValidationException::withMessages(([
             'password' => ["L'authentification a échoué. Veuillez vérifier votre courriel et votre mot de passe."]
         ]));
+    }
 
+    public function me(Request $request)
+    {
+        $user = $request->user()->only(['id', 'name', 'email', 'privilege_id']);
+        $celliers = Cellier::where('user_id', $user['id'])->select('id', 'nom_cellier')->get();
+
+        if ($user && $celliers) {
+            $response = [
+                'user' => $user,
+                'celliers' => $celliers
+            ];
+        }
+
+        return response($response, 201);
     }
 
 

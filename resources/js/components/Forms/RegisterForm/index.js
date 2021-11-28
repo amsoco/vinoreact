@@ -24,7 +24,7 @@ const RegisterForm = () => {
 
     // FORM LOGIC ON SUBMIT
     const registerUser = async (values) => {
-        await register(values);
+        const data = await register(values);
         return navigate("/celliers");
     };
 
@@ -84,6 +84,18 @@ const RegisterForm = () => {
                 onBlur={handleBlur}
                 error={errors?.password_confirmation}
             />
+
+            <FormInput
+                type="text"
+                id="nom_cellier"
+                name="nom_cellier"
+                label="Nom de votre cellier"
+                value={values.nom_cellier}
+                onChange={handleFormChange}
+                onBlur={handleBlur}
+                error={errors?.nom_cellier}
+            />
+
             <Button
                 type="submit"
                 bg="transparent"

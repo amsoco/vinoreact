@@ -9,5 +9,5 @@ class Cellier extends Model
 {
     use HasFactory;
     protected $fillable = ['nom_cellier', 'user_id'];
-
+    protected $hidden = ['created_at', 'updated_at'];
 }
