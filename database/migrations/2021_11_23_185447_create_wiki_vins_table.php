@@ -20,7 +20,7 @@ class CreateWikiVinsTable extends Migration
             $table->string('description');
             $table->string('url_saq');
             $table->string('format');
-            $table->tinyInteger('millesime');
+            $table->year('millesime');
             $table->string('url_img');
             $table->unsignedInteger('categorie_id')->index('bouteilles_categorie_id_foreign');
             $table->timestamp('created_at')->useCurrentOnUpdate()->useCurrent();

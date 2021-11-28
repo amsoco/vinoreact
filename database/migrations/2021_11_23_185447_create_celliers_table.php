@@ -17,6 +17,7 @@ class CreateCelliersTable extends Migration
             $table->increments('id');
             $table->string('nom_cellier', 100);
             $table->unsignedInteger('user_id')->index('fk_celliers_users1_idx');
+            $table->timestamps();
         });
     }
 

@@ -24,7 +24,7 @@ class CreateBouteillesTable extends Migration
             $table->tinyInteger('note')->nullable();
             $table->string('commentaire', 500)->nullable();
             $table->tinyInteger('quantite');
-            $table->tinyInteger('millesime')->nullable();
+            $table->year('millesime')->nullable();
             $table->string('format')->nullable();
             $table->string('url_img')->nullable();
             $table->unsignedInteger('categorie_id')->index('fk_bouteilles_categories1_idx');
