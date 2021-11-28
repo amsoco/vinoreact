@@ -32,6 +32,10 @@ const registerFormValidate = (values) => {
             "Vous devez confirmer votre mot de passe";
     }
 
+    if (!values.nom_cellier) {
+        errors.nom_cellier = "Veuillez donner un nom à votre premier celiier";
+    }
+
     return errors;
 };
 

@@ -10,26 +10,36 @@ export const UserProvider = ({ children }) => {
 
     // fetch l'utilisateur connecté
     useEffect(() => {
-        let disposed = false;
-        getMe().then(({ data: user }) => setUser(user));
-        return () => (disposed = true);
+        getMe();
     }, []);
 
-    // get user
-    const getMe = () => Http.get("user");
+    // get current user
+    const getMe = async () => {
+        const { data } = await Http.get("user");
+        setUser({
+            ...data.user,
+            celliers: data.celliers,
+        });
+    };
 
     // log l'utilisateur
     const login = async (creds) => {
         await Http.get("csrf-cookie");
         const { data } = await Http.post("login", creds);
-        setUser(data.user);
+        setUser({
+            ...data.user,
+            celliers: data.celliers,
+        });
     };
 
     // enregistre le nouvel utilisateur
     const register = async (creds) => {
         await Http.get("csrf-cookie");
         const { data } = await Http.post("register", creds);
-        setUser(data.user);
+        setUser({
+            ...data.user,
+            celliers: data.celliers,
+        });
     };
 
     // déconnecte l'utilisateur

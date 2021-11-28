@@ -44,9 +44,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/wiki/{id}', [Wiki_vinController::class, 'show']);
     Route::get('/search', [Wiki_vinController::class, 'search']);
 
-    Route::get('/user', function (Request $request) {
-        return $request->user()->only(['id', 'name', 'email', 'privilege_id']);
-    });
-
+    Route::get('/user', [AuthController::class, 'me']);
 });
-
