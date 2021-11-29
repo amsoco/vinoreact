@@ -60,4 +60,5 @@ export const Select = styled.select`
     box-sizing: border-box;
     font-size: 0.833rem;
     cursor: pointer;
+    outline: none;
 `;

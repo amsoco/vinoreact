@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useNavigate } from "react-router";
 import { Select } from "../components/styles/Input.styled";
 import { AccueilMain } from "../components/styles/Accueil.styled";
 import BouteilleBlackLogo from "../assets/images/bouteilleBlack.png";
@@ -9,9 +10,21 @@ import { useUser } from "../context/user";
 
 const Accueil = () => {
     const { user } = useUser();
-    const [selectedCellier, setSelectedCellier] = useState('')
-    console.log('user', user
-    )
+    const navigate = useNavigate();
+
+    // créer une url avec le nom du cellier: /celliers/la-cave-de-papa
+    const slugify = (str) => str.toLowerCase().replace(/ /g, "-");
+
+    const onSelectChange = (e) => {
+        const selectedCellier = user.celliers.find(
+            (cellier) => cellier.id == e.target.value
+        );
+        // on sauve le cellier sélectionné dans localstorage
+        // on va ensuite fetch les bouteilles avec l'id du cellier venant de localStorage
+        localStorage.setItem("cellier", JSON.stringify(selectedCellier));
+        const slug = slugify(selectedCellier.nom_cellier);
+        navigate(`/celliers/${slug}`);
+    };
 
     return (
         <AccueilMain>
@@ -19,11 +32,9 @@ const Accueil = () => {
             <h2>Bienvenue dans ton cellier, {user?.name} </h2>
             <img src={BouteilleBlackLogo} alt="Logo Bouteille vino" />
             <img src={LogoVino} alt="Logo Vino" />
-            <Select
-                name="cellier"
-                onChange={e => setSelectedCellier(e.target.value)}
-            >
-                {user?.celliers?.map((cellier) => {
+            <Select name="cellier" onChange={onSelectChange}>
+                <option value="">Sélectionnez un cellier</option>
+                {user?.celliers.map((cellier) => {
                     return (
                         <option key={cellier.id} value={cellier.id}>
                             {cellier.nom_cellier}

@@ -42,6 +42,7 @@ export const AccueilMain = styled.main`
     select {
         align-self: center;
         max-width: 250px;
+        z-index: 11; // doit être au dessus  pour être cliquable
     }
 
     img:nth-of-type(4) {
