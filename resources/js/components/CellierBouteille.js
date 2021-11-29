@@ -14,6 +14,7 @@ const CellierBouteille = ({  }) => {
                     <img src={DummyBouteille} alt="dummy bouteille" />
                     <div>
                         <p>Italy , SICILE</p>
+       
                         <p>750 ml</p>
                         <p>16,85 $</p>
                         <p>12</p>
