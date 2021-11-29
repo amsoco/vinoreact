@@ -12,6 +12,8 @@ const Accueil = () => {
     const { user } = useUser();
     const navigate = useNavigate();
 
+    console.log('user', user)
+
     // créer une url avec le nom du cellier: /celliers/la-cave-de-papa
     const slugify = (str) => str.toLowerCase().replace(/ /g, "-");
 
