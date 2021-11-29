@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/bouteilles', [BouteilleController::class, 'index']);
     Route::get('/bouteilles/{id}', [BouteilleController::class, 'show']);
+    Route::get('/bouteilles/cell/{id}', [BouteilleController::class, 'showCellier']);
     Route::post('/bouteilles/create', [BouteilleController::class, 'store']);
     Route::get('/bouteilles/edit/{id}', [BouteilleController::class, 'edit']);
     Route::put('/bouteilles/edit/{id}', [BouteilleController::class, 'update']);
