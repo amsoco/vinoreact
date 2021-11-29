@@ -25,6 +25,7 @@ Font
 ---------------------------------------------
 
 font-family: "LincolnMillerBanner-Roman"
+font-weight:200;
 
 Texte Générique
 font-family: 'Gotham Black';
@@ -82,6 +83,7 @@ const GlobalStyles = createGlobalStyle`
   h1 {
     font-family: "LincolnMillerBanner-Roman";
     font-size: 2.488rem;
+    font-weight:200;
   }
 
   h2 {
@@ -91,6 +93,7 @@ const GlobalStyles = createGlobalStyle`
   h3 {
     font-family: "LincolnMillerBanner-Roman";
     font-size: 1.728rem;
+    font-weight:200;
   }
 
   h4 {

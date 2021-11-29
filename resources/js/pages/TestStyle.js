@@ -5,6 +5,7 @@
 //import Accordeon from "../components/Accordeon";
 import NavBar from "../components/NavBar";
 import BackUp from "../components/BackUp";
+import CellierBouteille from "../components/CellierBouteille";
 
 
 const TestStyle = () => {
@@ -34,7 +35,10 @@ const TestStyle = () => {
             <Input placeholder="Nom Usager" ></Input> */}
 
             <NavBar></NavBar>
-            
+            <CellierBouteille></CellierBouteille>
+            <CellierBouteille></CellierBouteille>
+            <CellierBouteille></CellierBouteille>
+            <CellierBouteille></CellierBouteille>
             <BackUp></BackUp>
             {/* <Accordeon titre='Description' content="Vin mousseu bon"></Accordeon>
             <Accordeon titre='Modification' content={  <Select>
