@@ -2,25 +2,26 @@ import React from "react";
 import { CellierBouteilleSection } from "./styles/CellierBouteilleSection.styled";
 import DummyBouteille from "../assets/svg/dummyBouteille.svg";
 
-
-const CellierBouteille = ({  }) => {
+const CellierBouteille = ({ id, nom, pays, url_img, format, prix_achat, millesime, quantite }) => {
     return (
-            <CellierBouteilleSection>
+        <CellierBouteilleSection>
+            <div>
+                <h3>{nom}</h3>
+                <p>{millesime}</p>
+            </div>
+            <div>
+                <img
+                    src={url_img ? url_img : DummyBouteille}
+                    alt={nom}
+                />
                 <div>
-                    <h3>Natale Verga I Balzi BIO Sicilia</h3>
-                    <p>2018</p>
+                    <p>{pays}</p>
+                    <p>{format}</p>
+                    <p>{prix_achat}$</p>
+                    <p>{quantite}</p>
                 </div>
-                <div>
-                    <img src={DummyBouteille} alt="dummy bouteille" />
-                    <div>
-                        <p>Italy , SICILE</p>
-                        <p>750 ml</p>
-                        <p>16,85 $</p>
-                        <p>12</p>
-                    </div>
-                </div>
-            </CellierBouteilleSection>
-    
+            </div>
+        </CellierBouteilleSection>
     );
 };
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCellier } from "../context/cellier";
 import { useUser } from "../context/user";
 import Layout from "../components/Layout";
-import { useUser } from "../context/user";
+import CellierBouteille from "../components/CellierBouteille";
 
 const Cellier = () => {
     const [bouteilles, setBouteilles] = useState([]);
@@ -12,7 +12,7 @@ const Cellier = () => {
     useEffect(() => {
         const { id } = JSON.parse(localStorage.getItem("cellier"));
         getBouteillesCellier(id).then(({ data }) => {
-            setBouteilles(data)
+            setBouteilles(data);
         });
     }, []);
 
@@ -24,14 +24,7 @@ const Cellier = () => {
             </div>
 
             {bouteilles?.map((bouteille) => (
-                <div key={bouteille.id}>
-                    <h3>{bouteille.nom}</h3>
-                    <h3>{bouteille.millesime}</h3>
-                    <img src={bouteille.url_img} alt={bouteille?.nom} style={{width: '50px'}} />
-                    <p>{bouteille.pays}</p>
-                    <p>{bouteille.format}</p>
-                    <p>{bouteille.quantite}</p>
-                </div>
+                <CellierBouteille key={bouteille.id} {...bouteille} />
             ))}
         </Layout>
     );
