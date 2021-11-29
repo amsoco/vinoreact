@@ -1,9 +1,10 @@
-import { Button, ButtonBackUp } from '../components/styles/Button.styled';
-import { Input, Select } from '../components/styles/Input.styled';
+//import { Button, ButtonBackUp } from '../components/styles/Button.styled';
+//import { Input, Select } from '../components/styles/Input.styled';
 //import BouteilleBlackLogo from "../assets/images/bouteilleBlack.png";
-import Chevron from "../assets/svg/chevron.svg";
-import Accordeon from "../components/Accordeon";
+//mport Chevron from "../assets/svg/chevron.svg";
+//import Accordeon from "../components/Accordeon";
 import NavBar from "../components/NavBar";
+import BackUp from "../components/BackUp";
 
 
 const TestStyle = () => {
@@ -34,6 +35,7 @@ const TestStyle = () => {
 
             <NavBar></NavBar>
             
+            <BackUp></BackUp>
             {/* <Accordeon titre='Description' content="Vin mousseu bon"></Accordeon>
             <Accordeon titre='Modification' content={  <Select>
    
