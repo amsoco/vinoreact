@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCellier } from "../context/cellier";
 import { useUser } from "../context/user";
 import Layout from "../components/Layout";
+import { useUser } from "../context/user";
 
 const Cellier = () => {
     const [bouteilles, setBouteilles] = useState([]);
