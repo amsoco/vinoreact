@@ -17,8 +17,4 @@ yarn-error.log
 resources/.DS_Store
 /public/js
 /public/css
-<<<<<<< HEAD
 /public/images
-=======
-/public/images
->>>>>>> upstream/main
