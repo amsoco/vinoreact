@@ -80,7 +80,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-family: "LincolnMillerBanner-Roman
+    font-family: "LincolnMillerBanner-Roman";
     font-size: 2.488rem;
   }
 
@@ -89,7 +89,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h3 {
-    font-family: "LincolnMillerBanner-Roman
+    font-family: "LincolnMillerBanner-Roman";
     font-size: 1.728rem;
   }
 
