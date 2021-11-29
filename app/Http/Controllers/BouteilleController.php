@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class BouteilleController extends Controller
 {
-    /**
+
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -19,6 +20,17 @@ class BouteilleController extends Controller
     {
         return Bouteille::all();
     }
+
+            /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showCellier(Request $request)
+    {
+        return Bouteille::all()->where('cellier_id', $request->id);
+    }
+
 
     /**
      * Store a newly created resource in storage.
