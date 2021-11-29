@@ -2,7 +2,7 @@ import React from "react";
 import { CellierBouteilleSection } from "./styles/CellierBouteilleSection.styled";
 import DummyBouteille from "../assets/svg/dummyBouteille.svg";
 
-const CellierBouteille = ({ id, nom, pays, url_img, format, prix_achat, millesime, quantite }) => {
+const CellierBouteille = ({ nom, pays, url_img, format, prix_achat, millesime, quantite }) => {
     return (
         <CellierBouteilleSection>
             <div>

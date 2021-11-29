@@ -41,6 +41,19 @@ export const CellierBouteilleSection = styled.section`
         font-size:16px;
         margin: 10px 0px 0px 0px;
         //line-height:0;
+        text-align:right;
+    }
+
+    &>div>div>p:last-child {
+        color:#58111A;
+        font-family: 'Gotham Black';
+        font-weight: 100;
+        border: 1px solid #58111A;
+        padding: 4px;
+        font-size: 0.833rem;
+        border-radius: 4px;
+        width:fit-content;
+        margin-left:auto;
     }
 
 `
