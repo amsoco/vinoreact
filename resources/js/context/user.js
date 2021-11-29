@@ -10,25 +10,18 @@ export const UserProvider = ({ children }) => {
 
     // fetch l'utilisateur connecté
     useEffect(() => {
-        getMe().then(({data}) => {
-            setUser({
-                ...data.user,
-            celliers: data.celliers,
-            });
-        });
+        getMe();
     }, []);
 
     // get current user
     const getMe = async () => {
-        return Http.get("user");
-       // await Http.get("csrf-cookie");
-       /*
-        const { data } = await Http.get("user", {withCredentials: true});
+        await Http.get("csrf-cookie");
+
+        const { data } = await Http.get("user");
         setUser({
             ...data.user,
             celliers: data.celliers,
         });
-        */
     };
 
     // log l'utilisateur

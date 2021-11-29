@@ -76,9 +76,9 @@ class AuthController extends Controller
                 'user' => $user,
                 'celliers' => $celliers
             ];
-        }
 
-        return response($response, 201);
+            return response($response, 201);
+        }
     }
 
 
