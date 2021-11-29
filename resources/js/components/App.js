@@ -25,9 +25,9 @@ const App = () => (
                     <Route path="/nouveau-compte" element={<CreerCompte />} />
                     <Route path="/test-style" element={<TestStyle />} />
                     <Route path="/celliers" element={<Accueil />} />
-                    <Route path="/celliers/:cellierId" element={<Cellier />} />
+                    <Route path="/celliers/:cellier" element={<Cellier />} />
                     <Route
-                        path="/celliers/:cellierId/nouvelle-bouteille"
+                        path="/celliers/nouvelle-bouteille"
                         element={<AjouterBouteille />}
                     />
                     <Route path="/:bouteilleId" element={<Bouteille />} />
