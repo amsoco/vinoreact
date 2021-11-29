@@ -3,7 +3,7 @@ import { CellierBouteilleSection } from "./styles/CellierBouteilleSection.styled
 import DummyBouteille from "../assets/svg/dummyBouteille.svg";
 
 
-const Layout = ({  }) => {
+const CellierBouteille = ({  }) => {
     return (
             <CellierBouteilleSection>
                 <div>
@@ -24,4 +24,4 @@ const Layout = ({  }) => {
     );
 };
 
-export default Layout;
+export default CellierBouteille;
