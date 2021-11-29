@@ -9,12 +9,14 @@ export const FooterContainer = styled.footer`
     background-color: #303031;
     width: 100%;
     min-height: 100px;
+    margin-top:60px;
+    font-weight: 300;
 
     p {
         padding-top: 10px;
         color: #fff;
     }
-    
+
 
 
 `
