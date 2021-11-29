@@ -23,9 +23,13 @@ const Cellier = () => {
                 <h2>{user?.name}</h2>
             </div>
 
-            {bouteilles?.map((bouteille) => (
-                <CellierBouteille key={bouteille.id} {...bouteille} />
-            ))}
+            {bouteilles ? (
+                bouteilles.map((bouteille) => (
+                    <CellierBouteille key={bouteille.id} {...bouteille} />
+                ))
+            ) : (
+                <p>Aucune bouteille dans ton cellier</p>
+            )}
         </Layout>
     );
 };
