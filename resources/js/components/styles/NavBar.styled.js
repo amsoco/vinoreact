@@ -65,11 +65,28 @@ export const NavBarCountainer = styled.header`
 
             // ajustement obligatoire
             li {
-                
+                margin-left:10px;
+                margin-right:10px;
+
+                a:first-child {
+                    text-decoration: none;
+                }
+
                 a {
-                    margin-left:40px;
+                    margin-left:10px;
+                    margin-right:40px;
                     color:#303031;
                 }
+
+                a:last-child{
+                    margin-right:10px;
+                    margin-left:auto;
+                }
+
+            }
+
+            li:last-child{
+                display:flex;
             }
         }
 

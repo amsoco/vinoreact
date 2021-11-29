@@ -25,7 +25,13 @@ const App = () => (
                     <Route path="/nouveau-compte" element={<CreerCompte />} />
                     <Route path="/test-style" element={<TestStyle />} />
                     <Route path="/celliers" element={<Accueil />} />
+<<<<<<< HEAD
+
+                    <Route path="/bouteille" element={<Bouteille />}/>
+                    <Route path="/celliers/:cellierId" element={<Cellier />} />
+=======
                     <Route path="/celliers/:cellier" element={<Cellier />} />
+>>>>>>> upstream/main
                     <Route
                         path="/celliers/nouvelle-bouteille"
                         element={<AjouterBouteille />}
