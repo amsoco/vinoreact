@@ -2,7 +2,7 @@ import React from "react";
 import FormInput from "../FormInput";
 import { Button } from "../../styles/Button.styled";
 import { Form } from "../../styles/Form.styled";
-import { Legend } from "../../styles/Form.styled";
+import { Legend, Legend2 } from "../../styles/Form.styled";
 import { CustomLink } from "../../styles/Link.styled";
 import useForm from "../../../hooks/useForm";
 import { useUser } from "../../../context/user";
@@ -40,7 +40,7 @@ const RegisterForm = () => {
 
     return (
         <Form onSubmit={handleFormSubmit}>
-            <Legend>Nouveau membre</Legend>
+            <Legend2>Nouveau membre</Legend2>
             <FormInput
                 type="text"
                 id="name"

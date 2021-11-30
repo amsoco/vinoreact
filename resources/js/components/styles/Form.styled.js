@@ -11,7 +11,7 @@ export const Form = styled.form`
     & > *:not(:first-child) {
         margin-top: 30px;
     }
-`;
+`
 
 export const Legend = styled.legend`
     color: #fff;
@@ -22,5 +22,18 @@ export const Legend = styled.legend`
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
-    line-height:0;
+`
+
+
+export const Legend2 = styled.legend`
+    color: #fff;
+    font-size:  1.728rem;
+    font-family: "Gotham Black";
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+   
+
+
 `
