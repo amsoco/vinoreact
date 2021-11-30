@@ -6,13 +6,15 @@ import CellierBouteille from "../components/CellierBouteille";
 
 const Cellier = () => {
     const [bouteilles, setBouteilles] = useState([]);
+    const [nomCellier, setNomCellier] = useState("");
     const { getBouteillesCellier } = useCellier();
     const { user } = useUser();
 
     useEffect(() => {
-        const { id } = JSON.parse(localStorage.getItem("cellier"));
+        const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
         getBouteillesCellier(id).then(({ data }) => {
             setBouteilles(data);
+            setNomCellier(nom_cellier);
         });
     }, []);
 
@@ -25,7 +27,11 @@ const Cellier = () => {
 
             {bouteilles ? (
                 bouteilles.map((bouteille) => (
-                    <CellierBouteille key={bouteille.id} {...bouteille} />
+                    <CellierBouteille
+                        key={bouteille.id}
+                        bouteille={bouteille}
+                        cellier={nomCellier}
+                    />
                 ))
             ) : (
                 <p>Aucune bouteille dans ton cellier</p>

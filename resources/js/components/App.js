@@ -31,14 +31,14 @@ const App = () => (
                         <Route path="/test-style" element={<TestStyle />} />
                         <Route path="/celliers" element={<Accueil />} />
                         <Route
-                            path="/celliers/:cellier"
+                            path="/:cellier"
                             element={<Cellier />}
                         />
+                        <Route path=":cellier/:bouteilleId" element={<Bouteille />} />
                         <Route
-                            path="/celliers/nouvelle-bouteille"
+                            path="/:celliers/nouvelle-bouteille"
                             element={<AjouterBouteille />}
                         />
-                        <Route path="/:bouteilleId" element={<Bouteille />} />
                         {/* <Route path="*" element={<NotFound />} /> */}
                     </Routes>
                 </Suspense>
