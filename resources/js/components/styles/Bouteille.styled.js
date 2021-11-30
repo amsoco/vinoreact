@@ -13,8 +13,9 @@ export const BouteilleSection = styled.section`
 
     img:first-child {
         margin:auto;
-        margin-top:40px;
-        display:block
+        margin-top:60px;
+        display:block;
+        max-height:600px;
     }
 
     h3,
@@ -25,10 +26,9 @@ export const BouteilleSection = styled.section`
 
     h2 {
         margin-top:40px;
-    }
-
-    h3 {
-        margin-top:10px;
+        max-width:420px;
+        margin-Left:auto;
+        margin-right:auto;
     }
 
     &>button,

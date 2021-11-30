@@ -8,6 +8,7 @@ import BouteillePhoto from "../assets/images/bouteille.jpg";
 import { useCellier } from "../context/cellier";
 
 const Bouteille = () => {
+    
     const [bouteille, setBouteille] = useState({});
     const { getBouteille } = useCellier();
     const { cellier, bouteilleId } = useParams();

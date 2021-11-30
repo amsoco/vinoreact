@@ -6,7 +6,11 @@ const MainLayout = styled.main`
    // margin-top: 60px; pas certain ici PAG
     margin-left: auto;
     margin-right: auto;
-    margin-top:40px;
+    margin-top:20px;
+
+    &>div:nth-of-type(1) {
+        margin-left:20px;
+    }
 
 
     &>div>h3,
@@ -14,11 +18,11 @@ const MainLayout = styled.main`
         text-align:center;
     }
     h3 {
-        margin-top: 5px;
+        margin-top: 10px;
     }
 
     h1 {
-        margin-top: 40px;
+        margin-top: 60px;
     }
 
     section:nth-of-type(1) {

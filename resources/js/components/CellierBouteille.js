@@ -15,7 +15,7 @@ const CellierBouteille = ({ bouteille, cellier }) => {
                 <p>{millesime ? millesime : "Inconnu"}</p>
             </div>
             <div>
-                <Link to={`/${slugify(cellier)}/${id}}`}>
+                <Link to={`/${slugify(cellier)}/${id}`}>
                     <img src={url_img ? url_img : DummyBouteille} alt={nom} />
                 </Link>
                 <div>
