@@ -15,8 +15,6 @@ export const UserProvider = ({ children }) => {
 
     // get current user
     const getMe = async () => {
-        await Http.get("csrf-cookie");
-
         const { data } = await Http.get("user");
         setUser({
             ...data.user,
@@ -26,7 +24,7 @@ export const UserProvider = ({ children }) => {
 
     // log l'utilisateur
     const login = async (creds) => {
-        await Http.get("csrf-cookie");
+        await Http.get("sanctum/csrf-cookie");
         const { data } = await Http.post("login", creds);
         setUser({
             ...data.user,
@@ -36,7 +34,7 @@ export const UserProvider = ({ children }) => {
 
     // enregistre le nouvel utilisateur
     const register = async (creds) => {
-        await Http.get("csrf-cookie");
+        await Http.get("sanctum/csrf-cookie");
         const { data } = await Http.post("register", creds);
         setUser({
             ...data.user,
