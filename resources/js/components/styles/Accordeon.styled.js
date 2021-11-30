@@ -29,15 +29,17 @@ export const AccordeonSection = styled.section`
         border-right: none;
         border-bottom: none;
         padding: 10px;
-        padding-top:18px;
-        padding-bottom:8px;
+        padding-top:15px;
+        padding-bottom:15px;
         display:flex;
+        line:height:0;
 
         img {
             height : 12px;
             margin-left: auto;
             transition: transform 0.6s ease;
             margin-bottom: auto;
+            margin-top:auto;
             transform: rotate(${({ rotate }) => rotate || '0'});
         }
 
