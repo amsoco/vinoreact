@@ -32,7 +32,7 @@ export const CellierBouteilleSection = styled.section`
     }
 
 
-    &>div>img {
+    &>div>a>img {
         height:120px;
         margin-top:20px;
     }

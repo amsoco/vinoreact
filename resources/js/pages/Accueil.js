@@ -7,15 +7,13 @@ import TacheHaut from "../assets/svg/tacheHaut.svg";
 import TacheBas from "../assets/svg/tacheBas.svg";
 import LogoVino from "../assets/svg/logo.svg";
 import { useUser } from "../context/user";
+import { slugify } from "../helpers/slugify";
 
 const Accueil = () => {
     const { user } = useUser();
     const navigate = useNavigate();
 
     console.log('user', user)
-
-    // créer une url avec le nom du cellier: /celliers/la-cave-de-papa
-    const slugify = (str) => str.toLowerCase().replace(/ /g, "-");
 
     const onSelectChange = (e) => {
         const selectedCellier = user.celliers.find(
@@ -25,7 +23,7 @@ const Accueil = () => {
         // on va ensuite fetch les bouteilles avec l'id du cellier venant de localStorage
         localStorage.setItem("cellier", JSON.stringify(selectedCellier));
         const slug = slugify(selectedCellier.nom_cellier);
-        navigate(`/celliers/${slug}`);
+        navigate(`/${slug}`);
     };
 
     return (
