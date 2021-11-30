@@ -9,7 +9,7 @@ import { useUser } from "../context/user";
 
 const navBar = (props) => {
 
-    const {user} = useUser();
+    const {logout} = useUser();
     const [setActive, setActiveState] = useState("");
     const [setRotate, setRotateState] = useState("0");
     const [setRotateNegative, setRotateStateNega] = useState("0");
@@ -18,7 +18,7 @@ const navBar = (props) => {
     const [setDisplay, setStateDisplay] = useState("");
     const [setWidth, setWitdthState] = useState("0px");
 
-    console.log(login)
+
     const ouvrirMenu = (props) => {
 
         setActiveState(setActive === "" ? "active" : "");
@@ -46,9 +46,8 @@ const navBar = (props) => {
 
     }
 
-    const logout = (props) =>{
-        //user.logout;
-        //this.setState({user: {}});
+    const out = () => {
+        logout();
       }
 
     return (
@@ -71,7 +70,7 @@ const navBar = (props) => {
                 <li><Accordeon titre='Rupture de stock' content="patate"></Accordeon></li>
                 <li>
                     <Link to="/">Mon Compte</Link>
-                    <Link onClick={logout} to="/">Logout</Link>
+                    <Link onClick={out} to="/">Logout</Link>
                 </li>
 
             </ul>
