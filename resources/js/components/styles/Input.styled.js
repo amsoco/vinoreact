@@ -61,4 +61,19 @@ export const Select = styled.select`
     font-size: 0.833rem;
     cursor: pointer;
     outline: none;
-`;
+`
+
+export const RechercheInput = styled.input`
+
+    border-left:none;
+    border-right:none;
+    border-top : 1px solid  #D8D8D8;
+    border-bottom : 1px solid  #D8D8D8;
+    padding:15px 10px 15px 10px;
+    width:90%;
+    margin: 40px 20px 0px 20px;
+    font-family: "Gotham Thin";
+    font-weight: 500;
+    font-style: italic;
+
+`

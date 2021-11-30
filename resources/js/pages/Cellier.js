@@ -3,6 +3,7 @@ import { useCellier } from "../context/cellier";
 import { useUser } from "../context/user";
 import Layout from "../components/Layout";
 import CellierBouteille from "../components/CellierBouteille";
+import Recherche from "../components/Recherche";
 
 const Cellier = () => {
     const [bouteilles, setBouteilles] = useState([]);
@@ -20,11 +21,12 @@ const Cellier = () => {
 
     return (
         <Layout>
+            
             <div>
                 <h1>Ton Cellier</h1>
-                <h2>{user?.name}</h2>
+                <h3>{user?.name}</h3>
             </div>
-
+            <Recherche />
             {bouteilles ? (
                 bouteilles.map((bouteille) => (
                     <CellierBouteille

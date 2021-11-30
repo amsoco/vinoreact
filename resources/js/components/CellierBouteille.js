@@ -12,7 +12,7 @@ const CellierBouteille = ({ bouteille, cellier }) => {
         <CellierBouteilleSection>
             <div>
                 <h3>{nom}</h3>
-                <p>{millesime}</p>
+                <p>{millesime ? millesime : "Inconnu"}</p>
             </div>
             <div>
                 <Link to={`/${slugify(cellier)}/${id}}`}>
