@@ -152,4 +152,21 @@ class BouteilleController extends Controller
     {
        return Bouteille::where('id', $id)->delete();
     }
+
+
+    /**
+     * Store the image url in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function storeUploads(Request $request)
+    {
+        $request->file('file')->store('images');
+
+        return back()
+            ->with('success', 'File uploaded successfully');
+    }
+
 }

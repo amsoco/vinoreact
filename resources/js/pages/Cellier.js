@@ -25,6 +25,8 @@ const Cellier = () => {
                 <h2>{user?.name}</h2>
             </div>
 
+            
+
             {bouteilles ? (
                 bouteilles.map((bouteille) => (
                     <CellierBouteille

@@ -3,9 +3,11 @@
 //import BouteilleBlackLogo from "../assets/images/bouteilleBlack.png";
 //mport Chevron from "../assets/svg/chevron.svg";
 //import Accordeon from "../components/Accordeon";
+import React, {useState} from "react";
 import NavBar from "../components/NavBar";
 import BackUp from "../components/BackUp";
 import CellierBouteille from "../components/CellierBouteille";
+import Input from "../components/Input";
 
 
 const TestStyle = () => {
@@ -35,11 +37,12 @@ const TestStyle = () => {
             <Input placeholder="Nom Usager" ></Input> */}
 
             <NavBar></NavBar>
+            {/* <CellierBouteille></CellierBouteille>
             <CellierBouteille></CellierBouteille>
             <CellierBouteille></CellierBouteille>
-            <CellierBouteille></CellierBouteille>
-            <CellierBouteille></CellierBouteille>
+            <CellierBouteille></CellierBouteille> */}
             <BackUp></BackUp>
+            <Input/>
             {/* <Accordeon titre='Description' content="Vin mousseu bon"></Accordeon>
             <Accordeon titre='Modification' content={  <Select>
    
