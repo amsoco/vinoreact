@@ -27,6 +27,7 @@ const Cellier = () => {
                 <h1>Ton Cellier</h1>
                 <h3>{user?.name}</h3>
             </div>
+
             <Recherche />
             {bouteilles ? (
                 bouteilles.map((bouteille) => (
