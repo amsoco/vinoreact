@@ -16,10 +16,11 @@ const AjouterBouteille = lazy(() => import("../pages/AjouterBouteille"));
 
 const App = () => (
     // le user connecté est rendu disponible dans toute l'app via context
+    <Router>
     <UserProvider>
         <CellierProvider>
             <GlobalStyles />
-            <Router>
+
                 {/* afficher un fallback au chargement de la page avec Suspense: un spinner ou la page de loading vino? */}
                 <Suspense fallback={<p>Loading...</p>}>
                     <Routes>
@@ -42,9 +43,10 @@ const App = () => (
                         {/* <Route path="*" element={<NotFound />} /> */}
                     </Routes>
                 </Suspense>
-            </Router>
+           
         </CellierProvider>
     </UserProvider>
+    </Router>
 );
 
 export default App;

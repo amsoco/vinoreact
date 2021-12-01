@@ -46,4 +46,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/search', [Wiki_vinController::class, 'search']);
 
     Route::get('/user', [AuthController::class, 'me']);
+    
 });
