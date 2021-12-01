@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Http from "../HttpClient";
 
 // création du contexte User
@@ -6,6 +7,7 @@ const UserContext = createContext();
 
 // fonction pour rendre disponible le user et les méthodes d'auth via le context API
 export const UserProvider = ({ children }) => {
+    const navigate = useNavigate()
     const [user, setUser] = useState(null);
 
     // fetch l'utilisateur connecté
@@ -46,6 +48,7 @@ export const UserProvider = ({ children }) => {
     const logout = async () => {
         await Http.post("logout");
         setUser(false);
+        navigate('/')
     };
 
     return (
