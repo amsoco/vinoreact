@@ -65,8 +65,16 @@ export const NavBarCountainer = styled.header`
 
             // ajustement obligatoire
             li {
+
                 margin-left:10px;
                 margin-right:10px;
+
+
+                span {
+                    cursor: pointer;
+                    margin-right: 10px;
+                    border-bottom: 2px solid #303031;
+                }
 
                 a:first-child {
                     text-decoration: none;
@@ -87,14 +95,15 @@ export const NavBarCountainer = styled.header`
 
             li:nth-of-type(7){
                 display:flex;
-                margin-bottom:40px;
+                justify-content:space-between;
+                margin-top:20px;
             }
 
+
             li:nth-of-type(8){
-               
+
                 button{
                     margin: 20px auto 0px auto;
-                    
                }
 
             }
