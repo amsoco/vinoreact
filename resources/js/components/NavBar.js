@@ -4,10 +4,12 @@ import LogoVino from "../assets/svg/logo.svg";
 import CercleX from "../assets/svg/rondX.svg";
 import Accordeon from "./Accordeon";
 import { Link } from "react-router-dom";
+import { useUser } from "../context/user";
 
 
 const navBar = (props) => {
 
+    const {logout} = useUser();
     const [setActive, setActiveState] = useState("");
     const [setRotate, setRotateState] = useState("0");
     const [setRotateNegative, setRotateStateNega] = useState("0");
@@ -16,8 +18,8 @@ const navBar = (props) => {
     const [setDisplay, setStateDisplay] = useState("");
     const [setWidth, setWitdthState] = useState("0px");
 
+
     const ouvrirMenu = (props) => {
-        console.log('ouvir')
 
         setActiveState(setActive === "" ? "active" : "");
 
@@ -39,7 +41,14 @@ const navBar = (props) => {
         setWitdthState(
             setActive === "active" ? "0" : "100%"
         );
+
+
+
     }
+
+    const out = () => {
+        logout();
+      }
 
     return (
         <NavBarCountainer rotate={setRotate} rotateNegative={setRotateNegative} translateDown={setTranslateDown} translateUp={setTranslateUp} display={setDisplay}>
@@ -53,13 +62,15 @@ const navBar = (props) => {
                 <img src={CercleX}  alt="chevronBlack"/>
             </nav>
             <ul style={{ width: `${setWidth}` }} >
-                <li><Accordeon titre='Notes' content="patate"></Accordeon></li>
-                <li><Accordeon titre='Notes' content="patate"></Accordeon></li>
-                <li><Accordeon titre='Notes' content="patate"></Accordeon></li>
-                <li><Accordeon titre='Notes' content="patate"></Accordeon></li>
+                <li><Accordeon titre='Annnée' content="patate"></Accordeon></li>
+                <li><Accordeon titre='Prix' content="patate"></Accordeon></li>
+                <li><Accordeon titre='Cépage' content="patate"></Accordeon></li>
+                <li><Accordeon titre='Pays' content="patate"></Accordeon></li>
+                <li><Accordeon titre="Date d'achat" content="patate"></Accordeon></li>
+                <li><Accordeon titre='Rupture de stock' content="patate"></Accordeon></li>
                 <li>
                     <Link to="/">Mon Compte</Link>
-                    <Link to="/">Logout</Link>
+                    <Link onClick={out} to="/">Logout</Link>
                 </li>
 
             </ul>

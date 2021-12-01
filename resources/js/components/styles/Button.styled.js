@@ -36,8 +36,9 @@ export const ButtonBackUp = styled.div`
   display:block;
   //margin-top:20px;
   position:fixed;
-  bottom: 20px;
+  bottom: 120px;
   right:20px;
+  opacity: ${({ display }) => display || '0%'};
 
 
   img {

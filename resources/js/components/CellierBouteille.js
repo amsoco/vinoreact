@@ -12,10 +12,10 @@ const CellierBouteille = ({ bouteille, cellier }) => {
         <CellierBouteilleSection>
             <div>
                 <h3>{nom}</h3>
-                <p>{millesime}</p>
+                <p>{millesime ? millesime : "Inconnu"}</p>
             </div>
             <div>
-                <Link to={`/${slugify(cellier)}/${id}}`}>
+                <Link to={`/${slugify(cellier)}/${id}`}>
                     <img src={url_img ? url_img : DummyBouteille} alt={nom} />
                 </Link>
                 <div>

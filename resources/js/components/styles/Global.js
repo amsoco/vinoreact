@@ -28,9 +28,7 @@ font-family: "LincolnMillerBanner-Roman"
 font-weight:200;
 
 Texte Générique
-font-family: 'Gotham Black';
-font-weight: 500;
-font-style: normal;
+3
 
 Placeholder
 font-family: "Gotham Thin";
@@ -74,10 +72,20 @@ const GlobalStyles = createGlobalStyle`
     margin-top:20px;
   }
 
-  a{
+  a:link,
+  a:visited,
+  a:hover,
+  a:active,
+  a {
     font-family: 'Gotham Black';
     font-weight: 500;
     font-style: normal;
+    text-decoration: none;
+    color:#303031;
+  }
+
+  a:active {
+    color:#d8d8d8;
   }
 
   h1 {

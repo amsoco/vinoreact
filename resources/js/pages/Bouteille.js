@@ -8,6 +8,7 @@ import BouteillePhoto from "../assets/images/bouteille.jpg";
 import { useCellier } from "../context/cellier";
 
 const Bouteille = () => {
+    
     const [bouteille, setBouteille] = useState({});
     const { getBouteille } = useCellier();
     const { cellier, bouteilleId } = useParams();
@@ -28,9 +29,22 @@ const Bouteille = () => {
                     src={bouteille.url_img ? bouteille.url_img : BouteillePhoto}
                     alt="logo"
                 />
-                <h1>{bouteille.nom}</h1>
+                <h2>{bouteille.nom}</h2>
                 <h3>Quantité {bouteille.quantite}</h3>
-
+                <section>
+                    <div>
+                        <p>Pays</p>
+                        <p>Prix</p>
+                        <p>Cépage</p>
+                        <p>Millesime</p>
+                    </div>
+                    <div>
+                        <p>{bouteille.pays}</p>
+                        <p>{bouteille.prix_achat} $</p>
+                        <p>{bouteille.cepage ? bouteille.cepage : 'Cépage inconnu'}</p>
+                        <p>{bouteille.millesime ? bouteille.millesime : 'Inconnu'}</p>
+                </div>
+                </section>
                 <div>
                     <Accordeon
                         titre="Description"

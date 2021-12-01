@@ -4,7 +4,7 @@ export const CellierBouteilleSection = styled.section`
 
     margin:  20px 20px 0px 20px;
     border-top : 1px solid  #D8D8D8;
-    padding: 0px 10px 0px 10px;
+    padding: 20px 10px 0px 10px;
     height: 220px;
     
     p {
@@ -29,12 +29,13 @@ export const CellierBouteilleSection = styled.section`
         font-size:1.44rem;
         font-weight:200;
         max-width:75%;
+        align-self: flex-end; 
     }
 
 
     &>div>a>img {
         height:120px;
-        margin-top:20px;
+        margin-top:30px;
     }
 
     &>div>div>p {
@@ -48,12 +49,14 @@ export const CellierBouteilleSection = styled.section`
         color:#58111A;
         font-family: 'Gotham Black';
         font-weight: 100;
-        border: 1px solid #58111A;
+        border: 2px solid #58111A;
         padding: 4px;
         font-size: 0.833rem;
         border-radius: 4px;
         width:fit-content;
         margin-left:auto;
+        min-width:15px;
+        text-align:center;
     }
 
 `
