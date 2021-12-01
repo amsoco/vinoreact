@@ -163,7 +163,7 @@ class BouteilleController extends Controller
      */
     public function storeUploads(Request $request)
     {
-        $request->file('file')->store('images');
+        /* $request->file('file')->store('images'); */ //à compléter
 
         return back()
             ->with('success', 'File uploaded successfully');
