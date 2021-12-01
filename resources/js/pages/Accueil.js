@@ -13,8 +13,6 @@ const Accueil = () => {
     const { user } = useUser();
     const navigate = useNavigate();
 
-    console.log('user', user)
-
     const onSelectChange = (e) => {
         const selectedCellier = user.celliers.find(
             (cellier) => cellier.id == e.target.value
