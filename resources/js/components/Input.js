@@ -22,19 +22,21 @@ const Input = () => {
     };
 
     return (
-            <div>
-                <input type="file" onChange={(e)=> {
-                     setImageSelected(e.target.files[0])}}/>
-                <button onClick={uploadImage}>Téléverser l'image</button>
+        <div>
+            <input type="file" onChange={(e)=> {
+                    setImageSelected(e.target.files[0])}}/>
+            <button onClick={uploadImage}>Téléverser l'image</button>
 
-                <Image 
-                style={{ width: 100 }}
-                cloudName="vino-project" 
-                publicId="https://res.cloudinary.com/vino-project/image/upload/v1638310543/apaylzy0oeacsysjw27j.png"/>
-            </div>
+            <Image 
+            style={{ width: 100 }}
+            cloudName="vino-project" 
+            publicId="https://res.cloudinary.com/vino-project/image/upload/v1638310543/apaylzy0oeacsysjw27j.png"/>
+        </div>
     )
 
     }
 
 
 export default Input;
+
+

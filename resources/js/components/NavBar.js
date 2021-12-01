@@ -68,7 +68,7 @@ const navBar = (props) => {
                 <li><Accordeon titre='Rupture de stock' content="patate"></Accordeon></li>
                 <li>
                     <Link to="/">Mon Compte</Link>
-                    <span onClick={()=>logout()} to="/">Logout</span>
+                    <span onClick={()=>logout()}>Logout</span>
                 </li>
                 <li>
                 <Button
