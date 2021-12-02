@@ -10,6 +10,12 @@ export const Form = styled.form`
     margin: 0 20px 0 20px;
     & > *:not(:first-child) {
         margin-top: 30px;
+
+    }
+
+    a {
+        color:#fff;
+        border-bottom: 2px solid #fff;
     }
 `
 
