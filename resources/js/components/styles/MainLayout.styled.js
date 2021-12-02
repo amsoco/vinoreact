@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-
+// organisation layout principale
 const MainLayout = styled.main`
     min-height: calc(100vh - 180px); // temporaire
     max-width: 800px;

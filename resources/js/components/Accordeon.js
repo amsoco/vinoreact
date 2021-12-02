@@ -10,19 +10,24 @@ const Accordeon = (props) => {
 
     const content = useRef(null);
 
-    
+    // au click ouvrir l'accordéon
     const ouvrirAccordeon = () => {
+
+        // déposé la vérification
         setActiveState(setActive === "" ? "active" : "");
 
+            // déterminer la hauteur 
             setHeightState(
             setActive === "active" ? "0px" : `${content.current.scrollHeight}px`
             );
 
+            // sens du chevron
             setRotateState(
                 setActive === "active" ? "0" : "-90deg"
             );
     }
 
+    // composant accordéon
     return (
         <AccordeonSection   rotate={setRotate} >
             <button onClick={ouvrirAccordeon}>

@@ -53,6 +53,7 @@ export const AccueilMain = styled.main`
         transform: translate(-1%, 40%);
     }
 
+    // les tache de vin sont trop grosse a un certain moment ... ici ajustement
     @media (min-width: 760px) {
         img:nth-of-type(1) {
             position: absolute;
