@@ -5,6 +5,8 @@ import CercleX from "../assets/svg/rondX.svg";
 import Accordeon from "./Accordeon";
 import { Link } from "react-router-dom";
 import { useUser } from "../context/user";
+import { Button } from "./styles/Button.styled";
+
 
 
 const navBar = (props) => {
@@ -46,10 +48,6 @@ const navBar = (props) => {
 
     }
 
-    const out = () => {
-        logout();
-      }
-
     return (
         <NavBarCountainer rotate={setRotate} rotateNegative={setRotateNegative} translateDown={setTranslateDown} translateUp={setTranslateUp} display={setDisplay}>
             <nav>
@@ -70,10 +68,26 @@ const navBar = (props) => {
                 <li><Accordeon titre='Rupture de stock' content="patate"></Accordeon></li>
                 <li>
                     <Link to="/">Mon Compte</Link>
-                    <Link onClick={out} to="/">Logout</Link>
+                    <span onClick={()=>logout()}>Logout</span>
+                </li>
+                <li>
+                <Button
+                    bg="#fff"
+                    color="#303031"
+                    colorHover="#fff"
+                    bgHover="#303031"
+                >
+                    RAFRAICHIR
+                </Button>
+                <Button bg="#303031" color="#fff">
+                    RECHERCHE
+                </Button>
                 </li>
 
+
             </ul>
+ 
+
         </NavBarCountainer>
     )
 }

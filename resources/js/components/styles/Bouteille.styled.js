@@ -7,15 +7,15 @@ export const BouteilleSection = styled.section`
     margin-right:20px;
 
     img{
-        max-height:80vh;
+        max-height:70vh;
 
     }
 
     img:first-child {
         margin:auto;
         margin-top:60px;
-        display:block;
-        max-height:600px;
+        display:block; 
+        //max-height:600px;  semble créer un bug
     }
 
     h3,

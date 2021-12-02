@@ -13,15 +13,14 @@ export const NavBarCountainer = styled.header`
         justify-content: space-between;
         padding:20px;
         box-shadow: rgba(0, 0, 0, 0.10) 1.95px 1.95px 2.6px;
-        
-       
+
 
             div {
                 display:flex;
                 flex-direction: column;
                 cursor: pointer;
 
-                ${({ translateDown }) => console.log(translateDown)}
+
                 div {
                     width:20px;
                     background:#303031;
@@ -60,13 +59,22 @@ export const NavBarCountainer = styled.header`
             overflow: hidden;
             transition: width 0.6s ease-out;
             background:#fff;
-            height:100vh;
+            height:100%;
+            max-width:800px;
 
 
             // ajustement obligatoire
             li {
+
                 margin-left:10px;
                 margin-right:10px;
+
+
+                span {
+                    cursor: pointer;
+                    margin-right: 10px;
+                    border-bottom: 2px solid #303031;
+                }
 
                 a:first-child {
                     text-decoration: none;
@@ -85,9 +93,25 @@ export const NavBarCountainer = styled.header`
 
             }
 
-            li:last-child{
+            li:nth-of-type(7){
                 display:flex;
+                justify-content:space-between;
+                margin-top:20px;
+            }
+
+
+            li:nth-of-type(8){
+
+                button{
+                    margin: 20px auto 0px auto;
+               }
+
             }
         }
+
+        &>button {
+            margin:20px
+        }
+
 
 `

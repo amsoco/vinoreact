@@ -22,6 +22,7 @@ const Input = () => {
     };
 
     return (
+<<<<<<< HEAD
             <div>
                 <input type="file" onChange={(e)=> {
                      setImageSelected(e.target.files[0])}}/>
@@ -32,9 +33,23 @@ const Input = () => {
                 cloudName="vino-project"
                 publicId={publicId}/>
             </div>
+=======
+        <div>
+            <input type="file" onChange={(e)=> {
+                    setImageSelected(e.target.files[0])}}/>
+            <button onClick={uploadImage}>Téléverser l'image</button>
+
+            <Image 
+            style={{ width: 100 }}
+            cloudName="vino-project" 
+            publicId="https://res.cloudinary.com/vino-project/image/upload/v1638310543/apaylzy0oeacsysjw27j.png"/>
+        </div>
+>>>>>>> upstream/main
     )
 
     }
 
 
 export default Input;
+
+
