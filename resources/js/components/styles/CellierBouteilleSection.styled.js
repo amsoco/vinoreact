@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
+// la page cellier
 export const CellierBouteilleSection = styled.section`
 
-    margin:  20px 20px 0px 20px;
+    margin:  0px 20px 0px 20px;
     border-top : 1px solid  #D8D8D8;
-    padding: 20px 10px 0px 10px;
-    height: 220px;
+    padding: 20px 10px 20px 10px;
     
     p {
         margin: 20px 0px 0px 0px;

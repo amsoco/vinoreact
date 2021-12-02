@@ -8,6 +8,7 @@ const CellierBouteille = ({ bouteille, cellier }) => {
     const { id, nom, millesime, url_img, pays, format, prix_achat, quantite } =
         bouteille;
 
+    // la section cellier pour chacune des bouteille
     return (
         <CellierBouteilleSection>
             <div>

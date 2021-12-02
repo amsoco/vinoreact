@@ -24,7 +24,7 @@ export const Button = styled.button`
     transform: scale(0.99);
   }
 `
-
+// le bouton pour retourner ne haut de la page dans les longs celliers
 export const ButtonBackUp = styled.div`
   border-radius: 2px;
   cursor: pointer;
@@ -37,9 +37,10 @@ export const ButtonBackUp = styled.div`
   //margin-top:20px;
   position:fixed;
   bottom: 120px;
-  right:20px;
-  opacity: ${({ display }) => display || '0%'};
+  //right:10%;
+  margin-left:auto;
 
+ 
 
   img {
     position: absolute;

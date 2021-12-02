@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 
+// les différent input 
 export const Label = styled.label`
     font-size: 1rem;
     font-family: "Gotham Thin";
@@ -70,8 +71,7 @@ export const RechercheInput = styled.input`
     border-top : 1px solid  #D8D8D8;
     border-bottom : 1px solid  #D8D8D8;
     padding:15px 10px 15px 10px;
-    width:90%;
-    margin: 40px 20px 0px 20px;
+    margin-top: 40px;
     font-family: "Gotham Thin";
     font-weight: 500;
     font-style: italic;
