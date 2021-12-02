@@ -16,7 +16,6 @@ const Cellier = () => {
         const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
         getBouteillesCellier(id).then(({ data }) => {
             setBouteilles(data);
-            console.log(data[0]["id"])
             setNomCellier(nom_cellier);
         });
     }, []);

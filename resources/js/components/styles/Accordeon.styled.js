@@ -32,7 +32,7 @@ export const AccordeonSection = styled.section`
         padding-top:15px;
         padding-bottom:15px;
         display:flex;
-        line:height:0;
+        line-height:0;
 
         img {
             height : 12px;
