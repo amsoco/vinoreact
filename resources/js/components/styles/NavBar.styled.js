@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 export const NavBarCountainer = styled.header`
-
+    
+    //width:100%;
     position: sticky;
     top: 0;
     background:#fff;
     z-index:10;
 
         nav {
-
+        
         display:flex;
         justify-content: space-between;
         padding:20px;
@@ -54,12 +55,12 @@ export const NavBarCountainer = styled.header`
         }
 
         ul {
-            padding-top:60px;
+            top:60px;
             position:fixed;
             overflow: hidden;
             transition: width 0.6s ease-out;
             background:#fff;
-            height:100%;
+            height:100vh;
             max-width:800px;
 
 

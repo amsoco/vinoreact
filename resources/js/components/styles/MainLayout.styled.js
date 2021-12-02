@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
+
+
 const MainLayout = styled.main`
     min-height: calc(100vh - 180px); // temporaire
     max-width: 800px;
-   // margin-top: 60px; pas certain ici PAG
+    //margin-top: 60px; pas certain ici PAG
     margin-left: auto;
     margin-right: auto;
     margin-top:20px;
+    width:100%;
 
     &>div:nth-of-type(1) {
         margin-left:20px;
@@ -28,6 +31,26 @@ const MainLayout = styled.main`
     section:nth-of-type(1) {
         border-top:none;
         margin-top: 30px;
+    }
+
+    &>div:last-child {
+        margin-left: 85%;
+    }
+
+    input {
+        max-width:760px;
+        margin-left:auto;
+        margin-right:auto;
+        width:85%;
+        display:block;
+    }
+
+    // ici problème css a régler (input ne strech pas comme le reste)
+    @media (min-width: 760px) {
+        input {
+            width:90%;
+
+        }
     }
 
 `;

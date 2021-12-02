@@ -7,6 +7,8 @@ export const AccueilMain = styled.main`
     flex-direction: column;
     justify-content: center;
     position: relative;
+    max-width:100%;
+    max-height:100%;
 
     h2 {
         text-align: center;

@@ -6,6 +6,7 @@ import MainLayout from "./styles/MainLayout.styled";
 
 
 const Layout = ({ children }) => {
+
     return (
         <>
             <NavBar />

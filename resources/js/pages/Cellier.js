@@ -11,19 +11,43 @@ const Cellier = () => {
     const [nomCellier, setNomCellier] = useState("");
     const { getBouteillesCellier } = useCellier();
     const { user } = useUser();
+    const [setOpacity, setOpacityState] = useState("0");
+    const [scroll, setScroll] = useState(0);
+
+
+
+
 
     useEffect(() => {
         const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
         getBouteillesCellier(id).then(({ data }) => {
             setBouteilles(data);
-            console.log(data[0]["id"])
             setNomCellier(nom_cellier);
         });
     }, []);
 
+
+    //https://www.geeksforgeeks.org/how-to-create-scroll-indicator-using-reactjs/
+    const handleScroll = (e) => {
+        const Scrolled = document.documentElement.scrollTop;
+        const MaxHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const ScrollPercent = (Scrolled / MaxHeight) * 100;
+        setScroll(ScrollPercent);
+        if (Scrolled > 20 )  {
+            setOpacityState('100%');
+        } else {
+            setOpacityState('0');
+        }
+      }
+
+
+
+    window.addEventListener("scroll", handleScroll);
+
+
     return (
         <Layout>
-            <div>
+            <div >
                 <h1>Ton Cellier</h1>
                 <h3>{user?.name}</h3>
             </div>
@@ -40,7 +64,8 @@ const Cellier = () => {
             ) : (
                 <p>Aucune bouteille dans ton cellier</p>
             )}
-            <BackUp/>
+             <div style={{ opacity: `${setOpacity}`,transition: "opacity 0.4s ease" }}><BackUp ></BackUp></div>
+            
         </Layout>
     );
 };

@@ -52,8 +52,6 @@ Rouge Vin : #58111A
 */
 
 const GlobalStyles = createGlobalStyle`
-@import url('https://fonts.cdnfonts.com/css/gotham');
-@import url(https://db.onlinewebfonts.com/c/a6e1f9c1f231a9d282a89b950b66509d?family=LincolnMillerBanner-Roman);
 
   * {
     margin:0;
@@ -64,6 +62,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Gotham Black';
     font-weight: 500;
     font-style: normal;
+    max-width: 100%;
   }
 
   // rythme général

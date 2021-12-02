@@ -1,8 +1,8 @@
-import React from "react";
+import React  from "react";
 import { ButtonBackUp } from "./styles/Button.styled";
 import Chevron from "../assets/svg/chevron.svg";
 
-const BackUp = (props) => {
+const BackUp = () => {
 
     const retournerHaut = () => {
         document.body.scrollTop = 0; 

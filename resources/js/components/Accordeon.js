@@ -13,13 +13,14 @@ const Accordeon = (props) => {
     
     const ouvrirAccordeon = () => {
         setActiveState(setActive === "" ? "active" : "");
-        setHeightState(
-         setActive === "active" ? "0px" : `${content.current.scrollHeight}px`
-        );
 
-        setRotateState(
-            setActive === "active" ? "0" : "-90deg"
-        );
+            setHeightState(
+            setActive === "active" ? "0px" : `${content.current.scrollHeight}px`
+            );
+
+            setRotateState(
+                setActive === "active" ? "0" : "-90deg"
+            );
     }
 
     return (
