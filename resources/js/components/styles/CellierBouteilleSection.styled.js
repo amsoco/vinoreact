@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+// la page cellier
 export const CellierBouteilleSection = styled.section`
 
     margin:  0px 20px 0px 20px;

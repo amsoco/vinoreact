@@ -21,22 +21,29 @@ const navBar = (props) => {
     const [setWidth, setWitdthState] = useState("0px");
 
 
+    // ou clic on ouvre le menu
     const ouvrirMenu = (props) => {
 
+        // vérifier l'état
         setActiveState(setActive === "" ? "active" : "");
 
+        // Rotation du x transformation
         setRotateState(
             setActive === "active" ? "0" : "-45deg"
         );
         setRotateStateNega(
             setActive === "active" ? "0" : "45deg"
         );
+
+        // Translation du x transformation
         setStateTranslateDowm(
             setActive === "active" ? "0" : "4px"
         );
         setStateTranslateUp(
             setActive === "active" ? "0" : "-4px"
         );
+
+        // Opacité de la ligne centrale
         setStateDisplay(
             setActive === "active" ? "100%" : "0"
         );
@@ -47,7 +54,6 @@ const navBar = (props) => {
 
 
     }
-
     return (
         <NavBarCountainer rotate={setRotate} rotateNegative={setRotateNegative} translateDown={setTranslateDown} translateUp={setTranslateUp} display={setDisplay}>
             <nav>
@@ -83,11 +89,7 @@ const navBar = (props) => {
                     RECHERCHE
                 </Button>
                 </li>
-
-
             </ul>
- 
-
         </NavBarCountainer>
     )
 }

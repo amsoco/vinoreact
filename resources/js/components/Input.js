@@ -3,12 +3,11 @@ import React, {useState} from "react";
 import Axios from 'axios';
 import {Image} from 'cloudinary-react';
 
-
+// upload d'image a cloudinary
 const Input = () => {
     const [imageSelected, setImageSelected] = useState("");
 
     const uploadImage = (files) => {
-        //console.log(files[0]);
         const formData = new FormData();
         formData.append("file", imageSelected);
         formData.append("upload_preset", "knxwwgoa");

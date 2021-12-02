@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
+// La navbar et le manu dynamique
 export const NavBarCountainer = styled.header`
-    
+
     //width:100%;
     position: sticky;
     top: 0;
@@ -9,7 +10,7 @@ export const NavBarCountainer = styled.header`
     z-index:10;
 
         nav {
-        
+
         display:flex;
         justify-content: space-between;
         padding:20px;

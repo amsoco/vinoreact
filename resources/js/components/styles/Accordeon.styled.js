@@ -1,15 +1,9 @@
 import styled from 'styled-components'
 
 
-//console.log(height)
-
 export const AccordeonSection = styled.section`
     display: flex;
     flex-direction: column;
-
-    // pour bien voir 
-   // margin-left: 20px;
-   // margin-right: 20px;
 
     div {
         overflow: hidden;

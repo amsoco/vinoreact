@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 
+// les différent input 
 export const Label = styled.label`
     font-size: 1rem;
     font-family: "Gotham Thin";
