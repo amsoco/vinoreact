@@ -5,6 +5,7 @@ import { UserProvider } from "../context/user";
 import GlobalStyles from "../components/styles/Global";
 import { CellierProvider } from "../context/cellier";
 import RequireAuth from "./RequireAuth";
+import LoaderComp from "./LoaderComp";
 
 // lazy load les pages que le user demande au lieu de charger le bundle JS/CSS de toute l'app
 const SeConnecter = lazy(() => import("../pages/SeConnecter"));
@@ -23,7 +24,7 @@ const App = () => (
                 <GlobalStyles />
 
                 {/* afficher un fallback au chargement de la page avec Suspense: un spinner ou la page de loading vino? */}
-                <Suspense fallback={<p>Loading...</p>}>
+                <Suspense fallback={<LoaderComp />}>
                     <Routes>
                         <Route path="/" element={<SeConnecter />} />
                         <Route
