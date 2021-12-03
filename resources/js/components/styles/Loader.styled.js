@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 // animation
 export const FillUp = keyframes`
 0% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(-10%) rotate(230deg);
 }
 100%{
     transform: translateY(-100%) rotate(450deg);
