@@ -3,13 +3,11 @@ const ui_reducer = (state, action) => {
         case "LOADING":
             console.log('loading')
             return {
-                ...state,
                 loading: true,
             };
         case "LOADED":
             console.log('loaded')
             return {
-                ...state,
                 loading: false,
             };
         default: {

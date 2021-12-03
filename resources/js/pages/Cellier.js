@@ -18,7 +18,6 @@ const Cellier = () => {
     useEffect(() => {
         const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
 
-        console.log('loading', loading)
         getBouteillesCellier(id).then(({ data }) => {
             setBouteilles(data);
             setNomCellier(nom_cellier);
