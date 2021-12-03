@@ -47,5 +47,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/user', [AuthController::class, 'me']);
 
-    Route::post('/upload', [BouteilleController::class, 'storeUploads']);
 });

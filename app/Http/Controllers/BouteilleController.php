@@ -154,19 +154,5 @@ class BouteilleController extends Controller
     }
 
 
-    /**
-     * Store the image url in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function storeUploads(Request $request)
-    {
-        /* $request->file('file')->store('images'); */ //à compléter
-
-        return back()
-            ->with('success', 'File uploaded successfully');
-    }
 
 }
