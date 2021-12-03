@@ -25,7 +25,8 @@ const RegisterForm = () => {
     // FORM LOGIC ON SUBMIT
     const registerUser = async (values) => {
         const data = await register(values);
-        return navigate("/celliers");
+        // return navigate("/celliers");
+        return navigate('/');
     };
 
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
