@@ -1,20 +1,34 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useReducer } from "react";
 import Http from "../HttpClient";
+import uiReducer from "../reducers/uiReducer";
 
 // création du contexte Cellier
 const CellierContext = createContext();
 
 // fonction pour rendre disponible le cellier dans l'app tree
 export const CellierProvider = ({ children }) => {
+    const [{ loading }, dispatch] = useReducer(uiReducer, { loading: true });
+
     // récupérer toutes les bouteilles d'un cellier par Id
-    const getBouteillesCellier = (cellierId) =>
-        Http.get(`bouteilles/cell/${cellierId}`);
+    const getBouteillesCellier = async (cellierId) => {
+        dispatch({ type: "LOADING" });
+        const bouteilles = await Http.get(`bouteilles/cell/${cellierId}`);
+        setTimeout(() => dispatch({ type: "LOADED" }), 2000);
+        return bouteilles;
+    };
 
     // récupérer une bouteille par id
-    const getBouteille = (bouteilleId) => Http.get(`bouteilles/${bouteilleId}`);
+    const getBouteille = async (bouteilleId) => {
+        dispatch({ type: "LOADING" });
+        const bouteille = await Http.get(`bouteilles/${bouteilleId}`);
+        setTimeout(() => dispatch({ type: "LOADED" }), 2000);
+        return bouteille;
+    };
 
     return (
-        <CellierContext.Provider value={{ getBouteillesCellier, getBouteille }}>
+        <CellierContext.Provider
+            value={{ getBouteillesCellier, getBouteille, loading }}
+        >
             {children}
         </CellierContext.Provider>
     );

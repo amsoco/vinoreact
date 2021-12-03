@@ -6,11 +6,12 @@ import Layout from "../components/Layout";
 import Accordeon from "../components/Accordeon";
 import BouteillePhoto from "../assets/images/bouteille.jpg";
 import { useCellier } from "../context/cellier";
+import Loader from "../components/Loader";
 
 const Bouteille = () => {
     
     const [bouteille, setBouteille] = useState({});
-    const { getBouteille } = useCellier();
+    const { getBouteille, loading } = useCellier();
     const { cellier, bouteilleId } = useParams();
     const navigate = useNavigate();
 
@@ -22,6 +23,7 @@ const Bouteille = () => {
 
     if (!bouteille) navigate(`/${cellier}`);
 
+    if (loading) return <Loader />;
     return (
         <Layout>
             <BouteilleSection>
