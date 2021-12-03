@@ -66,7 +66,7 @@ const navBar = (props) => {
                 <img src={CercleX}  alt="chevronBlack"/>
             </nav>
             <ul style={{ width: `${setWidth}` }} >
-                <li><Accordeon titre='Annnée' content="patate"></Accordeon></li>
+                <li><Accordeon titre='Année' content="patate"></Accordeon></li>
                 <li><Accordeon titre='Prix' content="patate"></Accordeon></li>
                 <li><Accordeon titre='Cépage' content="patate"></Accordeon></li>
                 <li><Accordeon titre='Pays' content="patate"></Accordeon></li>
