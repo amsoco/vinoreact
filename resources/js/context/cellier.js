@@ -13,7 +13,7 @@ export const CellierProvider = ({ children }) => {
     const getBouteillesCellier = async (cellierId) => {
         dispatch({ type: "LOADING" });
         const bouteilles = await Http.get(`bouteilles/cell/${cellierId}`);
-        setTimeout(() => dispatch({ type: "LOADED" }), 2000);
+        setTimeout(() => dispatch({ type: "LOADED" }), 500);
         return bouteilles;
     };
 
@@ -21,7 +21,7 @@ export const CellierProvider = ({ children }) => {
     const getBouteille = async (bouteilleId) => {
         dispatch({ type: "LOADING" });
         const bouteille = await Http.get(`bouteilles/${bouteilleId}`);
-        setTimeout(() => dispatch({ type: "LOADED" }), 2000);
+        setTimeout(() => dispatch({ type: "LOADED" }), 500);
         return bouteille;
     };
 
