@@ -19,6 +19,7 @@ const navBar = (props) => {
     const [setTranslateUp, setStateTranslateUp] = useState("0");
     const [setDisplay, setStateDisplay] = useState("");
     const [setWidth, setWitdthState] = useState("0px");
+    const [setTanslateMenu, setStateTranslateMenu] = useState("0");
 
 
     // ou clic on ouvre le menu
@@ -47,15 +48,20 @@ const navBar = (props) => {
         setStateDisplay(
             setActive === "active" ? "100%" : "0"
         );
+        
         setWitdthState(
             setActive === "active" ? "0" : "100%"
+        );
+        
+        setStateTranslateMenu(
+            setActive === "active" ? "0" : "400px"
         );
 
 
 
     }
     return (
-        <NavBarCountainer rotate={setRotate} rotateNegative={setRotateNegative} translateDown={setTranslateDown} translateUp={setTranslateUp} display={setDisplay}>
+        <NavBarCountainer rotate={setRotate} rotateNegative={setRotateNegative} translateDown={setTranslateDown} translateUp={setTranslateUp} display={setDisplay} translateMenu={setTanslateMenu}>
             <nav>
                 <div onClick={ouvrirMenu}>
                     <div></div>
@@ -65,18 +71,22 @@ const navBar = (props) => {
                 <img src={LogoVino}  alt="chevronBlack"/>
                 <img src={CercleX}  alt="chevronBlack"/>
             </nav>
-            <ul style={{ width: `${setWidth}` }} >
-                <li><Accordeon titre='Annnée' content="patate"></Accordeon></li>
-                <li><Accordeon titre='Prix' content="patate"></Accordeon></li>
+            {/* <ul style={{ width: `${setWidth}` }} > */}
+            <ul>
+                <h4>Menu vino</h4>
+                <li><Accordeon titre='Recherche détaillé' content="formulaire de recherche"></Accordeon></li>
+                <li><Accordeon titre='Mon Compte' content="formulaire rechecher"></Accordeon></li>
+                <li><p onClick={()=>logout()}>Logout</p></li>
+                {/* <li><Accordeon titre='Prix' content="patate"></Accordeon></li>
                 <li><Accordeon titre='Cépage' content="patate"></Accordeon></li>
                 <li><Accordeon titre='Pays' content="patate"></Accordeon></li>
                 <li><Accordeon titre="Date d'achat" content="patate"></Accordeon></li>
-                <li><Accordeon titre='Rupture de stock' content="patate"></Accordeon></li>
-                <li>
+                <li><Accordeon titre='Rupture de stock' content="patate"></Accordeon></li> */}
+                {/* <li>
                     <Link to="/">Mon Compte</Link>
-                    <span onClick={()=>logout()}>Logout</span>
-                </li>
-                <li>
+                    
+                </li> */}
+                {/* <li>
                 <Button
                     bg="#fff"
                     color="#303031"
@@ -88,7 +98,7 @@ const navBar = (props) => {
                 <Button bg="#303031" color="#fff">
                     RECHERCHE
                 </Button>
-                </li>
+                </li> */}
             </ul>
         </NavBarCountainer>
     )

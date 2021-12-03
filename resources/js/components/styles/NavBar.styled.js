@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+//console.log(translateMenu);
 // La navbar et le manu dynamique
 export const NavBarCountainer = styled.header`
 
@@ -55,14 +56,17 @@ export const NavBarCountainer = styled.header`
             }
         }
 
+        
         ul {
             top:60px;
-            position:fixed;
+            left:-400px;
+            position:absolute;
             overflow: hidden;
-            transition: width 0.6s ease-out;
+            transition: transform 0.4s ease-out;
             background:#fff;
             height:100vh;
             max-width:800px;
+            transform:translate(${({ translateMenu }) => translateMenu || '0'} );
 
 
             // ajustement obligatoire
@@ -72,47 +76,58 @@ export const NavBarCountainer = styled.header`
                 margin-right:10px;
 
 
-                span {
-                    cursor: pointer;
-                    margin-right: 10px;
-                    border-bottom: 2px solid #303031;
-                }
+                // p:last-child {
+                //     cursor: pointer;
+                //     margin: 10px;
+                //     border-bottom: 2px solid #303031;
+                //     display: inline;
+                // }
 
-                a:first-child {
-                    text-decoration: none;
-                }
+                // a:first-child {
+                //     text-decoration: none;
+                // }
 
-                a {
-                    margin-left:10px;
-                    margin-right:40px;
-                    color:#303031;
-                }
+                // a {
+                //     margin-left:10px;
+                //     margin-right:40px;
+                //     color:#303031;
+                // }
 
-                a:last-child{
-                    margin-right:10px;
-                    margin-left:auto;
-                }
+                // a:last-child{
+                //     margin-right:10px;
+                //     margin-left:auto;
+                // }
 
             }
 
-            li:nth-of-type(7){
-                display:flex;
-                justify-content:space-between;
-                margin-top:20px;
+            li:nth-of-type(2){
+                border-bottom: 1px solid #D8D8D8;
+                margin-bottom:20px;
+            }
+
+            li:nth-of-type(3)>p{
+                cursor: pointer;
+                margin-left: 10px;
+                border-bottom: 2px solid #303031;
+                display: inline;
             }
 
 
-            li:nth-of-type(8){
+            // li:nth-of-type(8){
 
-                button{
-                    margin: 20px auto 0px auto;
-               }
+            //     button{
+            //         margin: 20px auto 0px auto;
+            //    }
 
             }
         }
 
-        &>button {
-            margin:20px
+        // &>button {
+        //     margin:20px
+        // }
+
+        h4 {
+            margin: 20px;
         }
 
 
