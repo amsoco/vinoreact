@@ -71,6 +71,7 @@ const navBar = (props) => {
                 <img src={LogoVino}  alt="chevronBlack"/>
                 <img src={CercleX}  alt="chevronBlack"/>
             </nav>
+<<<<<<< HEAD
             {/* <ul style={{ width: `${setWidth}` }} > */}
             <ul>
                 <h4>Menu vino</h4>
@@ -78,6 +79,11 @@ const navBar = (props) => {
                 <li><Accordeon titre='Mon Compte' content="formulaire rechecher"></Accordeon></li>
                 <li><p onClick={()=>logout()}>Logout</p></li>
                 {/* <li><Accordeon titre='Prix' content="patate"></Accordeon></li>
+=======
+            <ul style={{ width: `${setWidth}` }} >
+                <li><Accordeon titre='Année' content="patate"></Accordeon></li>
+                <li><Accordeon titre='Prix' content="patate"></Accordeon></li>
+>>>>>>> upstream/main
                 <li><Accordeon titre='Cépage' content="patate"></Accordeon></li>
                 <li><Accordeon titre='Pays' content="patate"></Accordeon></li>
                 <li><Accordeon titre="Date d'achat" content="patate"></Accordeon></li>

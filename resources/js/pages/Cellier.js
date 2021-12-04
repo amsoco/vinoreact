@@ -54,7 +54,7 @@ const Cellier = () => {
                 <h3>{user?.name}</h3>
             </div>
             <Recherche />
-            {bouteilles ? (
+            {bouteilles.length ? (
                 bouteilles.map((bouteille) => (
                     <CellierBouteille
                         key={bouteille.id}
@@ -63,7 +63,7 @@ const Cellier = () => {
                     />
                 ))
             ) : (
-                <p>Aucune bouteille dans ton cellier</p>
+                <p style={{textAlign:"center", marginTop: "30px"}}>Aucune bouteille dans ton cellier</p>
             )}
              
             <div

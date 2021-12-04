@@ -40,7 +40,7 @@ export const UserProvider = ({ children }) => {
 
     // enregistre le nouvel utilisateur
     const register = async (creds) => {
-        await Http.get("sanctum/csrf-cookie");
+        //await Http.get("sanctum/csrf-cookie");
         const { data } = await Http.post("register", creds);
         setUser({
             ...data.user,
