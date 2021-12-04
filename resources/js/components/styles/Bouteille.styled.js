@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 // la section des bouteilles du celliers
 export const BouteilleSection = styled.section`
-    font-family: "LincolnMillerBanner-Roman" ;
+    font-family: "LincolnMillerBanner" ;
     margin-left:20px;
     margin-right:20px;
 

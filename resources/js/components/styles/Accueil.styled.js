@@ -17,7 +17,7 @@ export const AccueilMain = styled.main`
         margin-right: 40px;
         font-size: 1.728rem;
         font-weight: 300;
-        font-family: "Gotham Black";
+        font-family: "GothamBlack";
         max-width: 250px;
     }
     img:nth-of-type(1) {
