@@ -11,21 +11,22 @@ const CellierBouteille = ({ bouteille, cellier }) => {
     // la section cellier pour chacune des bouteille
     return (
         <CellierBouteilleSection>
-            <div>
-                <h3>{nom}</h3>
-                <p>{millesime ? millesime : "Inconnu"}</p>
-            </div>
-            <div>
-                <Link to={`/${slugify(cellier)}/${id}`}>
-                    <img src={url_img ? url_img : DummyBouteille} alt={nom} />
-                </Link>
+            <Link to={`/${slugify(cellier)}/${id}`}>
                 <div>
-                    <p>{pays}</p>
-                    <p>{format}</p>
-                    <p>{prix_achat}$</p>
-                    <p>{quantite}</p>
+                    <h3>{nom}</h3>
+                    <p>{millesime ? millesime : "Inconnu"}</p>
                 </div>
-            </div>
+                <div>
+                    <img src={url_img ? url_img : DummyBouteille} alt={nom} />
+
+                    <div>
+                        <p>{pays}</p>
+                        <p>{format}</p>
+                        <p>{prix_achat}$</p>
+                        <p>{quantite}</p>
+                    </div>
+                </div>
+            </Link>
         </CellierBouteilleSection>
     );
 };

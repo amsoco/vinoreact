@@ -12,7 +12,10 @@ export const UserProvider = ({ children }) => {
 
     // fetch l'utilisateur connecté
     useEffect(() => {
-        getMe().then();
+        const connected = localStorage.getItem("connected");
+        if (connected) {
+            getMe();
+        }
     }, []);
 
     // get current user
@@ -30,16 +33,13 @@ export const UserProvider = ({ children }) => {
 
     // log l'utilisateur
     const login = async (creds) => {
-        try {
-            await Http.get("sanctum/csrf-cookie");
-            const { data } = await Http.post("login", creds);
-            setUser({
-                ...data.user,
-                celliers: data.celliers,
-            });
-        } catch (error) {
-            setUser(false);
-        }
+        await Http.get("sanctum/csrf-cookie");
+        const { data } = await Http.post("login", creds);
+        localStorage.setItem("connected", "truth");
+        setUser({
+            ...data.user,
+            celliers: data.celliers,
+        });
     };
 
     // enregistre le nouvel utilisateur
@@ -56,6 +56,7 @@ export const UserProvider = ({ children }) => {
     const logout = async () => {
         await Http.post("logout");
         setUser(false);
+        localStorage.removeItem("connected");
         navigate("/");
     };
 
