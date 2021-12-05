@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
 
     // fetch l'utilisateur connecté
     useEffect(() => {
-        getMe();
+        getMe().then();
     }, []);
 
     // get current user
@@ -30,12 +30,16 @@ export const UserProvider = ({ children }) => {
 
     // log l'utilisateur
     const login = async (creds) => {
-        await Http.get("sanctum/csrf-cookie");
-        const { data } = await Http.post("login", creds);
-        setUser({
-            ...data.user,
-            celliers: data.celliers,
-        });
+        try {
+            await Http.get("sanctum/csrf-cookie");
+            const { data } = await Http.post("login", creds);
+            setUser({
+                ...data.user,
+                celliers: data.celliers,
+            });
+        } catch (error) {
+            setUser(false);
+        }
     };
 
     // enregistre le nouvel utilisateur
