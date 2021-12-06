@@ -12,6 +12,7 @@ export const Label = styled.label`
     top: 25px;
     color: black;
     transition: 200ms ease all;
+    line-height:0;
     ${({ shrink }) =>
         shrink &&
         css`
@@ -30,14 +31,15 @@ export const Input = styled.input`
     border-radius: 3px;
     border: 1px solid #303031;
     //font-family: GothamLightItalic;
-    font-weight: 300;
-    font-style: italic;
+   // font-weight: 300;
+  //  font-style: italic;
     padding-left: 10px;
-    
+    display: block;
     box-sizing: border-box;
     font-size: 0.833rem;
     outline: none;
     display: block;
+    line-height:0;
 
     &:focus ~ ${Label} {
         left: 1px;
@@ -55,7 +57,7 @@ export const Select = styled.select`
     border-radius: 3px;
     border: 1px solid #303031;
     // margin-top: 20px;
-    //font-family: GothamLightItalic;
+    //font-family: 'GothamLightItalic';
     //font-weight: 500;
     font-style: italic;
     padding-left: 10px;
