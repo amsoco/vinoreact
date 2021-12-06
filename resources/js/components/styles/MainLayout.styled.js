@@ -41,7 +41,7 @@ const MainLayout = styled.main`
         max-width:760px;
         margin-left:auto;
         margin-right:auto;
-        width:85%;
+         width:85%;
         display:block;
     }
 

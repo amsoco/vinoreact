@@ -24,7 +24,7 @@ font-size:0.833rem;
 Font 
 ---------------------------------------------
 
-font-family: "LincolnMillerBanner-Roman"
+font-family: "LincolnMillerBanner"
 font-weight:200;
 
 Texte Générique
@@ -36,7 +36,7 @@ font-weight: 500;
 font-style: italic;
 
 Bouton
-font-family: 'Gotham Black';
+font-family: 'GothamBlackF';
 font-weight: 300;
 
 
@@ -60,7 +60,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: 'Gotham Black';
+    font-family: GothamBlack;
     font-weight: 500;
     font-style: normal;
     max-width: 100%;
@@ -77,7 +77,7 @@ const GlobalStyles = createGlobalStyle`
   a:hover,
   a:active,
   a {
-    font-family: 'Gotham Black';
+    font-family: GothamBlack;
     font-weight: 500;
     font-style: normal;
     text-decoration: none;
@@ -89,7 +89,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-family: "LincolnMillerBanner-Roman";
+    font-family: LincolnMillerBanner;
     font-size: 2.488rem;
     font-weight:200;
   }
@@ -99,7 +99,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h3 {
-    font-family: "LincolnMillerBanner-Roman";
+    font-family: LincolnMillerBanner;
     font-size: 1.728rem;
     font-weight:200;
   }
@@ -113,6 +113,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
  p {
+    
     font-size: 1rem;
   }
 
