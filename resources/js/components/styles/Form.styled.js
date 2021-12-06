@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Form = styled.form`
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,6 +9,7 @@ export const Form = styled.form`
     width: 100%;
     max-width: 350px;
     margin: 0 20px 0 20px;
+    position:relative;
     & > *:not(:first-child) {
         margin-top: 30px;
 

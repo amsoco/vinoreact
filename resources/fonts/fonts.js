@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
-import GothamBlackLink from '/fonts/GothamBlack.ttf';
-import GothamLightItalic from '/fonts/GothamLightItalic.ttf';
-import GothamMedium from '/fonts/GothamMedium.ttf';
-import LincolnMillerBanner from '/fonts/LincolnMillerBanner.ttf';
+import GothamBlackLink from './GothamBlack.ttf';
+import GothamLightItalic from './GothamLightItalic.ttf';
+import GothamMedium from './GothamMedium.ttf';
+import LincolnMillerBanner from './LincolnMillerBanner.ttf';
 
 export default createGlobalStyle`
 
