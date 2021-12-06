@@ -25,9 +25,11 @@ export const CellierProvider = ({ children }) => {
         return bouteille;
     };
 
+    const searchWiki = (search) => Http.get(`search/${search}`);
+
     return (
         <CellierContext.Provider
-            value={{ getBouteillesCellier, getBouteille, loading }}
+            value={{ getBouteillesCellier, getBouteille, searchWiki, loading }}
         >
             {children}
         </CellierContext.Provider>

@@ -1,14 +1,15 @@
-import React, { useState , useRef } from "react";
-import { RechercheInput } from './styles/Input.styled';
+import React from "react";
+import { RechercheInput } from "./styles/Input.styled";
 
-const Recherche = () => {
+const Recherche = ({ placeholder, value, onChange }) => {
 
-
-    // composant de recherchce
     return (
-        <RechercheInput placeholder='Recherche dans ton cellier'>
-        </RechercheInput>
-    )
-}
+        <RechercheInput
+            placeholder={placeholder}
+            onChange={onChange}
+            value={value}
+        />
+    );
+};
 
 export default Recherche;

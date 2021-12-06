@@ -78,9 +78,9 @@ class Wiki_vinController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function search(Request $request)
+    public function search($key)
     {
-        $key = trim($request->get('q'));
+        //$key = trim($request->get('q'));
         return Wiki_vin::where('nom', 'LIKE', '%' .$key. '%')->get();
     }
 
