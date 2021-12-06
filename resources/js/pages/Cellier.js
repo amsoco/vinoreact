@@ -53,7 +53,7 @@ const Cellier = () => {
                 <h1>Ton Cellier</h1>
                 <h3>{user?.name}</h3>
             </div>
-            <Recherche placeholder='Recherche dans ton cellier' />
+            <Recherche />
             {bouteilles.length ? (
                 bouteilles.map((bouteille) => (
                     <CellierBouteille

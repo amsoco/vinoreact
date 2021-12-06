@@ -29,7 +29,7 @@ export const Input = styled.input`
     background-color: #d8d8d8;
     border-radius: 3px;
     border: 1px solid #303031;
-    font-family: GothamLightItalic;
+    //font-family: GothamLightItalic;
     font-weight: 300;
     font-style: italic;
     padding-left: 10px;
@@ -74,7 +74,7 @@ export const RechercheInput = styled.input`
     border-bottom : 1px solid  #D8D8D8;
     padding:15px 10px 15px 10px;
     margin-top: 40px;
-    font-family: GothamLightItalic;
+    //font-family: GothamLightItalic;
    // font-weight: 500;
    // font-style: italic;
     line-height:1px;
