@@ -76,7 +76,7 @@ export const RechercheInput = styled.input`
     border-bottom : 1px solid  #D8D8D8;
     padding:15px 10px 15px 10px;
     margin-top: 40px;
-    font-family: GothamLightItalic;
+    //font-family: GothamLightItalic;
    // font-weight: 500;
    // font-style: italic;
     line-height:1px;
