@@ -10,7 +10,7 @@ export const Button = styled.button`
   width: 100%;
   background-color: ${({ bg }) => bg || '#fff'};
   color: ${({ color }) => color || '#333'};
-  font-family: 'Gotham Black';
+  font-family: Gotham Black;
   width:100%;
   max-width: 850px;
   font-size: 1.2rem;
@@ -24,7 +24,7 @@ export const Button = styled.button`
     transform: scale(0.99);
   }
 `
-// le bouton pour retourner ne haut de la page dans les longs celliers
+// le bouton pour retourner haut de la page dans les longs celliers
 export const ButtonBackUp = styled.div`
   border-radius: 2px;
   cursor: pointer;

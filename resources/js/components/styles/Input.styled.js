@@ -3,20 +3,20 @@ import styled, { css } from "styled-components";
 // les différent input 
 export const Label = styled.label`
     font-size: 1rem;
-    font-family: "Gotham Thin";
+    font-family: GothamLightItalic;
     font-weight: 500;
     font-style: italic;
     position: absolute;
     pointer-events: none;
     left: 15px;
-    top: 12px;
+    top: 25px;
     color: black;
     transition: 200ms ease all;
     ${({ shrink }) =>
         shrink &&
         css`
             left: -4px;
-            top: -18px;
+            top: -14px;
             color: white;
             font-size: 0.8rem;
         `}
@@ -29,10 +29,11 @@ export const Input = styled.input`
     background-color: #d8d8d8;
     border-radius: 3px;
     border: 1px solid #303031;
-    font-family: "Gotham Thin";
-    font-weight: 500;
+    font-family: GothamLightItalic;
+    font-weight: 300;
     font-style: italic;
     padding-left: 10px;
+    
     box-sizing: border-box;
     font-size: 0.833rem;
     outline: none;
@@ -40,7 +41,7 @@ export const Input = styled.input`
 
     &:focus ~ ${Label} {
         left: 1px;
-        top: -18px;
+        top: -14px;
         color: #fff;
         font-size: 0.8rem;
     }
@@ -54,14 +55,15 @@ export const Select = styled.select`
     border-radius: 3px;
     border: 1px solid #303031;
     // margin-top: 20px;
-    font-family: "Gotham Thin";
-    font-weight: 500;
+    //font-family: GothamLightItalic;
+    //font-weight: 500;
     font-style: italic;
     padding-left: 10px;
     box-sizing: border-box;
     font-size: 0.833rem;
     cursor: pointer;
     outline: none;
+    
 `
 
 export const RechercheInput = styled.input`
@@ -72,8 +74,10 @@ export const RechercheInput = styled.input`
     border-bottom : 1px solid  #D8D8D8;
     padding:15px 10px 15px 10px;
     margin-top: 40px;
-    font-family: "Gotham Thin";
-    font-weight: 500;
-    font-style: italic;
+    font-family: GothamLightItalic;
+   // font-weight: 500;
+   // font-style: italic;
+    line-height:1px;
+
 
 `

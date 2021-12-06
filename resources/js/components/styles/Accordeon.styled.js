@@ -7,12 +7,11 @@ export const AccordeonSection = styled.section`
 
     div {
         overflow: hidden;
-        transition: height 0.6s ease-out;
+        transition: height 0.4s ease-out;
 
             p  {
             padding: 20px;
-            font-family: 'Gotham';
-
+            font-family: GothamMedium;
         }
     }
 
@@ -26,22 +25,24 @@ export const AccordeonSection = styled.section`
         padding-top:15px;
         padding-bottom:15px;
         display:flex;
-        line-height:0;
+
 
         img {
             height : 12px;
             margin-left: auto;
-            transition: transform 0.6s ease;
+            transition: transform 0.4s ease;
             margin-bottom: auto;
             margin-top:auto;
             transform: rotate(${({ rotate }) => rotate || '0'});
+
         }
 
         p {
-            font-family: 'Gotham';
+            font-family: GothamMedium;
             font-weight: 900;
             font-style: normal;
             font-size:1.2rem;
+            padding-top:15px;
         }
     }
 
