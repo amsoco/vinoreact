@@ -10,7 +10,7 @@ export const CellierBouteilleSection = styled.section`
     p {
         margin: 20px 0px 0px 0px;
         font-size:1.44rem;
-        font-family: "LincolnMillerBanner";
+        font-family: LincolnMillerBanner;
         margin-left:auto;
     }
 
@@ -47,7 +47,7 @@ export const CellierBouteilleSection = styled.section`
 
     &>div>div>p:last-child {
         color:#58111A;
-        font-family: 'Gotham Black';
+        font-family: Gotham Black;
         font-weight: 100;
         border: 2px solid #58111A;
         padding: 4px;

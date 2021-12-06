@@ -22,7 +22,7 @@ export const Form = styled.form`
 export const Legend = styled.legend`
     color: #fff;
     font-size:  2.488rem;
-    font-family: "GothamBlack";
+    font-family: GothamBlack;
     //margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
@@ -34,7 +34,7 @@ export const Legend = styled.legend`
 export const Legend2 = styled.legend`
     color: #fff;
     font-size:  1.728rem;
-    font-family: "GothamBlack";
+    font-family: GothamBlack;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;

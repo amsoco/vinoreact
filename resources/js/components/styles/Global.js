@@ -36,7 +36,7 @@ font-weight: 500;
 font-style: italic;
 
 Bouton
-font-family: 'GothamBlack';
+font-family: 'GothamBlackF';
 font-weight: 300;
 
 
@@ -60,7 +60,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: 'GothamBlack';
+    font-family: GothamBlack;
     font-weight: 500;
     font-style: normal;
     max-width: 100%;
@@ -77,7 +77,7 @@ const GlobalStyles = createGlobalStyle`
   a:hover,
   a:active,
   a {
-    font-family: 'GothamBlack';
+    font-family: GothamBlack;
     font-weight: 500;
     font-style: normal;
     text-decoration: none;
@@ -89,7 +89,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-family: "LincolnMillerBanner";
+    font-family: LincolnMillerBanner;
     font-size: 2.488rem;
     font-weight:200;
   }
@@ -99,7 +99,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h3 {
-    font-family: "LincolnMillerBanner";
+    font-family: LincolnMillerBanner;
     font-size: 1.728rem;
     font-weight:200;
   }

@@ -17,12 +17,10 @@ export const NavBarCountainer = styled.header`
         padding:20px;
         box-shadow: rgba(0, 0, 0, 0.10) 1.95px 1.95px 2.6px;
 
-
             div {
                 display:flex;
                 flex-direction: column;
                 cursor: pointer;
-
 
                 div {
                     width:20px;
@@ -40,6 +38,7 @@ export const NavBarCountainer = styled.header`
                     transition: opacity 0.6s ease;
                     opacity: ${({ display }) => display || '100%'};
                 }
+
                 div:nth-of-type(3){
                     transition: transform 0.6s ease;
                     transform: rotate(${({ rotateNegative}) => rotateNegative|| '0'}) translate(${({ translateUp }) => translateUp || '0'} , ${({ translateUp }) => translateUp || '0'} );

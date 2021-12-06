@@ -11,7 +11,7 @@ export const AccordeonSection = styled.section`
 
             p  {
             padding: 20px;
-            font-family: 'GothamMedium';
+            font-family: GothamMedium;
         }
     }
 
@@ -38,7 +38,7 @@ export const AccordeonSection = styled.section`
         }
 
         p {
-            font-family: 'GothamMedium';
+            font-family: GothamMedium;
             font-weight: 900;
             font-style: normal;
             font-size:1.2rem;

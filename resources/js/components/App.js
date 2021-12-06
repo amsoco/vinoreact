@@ -22,8 +22,9 @@ const App = () => (
     <Router>
         <UserProvider>
             <CellierProvider>
-                <GlobalStyles />
                 <GlobalFonts />
+                <GlobalStyles />
+                
                 {/* afficher un fallback au chargement de la page avec Suspense: un spinner ou la page de loading vino? */}
                 <Suspense fallback="">
                     <Routes>
