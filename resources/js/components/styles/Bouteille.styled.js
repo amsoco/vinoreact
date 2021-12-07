@@ -55,8 +55,8 @@ export const BouteilleSection = styled.section`
         justify-content: space-between;
     }
 
-    section>div:nth-of-type(2) {
-        text-align:right;
+    >section>div:nth-of-type(2) {
+       text-align:right; 
     }
 
     section>div p{

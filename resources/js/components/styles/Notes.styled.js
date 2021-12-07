@@ -42,6 +42,14 @@ export const NotesCountainer = styled.section`
         margin-right:10px;
     }
 
+    & div>select {
+        height:30px;
+        width:80px;
+        background:#fff;
+    }
+
+
+
 
 
 `
