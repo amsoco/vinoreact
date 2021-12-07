@@ -12,7 +12,7 @@ export const BouteilleSection = styled.section`
 
     }
 
-    img:first-child {
+    &>img:first-child {
         margin:auto;
         margin-top:60px;
         display:block; 
@@ -37,6 +37,12 @@ export const BouteilleSection = styled.section`
         margin-top:20px;
         margin-left:auto;
         margin-right:auto;
+    }
+
+
+    &>div {
+        margin-top:30px;
+
     }
 
     &>button:nth-of-type(1){

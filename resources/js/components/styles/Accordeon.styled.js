@@ -5,14 +5,18 @@ export const AccordeonSection = styled.section`
     display: flex;
     flex-direction: column;
 
-    div {
+    &>div {
         overflow: hidden;
         transition: height 0.4s ease-out;
 
-            p  {
-            padding: 20px;
+        >div {
+            padding: 20px 0px 20px 20px;
+            //min-height:60px;
             font-family: GothamMedium;
+            line-height: 0;
+
         }
+
     }
 
     button{

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { BouteilleSection } from "../components/styles/Bouteille.styled";
-import { Button } from "../components/styles/Button.styled";
+import { Button} from "../components/styles/Button.styled";
+import { Input, Select } from '../components/styles/Input.styled';
 import Layout from "../components/Layout";
 import Accordeon from "../components/Accordeon";
+import Notes from "../components/Notes";
 import BouteillePhoto from "../assets/images/bouteille.jpg";
 import { useCellier } from "../context/cellier";
 import Loader from "../components/Loader";
@@ -54,7 +56,8 @@ const Bouteille = () => {
                     ></Accordeon>
                     <Accordeon
                         titre="Notes"
-                        content={bouteille.note}
+                        // content={bouteille.note, <Select />}
+                        content= {<Notes note={bouteille.note} />}
                     ></Accordeon>
                     <Accordeon
                         titre="Modification"
