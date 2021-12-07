@@ -11,7 +11,7 @@ padding: 20px 10px 20px 10px;
     p {
         margin: 20px 0px 0px 0px;
         font-size: 1.44rem;
-        font-family: "LincolnMillerBanner-Roman";
+        font-family: LincolnMillerBanner;
         margin-left: auto;
     }
 

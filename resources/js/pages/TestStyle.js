@@ -2,7 +2,7 @@
 //import { Input, Select } from '../components/styles/Input.styled';
 //import BouteilleBlackLogo from "../assets/images/bouteilleBlack.png";
 //mport Chevron from "../assets/svg/chevron.svg";
-//import Accordeon from "../components/Accordeon";
+import Accordeon from "../components/Accordeon";
 import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import BackUp from "../components/BackUp";

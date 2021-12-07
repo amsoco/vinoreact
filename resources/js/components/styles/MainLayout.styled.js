@@ -28,7 +28,7 @@ const MainLayout = styled.main`
         margin-top: 60px;
     }
 
-    section:nth-of-type(1) {
+    &>section:nth-of-type(1) {
         border-top:none;
         margin-top: 30px;
     }

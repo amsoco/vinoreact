@@ -35,7 +35,7 @@ const Accordeon = (props) => {
                 <img src={Chevron} alt="chevronBlack"/>
             </button>
             <div ref={content} style={{ height: `${setHeight}` }} >
-                <p >{props.content}</p> 
+                <div >{props.content}</div> 
             </div>
         </AccordeonSection>
     )
