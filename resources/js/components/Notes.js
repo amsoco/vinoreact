@@ -25,7 +25,7 @@ const Notes = ({note , bouteille}) => {
     };
 
     const updateNote = async (bouteilleId, noteNew) => {
-        await Http.put(`bouteilles/editnote/${bouteilleId}`, {
+        await Http.put(`bouteilles/editField/${bouteilleId}`, {
             note: `${noteNew}`,
         })
     };
