@@ -19,12 +19,15 @@ const Cellier = () => {
     useEffect(() => {
         const updateQte = localStorage.getItem("updateQte");
         const bouteilleId = localStorage.getItem("bouteilleId");
-        if (updateQte) {
-            updateBouteille(bouteilleId, updateQte);
-        } else {
-            getBouteilles();
-        }
+
+            if (updateQte) {
+                updateBouteille(bouteilleId, updateQte);
+            } else {
+                getBouteilles();
+            }
+
     }, []);
+    
     const updateBouteille = async (bouteilleId, qte) => {
         // Cette request mettra à jour le nombre de bouteilles que l'utilisateur a défini auparavant dans Bouteille.js
         await Http.put(`bouteilles/editqte/${bouteilleId}`, {

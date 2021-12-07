@@ -180,6 +180,24 @@ class BouteilleController extends Controller
         ]);
     }
 
+            /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateNote(Request $request)
+    {
+        $request->validate([
+            'note' => 'required|integer|min:1|max:5',
+        ]);
+
+        return Bouteille::where('id', $request->id)->update([
+        'note' => $request->note,
+        ]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

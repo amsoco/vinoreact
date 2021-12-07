@@ -67,7 +67,7 @@ const Bouteille = () => {
                     <Accordeon
                         titre="Notes"
                         // content={bouteille.note, <Select />}
-                        content= {<Notes note={bouteille.note} />}
+                        content= {<Notes note={bouteille.note} bouteille={bouteille.id} />}
                     ></Accordeon>
                     <Accordeon
                         titre="Modification"
