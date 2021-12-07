@@ -31,13 +31,8 @@ export const Input = styled.input`
     border-radius: 3px;
     border: 1px solid #303031;
     //font-family: GothamLightItalic;
-<<<<<<< HEAD
-    // font-weight: 300;
-    //  font-style: italic;
-=======
     //font-weight: 300;
     //font-style: italic;
->>>>>>> upstream/main
     padding-left: 10px;
     display: block;
     box-sizing: border-box;
@@ -80,7 +75,6 @@ export const RechercheInput = styled.input`
     padding: 15px 10px 15px 10px;
     margin-top: 40px;
     //font-family: GothamLightItalic;
-<<<<<<< HEAD
     // font-weight: 500;
     // font-style: italic;
     line-height: 1px;
@@ -100,9 +94,3 @@ export const EditionAjoutInput = styled.input`
     outline: none;
     margin: 0;
 `;
-=======
-    //font-weight: 500;
-    //font-style: italic;
-    line-height:1px;
-`
->>>>>>> upstream/main
