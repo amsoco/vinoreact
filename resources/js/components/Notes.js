@@ -8,7 +8,7 @@ import Tache from "../assets/svg/tacheNote.svg";
 const Notes = ({note}) => {
 
 
-    const modifierNote = (props) => {
+    const modifierNote = () => {
         console.log('test')
     }
 
@@ -23,7 +23,7 @@ const Notes = ({note}) => {
                 </span>
             </div>
             <div>
-                    <button onClick={()=>modifierNote}>Mofifier note</button>
+                    <button onClick={modifierNote}>Mofifier note</button>
             </div>
         </NotesCountainer>
     );
