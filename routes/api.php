@@ -25,7 +25,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 
 //Protected routes
-// Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/bouteilles', [BouteilleController::class, 'index']);
     Route::get('/bouteilles/{id}', [BouteilleController::class, 'show']);
@@ -53,4 +53,4 @@ Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'me']);
     Route::delete('/user/{id}', [AuthController::class, 'destroyUser']);
 
-// });
+});
