@@ -38,6 +38,8 @@ export const NotesCountainer = styled.section`
         padding:0;
         border-bottom:1px solid #303031;
         cursor: pointer;
+        margin-top:23px;
+        margin-right:10px;
     }
 
 
