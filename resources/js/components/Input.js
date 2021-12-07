@@ -2,8 +2,9 @@ import React, {useState} from "react";
 //import { InputContainer } from "./styles/InputContainer.styled";
 import Axios from 'axios';
 import {Image} from 'cloudinary-react';
+import {Transformation} from 'cloudinary-react';
 
-// upload d'image a cloudinary
+// upload d'image sur cloudinary
 const Input = () => {
     const [imageSelected, setImageSelected] = useState("");
     const [imageUrl, setImageUrl] = useState("");
@@ -28,13 +29,15 @@ const Input = () => {
                 <button onClick={uploadImage}>Téléverser l'image</button>
 
                 <Image 
-                style={{ width: 100 }}
                 cloudName="vino-project"
-                publicId={publicId}/>
+                publicId={publicId}
+                imageUrl={imageUrl} >
+                    <Transformation width="80" height="120" crop="fill"/>
+                </Image>
             </div>
     )
 
-    }
+}
 
 
 export default Input;
