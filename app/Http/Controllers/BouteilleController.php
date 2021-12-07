@@ -7,6 +7,8 @@ use App\Models\Bouteille;
 use App\Models\Wiki_vin;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Cloudinary\Api\Upload\UploadApi;
+
 
 class BouteilleController extends Controller
 {
@@ -85,7 +87,7 @@ class BouteilleController extends Controller
                 'height' => 120,
                 'crop' => 'fill'
             ]
-        ])->getSecurePath(); 
+        ])->getSecurePath(); //returns the secure URL
 
         dd($response); //dumps the response returned from Cloudinary for the uploaded file
 
@@ -209,6 +211,11 @@ class BouteilleController extends Controller
        return Bouteille::where('id', $id)->delete();
     }
 
+    /* remove the image from Cloudinary */ 
+    public function delete($public_id)
+    {
+        $cloudinary->uploadApi()->destroy($public_id);
+    }
 
 
 }
