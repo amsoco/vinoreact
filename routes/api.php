@@ -23,6 +23,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
+
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -32,7 +33,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/bouteilles/create', [BouteilleController::class, 'store']);
     Route::get('/bouteilles/edit/{id}', [BouteilleController::class, 'edit']);
     Route::put('/bouteilles/edit/{id}', [BouteilleController::class, 'update']);
+    Route::put('/bouteilles/editField/{id}', [BouteilleController::class, 'updateField']);
     Route::delete('/bouteilles/{id}', [BouteilleController::class, 'destroy']);
+
+    Route::post('/upload', [BouteilleController::class, 'storeUploads']);
+
 
     Route::get('/cellier', [CellierController::class, 'index']);
     Route::get('/cellier/{id}', [CellierController::class, 'show']);
@@ -46,5 +51,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/search/{search}', [Wiki_vinController::class, 'search']);
 
     Route::get('/user', [AuthController::class, 'me']);
+    Route::delete('/user/{id}', [AuthController::class, 'destroyUser']);
 
 });

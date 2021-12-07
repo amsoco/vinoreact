@@ -7,6 +7,8 @@ use App\Models\Bouteille;
 use App\Models\Wiki_vin;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Cloudinary\Api\Upload\UploadApi;
+
 
 class BouteilleController extends Controller
 {
@@ -75,6 +77,26 @@ class BouteilleController extends Controller
         ]);
     }
 
+    /* store uploads */ 
+    public function storeUploads(Request $request)
+    {
+        $response = cloudinary()->upload($request->file('file')->getRealPath(), [
+            'transformation' => [
+                'gravity' => 'auto',
+                'width' => 80,
+                'height' => 120,
+                'crop' => 'fill'
+            ]
+        ])->getSecurePath(); //returns the secure URL
+
+        dd($response); //dumps the response returned from Cloudinary for the uploaded file
+
+        return back()
+            ->with('success', 'File uploaded successfully');
+    }
+
+
+
     /**
      * Display the specified resource.
      *
@@ -141,6 +163,39 @@ class BouteilleController extends Controller
         'cellier_id' => $request->cellier_id,
         ]);
     }
+    
+    /**
+     * Update the specified field in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateField(Request $request)
+    {
+        if($request->note){
+            $request->validate([
+                    'note' => 'integer|max:10',
+                ]);
+            return Bouteille::where('id', $request->id)->update([
+                    'note' => $request->note,
+            ]);
+        }elseif($request->quantite){
+            $request->validate([
+                    'quantite' => 'required|integer|min:0',
+                ]);
+            return Bouteille::where('id', $request->id)->update([
+                'quantite' => $request->quantite,
+            ]);
+        }else{
+            $request->validate([
+                'commentaire' => 'string|max:255',
+            ]);
+            return Bouteille::where('id', $request->id)->update([
+                'commentaire' => $request->commentaire,
+            ]);
+        }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -152,4 +207,15 @@ class BouteilleController extends Controller
     {
        return Bouteille::where('id', $id)->delete();
     }
+<<<<<<< HEAD
+=======
+
+    /* remove the image from Cloudinary */ 
+    public function delete($public_id)
+    {
+        $cloudinary->uploadApi()->destroy($public_id);
+    }
+
+
+>>>>>>> upstream/main
 }

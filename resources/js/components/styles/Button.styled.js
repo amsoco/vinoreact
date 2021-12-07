@@ -10,7 +10,7 @@ export const Button = styled.button`
   width: 100%;
   background-color: ${({ bg }) => bg || '#fff'};
   color: ${({ color }) => color || '#333'};
-  font-family: Gotham Black;
+  font-family: GothamBlack;
   width:100%;
   max-width: 850px;
   font-size: 1.2rem;
@@ -37,7 +37,7 @@ export const ButtonBackUp = styled.div`
   display:block;
   //margin-top:20px;
   position:fixed;
-  bottom: 120px;
+  bottom: 10px;
   //right:10%;
   margin-left:auto;
 

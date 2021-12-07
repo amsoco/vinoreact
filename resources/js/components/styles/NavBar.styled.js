@@ -64,7 +64,8 @@ export const NavBarCountainer = styled.header`
             transition: transform 0.4s ease-out;
             background:#fff;
             height:100vh;
-            max-width:800px;
+            max-width:400px;
+            width:100%;
             transform:translate(${({ translateMenu }) => translateMenu || '0'} );
 
 
@@ -74,28 +75,6 @@ export const NavBarCountainer = styled.header`
                 margin-left:10px;
                 margin-right:10px;
 
-
-                // p:last-child {
-                //     cursor: pointer;
-                //     margin: 10px;
-                //     border-bottom: 2px solid #303031;
-                //     display: inline;
-                // }
-
-                // a:first-child {
-                //     text-decoration: none;
-                // }
-
-                // a {
-                //     margin-left:10px;
-                //     margin-right:40px;
-                //     color:#303031;
-                // }
-
-                // a:last-child{
-                //     margin-right:10px;
-                //     margin-left:auto;
-                // }
 
             }
 
@@ -120,10 +99,6 @@ export const NavBarCountainer = styled.header`
 
             //}
         }
-
-        // &>button {
-        //     margin:20px
-        // }
 
         h4 {
             margin: 20px;

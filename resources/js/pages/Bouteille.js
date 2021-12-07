@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { BouteilleSection } from "../components/styles/Bouteille.styled";
-import { Button } from "../components/styles/Button.styled";
+import { Button} from "../components/styles/Button.styled";
+import { Input, Select } from '../components/styles/Input.styled';
 import Layout from "../components/Layout";
 import Accordeon from "../components/Accordeon";
+import Notes from "../components/Notes";
 import BouteillePhoto from "../assets/images/bouteille.jpg";
 import { useCellier } from "../context/cellier";
 import Loader from "../components/Loader";
@@ -13,11 +15,14 @@ const Bouteille = () => {
     const { getBouteille, loading } = useCellier();
     const { cellier, bouteilleId } = useParams();
     const navigate = useNavigate();
+    const [counter, setCounter] = useState("");
 
     useEffect(() => {
         let isSubscribed = true;
         getBouteille(bouteilleId).then(({ data }) => {
             setBouteille(data);
+            setCounter(data.quantite);
+            localStorage.setItem("bouteilleId", bouteilleId);
         });
         return () => (isSubscribed = false);
     }, []);
@@ -33,7 +38,7 @@ const Bouteille = () => {
                     alt="logo"
                 />
                 <h2>{bouteille.nom}</h2>
-                <h3>Quantité {bouteille.quantite}</h3>
+                <h3>Quantité {counter}</h3>
                 <section>
                     <div>
                         <p>Pays</p>
@@ -63,7 +68,8 @@ const Bouteille = () => {
                     ></Accordeon>
                     <Accordeon
                         titre="Notes"
-                        content={bouteille.note}
+                        // content={bouteille.note, <Select />}
+                        content= {<Notes note={bouteille.note} bouteille={bouteille.id} />}
                     ></Accordeon>
                     <Accordeon
                         titre="Modification"
@@ -75,10 +81,22 @@ const Bouteille = () => {
                     color="#303031"
                     colorHover="#fff"
                     bgHover="#303031"
+                    onClick={() => {
+                        setCounter(counter + 1);
+                        localStorage.setItem("updateQte", counter + 1);
+                    }}
                 >
                     AJOUTER
                 </Button>
-                <Button bg="#303031" color="#fff">
+                <Button
+                    bg="#303031"
+                    color="#fff"
+                    onClick={() => {
+                        counter > 0 && setCounter(counter - 1);
+                        counter >= 1 &&
+                            localStorage.setItem("updateQte", counter - 1);
+                    }}
+                >
                     BOIRE
                 </Button>
             </BouteilleSection>

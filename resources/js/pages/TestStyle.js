@@ -2,7 +2,7 @@
 //import { Input, Select } from '../components/styles/Input.styled';
 //import BouteilleBlackLogo from "../assets/images/bouteilleBlack.png";
 //mport Chevron from "../assets/svg/chevron.svg";
-//import Accordeon from "../components/Accordeon";
+import Accordeon from "../components/Accordeon";
 import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import BackUp from "../components/BackUp";
@@ -10,10 +10,6 @@ import CellierBouteille from "../components/CellierBouteille";
 import Input from "../components/Input";
 
 const TestStyle = () => {
-    const test = () => {
-        console.log("test");
-    };
-
     const backTop = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
@@ -41,11 +37,11 @@ const TestStyle = () => {
     //         <CellierBouteille></CellierBouteille>
     //         <CellierBouteille></CellierBouteille> */}
             // {/* <BackUp></BackUp> */}
-            // {/* <Input/> */}
+             {<Input/>}
             //{" "}
             {/* <Accordeon titre='Description' content="Vin mousseu bon"></Accordeon>
     //         <Accordeon titre='Modification' content={  <Select>
-   
+
     //             </Select>}>                   <option>Cellier</option>
     //         </Accordeon> */}
             // {/* /// <img src={BouteilleBlackLogo} alt="logo" />  */}

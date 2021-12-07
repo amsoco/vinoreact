@@ -30,6 +30,7 @@ export const Legend = styled.legend`
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
+
 `
 
 
@@ -40,8 +41,9 @@ export const Legend2 = styled.legend`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    width: 100%;
-`
+    width: auto;
+   `
+
 
 export const LegendDark = styled.legend`
     color: #000;

@@ -31,12 +31,17 @@ export const Input = styled.input`
     border-radius: 3px;
     border: 1px solid #303031;
     //font-family: GothamLightItalic;
+<<<<<<< HEAD
     // font-weight: 300;
     //  font-style: italic;
+=======
+    //font-weight: 300;
+    //font-style: italic;
+>>>>>>> upstream/main
     padding-left: 10px;
     display: block;
     box-sizing: border-box;
-    font-size: 0.833rem;
+    font-size: 1rem;
     outline: none;
     display: block;
     line-height: 0;
@@ -56,13 +61,13 @@ export const Select = styled.select`
     background-color: #d8d8d8;
     border-radius: 3px;
     border: 1px solid #303031;
-    // margin-top: 20px;
-    //font-family: 'GothamLightItalic';
+    //margin-top: 20px;
+    //font-family: GothamLightItalic;
     //font-weight: 500;
     font-style: italic;
     padding-left: 10px;
     box-sizing: border-box;
-    font-size: 0.833rem;
+    font-size: 1rem;
     cursor: pointer;
     outline: none;
 `;
@@ -75,6 +80,7 @@ export const RechercheInput = styled.input`
     padding: 15px 10px 15px 10px;
     margin-top: 40px;
     //font-family: GothamLightItalic;
+<<<<<<< HEAD
     // font-weight: 500;
     // font-style: italic;
     line-height: 1px;
@@ -94,3 +100,9 @@ export const EditionAjoutInput = styled.input`
     outline: none;
     margin: 0;
 `;
+=======
+    //font-weight: 500;
+    //font-style: italic;
+    line-height:1px;
+`
+>>>>>>> upstream/main

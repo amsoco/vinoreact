@@ -88,4 +88,13 @@ class AuthController extends Controller
     {
         Auth::logout();
     }
+
+    /**
+     * @param  \App\Models\User  $user
+     */
+    public function destroyUser(User $user)
+    {
+        $user = User::where('id', $user->id)->first();
+        $user->delete();
+    }
 }
