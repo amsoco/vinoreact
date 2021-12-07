@@ -75,7 +75,7 @@ class BouteilleController extends Controller
         ]);
     }
 
-    /* store uploads */ 
+    /* store uploads */
     public function storeUploads(Request $request)
     {
         $response = cloudinary()->upload($request->file('file')->getRealPath(), [
@@ -85,7 +85,7 @@ class BouteilleController extends Controller
                 'height' => 120,
                 'crop' => 'fill'
             ]
-        ])->getSecurePath(); 
+        ])->getSecurePath();
 
         dd($response); //dumps the response returned from Cloudinary for the uploaded file
 
@@ -162,22 +162,37 @@ class BouteilleController extends Controller
         ]);
     }
 
-        /**
-     * Update the specified resource in storage.
+            /**
+     * Update the specified field in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateQuantite(Request $request)
+    public function updateField(Request $request)
     {
-        $request->validate([
-            'quantite' => 'required|integer|min:0',
-        ]);
-
-        return Bouteille::where('id', $request->id)->update([
-        'quantite' => $request->quantite,
-        ]);
+        if($request->note){
+            $request->validate([
+                    'note' => 'integer|max:10',
+                ]);
+            return Bouteille::where('id', $request->id)->update([
+                    'note' => $request->note,
+            ]);
+        }elseif($request->quantite){
+            $request->validate([
+                    'quantite' => 'required|integer|min:0',
+                ]);
+            return Bouteille::where('id', $request->id)->update([
+                'quantite' => $request->quantite,
+            ]);
+        }else{
+            $request->validate([
+                'commentaire' => 'string|max:255',
+            ]);
+            return Bouteille::where('id', $request->id)->update([
+                'commentaire' => $request->commentaire,
+            ]);
+        }
     }
 
     /**
@@ -190,7 +205,5 @@ class BouteilleController extends Controller
     {
        return Bouteille::where('id', $id)->delete();
     }
-
-
 
 }

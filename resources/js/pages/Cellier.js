@@ -27,7 +27,7 @@ const Cellier = () => {
     }, []);
     const updateBouteille = async (bouteilleId, qte) => {
         // Cette request mettra à jour le nombre de bouteilles que l'utilisateur a défini auparavant dans Bouteille.js
-        await Http.put(`bouteilles/editqte/${bouteilleId}`, {
+        await Http.put(`bouteilles/editField/${bouteilleId}`, {
             quantite: qte,
         }).then(() => {
             getBouteilles();
