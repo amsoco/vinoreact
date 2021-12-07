@@ -118,7 +118,7 @@ export const NavBarCountainer = styled.header`
             //         margin: 20px auto 0px auto;
             //    }
 
-            }
+            //}
         }
 
         // &>button {
@@ -128,6 +128,4 @@ export const NavBarCountainer = styled.header`
         h4 {
             margin: 20px;
         }
-
-
-`
+        `

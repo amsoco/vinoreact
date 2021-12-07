@@ -152,7 +152,4 @@ class BouteilleController extends Controller
     {
        return Bouteille::where('id', $id)->delete();
     }
-
-
-
 }

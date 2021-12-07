@@ -28,7 +28,7 @@ const CellierBouteille = ({ bouteille, cellier }) => {
                 </div>
             </Link>
         </CellierBouteilleSection>
-    );
+    )
 };
 
 export default CellierBouteille;

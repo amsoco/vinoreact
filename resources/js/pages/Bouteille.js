@@ -9,16 +9,17 @@ import { useCellier } from "../context/cellier";
 import Loader from "../components/Loader";
 
 const Bouteille = () => {
-    
     const [bouteille, setBouteille] = useState({});
     const { getBouteille, loading } = useCellier();
     const { cellier, bouteilleId } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
+        let isSubscribed = true;
         getBouteille(bouteilleId).then(({ data }) => {
             setBouteille(data);
         });
+        return () => (isSubscribed = false);
     }, []);
 
     if (!bouteille) navigate(`/${cellier}`);
@@ -43,9 +44,17 @@ const Bouteille = () => {
                     <div>
                         <p>{bouteille.pays}</p>
                         <p>{bouteille.prix_achat} $</p>
-                        <p>{bouteille.cepage ? bouteille.cepage : 'Cépage inconnu'}</p>
-                        <p>{bouteille.millesime ? bouteille.millesime : 'Inconnu'}</p>
-                </div>
+                        <p>
+                            {bouteille.cepage
+                                ? bouteille.cepage
+                                : "Cépage inconnu"}
+                        </p>
+                        <p>
+                            {bouteille.millesime
+                                ? bouteille.millesime
+                                : "Inconnu"}
+                        </p>
+                    </div>
                 </section>
                 <div>
                     <Accordeon

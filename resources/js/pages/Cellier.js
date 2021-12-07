@@ -18,10 +18,12 @@ const Cellier = () => {
     useEffect(() => {
         const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
 
+        let isSubscribed = true;
         getBouteillesCellier(id).then(({ data }) => {
             setBouteilles(data);
             setNomCellier(nom_cellier);
         });
+        return () => (isSubscribed = false);
     }, []);
 
     useEffect(() => {
