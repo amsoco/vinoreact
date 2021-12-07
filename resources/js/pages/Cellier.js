@@ -26,13 +26,25 @@ const Cellier = () => {
                 getBouteilles();
             }
 
-        let isSubscribed = true;
+    }, []);
+    
+    const updateBouteille = async (bouteilleId, qte) => {
+        // Cette request mettra à jour le nombre de bouteilles que l'utilisateur a défini auparavant dans Bouteille.js
+        await Http.put(`bouteilles/editqte/${bouteilleId}`, {
+            quantite: qte,
+        }).then(() => {
+            getBouteilles();
+        });
+        localStorage.removeItem("updateQte");
+        localStorage.removeItem("bouteilleId");
+    };
+    const getBouteilles = async () => {
+        const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
         getBouteillesCellier(id).then(({ data }) => {
             setBouteilles(data);
             setNomCellier(nom_cellier);
         });
-        return () => (isSubscribed = false);
-    }, []);
+    };
 
     useEffect(() => {
         // listener sur windows dans le useEffect doit être supprimé dans la clean up fonction du useEffect
@@ -77,7 +89,7 @@ const Cellier = () => {
                     Aucune bouteille dans ton cellier
                 </p>
             )}
-             
+             
             <div
                 style={{
                     opacity: `${setOpacity}`,
