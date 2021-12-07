@@ -29,6 +29,15 @@ export const NotesCountainer = styled.section`
                 margin-right:5px;
             }
         }
+
+
+    }
+
+    & button {
+        border-top: none;
+        padding:0;
+        border-bottom:1px solid #303031;
+        cursor: pointer;
     }
 
 

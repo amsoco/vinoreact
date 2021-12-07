@@ -14,8 +14,11 @@ const Notes = ({note}) => {
                     {[...Array(note)].map((e, i) =><img key={i} src={Tache} alt="tache de vin "/>)}
                 </span>
                 <span>
-                    {[...Array(10)].map((e, i) =><img key={i} src={Bouteille} alt="bouteille"/>)}
+                    {[...Array(5)].map((e, i) =><img key={i} src={Bouteille} alt="bouteille"/>)}
                 </span>
+            </div>
+            <div>
+                    <button>Mofifier note</button>
             </div>
         </NotesCountainer>
     );
