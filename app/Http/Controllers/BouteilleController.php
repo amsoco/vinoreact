@@ -161,41 +161,38 @@ class BouteilleController extends Controller
         'cellier_id' => $request->cellier_id,
         ]);
     }
-
-        /**
-     * Update the specified resource in storage.
+    
+    /**
+     * Update the specified field in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateQuantite(Request $request)
+    public function updateField(Request $request)
     {
-        $request->validate([
-            'quantite' => 'required|integer|min:0',
-        ]);
-
-        return Bouteille::where('id', $request->id)->update([
-        'quantite' => $request->quantite,
-        ]);
-    }
-
-            /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function updateNote(Request $request)
-    {
-        $request->validate([
-            'note' => 'required|integer|min:1|max:5',
-        ]);
-
-        return Bouteille::where('id', $request->id)->update([
-        'note' => $request->note,
-        ]);
+        if($request->note){
+            $request->validate([
+                    'note' => 'integer|max:10',
+                ]);
+            return Bouteille::where('id', $request->id)->update([
+                    'note' => $request->note,
+            ]);
+        }elseif($request->quantite){
+            $request->validate([
+                    'quantite' => 'required|integer|min:0',
+                ]);
+            return Bouteille::where('id', $request->id)->update([
+                'quantite' => $request->quantite,
+            ]);
+        }else{
+            $request->validate([
+                'commentaire' => 'string|max:255',
+            ]);
+            return Bouteille::where('id', $request->id)->update([
+                'commentaire' => $request->commentaire,
+            ]);
+        }
     }
 
     /**
