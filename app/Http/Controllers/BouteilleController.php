@@ -75,6 +75,26 @@ class BouteilleController extends Controller
         ]);
     }
 
+    /* store uploads */ 
+    public function storeUploads(Request $request)
+    {
+        $response = cloudinary()->upload($request->file('file')->getRealPath(), [
+            'transformation' => [
+                'gravity' => 'auto',
+                'width' => 80,
+                'height' => 120,
+                'crop' => 'fill'
+            ]
+        ])->getSecurePath(); 
+
+        dd($response); //dumps the response returned from Cloudinary for the uploaded file
+
+        return back()
+            ->with('success', 'File uploaded successfully');
+    }
+
+
+
     /**
      * Display the specified resource.
      *

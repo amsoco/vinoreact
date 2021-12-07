@@ -41,7 +41,7 @@ const TestStyle = () => {
     //         <CellierBouteille></CellierBouteille>
     //         <CellierBouteille></CellierBouteille> */}
             // {/* <BackUp></BackUp> */}
-            // {/* <Input/> */}
+             {<Input/>}
             //{" "}
             {/* <Accordeon titre='Description' content="Vin mousseu bon"></Accordeon>
     //         <Accordeon titre='Modification' content={  <Select>
