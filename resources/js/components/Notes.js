@@ -3,38 +3,33 @@ import { NotesCountainer } from "./styles/Notes.styled";
 import Bouteille from "../assets/images/bouteilleGris.png";
 import Tache from "../assets/svg/tacheNote.svg";
 import { Select } from "../components/styles/Input.styled";
+import { useNavigate, useParams } from "react-router";
+import Http from "../HttpClient";
 
 
 
 const Notes = ({note , bouteille}) => {
+    const { bouteilleId } = useParams();
     const [setOpacity, setOpacityState] = useState("0");
     const [setNote, setNoteState] = useState(note);
-
+   
     const modifierNote = () => {
         setOpacityState("100%");
     }
 
-
-    const onSelectChange = (e, bouteille) => {
+    const onSelectChange = (e, bouteilleId) => {
         const noteNew = e.target.value;
-        //updateNote(bouteille, noteNew)
-        //console.log(e.target.value)
+        updateNote(bouteilleId, noteNew)
         setOpacityState("0");
-       // note = e.target.value;
-        
         setNoteState(parseInt(e.target.value))
     };
 
-    const updateNote = async (bouteille, noteNew) => {
-        await Http.put(`bouteilles/notes/${bouteille}`, {
-            notes: noteNew,
-        }).then(() => {
-            getBouteille(bouteille);
-        });
+    const updateNote = async (bouteilleId, noteNew) => {
+        await Http.put(`bouteilles/editnote/${bouteilleId}`, {
+            note: `${noteNew}`,
+        })
     };
 
-
-console.log(setNote)
     return (
         <NotesCountainer>
             <div>
@@ -47,7 +42,7 @@ console.log(setNote)
             </div>
             <div>
                     <button onClick={modifierNote}>Modifier note</button>
-                    <Select style={{opacity: `${setOpacity}`, transition: "opacity 0.4s ease"}} name="cellier" onChange={onSelectChange} value={setNote.toString()}>
+                    <Select style={{opacity: `${setOpacity}`, transition: "opacity 0.4s ease"}} name="cellier" onChange={(e)=>onSelectChange(e, bouteilleId)} value={setNote}>
                         <option value='1' >1</option>
                         <option value='2' >2</option>
                         <option value='3' >3</option>
