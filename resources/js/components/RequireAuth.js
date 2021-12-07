@@ -5,9 +5,7 @@ import { Navigate } from "react-router-dom";
 const RequireAuth = ({ children }) => {
     const { user } = useUser();
 
-    console.log('user', user)
-
-    if(user === null) return null
+    if (user === null) return null;
     return user ? (
         children
     ) : (

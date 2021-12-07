@@ -16,7 +16,7 @@ class CreateCelliersTable extends Migration
         Schema::create('celliers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom_cellier', 100);
-            $table->unsignedInteger('user_id')->index('fk_celliers_users1_idx');
+            $table->unsignedInteger('user_id')->index('fk_celliers_users1_idx')->onDelete('cascade');
             $table->timestamps();
         });
     }

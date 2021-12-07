@@ -9,15 +9,17 @@ import { useCellier } from "../context/cellier";
 import Loader from "../components/Loader";
 
 const Bouteille = () => {
-    
     const [bouteille, setBouteille] = useState({});
     const { getBouteille, loading } = useCellier();
     const { cellier, bouteilleId } = useParams();
     const navigate = useNavigate();
+    const [counter, setCounter] = useState("");
 
     useEffect(() => {
         getBouteille(bouteilleId).then(({ data }) => {
             setBouteille(data);
+            setCounter(data.quantite);
+            localStorage.setItem("bouteilleId", bouteilleId);
         });
     }, []);
 
@@ -32,7 +34,7 @@ const Bouteille = () => {
                     alt="logo"
                 />
                 <h2>{bouteille.nom}</h2>
-                <h3>Quantité {bouteille.quantite}</h3>
+                <h3>Quantité {counter}</h3>
                 <section>
                     <div>
                         <p>Pays</p>
@@ -43,9 +45,17 @@ const Bouteille = () => {
                     <div>
                         <p>{bouteille.pays}</p>
                         <p>{bouteille.prix_achat} $</p>
-                        <p>{bouteille.cepage ? bouteille.cepage : 'Cépage inconnu'}</p>
-                        <p>{bouteille.millesime ? bouteille.millesime : 'Inconnu'}</p>
-                </div>
+                        <p>
+                            {bouteille.cepage
+                                ? bouteille.cepage
+                                : "Cépage inconnu"}
+                        </p>
+                        <p>
+                            {bouteille.millesime
+                                ? bouteille.millesime
+                                : "Inconnu"}
+                        </p>
+                    </div>
                 </section>
                 <div>
                     <Accordeon
@@ -66,10 +76,22 @@ const Bouteille = () => {
                     color="#303031"
                     colorHover="#fff"
                     bgHover="#303031"
+                    onClick={() => {
+                        setCounter(counter + 1);
+                        localStorage.setItem("updateQte", counter + 1);
+                    }}
                 >
                     AJOUTER
                 </Button>
-                <Button bg="#303031" color="#fff">
+                <Button
+                    bg="#303031"
+                    color="#fff"
+                    onClick={() => {
+                        counter > 0 && setCounter(counter - 1);
+                        counter >= 1 &&
+                            localStorage.setItem("updateQte", counter - 1);
+                    }}
+                >
                     BOIRE
                 </Button>
             </BouteilleSection>
