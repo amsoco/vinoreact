@@ -162,7 +162,7 @@ class BouteilleController extends Controller
         ]);
     }
 
-            /**
+    /**
      * Update the specified field in storage.
      *
      * @param  \Illuminate\Http\Request  $request
