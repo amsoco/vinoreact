@@ -26,34 +26,13 @@ const Cellier = () => {
                 getBouteilles();
             }
 
-<<<<<<< HEAD
         let isSubscribed = true;
-=======
-    }, []);
-    
-    const updateBouteille = async (bouteilleId, qte) => {
-        // Cette request mettra à jour le nombre de bouteilles que l'utilisateur a défini auparavant dans Bouteille.js
-        await Http.put(`bouteilles/editqte/${bouteilleId}`, {
-            quantite: qte,
-        }).then(() => {
-            getBouteilles();
-        });
-        localStorage.removeItem("updateQte");
-        localStorage.removeItem("bouteilleId");
-    };
-    const getBouteilles = async () => {
-        const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
->>>>>>> upstream/main
         getBouteillesCellier(id).then(({ data }) => {
             setBouteilles(data);
             setNomCellier(nom_cellier);
         });
-<<<<<<< HEAD
         return () => (isSubscribed = false);
     }, []);
-=======
-    };
->>>>>>> upstream/main
 
     useEffect(() => {
         // listener sur windows dans le useEffect doit être supprimé dans la clean up fonction du useEffect
