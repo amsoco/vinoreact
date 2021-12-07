@@ -10,10 +10,6 @@ import CellierBouteille from "../components/CellierBouteille";
 import Input from "../components/Input";
 
 const TestStyle = () => {
-    const test = () => {
-        console.log("test");
-    };
-
     const backTop = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
@@ -45,7 +41,7 @@ const TestStyle = () => {
             //{" "}
             {/* <Accordeon titre='Description' content="Vin mousseu bon"></Accordeon>
     //         <Accordeon titre='Modification' content={  <Select>
-   
+
     //             </Select>}>                   <option>Cellier</option>
     //         </Accordeon> */}
             // {/* /// <img src={BouteilleBlackLogo} alt="logo" />  */}

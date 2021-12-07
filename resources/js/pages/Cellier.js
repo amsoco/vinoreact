@@ -6,6 +6,7 @@ import CellierBouteille from "../components/CellierBouteille";
 import Recherche from "../components/Recherche";
 import BackUp from "../components/BackUp";
 import Loader from "../components/Loader";
+import Http from "../HttpClient";
 
 const Cellier = () => {
     const [bouteilles, setBouteilles] = useState([]);
@@ -16,13 +17,31 @@ const Cellier = () => {
     const [scroll, setScroll] = useState(0);
 
     useEffect(() => {
+        const updateQte = localStorage.getItem("updateQte");
+        const bouteilleId = localStorage.getItem("bouteilleId");
+        if (updateQte) {
+            updateBouteille(bouteilleId, updateQte);
+        } else {
+            getBouteilles();
+        }
+    }, []);
+    const updateBouteille = async (bouteilleId, qte) => {
+        // Cette request mettra à jour le nombre de bouteilles que l'utilisateur a défini auparavant dans Bouteille.js
+        await Http.put(`bouteilles/editqte/${bouteilleId}`, {
+            quantite: qte,
+        }).then(() => {
+            getBouteilles();
+        });
+        localStorage.removeItem("updateQte");
+        localStorage.removeItem("bouteilleId");
+    };
+    const getBouteilles = async () => {
         const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
-
         getBouteillesCellier(id).then(({ data }) => {
             setBouteilles(data);
             setNomCellier(nom_cellier);
         });
-    }, []);
+    };
 
     useEffect(() => {
         // listener sur windows dans le useEffect doit être supprimé dans la clean up fonction du useEffect
@@ -63,7 +82,9 @@ const Cellier = () => {
                     />
                 ))
             ) : (
-                <p style={{textAlign:"center", marginTop: "30px"}}>Aucune bouteille dans ton cellier</p>
+                <p style={{ textAlign: "center", marginTop: "30px" }}>
+                    Aucune bouteille dans ton cellier
+                </p>
             )}
              
             <div
