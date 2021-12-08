@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 //console.log(translateMenu);
 // La navbar et le manu dynamique
+
 export const NavBarCountainer = styled.header`
 
     //width:100%;
@@ -9,7 +10,7 @@ export const NavBarCountainer = styled.header`
     top: 0;
     background:#fff;
     z-index:10;
-
+    overflow-anchor: none;
         nav {
 
         display:flex;
@@ -60,15 +61,15 @@ export const NavBarCountainer = styled.header`
             top:60px;
             left:-400px;
             position:absolute;
-            overflow: hidden;
+           // overflow: auto;
             transition: transform 0.4s ease-out;
             background:#fff;
-            height:100vh;
+            height : ${({ menuHeight}) => menuHeight+'px' || '100vh'};
             max-width:400px;
             width:100%;
+            box-sizing: border-box;
             transform:translate(${({ translateMenu }) => translateMenu || '0'} );
-
-
+            
             // ajustement obligatoire
             li {
 
