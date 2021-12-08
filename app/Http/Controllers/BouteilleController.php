@@ -7,6 +7,8 @@ use App\Models\Bouteille;
 use App\Models\Wiki_vin;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Cloudinary\Api\Upload\UploadApi;
+
 
 class BouteilleController extends Controller
 {
@@ -85,7 +87,7 @@ class BouteilleController extends Controller
                 'height' => 120,
                 'crop' => 'fill'
             ]
-        ])->getSecurePath(); 
+        ])->getSecurePath(); //returns the secure URL
 
         dd($response); //dumps the response returned from Cloudinary for the uploaded file
 
@@ -161,41 +163,38 @@ class BouteilleController extends Controller
         'cellier_id' => $request->cellier_id,
         ]);
     }
-
-        /**
-     * Update the specified resource in storage.
+    
+    /**
+     * Update the specified field in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateQuantite(Request $request)
+    public function updateField(Request $request)
     {
-        $request->validate([
-            'quantite' => 'required|integer|min:0',
-        ]);
-
-        return Bouteille::where('id', $request->id)->update([
-        'quantite' => $request->quantite,
-        ]);
-    }
-
-            /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function updateNote(Request $request)
-    {
-        $request->validate([
-            'note' => 'required|integer|min:1|max:5',
-        ]);
-
-        return Bouteille::where('id', $request->id)->update([
-        'note' => $request->note,
-        ]);
+        if($request->note){
+            $request->validate([
+                    'note' => 'integer|max:10',
+                ]);
+            return Bouteille::where('id', $request->id)->update([
+                    'note' => $request->note,
+            ]);
+        }elseif($request->quantite){
+            $request->validate([
+                    'quantite' => 'required|integer|min:0',
+                ]);
+            return Bouteille::where('id', $request->id)->update([
+                'quantite' => $request->quantite,
+            ]);
+        }else{
+            $request->validate([
+                'commentaire' => 'string|max:255',
+            ]);
+            return Bouteille::where('id', $request->id)->update([
+                'commentaire' => $request->commentaire,
+            ]);
+        }
     }
 
     /**
@@ -209,6 +208,11 @@ class BouteilleController extends Controller
        return Bouteille::where('id', $id)->delete();
     }
 
+    /* remove the image from Cloudinary */ 
+    public function delete($public_id)
+    {
+        $cloudinary->uploadApi()->destroy($public_id);
+    }
 
 
 }
