@@ -6,7 +6,7 @@ export const BouteilleSection = styled.section`
     font-family: LincolnMillerBanner ;
     margin-left:20px;
     margin-right:20px;
-
+    max-height:100%;
     img{
         max-height:70vh;
 

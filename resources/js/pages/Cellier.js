@@ -16,15 +16,24 @@ const Cellier = () => {
     const [setOpacity, setOpacityState] = useState("0");
     const [scroll, setScroll] = useState(0);
 
+    // https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
+    // memory leak et crash de l'app
+    let hasUnmounted = true;
     useEffect(() => {
         const updateQte = localStorage.getItem("updateQte");
         const bouteilleId = localStorage.getItem("bouteilleId");
-        if (updateQte) {
-            updateBouteille(bouteilleId, updateQte);
-        } else {
-            getBouteilles();
+        if (hasUnmounted) {
+            if (updateQte) {
+                updateBouteille(bouteilleId, updateQte);
+            } else {
+                getBouteilles();
+                }
         }
+            return () => {
+                hasUnmounted = false;
+              };
     }, []);
+
     const updateBouteille = async (bouteilleId, qte) => {
         // Cette request mettra à jour le nombre de bouteilles que l'utilisateur a défini auparavant dans Bouteille.js
         await Http.put(`bouteilles/editqte/${bouteilleId}`, {
@@ -44,10 +53,13 @@ const Cellier = () => {
     };
 
     useEffect(() => {
+        // https://www.pluralsight.com/guides/how-to-cleanup-event-listeners-react
         // listener sur windows dans le useEffect doit être supprimé dans la clean up fonction du useEffect
         // sans quoi le listener continue d'être actif même si tu quittes la page --> memory leak et crash de l'app
         window.addEventListener("scroll", handleScroll);
-        () => window.removeEventListener("scroll", handleScroll);
+        return function cleanupListener() {
+            window.removeEventListener("scroll", handleScroll);
+        }
     });
 
     //https://www.geeksforgeeks.org/how-to-create-scroll-indicator-using-reactjs/
