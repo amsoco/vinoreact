@@ -35,6 +35,7 @@ export const UserProvider = ({ children }) => {
     const login = async (creds) => {
         await Http.get("sanctum/csrf-cookie");
         const { data } = await Http.post("login", creds);
+        sessionStorage.setItem("user", data.user.id);
         localStorage.setItem("connected", "truth");
         setUser({
             ...data.user,
@@ -57,6 +58,7 @@ export const UserProvider = ({ children }) => {
         await Http.post("logout");
         setUser(false);
         localStorage.removeItem("connected");
+        sessionStorage.removeItem("user");
         navigate("/");
     };
 

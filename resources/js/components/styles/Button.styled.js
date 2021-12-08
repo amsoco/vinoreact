@@ -36,7 +36,7 @@ export const ButtonBackUp = styled.div`
   display:block;
   //margin-top:20px;
   position:fixed;
-  bottom: 120px;
+  bottom: 10px;
   //right:10%;
   margin-left:auto;
 
