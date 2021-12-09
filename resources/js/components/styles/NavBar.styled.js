@@ -32,17 +32,21 @@ export const NavBarCountainer = styled.header`
 
                 div:first-child {
                     transition: transform 0.6s ease;
-                    transform: rotate(${({ rotate }) => rotate || '0'}) translate(-${({ translateDown }) => translateDown || '0'} , ${({ translateDown }) => translateDown || '0'} );
+                    transform: rotate(${({ rotate }) =>
+                        rotate || "0"}) translate(-${({ translateDown }) =>
+    translateDown || "0"} , ${({ translateDown }) => translateDown || "0"} );
                 }
-                
+
                 div:nth-of-type(2){
                     transition: opacity 0.6s ease;
-                    opacity: ${({ display }) => display || '100%'};
+                    opacity: ${({ display }) => display || "100%"};
                 }
 
                 div:nth-of-type(3){
                     transition: transform 0.6s ease;
-                    transform: rotate(${({ rotateNegative}) => rotateNegative|| '0'}) translate(${({ translateUp }) => translateUp || '0'} , ${({ translateUp }) => translateUp || '0'} );
+                    transform: rotate(${({ rotateNegative }) =>
+                        rotateNegative || "0"}) translate(${({ translateUp }) =>
+    translateUp || "0"} , ${({ translateUp }) => translateUp || "0"} );
                 }
 
             }
@@ -56,7 +60,7 @@ export const NavBarCountainer = styled.header`
             }
         }
 
-        
+
         ul {
             top:60px;
             left:-400px;
@@ -64,12 +68,13 @@ export const NavBarCountainer = styled.header`
            // overflow: auto;
             transition: transform 0.4s ease-out;
             background:#fff;
-            height : ${({ menuHeight}) => menuHeight+'px' || '100vh'};
+            height : ${({ menuHeight }) => menuHeight + "px" || "100vh"};
             max-width:400px;
             width:100%;
             box-sizing: border-box;
-            transform:translate(${({ translateMenu }) => translateMenu || '0'} );
-            
+            transform:translate(${({ translateMenu }) =>
+                translateMenu || "0"} );
+
             // ajustement obligatoire
             li {
 
@@ -100,4 +105,4 @@ export const NavBarCountainer = styled.header`
         }
 
 
-`
+`;
