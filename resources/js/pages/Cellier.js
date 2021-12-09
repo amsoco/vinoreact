@@ -18,21 +18,20 @@ const Cellier = () => {
 
     // https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
     // memory leak et crash de l'app
-    
     useEffect(() => {
-        let hasUnmounted = true;
+        //let hasUnmounted = true;
         const updateQte = localStorage.getItem("updateQte");
         const bouteilleId = localStorage.getItem("bouteilleId");
-        if (hasUnmounted) {
-            if (updateQte) {
+        //if (hasUnmounted) {
+         if (updateQte) {
                 updateBouteille(bouteilleId, updateQte);
             } else {
                 getBouteilles();
-                }
-        }
-            return () => {
-                hasUnmounted = false;
-              };
+            }
+        //}
+        ///   return () => {
+        //    hasUnmounted = false;
+        //};
     }, []);
 
     
