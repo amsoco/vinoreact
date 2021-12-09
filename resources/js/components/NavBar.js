@@ -85,10 +85,7 @@ const navBar = (props) => {
                     ></Accordeon>
                 </li>
                 <li>
-                    <Accordeon
-                        titre="Mon Compte"
-                        content="formulaire de recherche"
-                    ></Accordeon>
+                    <Link to="/mon-compte">Mon Compte</Link>
                 </li>
                 <li>
                     <p onClick={() => logout()}>Logout</p>

@@ -10,6 +10,10 @@ import AddCellierForm from "../components/Forms/AjoutCellier";
 
 const MonCompte = () => {
     const { user } = useUser();
+
+    user?.celliers.map((cellier) => {
+        console.log(cellier.nom_cellier);
+    });
     return (
         <MonCompteCountainer>
             <ul>
@@ -23,17 +27,11 @@ const MonCompte = () => {
                 <li>
                     <Accordeon
                         titre="Celliers"
-                        content={
-                            <ul>
-                                {user?.celliers.map((cellier) => {
-                                    return (
-                                        <li key={cellier.id}>
-                                            {cellier.nom_cellier}
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        }
+                        content={user?.celliers.map((cellier) => {
+                            return (
+                                <p key={cellier.id}>{cellier.nom_cellier}</p>
+                            );
+                        })}
                     ></Accordeon>
                 </li>
                 <li>
