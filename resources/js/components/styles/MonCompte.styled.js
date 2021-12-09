@@ -9,5 +9,8 @@ export const MonCompteCountainer = styled.div`
     margin-left: auto;
     margin-right: auto;
     MonCompteCountainer {
+        li {
+            line-height: 1.6;
+        }
     }
 `;
