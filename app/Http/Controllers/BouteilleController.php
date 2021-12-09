@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Illuminate\Http\Response;
 use App\Models\Bouteille;
+use App\Models\Categorie;
 use App\Models\Wiki_vin;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -77,7 +79,7 @@ class BouteilleController extends Controller
         ]);
     }
 
-    /* store uploads */ 
+    /* store uploads */
     public function storeUploads(Request $request)
     {
         $response = cloudinary()->upload($request->file('file')->getRealPath(), [
@@ -105,7 +107,13 @@ class BouteilleController extends Controller
      */
     public function show($id)
     {
-        return Bouteille::find($id);
+        $bouteille = Bouteille::find($id);
+        $categorie = Categorie::where('id', $bouteille->categorie_id)->first();
+        $response = [
+                'bouteille' => $bouteille,
+                'categorie' => $categorie->nom,
+            ];
+        return response($response);
     }
 
     /**
@@ -163,7 +171,6 @@ class BouteilleController extends Controller
         'cellier_id' => $request->cellier_id,
         ]);
     }
-    
     /**
      * Update the specified field in storage.
      *
@@ -208,11 +215,11 @@ class BouteilleController extends Controller
        return Bouteille::where('id', $id)->delete();
     }
 
-    /* remove the image from Cloudinary */ 
-    public function delete($public_id)
-    {
-        $cloudinary->uploadApi()->destroy($public_id);
-    }
+    // /* remove the image from Cloudinary */
+    // public function delete($public_id)
+    // {
+    //     $cloudinary->uploadApi()->destroy($public_id);
+    // }
 
 
 }
