@@ -109,10 +109,4 @@ export const NavBarCountainer = styled.header`
         h4 {
             margin: 20px;
         }
-<<<<<<< HEAD
-        `
-=======
-
-
 `;
->>>>>>> upstream/main

@@ -23,22 +23,11 @@ const Cellier = () => {
         let isMounted = true;
         const updateQte = localStorage.getItem("updateQte");
         const bouteilleId = localStorage.getItem("bouteilleId");
-<<<<<<< HEAD
-
-        if (updateQte) {
-=======
         if (updateQte && !isNaN(updateQte)) {
->>>>>>> upstream/main
             updateBouteille(bouteilleId, updateQte);
         } else {
             getBouteilles();
         }
-<<<<<<< HEAD
-        return () => {
-            isMounted = false;
-        };
-=======
->>>>>>> upstream/main
     }, []);
 
     const updateBouteille = async (bouteilleId, qte) => {
