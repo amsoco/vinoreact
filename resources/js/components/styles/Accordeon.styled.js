@@ -10,6 +10,7 @@ export const AccordeonSection = styled.section`
         transition: height 0.2s ease-out;
 
         >div {
+            background:bue;
             padding: 20px 0px 20px 20px;
             //min-height:60px;
             font-family: GothamMedium;
