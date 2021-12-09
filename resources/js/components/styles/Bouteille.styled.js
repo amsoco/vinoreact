@@ -60,7 +60,7 @@ export const BouteilleSection = styled.section`
     }
 
     section>div p{
-        margin-top 10px;
+        margin-top: 10px;
     }
     
 `

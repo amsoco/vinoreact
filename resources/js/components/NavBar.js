@@ -18,7 +18,6 @@ const navBar = (props) => {
     const [setWidth, setWitdthState] = useState("0px");
     const [setTanslateMenu, setStateTranslateMenu] = useState("0");
     const params = useParams()
-    console.log('params', params)
 
     // ou clic on ouvre le menu
     const ouvrirMenu = (props) => {

@@ -53,4 +53,5 @@ export const LegendDark = styled.legend`
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
+    margin: 40px 0;
 `

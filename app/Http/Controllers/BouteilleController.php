@@ -7,7 +7,8 @@ use App\Models\Bouteille;
 use App\Models\Wiki_vin;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Cloudinary\Api\Upload\UploadApi;
+use cloudinary\Api\Upload\UploadApi;
+
 
 
 class BouteilleController extends Controller
@@ -78,22 +79,22 @@ class BouteilleController extends Controller
     }
 
     /* store uploads */ 
-    public function storeUploads(Request $request)
-    {
-        $response = cloudinary()->upload($request->file('file')->getRealPath(), [
-            'transformation' => [
-                'gravity' => 'auto',
-                'width' => 80,
-                'height' => 120,
-                'crop' => 'fill'
-            ]
-        ])->getSecurePath(); //returns the secure URL
+    // public function storeUploads(Request $request)
+    // {
+    //     $response = cloudinary()->upload($request->file('file')->getRealPath(), [
+    //         'transformation' => [
+    //             'gravity' => 'auto',
+    //             'width' => 80,
+    //             'height' => 120,
+    //             'crop' => 'fill'
+    //         ]
+    //     ])->getSecurePath(); //returns the secure URL
 
-        dd($response); //dumps the response returned from Cloudinary for the uploaded file
+    //     dd($response); //dumps the response returned from Cloudinary for the uploaded file
 
-        return back()
-            ->with('success', 'File uploaded successfully');
-    }
+    //     return back()
+    //         ->with('success', 'File uploaded successfully');
+    // }
 
 
 
@@ -207,15 +208,11 @@ class BouteilleController extends Controller
     {
        return Bouteille::where('id', $id)->delete();
     }
-<<<<<<< HEAD
-=======
 
     /* remove the image from Cloudinary */ 
-    public function delete($public_id)
-    {
-        $cloudinary->uploadApi()->destroy($public_id);
-    }
-
-
->>>>>>> upstream/main
+    // public function delete($public_id)
+    // {
+    //     $cloudinary->uploadApi()->destroy($public_id);
+    // }
 }
+

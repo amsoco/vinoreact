@@ -1,25 +1,23 @@
 import styled from "styled-components";
 
 export const ResultatsRecherche = styled.section`
-    width: 100%;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    font-family: LincolnMillerBanner;
+    margin-left: 20px;
+    margin-right: 20px;
 `;
 
 export const Resultat = styled.article`
     width: 100%;
+    font-family: LincolnMillerBanner;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
+    grid-gap: 20px;
     padding: 1.5rem;
     border-bottom: 1px solid #d8d8d8;
     cursor: pointer;
 
     h2 {
         grid-column: 1 / -1;
-        font-size: 1.44rem;
-        font-family: "LincolnMillerBanner-Roman";
     }
 
     img {
@@ -38,7 +36,7 @@ export const Resultat = styled.article`
 
 export const BouteilleSelectionnee = styled.article`
     width: 100%;
-    max-width: 600px;
+    font-family: LincolnMillerBanner;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,14 +45,15 @@ export const BouteilleSelectionnee = styled.article`
     margin-right: auto;
 
     img {
-        width: 80%;
+        max-height: 70vh;
         display: block;
     }
 
     h2 {
-        font-size: 2rem;
-        font-family: "LincolnMillerBanner-Roman";
-        text-align: center;
+        margin: 40px 0;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     p {
@@ -64,12 +63,11 @@ export const BouteilleSelectionnee = styled.article`
 
 export const DetailBouteille = styled.div`
     width: 100%;
-    max-width: 600px;
+    margin-bottom: 40px;
 
     p {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        padding: 0.3rem 0;
+        padding: 10px 0;
     }
 `;

@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import NavBar from "../components/NavBar";
 import BackUp from "../components/BackUp";
 import CellierBouteille from "../components/CellierBouteille";
-import Input from "../components/Input";
+import InputFile from "../components/InputFile";
 
 const TestStyle = () => {
     const backTop = () => {

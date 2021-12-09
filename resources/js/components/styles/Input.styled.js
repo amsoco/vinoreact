@@ -85,12 +85,13 @@ export const EditionAjoutInput = styled.input`
     border-left: none;
     border-right: none;
     border-top: 1px solid #d8d8d8;
-    border-bottom: 1px solid #d8d8d8;
+    border-bottom: none;
     padding: 15px 10px 15px 10px;
     //font-family: GothamLightItalic;
     // font-weight: 500;
     // font-style: italic;
     line-height: 1px;
     outline: none;
-    margin: 0;
+    margin: 0 !important;
+    width: 100%;
 `;

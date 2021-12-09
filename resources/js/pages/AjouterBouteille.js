@@ -36,6 +36,8 @@ const AjouterBouteille = () => {
         }
     }, [debouncedSearch]);
 
+    // réinitialisation du formulaire
+
     const renderSearchResults = (results) => {
         return results?.map((result) => {
             return (
@@ -135,6 +137,28 @@ const AjouterBouteille = () => {
             return (
                 <Layout>
                     <AjouterBouteilleForm bouteille={selectedBouteille} />
+
+                    <Button
+                        bg="#fff"
+                        color="#303031"
+                        bgHover="#303031"
+                        colorHover="#fff"
+                        borderColor="#303031"
+                        onClick={() => setSelectedBouteille({})}
+                    >
+                        RÉINITIALISER
+                    </Button>
+
+                    <Button
+                        bg="#fff"
+                        color="#303031"
+                        bgHover="#303031"
+                        colorHover="#fff"
+                        borderColor="#303031"
+                        onClick={() => setStep(1)}
+                    >
+                        RETOUR
+                    </Button>
                 </Layout>
             );
     }
