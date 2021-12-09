@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { BouteilleSection } from "../components/styles/Bouteille.styled";
-import { Button} from "../components/styles/Button.styled";
-import { Input, Select } from '../components/styles/Input.styled';
+import { Button } from "../components/styles/Button.styled";
+import { Input, Select } from "../components/styles/Input.styled";
 import Layout from "../components/Layout";
 import Accordeon from "../components/Accordeon";
 import Notes from "../components/Notes";
@@ -12,6 +12,7 @@ import Loader from "../components/Loader";
 
 const Bouteille = () => {
     const [bouteille, setBouteille] = useState({});
+    const [categorie, setCategorie] = useState("");
     const { getBouteille, loading } = useCellier();
     const { cellier, bouteilleId } = useParams();
     const navigate = useNavigate();
@@ -20,8 +21,10 @@ const Bouteille = () => {
     useEffect(() => {
         let isSubscribed = true;
         getBouteille(bouteilleId).then(({ data }) => {
-            setBouteille(data);
-            setCounter(data.quantite);
+            const { bouteille, categorie } = data;
+            setBouteille(bouteille);
+            setCategorie(categorie);
+            setCounter(bouteille.quantite);
             localStorage.setItem("bouteilleId", bouteilleId);
         });
         return () => (isSubscribed = false);
@@ -43,17 +46,13 @@ const Bouteille = () => {
                     <div>
                         <p>Pays</p>
                         <p>Prix</p>
-                        <p>Cépage</p>
+                        <p>Type</p>
                         <p>Millesime</p>
                     </div>
                     <div>
                         <p>{bouteille.pays}</p>
                         <p>{bouteille.prix_achat} $</p>
-                        <p>
-                            {bouteille.cepage
-                                ? bouteille.cepage
-                                : "Cépage inconnu"}
-                        </p>
+                        <p>{categorie ? categorie : "Type inconnu"}</p>
                         <p>
                             {bouteille.millesime
                                 ? bouteille.millesime
@@ -69,7 +68,12 @@ const Bouteille = () => {
                     <Accordeon
                         titre="Notes"
                         // content={bouteille.note, <Select />}
-                        content= {<Notes note={bouteille.note} bouteille={bouteille.id} />}
+                        content={
+                            <Notes
+                                note={bouteille.note}
+                                bouteille={bouteille.id}
+                            />
+                        }
                     ></Accordeon>
                     <Accordeon
                         titre="Modification"

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 //console.log(translateMenu);
 // La navbar et le manu dynamique
+
 export const NavBarCountainer = styled.header`
 
     //width:100%;
@@ -9,7 +10,7 @@ export const NavBarCountainer = styled.header`
     top: 0;
     background:#fff;
     z-index:10;
-
+    overflow-anchor: none;
         nav {
 
         display:flex;
@@ -31,17 +32,21 @@ export const NavBarCountainer = styled.header`
 
                 div:first-child {
                     transition: transform 0.6s ease;
-                    transform: rotate(${({ rotate }) => rotate || '0'}) translate(-${({ translateDown }) => translateDown || '0'} , ${({ translateDown }) => translateDown || '0'} );
+                    transform: rotate(${({ rotate }) =>
+                        rotate || "0"}) translate(-${({ translateDown }) =>
+    translateDown || "0"} , ${({ translateDown }) => translateDown || "0"} );
                 }
-                
+
                 div:nth-of-type(2){
                     transition: opacity 0.6s ease;
-                    opacity: ${({ display }) => display || '100%'};
+                    opacity: ${({ display }) => display || "100%"};
                 }
 
                 div:nth-of-type(3){
                     transition: transform 0.6s ease;
-                    transform: rotate(${({ rotateNegative}) => rotateNegative|| '0'}) translate(${({ translateUp }) => translateUp || '0'} , ${({ translateUp }) => translateUp || '0'} );
+                    transform: rotate(${({ rotateNegative }) =>
+                        rotateNegative || "0"}) translate(${({ translateUp }) =>
+    translateUp || "0"} , ${({ translateUp }) => translateUp || "0"} );
                 }
 
             }
@@ -55,19 +60,20 @@ export const NavBarCountainer = styled.header`
             }
         }
 
-        
+
         ul {
             top:60px;
             left:-400px;
             position:absolute;
-            overflow: hidden;
+           // overflow: auto;
             transition: transform 0.4s ease-out;
             background:#fff;
-            height:100vh;
+            height : ${({ menuHeight }) => menuHeight + "px" || "100vh"};
             max-width:400px;
             width:100%;
-            transform:translate(${({ translateMenu }) => translateMenu || '0'} );
-
+            box-sizing: border-box;
+            transform:translate(${({ translateMenu }) =>
+                translateMenu || "0"} );
 
             // ajustement obligatoire
             li {
@@ -103,4 +109,10 @@ export const NavBarCountainer = styled.header`
         h4 {
             margin: 20px;
         }
+<<<<<<< HEAD
         `
+=======
+
+
+`;
+>>>>>>> upstream/main

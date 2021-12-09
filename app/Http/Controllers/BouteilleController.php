@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Illuminate\Http\Response;
 use App\Models\Bouteille;
+use App\Models\Categorie;
 use App\Models\Wiki_vin;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -78,6 +80,7 @@ class BouteilleController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
     /* store uploads */ 
     // public function storeUploads(Request $request)
     // {
@@ -95,6 +98,25 @@ class BouteilleController extends Controller
     //     return back()
     //         ->with('success', 'File uploaded successfully');
     // }
+=======
+    /* store uploads */
+    public function storeUploads(Request $request)
+    {
+        $response = cloudinary()->upload($request->file('file')->getRealPath(), [
+            'transformation' => [
+                'gravity' => 'auto',
+                'width' => 80,
+                'height' => 120,
+                'crop' => 'fill'
+            ]
+        ])->getSecurePath(); //returns the secure URL
+
+        dd($response); //dumps the response returned from Cloudinary for the uploaded file
+
+        return back()
+            ->with('success', 'File uploaded successfully');
+    }
+>>>>>>> upstream/main
 
 
 
@@ -106,7 +128,13 @@ class BouteilleController extends Controller
      */
     public function show($id)
     {
-        return Bouteille::find($id);
+        $bouteille = Bouteille::find($id);
+        $categorie = Categorie::where('id', $bouteille->categorie_id)->first();
+        $response = [
+                'bouteille' => $bouteille,
+                'categorie' => $categorie->nom,
+            ];
+        return response($response);
     }
 
     /**
@@ -164,7 +192,6 @@ class BouteilleController extends Controller
         'cellier_id' => $request->cellier_id,
         ]);
     }
-    
     /**
      * Update the specified field in storage.
      *
@@ -209,10 +236,19 @@ class BouteilleController extends Controller
        return Bouteille::where('id', $id)->delete();
     }
 
+<<<<<<< HEAD
     /* remove the image from Cloudinary */ 
+=======
+    // /* remove the image from Cloudinary */
+>>>>>>> upstream/main
     // public function delete($public_id)
     // {
     //     $cloudinary->uploadApi()->destroy($public_id);
     // }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> upstream/main
 }
 
