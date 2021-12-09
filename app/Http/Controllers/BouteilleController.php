@@ -16,7 +16,7 @@ use cloudinary\Api\Upload\UploadApi;
 class BouteilleController extends Controller
 {
 
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,7 +26,7 @@ class BouteilleController extends Controller
         return Bouteille::all();
     }
 
-            /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -80,46 +80,6 @@ class BouteilleController extends Controller
         ]);
     }
 
-<<<<<<< HEAD
-    /* store uploads */ 
-    // public function storeUploads(Request $request)
-    // {
-    //     $response = cloudinary()->upload($request->file('file')->getRealPath(), [
-    //         'transformation' => [
-    //             'gravity' => 'auto',
-    //             'width' => 80,
-    //             'height' => 120,
-    //             'crop' => 'fill'
-    //         ]
-    //     ])->getSecurePath(); //returns the secure URL
-
-    //     dd($response); //dumps the response returned from Cloudinary for the uploaded file
-
-    //     return back()
-    //         ->with('success', 'File uploaded successfully');
-    // }
-=======
-    /* store uploads */
-    public function storeUploads(Request $request)
-    {
-        $response = cloudinary()->upload($request->file('file')->getRealPath(), [
-            'transformation' => [
-                'gravity' => 'auto',
-                'width' => 80,
-                'height' => 120,
-                'crop' => 'fill'
-            ]
-        ])->getSecurePath(); //returns the secure URL
-
-        dd($response); //dumps the response returned from Cloudinary for the uploaded file
-
-        return back()
-            ->with('success', 'File uploaded successfully');
-    }
->>>>>>> upstream/main
-
-
-
     /**
      * Display the specified resource.
      *
@@ -131,9 +91,9 @@ class BouteilleController extends Controller
         $bouteille = Bouteille::find($id);
         $categorie = Categorie::where('id', $bouteille->categorie_id)->first();
         $response = [
-                'bouteille' => $bouteille,
-                'categorie' => $categorie->nom,
-            ];
+            'bouteille' => $bouteille,
+            'categorie' => $categorie->nom,
+        ];
         return response($response);
     }
 
@@ -146,7 +106,6 @@ class BouteilleController extends Controller
     public function edit($id)
     {
         return Bouteille::find($id);
-
     }
 
     /**
@@ -176,20 +135,20 @@ class BouteilleController extends Controller
         ]);
 
         return Bouteille::where('id', $request->id)->update([
-        'nom' => $request->nom,
-        'pays' => $request->pays,
-        'description' => $request->description,
-        'date_achat' => $request->date_achat,
-        'prix_achat' => $request->prix_achat,
-        'url_saq' => $request->url_saq,
-        'note' => $request->note,
-        'commentaire' => $request->commentaire,
-        'quantite' => $request->quantite,
-        'millesime' => $request->millesime,
-        'format' => $request->format,
-        'url_img' => $request->url_img,
-        'categorie_id' => $request->categorie_id,
-        'cellier_id' => $request->cellier_id,
+            'nom' => $request->nom,
+            'pays' => $request->pays,
+            'description' => $request->description,
+            'date_achat' => $request->date_achat,
+            'prix_achat' => $request->prix_achat,
+            'url_saq' => $request->url_saq,
+            'note' => $request->note,
+            'commentaire' => $request->commentaire,
+            'quantite' => $request->quantite,
+            'millesime' => $request->millesime,
+            'format' => $request->format,
+            'url_img' => $request->url_img,
+            'categorie_id' => $request->categorie_id,
+            'cellier_id' => $request->cellier_id,
         ]);
     }
     /**
@@ -201,21 +160,21 @@ class BouteilleController extends Controller
      */
     public function updateField(Request $request)
     {
-        if($request->note){
+        if ($request->note) {
             $request->validate([
-                    'note' => 'integer|max:10',
-                ]);
-            return Bouteille::where('id', $request->id)->update([
-                    'note' => $request->note,
+                'note' => 'integer|max:10',
             ]);
-        }elseif($request->quantite){
+            return Bouteille::where('id', $request->id)->update([
+                'note' => $request->note,
+            ]);
+        } elseif ($request->quantite) {
             $request->validate([
-                    'quantite' => 'required|integer|min:0',
-                ]);
+                'quantite' => 'required|integer|min:0',
+            ]);
             return Bouteille::where('id', $request->id)->update([
                 'quantite' => $request->quantite,
             ]);
-        }else{
+        } else {
             $request->validate([
                 'commentaire' => 'string|max:255',
             ]);
@@ -233,22 +192,6 @@ class BouteilleController extends Controller
      */
     public function destroy($id)
     {
-       return Bouteille::where('id', $id)->delete();
+        return Bouteille::where('id', $id)->delete();
     }
-
-<<<<<<< HEAD
-    /* remove the image from Cloudinary */ 
-=======
-    // /* remove the image from Cloudinary */
->>>>>>> upstream/main
-    // public function delete($public_id)
-    // {
-    //     $cloudinary->uploadApi()->destroy($public_id);
-    // }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> upstream/main
 }
-
