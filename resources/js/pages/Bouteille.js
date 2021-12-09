@@ -19,6 +19,7 @@ const Bouteille = () => {
     const [counter, setCounter] = useState("");
 
     useEffect(() => {
+        let isSubscribed = true;
         getBouteille(bouteilleId).then(({ data }) => {
             const { bouteille, categorie } = data;
             setBouteille(bouteille);
@@ -26,6 +27,7 @@ const Bouteille = () => {
             setCounter(bouteille.quantite);
             localStorage.setItem("bouteilleId", bouteilleId);
         });
+        return () => (isSubscribed = false);
     }, []);
 
     if (!bouteille) navigate(`/${cellier}`);

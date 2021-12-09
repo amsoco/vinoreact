@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-// les différent input 
+// les différent input
 export const Label = styled.label`
     font-size: 1rem;
     font-family: GothamLightItalic;
@@ -12,7 +12,7 @@ export const Label = styled.label`
     top: 25px;
     color: black;
     transition: 200ms ease all;
-    line-height:0;
+    line-height: 0;
     ${({ shrink }) =>
         shrink &&
         css`
@@ -39,7 +39,7 @@ export const Input = styled.input`
     font-size: 1rem;
     outline: none;
     display: block;
-    line-height:0;
+    line-height: 0;
 
     &:focus ~ ${Label} {
         left: 1px;
@@ -65,19 +65,33 @@ export const Select = styled.select`
     font-size: 1rem;
     cursor: pointer;
     outline: none;
-    
-`
+`;
 
 export const RechercheInput = styled.input`
-
-    border-left:none;
-    border-right:none;
-    border-top : 1px solid  #D8D8D8;
-    border-bottom : 1px solid  #D8D8D8;
-    padding:15px 10px 15px 10px;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+    padding: 15px 10px 15px 10px;
     margin-top: 40px;
     //font-family: GothamLightItalic;
-    //font-weight: 500;
-    //font-style: italic;
-    line-height:1px;
-`
+    // font-weight: 500;
+    // font-style: italic;
+    line-height: 1px;
+    outline: none;
+`;
+
+export const EditionAjoutInput = styled.input`
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #d8d8d8;
+    border-bottom: none;
+    padding: 15px 10px 15px 10px;
+    //font-family: GothamLightItalic;
+    // font-weight: 500;
+    // font-style: italic;
+    line-height: 1px;
+    outline: none;
+    margin: 0 !important;
+    width: 100%;
+`;

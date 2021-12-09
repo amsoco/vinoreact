@@ -82,6 +82,7 @@ const GlobalStyles = createGlobalStyle`
     font-style: normal;
     text-decoration: none;
     color:#303031;
+    min-width: 30px;
   }
 
   a:active {

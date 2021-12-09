@@ -1,9 +1,14 @@
+<<<<<<< HEAD
+import React, { useState } from "react";
+import { NavBarCountainer } from "./styles/Navbar.styled.js";
+import { Link, useParams } from "react-router-dom";
+=======
 import React, { useState, useEffect } from "react";
 import { NavBarCountainer } from "./styles/Navbar.styled.js";
+>>>>>>> upstream/main
 import LogoVino from "../assets/svg/logo.svg";
 import CercleX from "../assets/svg/rondX.svg";
 import Accordeon from "./Accordeon";
-import { Link } from "react-router-dom";
 import { useUser } from "../context/user";
 import { Button } from "./styles/Button.styled";
 
@@ -17,7 +22,11 @@ const navBar = (props) => {
     const [setDisplay, setStateDisplay] = useState("");
     const [setWidth, setWitdthState] = useState("0px");
     const [setTanslateMenu, setStateTranslateMenu] = useState("0");
+<<<<<<< HEAD
+    const params = useParams()
+=======
     const [setHeight, setStateHeightMenu] = useState(window.innerHeight - 60);
+>>>>>>> upstream/main
 
     // ou clic on ouvre le menu
     const ouvrirMenu = (props) => {
@@ -34,6 +43,22 @@ const navBar = (props) => {
 
         // Opacité de la ligne centrale
         setStateDisplay(setActive === "active" ? "100%" : "0");
+<<<<<<< HEAD
+
+        setWitdthState(setActive === "active" ? "0" : "100%");
+
+        setStateTranslateMenu(setActive === "active" ? "0" : "400px");
+
+        // useEffect(() => {
+        //     if (localStorage.getItem("cellier")) {
+        //         const { id, nom_cellier } = JSON.parse(
+        //             localStorage.getItem("cellier")
+        //         );
+        //         setCellier(nom_cellier);
+        //     }
+        // }, []);
+    };
+=======
 
         setWitdthState(setActive === "active" ? "0" : "100%");
 
@@ -56,6 +81,7 @@ const navBar = (props) => {
         setStateHeightMenu(height);
     };
 
+>>>>>>> upstream/main
     return (
         <NavBarCountainer
             rotate={setRotate}
@@ -64,7 +90,10 @@ const navBar = (props) => {
             translateUp={setTranslateUp}
             display={setDisplay}
             translateMenu={setTanslateMenu}
+<<<<<<< HEAD
+=======
             menuHeight={setHeight}
+>>>>>>> upstream/main
         >
             <nav>
                 <div onClick={ouvrirMenu}>
@@ -73,7 +102,13 @@ const navBar = (props) => {
                     <div></div>
                 </div>
                 <img src={LogoVino} alt="chevronBlack" />
+<<<<<<< HEAD
+                <Link to={`/${params.cellier}/nouvelle-bouteille`}>
+                    <img src={CercleX} alt="chevronBlack" />
+                </Link>
+=======
                 <img src={CercleX} alt="chevronBlack" />
+>>>>>>> upstream/main
             </nav>
             {/* <ul style={{ width: `${setWidth}` }} > */}
             <ul>
@@ -87,7 +122,11 @@ const navBar = (props) => {
                 <li>
                     <Accordeon
                         titre="Mon Compte"
+<<<<<<< HEAD
+                        content="formulaire rechecher"
+=======
                         content="formulaire de recherche"
+>>>>>>> upstream/main
                     ></Accordeon>
                 </li>
                 <li>

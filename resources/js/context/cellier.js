@@ -25,11 +25,18 @@ export const CellierProvider = ({ children }) => {
         return bouteille;
     };
 
+    // rechercher dans le wiki
     const searchWiki = (search) => Http.get(`search/${search}`);
+
+    // ajouter une bouteille au cellier
+    const addBouteille = async (bouteille) => {
+        console.log('bouteille dns cellier', bouteille)
+        await Http.post(`bouteilles/create`, bouteille);
+    };
 
     return (
         <CellierContext.Provider
-            value={{ getBouteillesCellier, getBouteille, searchWiki, loading }}
+            value={{ getBouteillesCellier, getBouteille, addBouteille, searchWiki, loading }}
         >
             {children}
         </CellierContext.Provider>
