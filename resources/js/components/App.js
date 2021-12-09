@@ -11,6 +11,7 @@ import GlobalFonts from "../../fonts/fonts";
 // lazy load les pages que le user demande au lieu de charger le bundle JS/CSS de toute l'app
 const SeConnecter = lazy(() => import("../pages/SeConnecter"));
 const CreerCompte = lazy(() => import("../pages/CreerCompte"));
+const MonCompte = lazy(() => import("../pages/MonCompte"));
 const TestStyle = lazy(() => import("../pages/TestStyle"));
 const Accueil = lazy(() => import("../pages/Accueil"));
 const Cellier = lazy(() => import("../pages/Cellier"));
@@ -33,6 +34,7 @@ const App = () => (
                             path="/nouveau-compte"
                             element={<CreerCompte />}
                         />
+                        <Route path="/mon-compte" element={<MonCompte />} />
                         <Route path="/test-style" element={<TestStyle />} />
                         <Route
                             path="/celliers"

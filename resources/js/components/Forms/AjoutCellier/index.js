@@ -5,10 +5,10 @@ import { Form } from "../../styles/Form.styled";
 import { Legend2 } from "../../styles/Form.styled";
 import useForm from "../../../hooks/useForm";
 // validation du formulaire
-import AjoutCellierValidate from "./ajoutCellierValidate";
+import AddCellierValidate from "./AddCellierForm";
 import { useNavigate } from "react-router";
 
-const RegisterForm = () => {
+const AddCellierForm = () => {
     const navigate = useNavigate();
     const user = sessionStorage.getItem("user");
     // INITIAL FORM STATE
@@ -30,7 +30,7 @@ const RegisterForm = () => {
         errors,
         handleBlur,
         isSubmitting,
-    } = useForm(initialValues, registerCellier, AjoutCellierValidate);
+    } = useForm(initialValues, registerCellier, AddCellierValidate);
 
     return (
         <Form onSubmit={handleFormSubmit}>
@@ -56,10 +56,10 @@ const RegisterForm = () => {
                 colorHover="#303030"
                 disabled={isSubmitting}
             >
-                CRÉER
+                AJOUTER
             </Button>
         </Form>
     );
 };
 
-export default RegisterForm;
+export default AddCellierForm;

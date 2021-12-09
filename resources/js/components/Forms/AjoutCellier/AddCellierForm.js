@@ -1,4 +1,4 @@
-const AjoutCellierValidate = (values) => {
+const AddCellierValidate = (values) => {
     let errors = {};
     if (values.password.length > 100) {
         errors.password =
@@ -12,4 +12,4 @@ const AjoutCellierValidate = (values) => {
     return errors;
 };
 
-export default AjoutCellierValidate;
+export default AddCellierValidate;
