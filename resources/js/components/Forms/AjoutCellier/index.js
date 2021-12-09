@@ -2,7 +2,7 @@ import React from "react";
 import FormInput from "../FormInput";
 import { Button } from "../../styles/Button.styled";
 import { Form } from "../../styles/Form.styled";
-import { Legend2 } from "../../styles/Form.styled";
+import { Legend } from "../../styles/Form.styled";
 import useForm from "../../../hooks/useForm";
 // validation du formulaire
 import AddCellierValidate from "./AddCellierForm";
@@ -34,7 +34,7 @@ const AddCellierForm = () => {
 
     return (
         <Form onSubmit={handleFormSubmit}>
-            <Legend2>Nouveau cellier</Legend2>
+            <Legend>Nouveau cellier</Legend>
 
             <FormInput
                 type="text"
