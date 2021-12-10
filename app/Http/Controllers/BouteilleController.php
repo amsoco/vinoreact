@@ -162,8 +162,8 @@ class BouteilleController extends Controller
     {
         if ($request->note) {
             $request->validate([
-                'note' => 'integer|max:10',
-            ]);
+                    'note' => 'integer|max:5',
+                ]);
             return Bouteille::where('id', $request->id)->update([
                 'note' => $request->note,
             ]);
