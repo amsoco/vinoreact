@@ -36,11 +36,13 @@ export const UserProvider = ({ children }) => {
         await Http.get("sanctum/csrf-cookie");
         const { data } = await Http.post("login", creds);
         sessionStorage.setItem("user", data.user.id);
+        sessionStorage.setItem("privilege", data.user.privilege_id);
         localStorage.setItem("connected", "truth");
         setUser({
             ...data.user,
             celliers: data.celliers,
         });
+
     };
 
     // enregistre le nouvel utilisateur

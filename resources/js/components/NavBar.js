@@ -39,14 +39,6 @@ const navBar = (props) => {
 
         setStateTranslateMenu(setActive === "active" ? "0" : "400px");
 
-        // useEffect(() => {
-        //     if (localStorage.getItem("cellier")) {
-        //         const { id, nom_cellier } = JSON.parse(
-        //             localStorage.getItem("cellier")
-        //         );
-        //         setCellier(nom_cellier);
-        //     }
-        // }, []);
     };
     return (
         <NavBarCountainer
@@ -63,12 +55,11 @@ const navBar = (props) => {
                     <div></div>
                     <div></div>
                 </div>
-                <img src={LogoVino} alt="chevronBlack" />
+                <img src={LogoVino} alt="logo vino" />
                 <Link to={`/${params.cellier}/nouvelle-bouteille`}>
                     <img src={CercleX} alt="chevronBlack" />
                 </Link>
             </nav>
-            {/* <ul style={{ width: `${setWidth}` }} > */}
             <ul>
                 <h4>Menu vino</h4>
                 <li>
@@ -86,27 +77,7 @@ const navBar = (props) => {
                 <li>
                     <p onClick={() => logout()}>Logout</p>
                 </li>
-                {/* <li><Accordeon titre='Prix' content="patate"></Accordeon></li>
-                <li><Accordeon titre='Cépage' content="patate"></Accordeon></li>
-                <li><Accordeon titre='Pays' content="patate"></Accordeon></li>
-                <li><Accordeon titre="Date d'achat" content="patate"></Accordeon></li>
-                <li><Accordeon titre='Rupture de stock' content="patate"></Accordeon></li> */}
-                {/* <li>
-                    <Link to="/">Mon Compte</Link>
-                </li> */}
-                {/* <li>
-                <Button
-                    bg="#fff"
-                    color="#303031"
-                    colorHover="#fff"
-                    bgHover="#303031"
-                >
-                    RAFRAICHIR
-                </Button>
-                <Button bg="#303031" color="#fff">
-                    RECHERCHE
-                </Button>
-                </li> */}
+
             </ul>
         </NavBarCountainer>
     );

@@ -17,6 +17,7 @@ const Accueil = lazy(() => import("../pages/Accueil"));
 const Cellier = lazy(() => import("../pages/Cellier"));
 const Bouteille = lazy(() => import("../pages/Bouteille"));
 const AjouterBouteille = lazy(() => import("../pages/AjouterBouteille"));
+const Admin = lazy(() => import("../pages/Admin"));
 
 const App = () => (
     // le user connecté est rendu disponible dans toute l'app via context
@@ -30,6 +31,11 @@ const App = () => (
                 <Suspense fallback="">
                     <Routes>
                         <Route path="/" element={<SeConnecter />} />
+                        <Route path="/admin" element={
+                            <RequireAuth>
+                                <Admin />
+                            </RequireAuth>
+                        } />
                         <Route
                             path="/nouveau-compte"
                             element={<CreerCompte />}
