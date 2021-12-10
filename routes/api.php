@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BouteilleController;
 use App\Http\Controllers\Wiki_vinController;
 use App\Http\Controllers\CellierController;
+use App\Http\Controllers\CategorieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('/upload', [BouteilleController::class, 'storeUploads']);
 
+    Route::get('/categorie', [CategorieController::class, 'index']);
 
     Route::get('/cellier', [CellierController::class, 'index']);
     Route::get('/cellier/{id}', [CellierController::class, 'show']);
