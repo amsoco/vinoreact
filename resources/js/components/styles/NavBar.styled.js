@@ -97,12 +97,16 @@ export const NavBarCountainer = styled.header`
             }
 
 
-            }
+            // li:nth-of-type(8){
+
+            //     button{
+            //         margin: 20px auto 0px auto;
+            //    }
+
+            //}
         }
 
         h4 {
             margin: 20px;
         }
-
-
 `;

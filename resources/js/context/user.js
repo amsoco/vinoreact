@@ -57,8 +57,7 @@ export const UserProvider = ({ children }) => {
     const logout = async () => {
         await Http.post("logout");
         setUser(false);
-        localStorage.removeItem("connected");
-        sessionStorage.removeItem("user");
+        localStorage.clear(); //destroy "connected" and "cellier"
         navigate("/");
     };
 

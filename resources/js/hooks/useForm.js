@@ -77,6 +77,13 @@ const useForm = (initialValues, formLogic, validate) => {
         setSubmitting(true); // le form est en train d'être soumis (utile pour disable le bouton)
     };
 
+    const handleImageChange = (url_img) => {
+        setValues((values) => ({
+            ...values,
+            url_img
+        }));
+    };
+
     // gestion du blur
     const handleBlur = (event) => {
         if (!touched.includes(event.target.name)) {
@@ -98,10 +105,12 @@ const useForm = (initialValues, formLogic, validate) => {
     return {
         handleFormChange,
         handleFormSubmit,
+        handleImageChange,
         values,
         errors,
         handleBlur,
         isSubmitting,
+        resetForm,
     };
 };
 
