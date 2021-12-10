@@ -6,6 +6,7 @@ import Accordeon from "./Accordeon";
 import { Link } from "react-router-dom";
 import { useUser } from "../context/user";
 import { Button } from "./styles/Button.styled";
+import Holder from "../components/Holder.js";
 
 const navBar = (props) => {
     const { logout } = useUser();
@@ -85,7 +86,9 @@ const navBar = (props) => {
                     ></Accordeon>
                 </li>
                 <li>
-                    <Link to="/mon-compte">Mon Compte</Link>
+                    <Link to="/mon-compte">
+                        <Holder value="Mon Compte" />
+                    </Link>
                 </li>
                 <li>
                     <p onClick={() => logout()}>Logout</p>

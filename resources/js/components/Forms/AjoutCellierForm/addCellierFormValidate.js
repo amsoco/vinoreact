@@ -1,7 +1,7 @@
-const AddCellierValidate = (values) => {
+const addCellierFormValidate = (values) => {
     let errors = {};
-    if (values.password.length > 100) {
-        errors.password =
+    if (values.nom_cellier.length > 100) {
+        errors.nom_cellier =
             "Le nom du cellier doit avoir moins de 100 caractères";
     }
 
@@ -12,4 +12,4 @@ const AddCellierValidate = (values) => {
     return errors;
 };
 
-export default AddCellierValidate;
+export default addCellierFormValidate;

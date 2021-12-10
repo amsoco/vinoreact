@@ -10,6 +10,6 @@ export const ListCelliersCountainer = styled.div`
     margin-right: auto;
 
     li {
-        line-height: 30px;
+        line-height: 50px;
     }
 `;
