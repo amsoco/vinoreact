@@ -19,14 +19,6 @@ const ButtonModifier = () => {
         <BonttonModifierCountainer>
             <button onClick={modifier}>MODIFIER</button>
             <button onClick={() => effacer(bouteilleId)}>EFFACER</button>
-            <div>
-            <h3>Teste</h3>
-            <h3>Teste</h3>
-            <h3>Teste</h3>
-            <h3>Teste</h3>
-            <h3>Teste</h3>
-            </div>
-
         </BonttonModifierCountainer>
     )
 }
