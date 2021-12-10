@@ -76,8 +76,7 @@ const Bouteille = () => {
                     ></Accordeon>
                     <Accordeon
                         titre="Modification"
-                        content={<ButtonModifier>
-                        </ButtonModifier>}
+                        content={<ButtonModifier/>}
                     ></Accordeon>
                 </div>
                 <Button
