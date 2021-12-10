@@ -34,7 +34,7 @@ const CellierBouteille = ({ bouteille, cellier }) => {
                 </Link>
             )}
         </CellierBouteilleSection>
-    );
+    )
 };
 
 export default CellierBouteille;

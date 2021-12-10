@@ -42,7 +42,16 @@ export const Legend2 = styled.legend`
     justify-content: space-between;
     align-items: flex-end;
     width: auto;
-   
+   `
 
 
+export const LegendDark = styled.legend`
+    color: #000;
+    font-size:  1.728rem;
+    font-family: GothamBlack;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    margin: 40px 0;
 `

@@ -17,6 +17,7 @@ export const Button = styled.button`
   font-weight: 300;
   border: 1px solid ${({ borderColor }) => borderColor || '#303031'};
   display:block;
+  text-transform: uppercase;
  // margin-top:20px;
   &:hover {
     background-color: ${({ bgHover }) => bgHover || '#58111A'};
