@@ -89,9 +89,14 @@ export const EditionAjoutInput = styled.input`
     padding: 15px 10px 15px 10px;
     //font-family: GothamLightItalic;
     // font-weight: 500;
-    // font-style: italic;
+    font-style: italic;
     line-height: 1px;
     outline: none;
     margin: 0 !important;
-    width: 100%;
+    width: 100% !important;
+    line-height: 16px;
+
+    &::placeholder {
+        color: #D8D8D8;
+    }
 `;

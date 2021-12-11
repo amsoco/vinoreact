@@ -61,11 +61,18 @@ const useForm = (initialValues, formLogic, validate) => {
     // contrôle de ce que le user entre dans les champs
     const handleFormChange = (event) => {
         event.persist();
-        // on set dans le state du hook dynamiquement le nom de l'input avec la valeur entrée
-        setValues((values) => ({
-            ...values,
-            [event.target.name]: event.target.value,
-        }));
+        if (event.target.name === "prix_achat") {
+            setValues((values) => ({
+                ...values,
+                prix_achat: parseFloat(event.target.value),
+            }));
+        } else {
+            // on set dans le state du hook dynamiquement le nom de l'input avec la valeur entrée
+            setValues((values) => ({
+                ...values,
+                [event.target.name]: event.target.value,
+            }));
+        }
     };
 
     // soummission du form
@@ -80,7 +87,7 @@ const useForm = (initialValues, formLogic, validate) => {
     const handleImageChange = (url_img) => {
         setValues((values) => ({
             ...values,
-            url_img
+            url_img,
         }));
     };
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { BouteilleSection } from "../components/styles/Bouteille.styled";
 import { Button } from "../components/styles/Button.styled";
-import { Input, Select } from "../components/styles/Input.styled";
 import Layout from "../components/Layout";
 import Accordeon from "../components/Accordeon";
 import Notes from "../components/Notes";

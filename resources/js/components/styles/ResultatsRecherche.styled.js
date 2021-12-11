@@ -18,6 +18,9 @@ export const Resultat = styled.article`
 
     h2 {
         grid-column: 1 / -1;
+        justify-self: start;
+        font-size: 1.44rem;
+        font-weight: 200;
     }
 
     img {
@@ -27,10 +30,37 @@ export const Resultat = styled.article`
 
     div {
         grid-column: 2 / 3;
+        row-gap: 10px;
         align-self: end;
         justify-self: end;
-        font-family: GothamBlack;
+        font-family: LincolnMillerBanner-Roman;
         font-weight: 100;
+
+        p {
+            margin-top: 10px;
+            text-align: right;
+        }
+    }
+`;
+
+export const RechercheVins = styled.section`
+    width: 100%;
+    font-family: LincolnMillerBanner;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    h2 {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    button {
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
 `;
 

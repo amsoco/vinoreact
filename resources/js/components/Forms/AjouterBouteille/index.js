@@ -3,7 +3,6 @@ import styled from "styled-components";
 import useForm from "../../../hooks/useForm";
 import { LegendDark } from "../../styles/Form.styled";
 import { Button } from "../../styles/Button.styled";
-import Accordeon from "../../Accordeon";
 import ajouterBouteilleFormValidate from "./ajouterBouteilleFormValidate";
 import EditionAjoutFormInput from "./EditionAjoutInput";
 import InputFile from "../../InputFile";
@@ -13,31 +12,36 @@ import { useNavigate, useParams } from "react-router-dom";
 const AjouterBouteilleForm = ({ bouteille }) => {
     const { addBouteille } = useCellier();
     const navigate = useNavigate();
-    const { celliers } = useParams();
+    const { cellier } = useParams();
 
     // INITIAL FORM STATE
-    const initialValues = {
+    let initialValues = {
         cellier_id: JSON.parse(localStorage.getItem("cellier")).id,
-        nom: bouteille.nom || "",
-        pays: bouteille.pays || "",
-        description: bouteille.description || "",
+        nom: bouteille?.nom || "",
+        pays: bouteille?.pays || "",
+        description: bouteille?.description || "",
         date_achat: "",
         prix_achat: "",
-        url_saq: "",
+        url_saq: bouteille?.url_saq || "",
         note: "",
         commentaire: "",
         quantite: "",
-        millesime: bouteille.millesime || "",
-        format: "",
-        url_img: bouteille.url_img || "",
+        millesime: bouteille?.millesime || "",
+        format: bouteille?.format || "",
+        url_img:
+            bouteille?.url_img ||
+            "https://res.cloudinary.com/vino-project/image/upload/v1639165462/bouteilleBlack_lz3rkm.png",
         categorie_id: 1,
     };
 
     // FORM LOGIC ON SUBMIT
     const ajouterBouteille = async (values) => {
-        console.log("values", values);
-        const bouteille = await addBouteille(values);
-        //navigate(`/${celliers}`);
+        try {
+            await addBouteille(values);
+            navigate(`/${cellier}`);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
@@ -54,7 +58,6 @@ const AjouterBouteilleForm = ({ bouteille }) => {
     return (
         <FormAjout onSubmit={handleFormSubmit}>
             <LegendDark>Nouvelle Bouteille</LegendDark>
-
             <EditionAjoutFormInput
                 type="text"
                 id="nom"
@@ -62,9 +65,9 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 placeholder="Nom"
                 value={values.nom}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 error={errors?.nom}
             />
-
             <EditionAjoutFormInput
                 type="text"
                 id="pays"
@@ -72,29 +75,29 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 placeholder="Pays"
                 value={values.pays}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 error={errors?.pays}
             />
-
             <EditionAjoutFormInput
-                type="text"
+                type="date"
                 id="date_achat"
                 name="date_achat"
-                placeholder="Date d'achat"
                 value={values.date_achat}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 error={errors?.date_achat}
             />
-
             <EditionAjoutFormInput
                 type="number"
                 id="prix_achat"
                 name="prix_achat"
                 placeholder="Prix"
+                step=".01"
                 value={values.prix_achat}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 error={errors?.prix_achat}
             />
-
             <EditionAjoutFormInput
                 type="text"
                 id="url_saq"
@@ -102,9 +105,9 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 placeholder="Url SAQ"
                 value={values.url_saq}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 error={errors?.url_saq}
             />
-
             <EditionAjoutFormInput
                 type="number"
                 id="note"
@@ -113,9 +116,9 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 placeholder="Note sur 10"
                 value={values.note}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 error={errors?.note}
             />
-
             <EditionAjoutFormInput
                 type="text"
                 id="commentaire"
@@ -123,9 +126,9 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 placeholder="Commentaire"
                 value={values.commentaire}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 error={errors?.commentaire}
             />
-
             <EditionAjoutFormInput
                 type="number"
                 id="quantite"
@@ -133,9 +136,9 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 placeholder="Quantite"
                 value={values.quantite}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 error={errors?.quantite}
             />
-
             <EditionAjoutFormInput
                 type="text"
                 id="millesime"
@@ -143,9 +146,9 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 placeholder="Millesime"
                 value={values.millesime}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 error={errors?.millesime}
             />
-
             <EditionAjoutFormInput
                 type="text"
                 id="format"
@@ -153,33 +156,24 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 placeholder="Format"
                 value={values.format}
                 onChange={handleFormChange}
+                onBlur={handleBlur}
                 error={errors?.format}
             />
-
-            <Accordeon
-                titre="Description"
-                content={
-                    <EditionAjoutFormInput
-                        type="text"
-                        id="description"
-                        name="description"
-                        value={values.description}
-                        onChange={handleFormChange}
-                        error={errors?.description}
-                    />
-                }
+            <EditionAjoutFormInput
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Description"
+                value={values.description}
+                onChange={handleFormChange}
+                onBlur={handleBlur}
+                error={errors?.description}
             />
-
-            <Accordeon
-                titre="Image"
-                content={
-                    <InputFile
-                        id="url_img"
-                        name="url_img"
-                        onImageChange={handleImageChange}
-                        existingImg={values.url_img}
-                    />
-                }
+            <InputFile
+                id="url_img"
+                name="url_img"
+                onImageChange={(img) => handleImageChange(img)}
+                existingImg={values.url_img}
             />
 
             <Button
