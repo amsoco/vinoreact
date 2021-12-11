@@ -69,9 +69,14 @@ export const UserProvider = ({ children }) => {
         return usagers;
     };
 
+    const deleteUsager = async (id) => {
+        const usagers = await Http.delete(`/user/${id}`);
+        return usagers;
+    };
+
 
     return (
-        <UserContext.Provider value={{ user, login, register, logout, getUsagers }}>
+        <UserContext.Provider value={{ user, login, register, logout, getUsagers, deleteUsager}}>
             {children}
         </UserContext.Provider>
     );

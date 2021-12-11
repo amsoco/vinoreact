@@ -20,7 +20,9 @@ import IconButton from '@material-ui/core/IconButton';
 // Admin Usager
 const AdminUsager = () => {
     const { user } = useUser();
+    const { deleteUsager } = useUser();
     const [usagers, setUsagers] = useState([]);
+    
 
     const { getUsagers } = useUser();
     useEffect(() => {
@@ -70,7 +72,10 @@ const AdminUsager = () => {
                         <Button variant="outlined" size='small'>
                             Modifier
                         </Button>
-                        <Button variant="outlined" size='small' >
+                        <Button variant="outlined" size='small' onClick={() => {
+                            deleteUsager(usager.id)
+                            getUsagersAdmin();
+                            }} >
                             Delete
                         </Button>
                   </TableCell>
