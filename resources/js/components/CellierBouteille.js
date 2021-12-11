@@ -18,6 +18,9 @@ const CellierBouteille = ({ bouteille, cellier }) => {
                     </div>
                     <div>
                         <img
+                            //width=""
+                            //height="" 
+                            //loading='lazy'
                             src={url_img ? url_img : DummyBouteille}
                             alt={nom}
                         />

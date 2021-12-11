@@ -4,6 +4,7 @@ import { BouteilleSection } from "../components/styles/Bouteille.styled";
 import { Button } from "../components/styles/Button.styled";
 import Layout from "../components/Layout";
 import Accordeon from "../components/Accordeon";
+import ButtonModifier from "../components/ButtonModifier";
 import Notes from "../components/Notes";
 import BouteillePhoto from "../assets/images/bouteille.jpg";
 import { useCellier } from "../context/cellier";
@@ -76,7 +77,7 @@ const Bouteille = () => {
                     ></Accordeon>
                     <Accordeon
                         titre="Modification"
-                        content="Vin mousseu bon"
+                        content={<ButtonModifier/>}
                     ></Accordeon>
                 </div>
                 <Button

@@ -7,9 +7,10 @@ export const AccordeonSection = styled.section`
 
     &>div {
         overflow: hidden;
-        transition: height 0.4s ease-out;
+        transition: height 0.2s ease-out;
 
         >div {
+            background:bue;
             padding: 20px 0px 20px 20px;
             //min-height:60px;
             font-family: GothamMedium;
@@ -34,7 +35,7 @@ export const AccordeonSection = styled.section`
         img {
             height : 12px;
             margin-left: auto;
-            transition: transform 0.4s ease;
+            transition: transform 0.2s ease;
             margin-bottom: auto;
             margin-top:auto;
             transform: rotate(${({ rotate }) => rotate || '0'});
