@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
-//console.log(translateMenu);
-// La navbar et le manu dynamique
 export const MonCompteCountainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 90vw;
     margin-left: auto;
     margin-right: auto;
-    MonCompteCountainer {
-        li {
-            line-height: 1.6;
-        }
+    margin-top: 3vh;
+    h4 {
+        margin-top: 7vh;
+        padding: 15px;
+    }
+    & > button {
+        margin-top: 40vh;
     }
 `;
