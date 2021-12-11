@@ -18,6 +18,4 @@ const AdminWikiVin = () => {
     )
 
 }
-
-
 export default AdminWikiVin;

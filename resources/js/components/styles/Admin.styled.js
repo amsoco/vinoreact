@@ -50,6 +50,7 @@ export const AdminSection = styled.section`
 
    >div {
 
+        >ul,
         >div {
             margin:auto;
             width:75%;
@@ -70,6 +71,14 @@ export const AdminSection = styled.section`
             font-style: italic;
             min-width:240px;
         }
+
+        >ul {
+            margin-top :40px;
+            li {
+                padding-top:10px;
+            }
+        }
+
 
 
  
