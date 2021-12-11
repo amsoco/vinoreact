@@ -36,9 +36,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/bouteilles/editField/{id}', [BouteilleController::class, 'updateField']);
     Route::delete('/bouteilles/{id}', [BouteilleController::class, 'destroy']);
 
-    Route::post('/upload', [BouteilleController::class, 'storeUploads']);
-
-
     Route::get('/cellier', [CellierController::class, 'index']);
     Route::get('/cellier/{id}', [CellierController::class, 'show']);
     Route::post('/cellier/create', [CellierController::class, 'store']);
