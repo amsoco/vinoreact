@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Select } from "../components/styles/Input.styled";
 import { AccueilMain } from "../components/styles/Accueil.styled";
@@ -24,6 +24,11 @@ const Accueil = () => {
         navigate(`/${slug}`);
     };
 
+    useEffect(() => {
+        if (user?.privilege_id === 2)  navigate("/admin");
+    }, []);
+    
+    
     return (
         <AccueilMain>
             <img src={TacheHaut} alt="Tache Rouge haut" />
