@@ -43,13 +43,40 @@ export const AdminNav = styled.nav`
 export const AdminSection = styled.section`
     font-family:GothamMedium;
     flex-grow:2;
-    margin: 40px;
+    margin: 60px;
    // border: 1px solid #202020;
 
-   h4 {
-       text-align:center;
-   }
 
+
+   >div {
+
+        >div {
+            margin:auto;
+            width:75%;
+        }
+    
+        >h4 {
+            text-align:center;
+        }
+        >input {
+            display:block;
+            margin:auto;
+            margin-top:20px;
+            width:75%;
+            //background: #f8f8f8;
+            border:none;
+            padding: 10px;
+            border-bottom: 1px solid #303031;
+            font-style: italic;
+            min-width:240px;
+        }
+
+
+ 
+
+   }
+   
+   
 `
 
 export const AdminAside = styled.aside`
