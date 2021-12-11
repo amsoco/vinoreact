@@ -6,6 +6,7 @@ import CercleX from "../assets/svg/rondX.svg";
 import Accordeon from "./Accordeon";
 import { useUser } from "../context/user";
 import { Button } from "./styles/Button.styled";
+import Holder from "../components/Holder.js";
 
 const navBar = (props) => {
     const { logout } = useUser();
@@ -69,10 +70,9 @@ const navBar = (props) => {
                     ></Accordeon>
                 </li>
                 <li>
-                    <Accordeon
-                        titre="Mon Compte"
-                        content="formulaire rechecher"
-                    ></Accordeon>
+                    <Link to="/mon-compte">
+                        <Holder value="Mon Compte" />
+                    </Link>
                 </li>
                 <li>
                     <p onClick={() => logout()}>Logout</p>
