@@ -55,6 +55,10 @@ export const AdminSection = styled.section`
             margin:auto;
             width:75%;
         }
+        >div {
+            display:flex;
+            justify-content:space-between;
+        }
     
         >h4 {
             text-align:center;
@@ -70,6 +74,7 @@ export const AdminSection = styled.section`
             border-bottom: 1px solid #303031;
             font-style: italic;
             min-width:240px;
+            margin-bottom:20px;
         }
 
         >ul {
@@ -79,7 +84,9 @@ export const AdminSection = styled.section`
             }
         }
 
-
+        button {
+            margin-left:10px;
+        }
 
  
 
@@ -123,5 +130,7 @@ export const AdminAside = styled.aside`
             align-self:flex-end;
         }
     } 
+
+
 
 `

@@ -8,6 +8,7 @@
     <!-- <link href="https://db.onlinewebfonts.com/c/a6e1f9c1f231a9d282a89b950b66509d?family=LincolnMillerBanner-Roman" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.cdnfonts.com/css/gotham" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
 </head>
 
 <body>
