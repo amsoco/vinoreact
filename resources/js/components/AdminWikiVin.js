@@ -3,7 +3,7 @@ import { Input } from "./styles/Input.styled";
 
 
 
-// composante footer
+// composante Admin Wiki Vin
 const AdminWikiVin = () => {
     return (
         <div>
@@ -11,6 +11,9 @@ const AdminWikiVin = () => {
                 <h4>Wiki Vino</h4>
             </div>
             <input type="text" id="rechercheAdmin" name="rechercher" placeholder='Recherche'/>
+            <ul>
+                <li></li>
+            </ul>
         </div>
     )
 

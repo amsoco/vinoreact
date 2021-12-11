@@ -63,6 +63,13 @@ export const UserProvider = ({ children }) => {
         navigate("/");
     };
 
+    //get les users
+    const getUsagers = async () => {
+        const usagers = await Http.get(`bouteilles/cell/${cellierId}`);
+        return usagers;
+    };
+
+
     return (
         <UserContext.Provider value={{ user, login, register, logout }}>
             {children}
