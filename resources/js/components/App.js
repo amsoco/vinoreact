@@ -59,7 +59,7 @@ const App = () => (
                             }
                         />
                         <Route
-                            path=":cellier/:bouteilleId"
+                            path="/:cellier/:bouteilleId"
                             element={
                                 <RequireAuth>
                                     <Bouteille />
@@ -67,7 +67,7 @@ const App = () => (
                             }
                         />
                         <Route
-                            path="/:celliers/nouvelle-bouteille"
+                            path="/:cellier/nouvelle-bouteille"
                             element={
                                 <RequireAuth>
                                     <AjouterBouteille />

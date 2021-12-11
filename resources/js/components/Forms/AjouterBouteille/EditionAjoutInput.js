@@ -14,7 +14,8 @@ const ErrorMessage = styled.span`
     /* margin: 0.3rem 0 0 0.1rem; */
     position: absolute;
     top: 50%;
-    right: 0;
+    right: 10%;
+    font-family: GothamBlack;
 `;
 
 const EditionAjoutFormInput = ({

@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+import axios from "axios";
 import Http from "../HttpClient";
 import uiReducer from "../reducers/uiReducer";
 
@@ -29,14 +30,31 @@ export const CellierProvider = ({ children }) => {
     const searchWiki = (search) => Http.get(`search/${search}`);
 
     // ajouter une bouteille au cellier
-    const addBouteille = async (bouteille) => {
-        console.log('bouteille dns cellier', bouteille)
-        await Http.post(`bouteilles/create`, bouteille);
+    const addBouteille = (bouteille) =>
+        Http.post("bouteilles/create", bouteille);
+
+    // upload image
+    const uploadImage = async (img) => {
+        const formData = new FormData();
+        formData.append("file", img);
+        formData.append("upload_preset", "knxwwgoa");
+
+        return axios.post(
+            "https://api.cloudinary.com/v1_1/vino-project/image/upload",
+            formData
+        );
     };
 
     return (
         <CellierContext.Provider
-            value={{ getBouteillesCellier, getBouteille, addBouteille, searchWiki, loading }}
+            value={{
+                getBouteillesCellier,
+                getBouteille,
+                addBouteille,
+                searchWiki,
+                uploadImage,
+                loading,
+            }}
         >
             {children}
         </CellierContext.Provider>
