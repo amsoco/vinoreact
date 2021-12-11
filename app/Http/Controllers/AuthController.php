@@ -89,12 +89,79 @@ class AuthController extends Controller
         Auth::logout();
     }
 
+
     /**
-     * @param  \App\Models\User  $user
+     * Liste des usagers 
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function destroyUser(User $user)
+    public function index()
     {
-        $user = User::where('id', $user->id)->first();
-        $user->delete();
+        return User::all();
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $user = User::find($id);
+        return User::all()->where('id', $user->id);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        return User::find($id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+        $user = User::where('id', $request->id)->first();
+        if ($request->email == $user->email){
+            User::where('id', $request->id)->update([
+                'email' => "",
+            ]);
+        }
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string|unique:users,email',
+            //'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        return User::where('id', $request->id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            //'password' => Hash::make($request->password),
+        ]);
+    }
+
+    /**
+     * Supprimer un usager
+     * 
+     * @param  int  $id 
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        return User::where('id', $id)->delete();
+    }
+
+
+
 }
