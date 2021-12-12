@@ -100,7 +100,7 @@ export const AdminAside = styled.aside`
     height: 100vh;
     background:#303031;
     color:#fff;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
     >h4 {
         padding: 0px 20px;

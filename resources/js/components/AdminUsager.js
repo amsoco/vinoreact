@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../context/user";
+import { ModalStyled , BackDrop } from "./styles/Modal.styled";
 
 
 import Table from '@material-ui/core/Table';
@@ -11,10 +12,23 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+import Box from '@material-ui/core/Box';
+import Modal from '@material-ui/core/Modal';
+import Typography from '@material-ui/core/Typography';
 
 
 
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  }
 
 
 // Admin Usager
@@ -22,6 +36,10 @@ const AdminUsager = () => {
     const { user } = useUser();
     const { deleteUsager } = useUser();
     const [usagers, setUsagers] = useState([]);
+    const [open, setOpen] = useState(false);
+    const handleOpen = (id) => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const [setUsager, setUsagerState] = useState("Monsieur");
     
 
     const { getUsagers } = useUser();
@@ -69,12 +87,12 @@ const AdminUsager = () => {
                     <TableCell align="right">{usager.email}</TableCell>
                     <TableCell align="right">{usager.privilege_id}</TableCell>
                     <TableCell align="right">
-                        <Button variant="outlined" size='small'>
+                        <Button variant="outlined" size='small' onClick={handleOpen}>
                             Modifier
                         </Button>
                         <Button variant="outlined" size='small' onClick={() => {
-                            deleteUsager(usager.id)
-                            getUsagersAdmin();
+                            handleOpen()
+                            setUsagerState(usager.id)
                             }} >
                             Delete
                         </Button>
@@ -84,6 +102,28 @@ const AdminUsager = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+        >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Attention
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Voulez-vous vraiment effacer cette usager ?
+          </Typography>
+          <Button variant="outlined" size='small' onClick={handleClose}>Non</Button>
+          <Button variant="outlined" size='small' onClick={() => {
+           // console.log(setUsager);
+            deleteUsager(setUsager)
+            getUsagersAdmin();
+            handleClose();
+            }} >Oui</Button>
+        </Box>
+        </Modal>
         </div>
       );
 }
