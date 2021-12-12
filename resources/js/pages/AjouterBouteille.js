@@ -27,7 +27,6 @@ const AjouterBouteille = () => {
         if (debouncedSearch) {
             setIsSearching(true);
             searchWiki(debouncedSearch).then((results) => {
-                console.log(results)
                 setIsSearching(false);
                 setResults(results.data);
             });

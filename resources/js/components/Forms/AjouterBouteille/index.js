@@ -39,7 +39,9 @@ const AjouterBouteilleForm = ({ bouteille }) => {
             bouteille?.url_img ||
             "https://res.cloudinary.com/vino-project/image/upload/v1639165462/bouteilleBlack_lz3rkm.png",
         categorie_id: bouteille?.categorie_id || "",
+        categorie: bouteille?.categorie || ""
     };
+
 
     // FORM LOGIC ON SUBMIT
     const ajouterBouteille = async (values) => {
@@ -176,7 +178,7 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 onBlur={handleBlur}
                 error={errors?.description}
             />
-            <SelectCategorie name="categorie_id" selected={values.categorie_id} onChange={handleFormChange}>
+            <SelectCategorie name="categorie_id" value={values.categorie_id} onChange={handleFormChange}>
                 <option>Catégorie</option>
                 {categories.map((categorie) => (
                     <option key={categorie.id} value={categorie.id}>
