@@ -33,6 +33,9 @@ export const CellierProvider = ({ children }) => {
     const addBouteille = (bouteille) =>
         Http.post("bouteilles/create", bouteille);
 
+    // récupérer les catégories
+    const getCategories = () => Http.get('categories')
+
     // upload image
     const uploadImage = async (img) => {
         const formData = new FormData();
@@ -53,6 +56,7 @@ export const CellierProvider = ({ children }) => {
                 addBouteille,
                 searchWiki,
                 uploadImage,
+                getCategories,
                 loading,
             }}
         >

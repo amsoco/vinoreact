@@ -97,6 +97,23 @@ export const EditionAjoutInput = styled.input`
     line-height: 16px;
 
     &::placeholder {
-        color: #D8D8D8;
+        color: #d8d8d8;
     }
+`;
+
+export const SelectCategorie = styled.select`
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #d8d8d8;
+    border-bottom: none;
+    padding: 15px 10px 15px 10px;
+    //font-family: GothamLightItalic;
+    // font-weight: 500;
+    font-style: italic;
+    line-height: 1px;
+    outline: none;
+    margin: 0 !important;
+    width: 100% !important;
+    line-height: 16px;
+    color: #303031;
 `;

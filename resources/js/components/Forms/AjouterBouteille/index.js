@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import useForm from "../../../hooks/useForm";
 import { LegendDark } from "../../styles/Form.styled";
@@ -6,13 +6,20 @@ import { Button } from "../../styles/Button.styled";
 import ajouterBouteilleFormValidate from "./ajouterBouteilleFormValidate";
 import EditionAjoutFormInput from "./EditionAjoutInput";
 import InputFile from "../../InputFile";
+import { SelectCategorie } from "../../styles/Input.styled";
 import { useCellier } from "../../../context/cellier";
 import { useNavigate, useParams } from "react-router-dom";
 
 const AjouterBouteilleForm = ({ bouteille }) => {
-    const { addBouteille } = useCellier();
+    const { addBouteille, getCategories } = useCellier();
     const navigate = useNavigate();
     const { cellier } = useParams();
+    const [categories, setCategories] = useState([]);
+
+    // récupération des catégories de vin pour le select
+    useEffect(() => {
+        getCategories().then(({ data }) => setCategories(data));
+    }, []);
 
     // INITIAL FORM STATE
     let initialValues = {
@@ -31,7 +38,7 @@ const AjouterBouteilleForm = ({ bouteille }) => {
         url_img:
             bouteille?.url_img ||
             "https://res.cloudinary.com/vino-project/image/upload/v1639165462/bouteilleBlack_lz3rkm.png",
-        categorie_id: 1,
+        categorie_id: bouteille?.categorie_id || "",
     };
 
     // FORM LOGIC ON SUBMIT
@@ -169,6 +176,14 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 onBlur={handleBlur}
                 error={errors?.description}
             />
+            <SelectCategorie name="categorie_id" selected={values.categorie_id} onChange={handleFormChange}>
+                <option>Catégorie</option>
+                {categories.map((categorie) => (
+                    <option key={categorie.id} value={categorie.id}>
+                        {categorie.nom}
+                    </option>
+                ))}
+            </SelectCategorie>
             <InputFile
                 id="url_img"
                 name="url_img"

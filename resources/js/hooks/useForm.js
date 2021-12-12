@@ -67,6 +67,7 @@ const useForm = (initialValues, formLogic, validate) => {
                 prix_achat: parseFloat(event.target.value),
             }));
         } else {
+            console.log(event.target.name)
             // on set dans le state du hook dynamiquement le nom de l'input avec la valeur entrée
             setValues((values) => ({
                 ...values,
