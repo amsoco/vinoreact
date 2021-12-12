@@ -6,11 +6,11 @@ import CellierBouteille from "../components/CellierBouteille";
 import Recherche from "../components/Recherche";
 import BackUp from "../components/BackUp";
 import Loader from "../components/Loader";
-import Http from "../HttpClient";
 
 const Cellier = () => {
     const [bouteilles, setBouteilles] = useState([]);
     const [nomCellier, setNomCellier] = useState("");
+    const [search, setSearch] = useState("");
     const { getBouteillesCellier, loading } = useCellier();
     const { user } = useUser();
     const [setOpacity, setOpacityState] = useState("0");
@@ -27,6 +27,7 @@ const Cellier = () => {
             getBouteilles();
         }
     }, []);
+
 
     const updateBouteille = async (bouteilleId, qte) => {
         // Cette request mettra à jour le nombre de bouteilles que l'utilisateur a défini auparavant dans Bouteille.js
@@ -80,7 +81,11 @@ const Cellier = () => {
                 <h1>Ton Cellier</h1>
                 <h3>{user?.name}</h3>
             </div>
-            <Recherche />
+            <Recherche
+                placeholder="Rechercher dans mon cellier"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+            />
             {bouteilles.length ? (
                 bouteilles.map((bouteille) => (
                     <CellierBouteille

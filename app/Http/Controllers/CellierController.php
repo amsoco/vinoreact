@@ -31,8 +31,8 @@ class CellierController extends Controller
         ]);
 
         return Cellier::create([
-        'nom_cellier' => $request->nom_cellier,
-        'user_id' => $request->user_id
+            'nom_cellier' => $request->nom_cellier,
+            'user_id' => $request->user_id
         ]);
     }
 
@@ -56,7 +56,6 @@ class CellierController extends Controller
     public function edit($id)
     {
         return Cellier::find($id);
-
     }
 
     /**
@@ -74,8 +73,8 @@ class CellierController extends Controller
         ]);
 
         return Cellier::where('id', $request->id)->update([
-        'nom_cellier' => $request->nom_cellier,
-        'user_id' => $request->user_id
+            'nom_cellier' => $request->nom_cellier,
+            'user_id' => $request->user_id
         ]);
     }
 
@@ -87,6 +86,6 @@ class CellierController extends Controller
      */
     public function destroy($id)
     {
-       return Cellier::where('id', $id)->delete();
+        return Cellier::where('id', $id)->delete();
     }
 }
