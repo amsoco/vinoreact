@@ -11,7 +11,7 @@ const Cellier = () => {
     const [bouteilles, setBouteilles] = useState([]);
     const [nomCellier, setNomCellier] = useState("");
     const [search, setSearch] = useState("");
-    const { getBouteillesCellier, loading } = useCellier();
+    const { getBouteillesCellier, loading, updateQty } = useCellier();
     const { user } = useUser();
     const [setOpacity, setOpacityState] = useState("0");
     const [scroll, setScroll] = useState(0);
@@ -31,11 +31,8 @@ const Cellier = () => {
 
     const updateBouteille = async (bouteilleId, qte) => {
         // Cette request mettra à jour le nombre de bouteilles que l'utilisateur a défini auparavant dans Bouteille.js
-        await Http.put(`bouteilles/editField/${bouteilleId}`, {
-            quantite: qte,
-        }).then(() => {
-            getBouteilles();
-        });
+        await updateQty(bouteilleId, qte);
+        getBouteilles();
         localStorage.removeItem("updateQte");
         localStorage.removeItem("bouteilleId");
     };

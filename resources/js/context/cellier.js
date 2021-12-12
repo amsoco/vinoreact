@@ -29,7 +29,7 @@ export const CellierProvider = ({ children }) => {
         Http.post("bouteilles/create", bouteille);
 
     // récupérer les catégories
-    const getCategories = () => Http.get('categories')
+    const getCategories = () => Http.get("categories");
 
     // upload image
     const uploadImage = async (img) => {
@@ -43,6 +43,10 @@ export const CellierProvider = ({ children }) => {
         );
     };
 
+    // mis a jour de la quantité
+    const updateQty = (bouteilleId, quantite) =>
+        Http.put(`bouteilles/editField/${bouteilleId}`, { quantite });
+
     return (
         <CellierContext.Provider
             value={{
@@ -52,7 +56,7 @@ export const CellierProvider = ({ children }) => {
                 searchWiki,
                 uploadImage,
                 getCategories,
-                // loading,
+                updateQty,
             }}
         >
             {children}
