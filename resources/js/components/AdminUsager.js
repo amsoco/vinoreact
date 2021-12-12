@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../context/user";
-import { ModalStyled , BackDrop } from "./styles/Modal.styled";
-
+//import { ModalStyled , BackDrop } from "./styles/Modal.styled";
+import Pagination from "./Pagination";
+import PropTypes from 'prop-types';
+//import TablePagination from '@material-ui/core/TablePagination';
+import { useAdmin } from "../pages/Admin";
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,12 +13,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
+//import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
-
+import TableFooter from '@material-ui/core/TableFooter';
 
 
 const style = {
@@ -28,19 +31,29 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
-  }
+}
 
+
+Pagination.propTypes = {
+    count: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired,
+    page: PropTypes.number.isRequired,
+    rowsPerPage: PropTypes.number.isRequired,
+};
 
 // Admin Usager
 const AdminUsager = () => {
-    const { user } = useUser();
+    //const { user } = useUser();
     const { deleteUsager } = useUser();
     const [usagers, setUsagers] = useState([]);
     const [open, setOpen] = useState(false);
     const handleOpen = (id) => setOpen(true);
     const handleClose = () => setOpen(false);
     const [setUsager, setUsagerState] = useState("Monsieur");
-    
+    const [page, setPage] = React.useState(0);
+    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    //const [setRoute, setRouteState] = useState("user");
+    const { RouteAdmin } = useAdmin();
 
     const { getUsagers } = useUser();
     useEffect(() => {
@@ -50,18 +63,29 @@ const AdminUsager = () => {
     const getUsagersAdmin = async () => {
         getUsagers().then(({ data }) => {
             setUsagers(data);
-            console.log(data)
+           // console.log(data)
         });
     };
 
-
-
+  
+    // Avoid a layout jump when reaching the last page with empty rows.
+    const emptyRows =
+      page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  
+    const handleChangePage = (event, newPage) => {
+      setPage(newPage);
+    };
+  
+    const handleChangeRowsPerPage = (event) => {
+      setRowsPerPage(parseInt(event.target.value, 10));
+      setPage(0);
+    };
 
     return (
         <div>
             <div>
                 <h4>Usager</h4>
-                <Button variant="outlined" size='small' >Ajouter</Button>
+                <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutUsager')}>Ajouter</Button>
             </div>
         <input type="text" id="rechercheAdmin" name="rechercher" placeholder='Recherche'/>
         {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}
@@ -78,9 +102,9 @@ const AdminUsager = () => {
             <TableBody>
               {usagers.map((usager) => (
                 <TableRow
-                  key={usager.name}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
+                    key={usager.name}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
                     <TableCell component="th" scope="usager">
                     {usager.name}
                     </TableCell>
@@ -100,6 +124,26 @@ const AdminUsager = () => {
                 </TableRow>
               ))}
             </TableBody>
+            <TableFooter>
+            <TableRow>
+              <Pagination
+                rowsPerPageOptions={[5, 10, 25, { label: 'Tous', value: -1 }]}
+                colSpan={3}
+                count={usagers?.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                SelectProps={{
+                    inputProps: {
+                    'aria-label': 'Rangée par page',
+                    },
+                    native: true,
+                }}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+                ActionsComponent={Pagination}
+              />
+                </TableRow>
+            </TableFooter>
           </Table>
         </TableContainer>
         <Modal

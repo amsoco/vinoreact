@@ -1,11 +1,15 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext, createContext } from "react";
 import { useNavigate } from "react-router";
 import { AdminMain, AdminAside, AdminNav, AdminSection } from "../components/styles/Admin.styled";
 import LogoVino from "./../assets/svg/logoBlanc.svg";
 import { useUser } from "../context/user";
 import AdminUsager from "../components/AdminUsager";
 import AdminWikiVin from "../components/AdminWikiVin";
+import AdminAjoutUsager from "../components/AdminAjoutUsager";
 
+
+// création du contexte
+const AdminContext = createContext();
 
 
 const Admin = () => {
@@ -13,12 +17,11 @@ const Admin = () => {
     const { logout } = useUser();
     const navigate = useNavigate();
     const [setRoute, setRouteState] = useState("user");
-
-    console.log(user)
-
+    
     const RouteAdmin = (route) => {
         setRouteState(route)
     }
+
 
     return (
 
@@ -36,18 +39,27 @@ const Admin = () => {
                         <h4>Bienvenue {user?.name}</h4>
                         <p onClick={() => logout()}>Logout</p>
                 </AdminNav>
-                <AdminSection>
-                {(() => {
-                        switch (setRoute) {
-                            case "user":   return <AdminUsager/>;
-                            case "wikiVin": return <AdminWikiVin/>;
-                      }
-                 })()}
-                </AdminSection>
+                <AdminContext.Provider value={{RouteAdmin}} >
+                    <AdminSection >
+                    {(() => {
+                            switch (setRoute) {
+                                case "user":   return <AdminUsager/>;
+                                case "wikiVin": return <AdminWikiVin/>;
+                                case "AjoutUsager" : return <AdminAjoutUsager/>;
+                        }
+                    })()}
+                    </AdminSection>
+                </AdminContext.Provider>
             </div> 
         </AdminMain>
+
+
+
 
     );
 };
 
 export default Admin;
+export const useAdmin = () => {
+    return useContext(AdminContext);
+};
