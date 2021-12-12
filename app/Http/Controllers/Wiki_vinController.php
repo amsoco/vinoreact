@@ -80,7 +80,6 @@ class Wiki_vinController extends Controller
      */
     public function search($key)
     {
-        //$key = trim($request->get('q'));
         return Wiki_vin::where('nom', 'LIKE', '%' .$key. '%')->get();
     }
 

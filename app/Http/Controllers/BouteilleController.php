@@ -49,7 +49,7 @@ class BouteilleController extends Controller
             'nom' => 'required|string|max:255',
             'pays' => 'required|string|max:255',
             'description' => 'string|max:255',
-            'date_achat' => 'required|date_format:"Y"',
+            'date_achat' => 'required|date_format:"Y-m-d"',
             'prix_achat' => 'regex:/^\d+(\.\d{1,2})?$/',
             // 'url_saq' => 'string|max:255',
             // 'note' => 'integer|max:10',
@@ -162,8 +162,8 @@ class BouteilleController extends Controller
     {
         if ($request->note) {
             $request->validate([
-                    'note' => 'integer|max:5',
-                ]);
+                'note' => 'integer|max:5',
+            ]);
             return Bouteille::where('id', $request->id)->update([
                 'note' => $request->note,
             ]);
