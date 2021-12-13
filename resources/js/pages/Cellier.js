@@ -16,7 +16,7 @@ const Cellier = () => {
     const [bouteilles, setBouteilles] = useState([]);
     const [hasMore, setHasMore] = useState(false);
     const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
-    const [nomCellier, setNomCellier] = useState("");
+    const [nomCellier] = useState(nom_cellier);
     const [search, setSearch] = useState("");
     const [scroll, setScroll] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +40,7 @@ const Cellier = () => {
     };
 
     // https://medium.com/suyeonme/react-how-to-implement-an-infinite-scroll-749003e9896a
-useEffect(() => {
+    useEffect(() => {
         setIsLoading(true);
         getBouteillesCellier(id, pageNum).then((res) => {
             setBouteilles((prev) => {
@@ -96,10 +96,10 @@ useEffect(() => {
             setOpacityState("0");
         }
     };
-  
+
     return (
         <Layout>
-            {contentLoading ? (
+            {isLoading && bouteilles <= 0 ? (
                 <div
                     style={{
                         minHeight: "100vh",
@@ -122,28 +122,32 @@ useEffect(() => {
                         onChange={(e) => setSearch(e.target.value)}
                     />
 
-          {!bouteilles.length && (
-                <p style={{
+                    {!bouteilles.length && (
+                        <p
+                            style={{
                                 textAlign: "center",
                                 marginTop: "30px",
                             }}
                         >
                             Aucune bouteille dans ton cellier
                         </p>
-            )}
-            {bouteilles.map((bouteille, i) => {
-                if (bouteilles.length === i + 1) {
-                    return (
-                        <div key={i} ref={derniereBouteilleRef}>
-                            {bouteille}
-                        </div>
-                    );
-                } else {
-                    return <div key={i}>{bouteille}</div>;
-                }
-            })}
-            <div>{isLoading && <CircleLoader />}</div>
+                    )}
 
+                    {bouteilles.map((bouteille, i) => {
+                        if (bouteilles.length === i + 1) {
+                            return (
+                                <div key={i} ref={derniereBouteilleRef}>
+                                    {bouteille}
+                                </div>
+                            );
+                        } else {
+                            return <div key={i}>{bouteille}</div>;
+                        }
+                    })}
+
+                    <div>{isLoading && <CircleLoader />}</div>
+                </>
+            )}
             <div
                 style={{
                     opacity: `${setOpacity}`,

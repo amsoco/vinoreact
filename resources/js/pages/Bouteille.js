@@ -68,8 +68,8 @@ const Bouteille = () => {
                         <p>Millesime</p>
                     </div>
                     <div>
-                        <p>{bouteille.pays}</p>
-                        <p>{bouteille.prix_achat} $</p>
+                        <p>{bouteille?.pays}</p>
+                        <p>{bouteille?.prix_achat} $</p>
                         <p>{categorie ? categorie : "Type inconnu"}</p>
                         <p>
                             {bouteille.millesime
@@ -88,15 +88,15 @@ const Bouteille = () => {
                         // content={bouteille.note, <Select />}
                         content={
                             <Notes
-                                note={bouteille.note}
-                                bouteille={bouteille.id}
+                                note={bouteille?.note}
+                                bouteilleId={bouteille?.id}
                             />
                         }
-                    ></Accordeon>
+                    />
                     <Accordeon
                         titre="Modification"
                         content={<ButtonModifier />}
-                    ></Accordeon>
+                    />
                 </div>
                 <Button
                     bg="#fff"
