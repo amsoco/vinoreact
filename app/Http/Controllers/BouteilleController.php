@@ -33,7 +33,8 @@ class BouteilleController extends Controller
      */
     public function showCellier(Request $request)
     {
-        return Bouteille::all()->where('cellier_id', $request->id);
+        $bouteilles = Bouteille::where('cellier_id', $request->id)->paginate(5);
+        return $bouteilles;
     }
 
 

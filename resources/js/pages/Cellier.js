@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useCellier } from "../context/cellier";
 import { useUser } from "../context/user";
 import Layout from "../components/Layout";
@@ -8,25 +8,27 @@ import BackUp from "../components/BackUp";
 import CircleLoader from "../components/CircleLoader";
 
 const Cellier = () => {
-    const [bouteilles, setBouteilles] = useState([]);
-    const [nomCellier, setNomCellier] = useState("");
-    const [search, setSearch] = useState("");
     const { getBouteillesCellier, loading, updateQty } = useCellier();
     const { user } = useUser();
     const [setOpacity, setOpacityState] = useState("0");
-    const [scroll, setScroll] = useState(0);
+    const [pageNum, setPageNum] = useState(1);
     const [contentLoading, setContentLoading] = useState(true);
+    const [bouteilles, setBouteilles] = useState([]);
+    const [hasMore, setHasMore] = useState(false);
+    const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
+    const [nomCellier, setNomCellier] = useState("");
+    const [search, setSearch] = useState("");
+    const [scroll, setScroll] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
 
     // https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
-    // memory leak et crash de l'app
     useEffect(() => {
         const updateQte = localStorage.getItem("updateQte");
         const bouteilleId = localStorage.getItem("bouteilleId");
         if (updateQte && !isNaN(updateQte)) {
             updateBouteille(bouteilleId, updateQte);
-        } else {
-            getBouteilles();
         }
+        getBouteillesCellier();
     }, []);
 
     const updateBouteille = async (bouteilleId, qte) => {
@@ -36,16 +38,44 @@ const Cellier = () => {
         localStorage.removeItem("updateQte");
         localStorage.removeItem("bouteilleId");
     };
-    const getBouteilles = async () => {
-        const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
-        getBouteillesCellier(id).then(({ data }) => {
-            setBouteilles(data);
-            setNomCellier(nom_cellier);
-            setContentLoading(false);
+
+    // https://medium.com/suyeonme/react-how-to-implement-an-infinite-scroll-749003e9896a
+useEffect(() => {
+        setIsLoading(true);
+        getBouteillesCellier(id, pageNum).then((res) => {
+            setBouteilles((prev) => {
+                return [
+                    ...new Set([
+                        ...prev,
+                        ...res.data.data.map((d) => (
+                            <CellierBouteille
+                                key={d.id}
+                                bouteille={d}
+                                cellier={nomCellier}
+                            />
+                        )),
+                    ]),
+                ];
+            });
+            setHasMore(res.data.data.length > 0);
+            setIsLoading(false);
         });
-        localStorage.removeItem("updateQte");
-        localStorage.removeItem("bouteilleId");
-    };
+    }, [id, pageNum]);
+
+    const observer = useRef();
+    const derniereBouteilleRef = useCallback(
+        (node) => {
+            if (isLoading) return;
+            if (observer.current) observer.current.disconnect();
+            observer.current = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && hasMore) {
+                    setPageNum((prev) => prev + 1);
+                }
+            });
+            if (node) observer.current.observe(node);
+        },
+        [isLoading, hasMore]
+    );
 
     useEffect(() => {
         // https://www.pluralsight.com/guides/how-to-cleanup-event-listeners-react
@@ -60,19 +90,13 @@ const Cellier = () => {
     //https://www.geeksforgeeks.org/how-to-create-scroll-indicator-using-reactjs/
     const handleScroll = (e) => {
         const Scrolled = document.documentElement.scrollTop;
-        const MaxHeight =
-            document.documentElement.scrollHeight -
-            document.documentElement.clientHeight;
-        const ScrollPercent = (Scrolled / MaxHeight) * 100;
-        setScroll(ScrollPercent);
         if (Scrolled > 20) {
             setOpacityState("100%");
         } else {
             setOpacityState("0");
         }
     };
-
-    if (loading) return <Loader />;
+  
     return (
         <Layout>
             {contentLoading ? (
@@ -97,27 +121,28 @@ const Cellier = () => {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                    {bouteilles.length ? (
-                        bouteilles.map((bouteille) => (
-                            <CellierBouteille
-                                key={bouteille.id}
-                                bouteille={bouteille}
-                                cellier={nomCellier}
-                            />
-                        ))
-                    ) : (
-                        <p
-                            style={{
+
+          {!bouteilles.length && (
+                <p style={{
                                 textAlign: "center",
                                 marginTop: "30px",
-                                display: contentLoading ? "none" : "block",
                             }}
                         >
                             Aucune bouteille dans ton cellier
                         </p>
-                    )}
-                </>
             )}
+            {bouteilles.map((bouteille, i) => {
+                if (bouteilles.length === i + 1) {
+                    return (
+                        <div key={i} ref={derniereBouteilleRef}>
+                            {bouteille}
+                        </div>
+                    );
+                } else {
+                    return <div key={i}>{bouteille}</div>;
+                }
+            })}
+            <div>{isLoading && <CircleLoader />}</div>
 
             <div
                 style={{
