@@ -5,12 +5,12 @@ import { useCellier } from "../context/cellier";
 import useDebounce from "../hooks/useDebounce";
 import { Button } from "../components/styles/Button.styled";
 import Accordeon from "../components/Accordeon";
-
 import {
     ResultatsRecherche,
     Resultat,
     BouteilleSelectionnee,
     DetailBouteille,
+    RechercheVins,
 } from "../components/styles/ResultatsRecherche.styled";
 import AjouterBouteilleForm from "../components/Forms/AjouterBouteille";
 
@@ -18,7 +18,7 @@ const AjouterBouteille = () => {
     const { searchWiki } = useCellier();
     const [search, setSearch] = useState("");
     const [results, setResults] = useState([]);
-    const [selectedBouteille, setSelectedBouteille] = useState({});
+    const [selectedBouteille, setSelectedBouteille] = useState();
     const [isSearching, setIsSearching] = useState(false);
     const debouncedSearch = useDebounce(search, 500);
     const [step, setStep] = useState(1);
@@ -67,12 +67,22 @@ const AjouterBouteille = () => {
         case 1:
             return (
                 <Layout>
-                    <Recherche
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                    <ResultatsRecherche>
-                        {renderSearchResults(results)}
+                    <RechercheVins>
+                        <h2>
+                            Ajouter une bouteille dans{" "}
+                            {
+                                JSON.parse(localStorage.getItem("cellier"))
+                                    .nom_cellier
+                            }
+                        </h2>
+
+                        <Recherche
+                            placeholder="Rechercher dans le wiki vins"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+
+                        <h2>OU</h2>
                         <Button
                             bg="#303031"
                             color="#fff"
@@ -81,9 +91,13 @@ const AjouterBouteille = () => {
                             borderColor="#303031"
                             onClick={() => setStep(3)}
                         >
-                            Nouvelle bouteille
+                            Aller au formulaire d'ajout
                         </Button>
-                    </ResultatsRecherche>
+
+                        <ResultatsRecherche>
+                            {renderSearchResults(results)}
+                        </ResultatsRecherche>
+                    </RechercheVins>
                 </Layout>
             );
 
@@ -129,6 +143,17 @@ const AjouterBouteille = () => {
                         >
                             PRENDRE INFOS
                         </Button>
+
+                        <Button
+                            bg="#fff"
+                            color="#303031"
+                            bgHover="#303031"
+                            colorHover="#fff"
+                            borderColor="#303031"
+                            onClick={() => setStep(1)}
+                        >
+                            ANNULER
+                        </Button>
                     </BouteilleSelectionnee>
                 </Layout>
             );
@@ -137,17 +162,6 @@ const AjouterBouteille = () => {
             return (
                 <Layout>
                     <AjouterBouteilleForm bouteille={selectedBouteille} />
-
-                    <Button
-                        bg="#fff"
-                        color="#303031"
-                        bgHover="#303031"
-                        colorHover="#fff"
-                        borderColor="#303031"
-                        onClick={() => setSelectedBouteille({})}
-                    >
-                        RÉINITIALISER
-                    </Button>
 
                     <Button
                         bg="#fff"

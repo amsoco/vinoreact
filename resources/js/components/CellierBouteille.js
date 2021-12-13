@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { CellierBouteilleSection } from "./styles/CellierBouteilleSection.styled";
-import DummyBouteille from "../assets/svg/dummyBouteille.svg";
 import { slugify } from "../helpers/slugify";
+import CircleLoader from "./CircleLoader";
 
 const CellierBouteille = ({ bouteille, cellier }) => {
+    const [isLoading, setIsLoading] = useState(true);
     const { id, nom, millesime, url_img, pays, format, prix_achat, quantite } =
         bouteille;
     // la section cellier pour chacune des bouteille
@@ -17,11 +18,22 @@ const CellierBouteille = ({ bouteille, cellier }) => {
                         <p>{millesime ? millesime : "Inconnu"}</p>
                     </div>
                     <div>
+                        {isLoading && (
+                            <div
+                                style={{
+                                    minHeight: "150px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <CircleLoader />
+                            </div>
+                        )}
                         <img
-                            //width=""
-                            //height=""
-                            //loading='lazy'
-                            src={url_img ? url_img : DummyBouteille}
+                            src={url_img}
+                            style={{ display: isLoading ? "none" : "block" }}
+                            onLoad={() => setIsLoading(false)}             
                             alt={nom}
                         />
                         <div>

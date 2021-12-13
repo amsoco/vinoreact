@@ -36,11 +36,13 @@ export const UserProvider = ({ children }) => {
         await Http.get("sanctum/csrf-cookie");
         const { data } = await Http.post("login", creds);
         sessionStorage.setItem("user", data.user.id);
+        sessionStorage.setItem("privilege", data.user.privilege_id);
         localStorage.setItem("connected", "truth");
         setUser({
             ...data.user,
             celliers: data.celliers,
         });
+
     };
 
     // enregistre le nouvel utilisateur
@@ -61,8 +63,15 @@ export const UserProvider = ({ children }) => {
         navigate("/");
     };
 
+    //get les users
+    const getUsagers = async () => {
+        const usagers = await Http.get(`/users`);
+        return usagers;
+    };
+
+
     return (
-        <UserContext.Provider value={{ user, login, register, logout }}>
+        <UserContext.Provider value={{ user, login, register, logout, getUsagers }}>
             {children}
         </UserContext.Provider>
     );

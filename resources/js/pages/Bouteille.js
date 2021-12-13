@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { BouteilleSection } from "../components/styles/Bouteille.styled";
 import { Button } from "../components/styles/Button.styled";
-import { Input, Select } from '../components/styles/Input.styled';
 import Layout from "../components/Layout";
 import Accordeon from "../components/Accordeon";
 import ButtonModifier from "../components/ButtonModifier";
 import Notes from "../components/Notes";
-import BouteillePhoto from "../assets/images/bouteille.jpg";
 import { useCellier } from "../context/cellier";
-import Loader from "../components/Loader";
+import CircleLoader from "../components/CircleLoader";
 
 const Bouteille = () => {
     const [bouteille, setBouteille] = useState({});
@@ -18,9 +16,11 @@ const Bouteille = () => {
     const { cellier, bouteilleId } = useParams();
     const navigate = useNavigate();
     const [counter, setCounter] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         let isSubscribed = true;
+        setIsLoading(true);
         getBouteille(bouteilleId).then(({ data }) => {
             const { bouteille, categorie } = data;
             setBouteille(bouteille);
@@ -28,6 +28,7 @@ const Bouteille = () => {
             setCounter(bouteille.quantite);
             localStorage.setItem("bouteilleId", bouteilleId);
         });
+
         return () => (isSubscribed = false);
     }, []);
 
@@ -37,10 +38,26 @@ const Bouteille = () => {
     return (
         <Layout>
             <BouteilleSection>
+                {isLoading && (
+                    <div
+                        style={{
+                            minHeight: "80vh",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <CircleLoader />
+                    </div>
+                )}
+
                 <img
-                    src={bouteille.url_img ? bouteille.url_img : BouteillePhoto}
-                    alt="logo"
+                    src={bouteille?.url_img}
+                    style={{ display: isLoading ? "none" : "block" }}
+                    onLoad={() => setIsLoading(false)}
+                    alt={bouteille?.nom}
                 />
+
                 <h2>{bouteille.nom}</h2>
                 <h3>Quantité {counter}</h3>
                 <section>
@@ -78,7 +95,7 @@ const Bouteille = () => {
                     ></Accordeon>
                     <Accordeon
                         titre="Modification"
-                        content={<ButtonModifier/>}
+                        content={<ButtonModifier />}
                     ></Accordeon>
                 </div>
                 <Button

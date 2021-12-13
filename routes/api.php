@@ -37,10 +37,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/bouteilles/editField/{id}', [BouteilleController::class, 'updateField']);
     Route::delete('/bouteilles/{id}', [BouteilleController::class, 'destroy']);
 
-    Route::post('/upload', [BouteilleController::class, 'storeUploads']);
-
-    Route::get('/categorie', [CategorieController::class, 'index']);
-
+    Route::get('/categories', [CategorieController::class, 'index']);
     Route::get('/cellier', [CellierController::class, 'index']);
     Route::get('/cellier/{id}', [CellierController::class, 'show']);
     Route::post('/cellier/create', [CellierController::class, 'store']);
@@ -53,6 +50,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/search/{search}', [Wiki_vinController::class, 'search']);
 
     Route::get('/user', [AuthController::class, 'me']);
-    Route::delete('/user/{id}', [AuthController::class, 'destroyUser']);
-
+    Route::get('/users', [AuthController::class, 'index']);
+    Route::get('/user/{id}', [AuthController::class, 'show']);
+    Route::get('/user/edit/{id}', [AuthController::class, 'edit']);
+    Route::put('/user/edit/{id}', [AuthController::class, 'update']);
+    Route::delete('/user/{id}', [AuthController::class, 'destroy']);
 });

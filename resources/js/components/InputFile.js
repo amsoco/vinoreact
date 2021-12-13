@@ -1,54 +1,30 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import axios from "axios";
+import CircleLoader from "./CircleLoader";
+import { useCellier } from "../context/cellier";
 
 // STYLED COMPONENTS
+const Container = styled.div`
+    border-top: 1px solid #d8d8d8;
+    width: 100%;
+    max-width: 760px;
+`;
+
 const ImgPreview = styled.img.attrs((props) => ({
     src: props.src,
 }))`
     display: block;
     width: auto;
     height: 120px;
-    margin: 20px 0;
-`;
-
-const ImgPlaceholder = styled.div`
-    width: 120px;
-    height: 120px;
-`;
-
-const ButtonUpload = styled.button`
-    background: #303031 !important;
-    color: #fff;
-    padding: 2px 5px;
-    margin-top: 20px;
-    font-family: GothamBlack;
-    cursor: pointer;
-
-    &:hover {
-        background: #fff !important;
-        color: #303031;
-        border-color: #303031;
-    }
-`;
-
-const Label = styled.label`
-    margin: 10px 0;
+    margin: 40px 0;
 `;
 
 // REACT
 const InputFile = ({ existingImg, onImageChange }) => {
-    const [imageSelected, setImageSelected] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
-    const [publicId, setPublicId] = useState("");
+    const { uploadImage } = useCellier();
     const [preview, setPreview] = useState(existingImg || "");
     const [isSubmitting, setIsSubmitting] = useState(false);
-
-    //nettoyer la précèdente image de preview (data uri) au chargement du composant
-    // useEffect(() => {
-    //     URL.revokeObjectURL(preview);
-    // }, [preview]);
 
     // preview de l'image
     const previewImage = useCallback((file) => {
@@ -59,52 +35,41 @@ const InputFile = ({ existingImg, onImageChange }) => {
     });
 
     // upload de l'image
-    const uploadImage = () => {
+    const uploadBouteilleImg = async (image) => {
         setIsSubmitting(true);
-        const formData = new FormData();
-        formData.append("file", imageSelected);
-        formData.append("upload_preset", "knxwwgoa");
-
-        axios
-            .post(
-                "https://api.cloudinary.com/v1_1/vino-project/image/upload",
-                formData
-            )
-            .then(({ data }) => {
-                console.log('data', data)
-                setImageUrl(data.secure_url);
-                setPublicId(data.public_id);
-                onImageChange(data.secure_url)
-                setIsSubmitting(false);
-            });
+        const { data } = await uploadImage(image);
+        onImageChange(data.secure_url);
+        setIsSubmitting(false);
     };
 
     return (
-        <>
-            {preview && <Label>Image actuelle:</Label>}
-
-            {preview ? (
+        <Container>
+            {isSubmitting ? (
+                <CircleLoader />
+            ) : preview ? (
                 <ImgPreview src={preview} alt="selected image" />
             ) : (
-                <ImgPlaceholder />
+                <ImgPreview
+                    src="https://res.cloudinary.com/vino-project/image/upload/v1639165462/bouteilleBlack_lz3rkm.png"
+                    alt="Image par défaut"
+                />
             )}
 
             <input
                 type="file"
-                onChange={(e) => {
-                    setImageSelected(e.target.files[0]);
-                    previewImage(e.target.files[0]);
+                onChange={({ target }) => {
+                    previewImage(target.files[0]);
+                    uploadBouteilleImg(target.files[0]);
                 }}
             />
-
-            <ButtonUpload onClick={uploadImage} disabled={isSubmitting}>UPLOADER IMAGE</ButtonUpload>
-        </>
+        </Container>
     );
 };
 
 // Les types de props attendus par le composant
 InputFile.propTypes = {
     existingImg: PropTypes.string,
+    onImageChange: PropTypes.func.isRequired,
 };
 
 export default InputFile;

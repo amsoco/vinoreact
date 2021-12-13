@@ -5,19 +5,23 @@ import Layout from "../components/Layout";
 import CellierBouteille from "../components/CellierBouteille";
 import Recherche from "../components/Recherche";
 import BackUp from "../components/BackUp";
-import Loader from "../components/Loader";
-import Http from "../HttpClient";
+import CircleLoader from "../components/CircleLoader";
+
 const Cellier = () => {
-    const { getBouteillesCellier, loading } = useCellier();
+    const { getBouteillesCellier, loading, updateQty } = useCellier();
     const { user } = useUser();
     const [setOpacity, setOpacityState] = useState("0");
     const [pageNum, setPageNum] = useState(1);
-    const [isLoading, setIsLoading] = useState(true);
+    const [contentLoading, setContentLoading] = useState(true);
     const [bouteilles, setBouteilles] = useState([]);
     const [hasMore, setHasMore] = useState(false);
     const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
-    const [nomCellier] = useState(nom_cellier);
-    // **************************************
+    const [nomCellier, setNomCellier] = useState("");
+    const [search, setSearch] = useState("");
+    const [scroll, setScroll] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
+
+    // https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
     useEffect(() => {
         const updateQte = localStorage.getItem("updateQte");
         const bouteilleId = localStorage.getItem("bouteilleId");
@@ -29,16 +33,14 @@ const Cellier = () => {
 
     const updateBouteille = async (bouteilleId, qte) => {
         // Cette request mettra à jour le nombre de bouteilles que l'utilisateur a défini auparavant dans Bouteille.js
-        await Http.put(`bouteilles/editField/${bouteilleId}`, {
-            quantite: qte,
-        }).then(() => {
-            localStorage.removeItem("updateQte");
-            localStorage.removeItem("bouteilleId");
-        });
+        await updateQty(bouteilleId, qte);
+        getBouteilles();
+        localStorage.removeItem("updateQte");
+        localStorage.removeItem("bouteilleId");
     };
 
     // https://medium.com/suyeonme/react-how-to-implement-an-infinite-scroll-749003e9896a
-    useEffect(() => {
+useEffect(() => {
         setIsLoading(true);
         getBouteillesCellier(id, pageNum).then((res) => {
             setBouteilles((prev) => {
@@ -94,18 +96,40 @@ const Cellier = () => {
             setOpacityState("0");
         }
     };
-    if (loading && bouteilles <= 0) return <Loader />;
+  
     return (
         <Layout>
-            <div>
-                <h1>Ton Cellier</h1>
-                <h3>{user?.name}</h3>
-            </div>
-            <Recherche />
-            {!bouteilles.length && (
-                <p style={{ textAlign: "center", marginTop: "30px" }}>
-                    Aucune bouteille dans ton cellier
-                </p>
+            {contentLoading ? (
+                <div
+                    style={{
+                        minHeight: "100vh",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
+                    <CircleLoader />
+                </div>
+            ) : (
+                <>
+                    <div>
+                        <h1>Ton Cellier</h1>
+                        <h3>{user?.name}</h3>
+                    </div>
+                    <Recherche
+                        placeholder="Rechercher dans mon cellier"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+
+          {!bouteilles.length && (
+                <p style={{
+                                textAlign: "center",
+                                marginTop: "30px",
+                            }}
+                        >
+                            Aucune bouteille dans ton cellier
+                        </p>
             )}
             {bouteilles.map((bouteille, i) => {
                 if (bouteilles.length === i + 1) {
@@ -118,7 +142,7 @@ const Cellier = () => {
                     return <div key={i}>{bouteille}</div>;
                 }
             })}
-            <div>{isLoading && "Chargement en cours..."}</div>
+            <div>{isLoading && <CircleLoader />}</div>
 
             <div
                 style={{

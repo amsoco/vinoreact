@@ -5,7 +5,7 @@ import { UserProvider } from "../context/user";
 import GlobalStyles from "../components/styles/Global";
 import { CellierProvider } from "../context/cellier";
 import RequireAuth from "./RequireAuth";
-import Loader from "./Loader";
+import CircleLoader from "./CircleLoader";
 import GlobalFonts from "../../fonts/fonts";
 
 // lazy load les pages que le user demande au lieu de charger le bundle JS/CSS de toute l'app
@@ -17,6 +17,7 @@ const Accueil = lazy(() => import("../pages/Accueil"));
 const Cellier = lazy(() => import("../pages/Cellier"));
 const Bouteille = lazy(() => import("../pages/Bouteille"));
 const AjouterBouteille = lazy(() => import("../pages/AjouterBouteille"));
+const Admin = lazy(() => import("../pages/Admin"));
 
 const App = () => (
     // le user connecté est rendu disponible dans toute l'app via context
@@ -27,9 +28,30 @@ const App = () => (
                 <GlobalStyles />
 
                 {/* afficher un fallback au chargement de la page avec Suspense: un spinner ou la page de loading vino? */}
-                <Suspense fallback="">
+                <Suspense
+                    fallback={
+                        <div
+                            style={{
+                                minHeight: "100vh",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <CircleLoader />
+                        </div>
+                    }
+                >
                     <Routes>
                         <Route path="/" element={<SeConnecter />} />
+                        <Route
+                            path="/admin"
+                            element={
+                                <RequireAuth>
+                                    <Admin />
+                                </RequireAuth>
+                            }
+                        />
                         <Route
                             path="/nouveau-compte"
                             element={<CreerCompte />}
@@ -53,7 +75,7 @@ const App = () => (
                             }
                         />
                         <Route
-                            path=":cellier/:bouteilleId"
+                            path="/:cellier/:bouteilleId"
                             element={
                                 <RequireAuth>
                                     <Bouteille />
@@ -61,7 +83,7 @@ const App = () => (
                             }
                         />
                         <Route
-                            path="/:celliers/nouvelle-bouteille"
+                            path="/:cellier/nouvelle-bouteille"
                             element={
                                 <RequireAuth>
                                     <AjouterBouteille />
