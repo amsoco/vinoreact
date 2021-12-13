@@ -5,21 +5,21 @@ import Layout from "../components/Layout";
 import CellierBouteille from "../components/CellierBouteille";
 import Recherche from "../components/Recherche";
 import BackUp from "../components/BackUp";
-import Loader from "../components/Loader";
-import Http from "../HttpClient";
+import CircleLoader from "../components/CircleLoader";
 
 const Cellier = () => {
     const [bouteilles, setBouteilles] = useState([]);
     const [nomCellier, setNomCellier] = useState("");
-    const { getBouteillesCellier, loading } = useCellier();
+    const [search, setSearch] = useState("");
+    const { getBouteillesCellier, loading, updateQty } = useCellier();
     const { user } = useUser();
     const [setOpacity, setOpacityState] = useState("0");
     const [scroll, setScroll] = useState(0);
+    const [contentLoading, setContentLoading] = useState(true);
 
     // https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
     // memory leak et crash de l'app
     useEffect(() => {
-        let isMounted = true;
         const updateQte = localStorage.getItem("updateQte");
         const bouteilleId = localStorage.getItem("bouteilleId");
         if (updateQte && !isNaN(updateQte)) {
@@ -31,11 +31,8 @@ const Cellier = () => {
 
     const updateBouteille = async (bouteilleId, qte) => {
         // Cette request mettra à jour le nombre de bouteilles que l'utilisateur a défini auparavant dans Bouteille.js
-        await Http.put(`bouteilles/editField/${bouteilleId}`, {
-            quantite: qte,
-        }).then(() => {
-            getBouteilles();
-        });
+        await updateQty(bouteilleId, qte);
+        getBouteilles();
         localStorage.removeItem("updateQte");
         localStorage.removeItem("bouteilleId");
     };
@@ -44,6 +41,7 @@ const Cellier = () => {
         getBouteillesCellier(id).then(({ data }) => {
             setBouteilles(data);
             setNomCellier(nom_cellier);
+            setContentLoading(false);
         });
         localStorage.removeItem("updateQte");
         localStorage.removeItem("bouteilleId");
@@ -77,23 +75,48 @@ const Cellier = () => {
     if (loading) return <Loader />;
     return (
         <Layout>
-            <div>
-                <h1>Ton Cellier</h1>
-                <h3>{user?.name}</h3>
-            </div>
-            <Recherche />
-            {bouteilles.length ? (
-                bouteilles.map((bouteille) => (
-                    <CellierBouteille
-                        key={bouteille.id}
-                        bouteille={bouteille}
-                        cellier={nomCellier}
-                    />
-                ))
+            {contentLoading ? (
+                <div
+                    style={{
+                        minHeight: "100vh",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
+                    <CircleLoader />
+                </div>
             ) : (
-                <p style={{ textAlign: "center", marginTop: "30px" }}>
-                    Aucune bouteille dans ton cellier
-                </p>
+                <>
+                    <div>
+                        <h1>Ton Cellier</h1>
+                        <h3>{user?.name}</h3>
+                    </div>
+                    <Recherche
+                        placeholder="Rechercher dans mon cellier"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    {bouteilles.length ? (
+                        bouteilles.map((bouteille) => (
+                            <CellierBouteille
+                                key={bouteille.id}
+                                bouteille={bouteille}
+                                cellier={nomCellier}
+                            />
+                        ))
+                    ) : (
+                        <p
+                            style={{
+                                textAlign: "center",
+                                marginTop: "30px",
+                                display: contentLoading ? "none" : "block",
+                            }}
+                        >
+                            Aucune bouteille dans ton cellier
+                        </p>
+                    )}
+                </>
             )}
 
             <div

@@ -127,6 +127,10 @@ const GlobalStyles = createGlobalStyle`
     list-style: none;
   }
 
+  input[type="date"]::-webkit-datetime-edit {
+    color: #D8D8D8;
+  }
+
 `
 
 export default GlobalStyles

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Wiki_vin;
 use Illuminate\Http\Request;
+use App\Models\Categorie;
 
 class Wiki_vinController extends Controller
 {
@@ -80,8 +81,15 @@ class Wiki_vinController extends Controller
      */
     public function search($key)
     {
-        //$key = trim($request->get('q'));
-        return Wiki_vin::where('nom', 'LIKE', '%' .$key. '%')->get();
+        //return Wiki_vin::where('nom', 'LIKE', '%' .$key. '%')->limit(2)->get();
+
+        $vins = Wiki_vin::join('categories', 'categories.id', '=', 'wiki_vins.categorie_id')
+            ->where('wiki_vins.nom', 'LIKE', '%' . $key . '%')
+            ->limit(5)
+            ->select(['wiki_vins.*', 'categories.nom AS categorie'])
+            ->get();
+
+        return $vins;
     }
 
 
