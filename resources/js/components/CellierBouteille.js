@@ -19,7 +19,7 @@ const CellierBouteille = ({ bouteille, cellier }) => {
                     <div>
                         <img
                             //width=""
-                            //height="" 
+                            //height=""
                             //loading='lazy'
                             src={url_img ? url_img : DummyBouteille}
                             alt={nom}
@@ -34,7 +34,7 @@ const CellierBouteille = ({ bouteille, cellier }) => {
                 </Link>
             )}
         </CellierBouteilleSection>
-    )
+    );
 };
 
 export default CellierBouteille;
