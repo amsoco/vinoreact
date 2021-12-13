@@ -26,9 +26,10 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 500,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: '2px solid #303031',
+    'border-radius': '2px',
     boxShadow: 24,
     p: 4,
 }
@@ -63,14 +64,14 @@ const AdminUsager = () => {
     const getUsagersAdmin = async () => {
         getUsagers().then(({ data }) => {
             setUsagers(data);
-           // console.log(data)
+           
         });
     };
 
   
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
-      page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+      page > 0 ? Math.max(0, (1 + page) * rowsPerPage - usagers.length) : 0;
   
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
@@ -84,7 +85,7 @@ const AdminUsager = () => {
     return (
         <div>
             <div>
-                <h4>Usager</h4>
+                <h4>Les usagers de vino</h4>
                 <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutUsager')}>Ajouter</Button>
             </div>
         <input type="text" id="rechercheAdmin" name="rechercher" placeholder='Recherche'/>
@@ -111,7 +112,7 @@ const AdminUsager = () => {
                     <TableCell align="right">{usager.email}</TableCell>
                     <TableCell align="right">{usager.privilege_id}</TableCell>
                     <TableCell align="right">
-                        <Button variant="outlined" size='small' onClick={handleOpen}>
+                        <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutUsager', usager.id ,usager.name, usager.email, usager.privilege_id)}>
                             Modifier
                         </Button>
                         <Button variant="outlined" size='small' onClick={() => {

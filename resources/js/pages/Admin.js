@@ -15,11 +15,21 @@ const AdminContext = createContext();
 const Admin = () => {
     const { user } = useUser();
     const { logout } = useUser();
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const [setRoute, setRouteState] = useState("user");
+    const [setUsagerId, setUsagerIdState] = useState("");
+    const [setUsagerNom, setUsagerNomState] = useState("");
+    const [setUsagerCourriel, setUsagerCourrielState] = useState("");
+    const [setUsagerPrivilege, setUsagerPrivilegeState] = useState(1);
+
     
-    const RouteAdmin = (route) => {
+    const RouteAdmin = (route, id, nom, email, privilege) => {
         setRouteState(route)
+        console.log(id)
+        setUsagerIdState(id)
+        setUsagerNomState(nom)
+        setUsagerCourrielState(email)
+        setUsagerPrivilegeState(privilege)
     }
 
 
@@ -45,7 +55,7 @@ const Admin = () => {
                             switch (setRoute) {
                                 case "user":   return <AdminUsager/>;
                                 case "wikiVin": return <AdminWikiVin/>;
-                                case "AjoutUsager" : return <AdminAjoutUsager/>;
+                                case "AjoutUsager" : return <AdminAjoutUsager id={setUsagerId} nom={setUsagerNom} email={setUsagerCourriel} privilege={setUsagerPrivilege} />;
                         }
                     })()}
                     </AdminSection>
