@@ -3,7 +3,6 @@ import { useUser } from "../context/user";
 //import { ModalStyled , BackDrop } from "./styles/Modal.styled";
 import Pagination from "./Pagination";
 import PropTypes from 'prop-types';
-//import TablePagination from '@material-ui/core/TablePagination';
 import { useAdmin } from "../pages/Admin";
 
 import Table from '@material-ui/core/Table';
@@ -13,7 +12,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-//import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Modal from '@material-ui/core/Modal';

@@ -14,6 +14,7 @@ import { DataUsageRounded } from "@mui/icons-material";
 const AdminAjoutUsager = (props) => {
     const { user } = useUser();
     const { register } = useUser();
+    const { updateUsager } = useUser();
   //  const navigate = useNavigate();
   const { RouteAdmin } = useAdmin();
 
@@ -31,9 +32,17 @@ const AdminAjoutUsager = (props) => {
 
 
     const registerUser = async (values) => {
-        const data = await register(values);
+        console.log(values)
+
+        if(values.id === "") {
+            const data = await register(values);
+        } else {
+            console.log('update')
+            const data = await updateUsager(values);
+        }
+
         RouteAdmin('user')
-        //return navigate('/admin');
+
     };
 
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
@@ -46,7 +55,142 @@ const AdminAjoutUsager = (props) => {
         isSubmitting,
     } = useForm(initialValues, registerUser, registerFormValidate);
 
+    if (props.id) {
+        return (
+            <Countainer>
+                <div>
+                    <h4>Ajout Usager</h4>
+                </div>
+                <AjoutModifUsager onSubmit={handleFormSubmit}>
 
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Nom"
+                        value={values.name}
+                        onChange={handleFormChange}
+                        error={errors?.pays}
+                    />
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="email"
+                        name="email"
+                        placeholder="Courriel"
+                        value={values.email}
+                        onChange={handleFormChange}
+                        error={errors?.email}
+                    />
+
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="privilege_id"
+                        name="privilege_id"
+                        placeholder="Select ici"
+                        value={values.privilege_id}
+                        onChange={handleFormChange}
+                        //error={errors?.privilege_id}
+                    />
+
+                    <Button
+                        type="submit"
+                        bg="#303031"
+                        color="#fff"
+                        bgHover="white"
+                        colorHover="#303030"
+                        disabled={isSubmitting}
+                    >
+                    Modifier
+                    </Button>
+                </AjoutModifUsager>
+            </Countainer>
+        )
+    
+
+    } else {
+        return (
+            <Countainer>
+                <div>
+                    <h4>Ajout Usager</h4>
+                </div>
+                <AjoutModifUsager onSubmit={handleFormSubmit}>
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Nom"
+                        value={values.name}
+                        onChange={handleFormChange}
+                        error={errors?.pays}
+                    />
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="email"
+                        name="email"
+                        placeholder="Courriel"
+                        value={values.email}
+                        onChange={handleFormChange}
+                        error={errors?.email}
+                    />
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="nom_cellier"
+                        name="nom_cellier"
+                        placeholder="Nom cellier"
+                        value={values.nom_cellier}
+                        onChange={handleFormChange}
+                        error={errors?.nom_cellier}
+                    />
+                    {/* <select name="privilege_id" onChange={handleFormChange}>
+                            <option value='1' >1</option>
+                            <option value='2' >2</option>
+                    </select> */}
+    
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="privilege_id"
+                        name="privilege_id"
+                        placeholder="Select ici"
+                        value={values.privilege_id}
+                        onChange={handleFormChange}
+                        //error={errors?.privilege_id}
+                    />
+                    
+                    <EditionAjoutFormInput
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={values.password}
+                        placeholder="Mot de passe"
+                        onChange={handleFormChange}
+                        onBlur={handleBlur}
+                        error={errors?.password}
+                    />
+                    <EditionAjoutFormInput
+                        type="password"
+                        id="password_confirmation"
+                        name="password_confirmation"
+                        placeholder="Confirmer le mot de passe"
+                        value={values.password_confirmation}
+                        onChange={handleFormChange}
+                        onBlur={handleBlur}
+                        error={errors?.password_confirmation}
+                    />
+                    <Button
+                        type="submit"
+                        bg="#303031"
+                        color="#fff"
+                        bgHover="white"
+                        colorHover="#303030"
+                        disabled={isSubmitting}
+                    >
+                    AJOUTER
+                    </Button>
+                </AjoutModifUsager>
+            </Countainer>
+        )
+    
+    }
  
 
     return (
