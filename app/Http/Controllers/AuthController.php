@@ -163,5 +163,16 @@ class AuthController extends Controller
     }
 
 
+    /**
+     * Search the request in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search($key)
+    {
+        return User::where('name', 'LIKE', '%' .$key. '%')->limit(2)->get();
+    }
+
 
 }
