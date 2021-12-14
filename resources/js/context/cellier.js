@@ -91,6 +91,17 @@ export const CellierProvider = ({ children }) => {
     const supprimerBouteille = async (bouteilleId) =>
         Http.delete(`bouteilles/${bouteilleId}`);
 
+    /**
+     * Mettre à jour la note d'une bouteille
+     * @param {number} bouteilleId
+     * @param {number} noteNew
+     * @returns {void}
+     */
+    const updateNoteBouteille = (bouteilleId, noteNew) =>
+        Http.put(`bouteilles/editField/${bouteilleId}`, {
+            note: `${noteNew}`,
+        });
+
     return (
         <CellierContext.Provider
             value={{
@@ -101,6 +112,7 @@ export const CellierProvider = ({ children }) => {
                 modifierBouteille,
                 searchWiki,
                 supprimerBouteille,
+                updateNoteBouteille,
                 uploadImage,
                 updateQty,
             }}
