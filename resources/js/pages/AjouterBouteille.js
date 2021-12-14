@@ -108,8 +108,6 @@ const AjouterBouteille = () => {
                         <img
                             src={
                                 selectedBouteille.url_img
-                                    ? selectedBouteille.url_img
-                                    : DummyBouteille
                             }
                             alt={selectedBouteille.nom}
                         />
