@@ -98,7 +98,7 @@ export const AdminSection = styled.section`
 export const AdminAside = styled.aside`
     width: 260px;
     min-width:200px;
-    height: auto;
+    height: 100vh;
     background:#303031;
     color:#fff;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;

@@ -68,19 +68,12 @@ export const UserProvider = ({ children }) => {
         });
     };
 
-<<<<<<< HEAD
     // enregistre le nouvel utilisateur
     const updateUsager = async (creds) => {
         const { data } = await Http.put(`/user/edit/${creds.id}`, creds);
     };
 
     // déconnecte l'utilisateur
-=======
-    /**
-     * Déconnecter un utilisateur
-     * @returns {void}
-     */
->>>>>>> upstream/main
     const logout = async () => {
         await Http.post("logout");
         setUser(false);
@@ -88,7 +81,6 @@ export const UserProvider = ({ children }) => {
         navigate("/");
     };
 
-<<<<<<< HEAD
     //get les users
     const getUsagers = async () => {
         const usagers = await Http.get(`/users`);
@@ -106,18 +98,6 @@ export const UserProvider = ({ children }) => {
 
     return (
         <UserContext.Provider value={{ user, login, register, logout, getUsagers, deleteUsager, updateUsager, searchUsager }}>
-=======
-    /**
-     * Récupérer tous les utilisateurs
-     * @returns {array}
-     */
-    const getUsagers = async () => Http.get(`/users`);
-
-    return (
-        <UserContext.Provider
-            value={{ user, login, register, logout, getUsagers }}
-        >
->>>>>>> upstream/main
             {children}
         </UserContext.Provider>
     );
