@@ -1,6 +1,7 @@
 import React from "react";
 import { MonCompteCountainer } from "../components/styles/MonCompte.styled.js";
 import Accordeon from "../components/Accordeon";
+import { Link, useParams } from "react-router-dom";
 import ListCelliers from "../components/ListCelliers";
 import { useUser } from "../context/user";
 import { Button } from "../components/styles/Button.styled";
@@ -36,9 +37,10 @@ const MonCompte = () => {
                     }
                 ></Accordeon>
 
-                <Button bg="#303031" color="#fff">
+    
+                {/* <Button bg="#303031" color="#fff">
                     MODIFIER
-                </Button>
+                </Button> */}
             </MonCompteCountainer>
         </>
     );

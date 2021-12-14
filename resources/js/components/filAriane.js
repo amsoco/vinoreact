@@ -14,19 +14,23 @@ const filDariane = ({ children }) => {
                 <span>Accueil</span>
             </Link>
             <span>/</span>
+            
+            
+            {pathname.includes("mon-compte") && (
+                    <span>mon compte</span>
+            )}
+
 
             {/* Accueil / cellier-tito */}
             {searchParams.cellier && (
                 <>
-                    <Link to={`/${searchParams.cellier}`}>
-                        <span>{searchParams.cellier}</span>
-                    </Link>
                     <span>/</span>
                 </>
             )}
             {pathname.includes("nouvelle-bouteille") && (
                 <span>ajouter bouteille</span>
             )}
+
 
             {/* Accueil / cellier-tito / 1 */}
             {searchParams.bouteilleId && (

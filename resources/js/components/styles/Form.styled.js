@@ -10,9 +10,8 @@ export const Form = styled.form`
     max-width: 350px;
     margin: 0 20px 0 20px;
     position:relative;
-    & > *:not(:first-child) {
+    &>*:not(:first-child) {
         margin-top: 30px;
-
     }
 
     a {
@@ -54,4 +53,23 @@ export const LegendDark = styled.legend`
     align-items: flex-end;
     width: 100%;
     margin: 40px 0;
+`
+
+export const FormMonCompte = styled.form`
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 20px 0 20px;
+    position:relative;
+    &>*:not(:first-child) {
+        margin-top: 20px;
+    }
+
+    a {
+        color:#fff;
+        border-bottom: 2px solid #fff;
 `
