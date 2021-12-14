@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext, createContext, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { AdminMain, AdminAside, AdminNav, AdminSection } from "../components/styles/Admin.styled";
+import { AdminMain, AdminAside, AdminNav, AdminSection, AdminAsidePetit } from "../components/styles/Admin.styled";
 import LogoVino from "./../assets/svg/logoBlanc.svg";
 import { useUser } from "../context/user";
 import AdminUsager from "../components/AdminUsager";
@@ -35,6 +35,11 @@ const Admin = () => {
     return (
 
         <AdminMain>
+            <AdminAsidePetit>
+                <h4>vino</h4>
+                <p onClick={() => RouteAdmin('user')}>Utilisateur</p>
+                <p onClick={() => RouteAdmin('wikiVin')}>Wiki Vin</p>
+            </AdminAsidePetit>
             <AdminAside>
                 <div>
                     <img src={LogoVino} alt="logo vino" />
@@ -45,7 +50,7 @@ const Admin = () => {
             </AdminAside>
             <div>
                 <AdminNav>
-                    <h4>Bienvenue {user?.name}</h4>
+                    <h4>{user?.name}</h4>
                     <p onClick={() => logout()}>Logout</p>
                 </AdminNav>
                 <AdminContext.Provider value={{RouteAdmin}} >

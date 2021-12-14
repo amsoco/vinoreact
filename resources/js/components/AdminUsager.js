@@ -106,7 +106,7 @@ const AdminUsager = () => {
     return (
         <div>
             <div>
-                <h4>Les usagers de vino</h4>
+                <h4>Les usagers</h4>
                 <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutUsager')}>Ajouter</Button>
             </div>
         <input type="text" id="rechercheAdmin" name="rechercher" placeholder='Recherche' value={search} onChange={(e) => setSearch(e.target.value)}/>
@@ -128,7 +128,7 @@ const AdminUsager = () => {
                     key={result?.name}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                    <TableCell component="th" scope="usager">
+                    <TableCell scope="usager">
                     {result?.name}
                     </TableCell>
                     <TableCell align="right">{result?.email}</TableCell>
