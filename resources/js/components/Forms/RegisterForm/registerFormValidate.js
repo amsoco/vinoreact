@@ -40,4 +40,8 @@ const registerFormValidate = (values) => {
     return errors;
 };
 
+
+
+
 export default registerFormValidate;
+

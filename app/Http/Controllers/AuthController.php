@@ -162,6 +162,21 @@ class AuthController extends Controller
         return User::where('id', $id)->delete();
     }
 
+        /**
+     * Search the request in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search($key)
+    {
+        //return Wiki_vin::where('nom', 'LIKE', '%' .$key. '%')->limit(2)->get();
+
+        $usagers = User::where('name', 'LIKE', '%' .$key. '%')->limit(20)->get();
+
+
+        return $usagers;
+    }
 
 
 }

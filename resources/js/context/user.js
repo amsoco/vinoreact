@@ -55,7 +55,7 @@ export const UserProvider = ({ children }) => {
         });
     };
 
-        // enregistre le nouvel utilisateur
+    // enregistre le nouvel utilisateur
     const updateUsager = async (creds) => {
         const { data } = await Http.put(`/user/edit/${creds.id}`, creds);
     };
@@ -74,6 +74,9 @@ export const UserProvider = ({ children }) => {
         return usagers;
     };
 
+    // rechercher des usagers
+    const searchUsager = (search) => Http.get(`search/${search}`);
+
     const deleteUsager = async (id) => {
         const usagers = await Http.delete(`/user/${id}`);
         return usagers;
@@ -81,7 +84,7 @@ export const UserProvider = ({ children }) => {
     //put('/user/edit/{id}
 
     return (
-        <UserContext.Provider value={{ user, login, register, logout, getUsagers, deleteUsager, updateUsager }}>
+        <UserContext.Provider value={{ user, login, register, logout, getUsagers, deleteUsager, updateUsager, searchUsager }}>
             {children}
         </UserContext.Provider>
     );

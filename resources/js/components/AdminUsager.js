@@ -4,7 +4,7 @@ import { useUser } from "../context/user";
 import Pagination from "./Pagination";
 import PropTypes from 'prop-types';
 import { useAdmin } from "../pages/Admin";
-
+import useDebounce from "../hooks/useDebounce";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -42,7 +42,7 @@ Pagination.propTypes = {
 
 // Admin Usager
 const AdminUsager = () => {
-    //const { user } = useUser();
+    const { searchUsager } = useUser();
     const { deleteUsager } = useUser();
     const [usagers, setUsagers] = useState([]);
     const [open, setOpen] = useState(false);
@@ -53,20 +53,33 @@ const AdminUsager = () => {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     //const [setRoute, setRouteState] = useState("user");
     const { RouteAdmin } = useAdmin();
-
     const { getUsagers } = useUser();
-    useEffect(() => {
-        getUsagersAdmin();
-    }, []);
+    const [search, setSearch] = useState("");
+    const debouncedSearch = useDebounce(search, 500);
+    const [results, setResults] = useState();
+    const [isSearching, setIsSearching] = useState(false);
 
-    const getUsagersAdmin = async () => {
+
+    useEffect(() => {
+      if (debouncedSearch) {
+          setIsSearching(true);
+          searchUsager(debouncedSearch).then((results) => {
+              setIsSearching(false);
+              setResults(results.data);
+          });
+      } else {
+        getUsagersAdmin();
+        setIsSearching(false);
+      } 
+    }, [debouncedSearch]);
+
+
+    const getUsagersAdmin = () => {
         getUsagers().then(({ data }) => {
-            setUsagers(data);
-           
+            setResults(data);
         });
     };
 
-  
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
       page > 0 ? Math.max(0, (1 + page) * rowsPerPage - usagers.length) : 0;
@@ -80,13 +93,15 @@ const AdminUsager = () => {
       setPage(0);
     };
 
+    console.log(results)
+    
     return (
         <div>
             <div>
                 <h4>Les usagers de vino</h4>
                 <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutUsager')}>Ajouter</Button>
             </div>
-        <input type="text" id="rechercheAdmin" name="rechercher" placeholder='Recherche'/>
+        <input type="text" id="rechercheAdmin" name="rechercher" placeholder='Recherche' value={search} onChange={(e) => setSearch(e.target.value)}/>
         {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -99,23 +114,24 @@ const AdminUsager = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {usagers.map((usager) => (
+              
+              { results?.map((result) => (
                 <TableRow
-                    key={usager.name}
+                    key={result?.name}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
                     <TableCell component="th" scope="usager">
-                    {usager.name}
+                    {result?.name}
                     </TableCell>
-                    <TableCell align="right">{usager.email}</TableCell>
-                    <TableCell align="right">{usager.privilege_id}</TableCell>
+                    <TableCell align="right">{result?.email}</TableCell>
+                    <TableCell align="right">{result?.privilege_id}</TableCell>
                     <TableCell align="right">
-                        <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutUsager', usager.id ,usager.name, usager.email, usager.privilege_id)}>
+                        <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutUsager', result?.id ,result?.name, result?.email, result?.privilege_id)}>
                             Modifier
                         </Button>
                         <Button variant="outlined" size='small' onClick={() => {
                             handleOpen()
-                            setUsagerState(usager.id)
+                            setUsagerState(result?.id)
                             }} >
                             Delete
                         </Button>
@@ -160,7 +176,7 @@ const AdminUsager = () => {
           </Typography>
           <Button variant="outlined" size='small' onClick={handleClose}>Non</Button>
           <Button variant="outlined" size='small' onClick={() => {
-           // console.log(setUsager);
+
             deleteUsager(setUsager)
             getUsagersAdmin();
             handleClose();
@@ -169,6 +185,7 @@ const AdminUsager = () => {
         </Modal>
         </div>
       );
+    
 }
 
 

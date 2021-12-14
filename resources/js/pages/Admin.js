@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, createContext } from "react";
+import React, { useState, useRef, useContext, createContext, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { AdminMain, AdminAside, AdminNav, AdminSection } from "../components/styles/Admin.styled";
 import LogoVino from "./../assets/svg/logoBlanc.svg";
@@ -22,15 +22,14 @@ const Admin = () => {
     const [setUsagerCourriel, setUsagerCourrielState] = useState("");
     const [setUsagerPrivilege, setUsagerPrivilegeState] = useState(1);
 
-    
     const RouteAdmin = (route, id, nom, email, privilege) => {
         setRouteState(route)
-        console.log(id)
         setUsagerIdState(id)
         setUsagerNomState(nom)
         setUsagerCourrielState(email)
         setUsagerPrivilegeState(privilege)
     }
+
 
 
     return (
@@ -46,17 +45,25 @@ const Admin = () => {
             </AdminAside>
             <div>
                 <AdminNav>
-                        <h4>Bienvenue {user?.name}</h4>
-                        <p onClick={() => logout()}>Logout</p>
+                    <h4>Bienvenue {user?.name}</h4>
+                    <p onClick={() => logout()}>Logout</p>
                 </AdminNav>
                 <AdminContext.Provider value={{RouteAdmin}} >
                     <AdminSection >
+                    
                     {(() => {
-                            switch (setRoute) {
-                                case "user":   return <AdminUsager/>;
-                                case "wikiVin": return <AdminWikiVin/>;
-                                case "AjoutUsager" : return <AdminAjoutUsager id={setUsagerId} nom={setUsagerNom} email={setUsagerCourriel} privilege={setUsagerPrivilege} />;
+
+                        switch (setRoute) {
+                            case "user":   return <AdminUsager/>;
+                            case "wikiVin": return <AdminWikiVin/>;
+                            case "AjoutUsager" : return <AdminAjoutUsager 
+                                id={setUsagerId} 
+                                nom={setUsagerNom} 
+                                email={setUsagerCourriel} 
+                                privilege={setUsagerPrivilege} 
+                            />;
                         }
+
                     })()}
                     </AdminSection>
                 </AdminContext.Provider>
