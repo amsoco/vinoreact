@@ -55,5 +55,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user/edit/{id}', [AuthController::class, 'edit']);
     Route::put('/user/edit/{id}', [AuthController::class, 'update']);
     Route::delete('/user/{id}', [AuthController::class, 'destroy']);
+<<<<<<< HEAD
     Route::get('/search/{search}', [AuthController::class, 'search']);
+=======
+    Route::get('/user/search/{search}', [AuthController::class, 'search']);
+
+
+>>>>>>> upstream/main
 });

@@ -2,10 +2,14 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Http from "../HttpClient";
 
-// création du contexte User
+/**
+ * Création du contexte User
+ */
 const UserContext = createContext();
 
-// fonction pour rendre disponible le user et les méthodes d'auth via le context API
+/**
+ * Création du Provider User
+ */
 export const UserProvider = ({ children }) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
@@ -18,7 +22,10 @@ export const UserProvider = ({ children }) => {
         }
     }, []);
 
-    // get current user
+    /**
+     * Récupérer l'utilisateur connecté
+     * @returns {void}
+     */
     const getMe = async () => {
         try {
             const { data } = await Http.get("user");
@@ -31,7 +38,11 @@ export const UserProvider = ({ children }) => {
         }
     };
 
-    // log l'utilisateur
+    /**
+     * Login un utilisateur
+     * @param {object} creds
+     * @returns {void}
+     */
     const login = async (creds) => {
         await Http.get("sanctum/csrf-cookie");
         const { data } = await Http.post("login", creds);
@@ -42,12 +53,14 @@ export const UserProvider = ({ children }) => {
             ...data.user,
             celliers: data.celliers,
         });
-
     };
 
-    // enregistre le nouvel utilisateur
+    /**
+     * Enregistrer un nouvel utilisateur
+     * @param {object} creds
+     * @returns {void}
+     */
     const register = async (creds) => {
-        //await Http.get("sanctum/csrf-cookie");
         const { data } = await Http.post("register", creds);
         setUser({
             ...data.user,
@@ -55,12 +68,19 @@ export const UserProvider = ({ children }) => {
         });
     };
 
+<<<<<<< HEAD
     // enregistre le nouvel utilisateur
     const updateUsager = async (creds) => {
         const { data } = await Http.put(`/user/edit/${creds.id}`, creds);
     };
 
     // déconnecte l'utilisateur
+=======
+    /**
+     * Déconnecter un utilisateur
+     * @returns {void}
+     */
+>>>>>>> upstream/main
     const logout = async () => {
         await Http.post("logout");
         setUser(false);
@@ -68,6 +88,7 @@ export const UserProvider = ({ children }) => {
         navigate("/");
     };
 
+<<<<<<< HEAD
     //get les users
     const getUsagers = async () => {
         const usagers = await Http.get(`/users`);
@@ -85,12 +106,26 @@ export const UserProvider = ({ children }) => {
 
     return (
         <UserContext.Provider value={{ user, login, register, logout, getUsagers, deleteUsager, updateUsager, searchUsager }}>
+=======
+    /**
+     * Récupérer tous les utilisateurs
+     * @returns {array}
+     */
+    const getUsagers = async () => Http.get(`/users`);
+
+    return (
+        <UserContext.Provider
+            value={{ user, login, register, logout, getUsagers }}
+        >
+>>>>>>> upstream/main
             {children}
         </UserContext.Provider>
     );
 };
 
-// custom hook qui retourne le user connecté - à appeler à l'intérieur du Provider
+/**
+ * Hook pour appeler les différentes méthodes offertes par le Provider
+ */
 export const useUser = () => {
     return useContext(UserContext);
 };
