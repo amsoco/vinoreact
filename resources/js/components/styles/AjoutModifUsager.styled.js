@@ -20,7 +20,7 @@ export const Countainer = styled.section`
         font-style:normal;
       }
 
-    &>form>div:nth-of-type(5){
+    &>form>div:last-of-type{
         border-bottom:1px solid #d8d8d8;
     }
 
