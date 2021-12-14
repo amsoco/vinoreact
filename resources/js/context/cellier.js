@@ -51,6 +51,11 @@ export const CellierProvider = ({ children }) => {
     const updateQty = (bouteilleId, quantite) =>
         Http.put(`bouteilles/editField/${bouteilleId}`, { quantite });
 
+    // mise à jour d'une bouteille
+    const modifierBouteille = async () => {
+        console.log("modifier");
+    };
+
     return (
         <CellierContext.Provider
             value={{
@@ -61,6 +66,7 @@ export const CellierProvider = ({ children }) => {
                 uploadImage,
                 getCategories,
                 updateQty,
+                modifierBouteille,
             }}
         >
             {children}
