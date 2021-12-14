@@ -97,7 +97,8 @@ export const AdminSection = styled.section`
 
 export const AdminAside = styled.aside`
     width: 260px;
-    height: 100vh;
+    min-width:200px;
+    height: auto;
     background:#303031;
     color:#fff;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -131,6 +132,10 @@ export const AdminAside = styled.aside`
         }
     } 
 
+    @media (max-width: 550px) {
+        position:absolute;
+        left:-300px;
 
+    }
 
 `

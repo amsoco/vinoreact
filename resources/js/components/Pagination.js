@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from 'prop-types';
-import TableFooter from '@material-ui/core//TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import { useTheme } from '@material-ui/core/styles';
