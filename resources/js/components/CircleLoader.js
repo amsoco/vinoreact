@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import PropTypes from "prop-types";
 
 // animation
 const circleBounceDelay = keyframes`
@@ -99,7 +100,7 @@ const Dot = styled.div`
         margin: 0 auto;
         width: 15%;
         height: 15%;
-        background-color: ${(props) => props.color || "#303031"};
+        background-color: ${({ color }) => color || "#303031"};
         border-radius: 100%;
         animation: ${circleBounceDelay} 1.2s infinite ease-in-out both;
     }
@@ -112,5 +113,9 @@ const CircleLoader = ({ color }) => (
         ))}
     </CircleMain>
 );
+
+CircleLoader.propTypes = {
+    color: PropTypes.string,
+};
 
 export default CircleLoader;
