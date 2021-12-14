@@ -33,7 +33,7 @@ export const CellierProvider = ({ children }) => {
      * @param {string} search
      * @returns {array}
      */
-    const searchWiki = (search) => Http.get(`search/${search}`);
+    const searchWiki = (search) => Http.get(`searchWiki/${search}`);
 
     /**
      * Ajouter une bouteille dans un cellier
