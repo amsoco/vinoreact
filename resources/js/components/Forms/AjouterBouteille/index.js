@@ -13,7 +13,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const AjouterBouteilleForm = ({ bouteille }) => {
     const { addBouteille, getCategories } = useCellier();
     const navigate = useNavigate();
-    const { cellier } = useParams();
+    const { cellier, bouteilleId } = useParams();
     const [categories, setCategories] = useState([]);
 
     // récupération des catégories de vin pour le select
@@ -66,7 +66,7 @@ const AjouterBouteilleForm = ({ bouteille }) => {
 
     return (
         <FormAjout onSubmit={handleFormSubmit}>
-            <LegendDark>Nouvelle Bouteille</LegendDark>
+            <LegendDark>{bouteilleId ? 'Éditer une bouteille' : 'Nouvelle Bouteille'}</LegendDark>
             <EditionAjoutFormInput
                 type="text"
                 id="nom"
@@ -121,8 +121,8 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 type="number"
                 id="note"
                 name="note"
-                max="10"
-                placeholder="Note sur 10"
+                max="5"
+                placeholder="Note sur 5"
                 value={values.note}
                 onChange={handleFormChange}
                 onBlur={handleBlur}
@@ -201,7 +201,7 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 colorHover="#303030"
                 disabled={isSubmitting}
             >
-                AJOUTER
+                {bouteilleId ? "Éditer" : "Ajouter"}
             </Button>
         </FormAjout>
     );

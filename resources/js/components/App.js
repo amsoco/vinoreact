@@ -17,6 +17,7 @@ const Accueil = lazy(() => import("../pages/Accueil"));
 const Cellier = lazy(() => import("../pages/Cellier"));
 const Bouteille = lazy(() => import("../pages/Bouteille"));
 const AjouterBouteille = lazy(() => import("../pages/AjouterBouteille"));
+const ModifierBouteille = lazy(() => import("../pages/ModifierBouteille"));
 const Admin = lazy(() => import("../pages/Admin"));
 
 const App = () => (
@@ -87,6 +88,14 @@ const App = () => (
                             element={
                                 <RequireAuth>
                                     <AjouterBouteille />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="/:cellier/modifier-bouteille/:bouteilleId"
+                            element={
+                                <RequireAuth>
+                                    <ModifierBouteille />
                                 </RequireAuth>
                             }
                         />
