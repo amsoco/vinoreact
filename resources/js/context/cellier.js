@@ -2,40 +2,58 @@ import { createContext, useContext } from "react";
 import axios from "axios";
 import Http from "../HttpClient";
 
-// création du contexte Cellier
+/**
+ * Création du contexte Cellier
+ */
 const CellierContext = createContext();
 
-// fonction pour rendre disponible le cellier dans l'app tree
+/**
+ * Création du Provider cellier
+ */
 export const CellierProvider = ({ children }) => {
-    // const [{ loading }, dispatch] = useReducer(uiReducer, { loading: true });
+    /**
+     * Récupérer toutes les bouteilles d'un cellier
+     * @param {number} cellierId
+     * @param {number} pageNum
+     * @returns {array}
+     */
+    const getBouteillesCellier = (cellierId, pageNum) =>
+        Http.get(`bouteilles/cell/${cellierId}/?page=${pageNum}`);
 
-    // récupérer toutes les bouteilles d'un cellier par Id
-    const getBouteillesCellier = async (cellierId, pageNum) => {
-        const bouteilles = await Http.get(
-            `bouteilles/cell/${cellierId}/?page=${pageNum}`
-        );
+    /**
+     * Récupérer une bouteille par id
+     * @param {number} bouteilleId
+     * @returns {object}
+     */
+    const getBouteille = async (bouteilleId) =>
+        Http.get(`bouteilles/${bouteilleId}`);
 
-        return bouteilles;
-    };
-
-    // récupérer une bouteille par id
-    const getBouteille = async (bouteilleId) => {
-        const bouteille = await Http.get(`bouteilles/${bouteilleId}`);
-        return bouteille;
-    };
-
-    // rechercher dans le wiki
+    /**
+     * Rechercher une bouteille dans le wiki
+     * @param {string} search
+     * @returns {array}
+     */
     const searchWiki = (search) => Http.get(`search/${search}`);
 
-    // ajouter une bouteille au cellier
-
+    /**
+     * Ajouter une bouteille dans un cellier
+     * @param {object} bouteille
+     * @returns {object}
+     */
     const addBouteille = (bouteille) =>
         Http.post("bouteilles/create", bouteille);
 
-    // récupérer les catégories
+    /**
+     * Récupérer les catégories de vin
+     * @returns {array}
+     */
     const getCategories = () => Http.get("categories");
 
-    // upload image
+    /**
+     * Uploader une image dans cloudinary
+     * @param {file} img
+     * @returns {object}
+     */
     const uploadImage = async (img) => {
         const formData = new FormData();
         formData.append("file", img);
@@ -47,26 +65,35 @@ export const CellierProvider = ({ children }) => {
         );
     };
 
-    // mis a jour de la quantité
+    /**
+     * Mise à jour de la quantité
+     * @param {number} bouteilleId
+     * @param {number} quantite
+     * @returns {object}
+     */
     const updateQty = (bouteilleId, quantite) =>
         Http.put(`bouteilles/editField/${bouteilleId}`, { quantite });
 
-    // mise à jour d'une bouteille
-    const modifierBouteille = async () => {
-        console.log("modifier");
-    };
+    /**
+     * Mise à jour d'une bouteille
+     * @param {number} bouteilleId
+     * @param {object} update
+     * @returns {object}
+     */
+    const modifierBouteille = (bouteilleId, update) =>
+        Http.put(`/bouteilles/edit/${bouteilleId}`, update);
 
     return (
         <CellierContext.Provider
             value={{
-                getBouteillesCellier,
-                getBouteille,
                 addBouteille,
+                getBouteille,
+                getBouteillesCellier,
+                getCategories,
+                modifierBouteille,
                 searchWiki,
                 uploadImage,
-                getCategories,
                 updateQty,
-                modifierBouteille,
             }}
         >
             {children}
@@ -74,6 +101,9 @@ export const CellierProvider = ({ children }) => {
     );
 };
 
+/**
+ * Hook pour appeler les différentes méthodes et offertes par le Provider
+ */
 export const useCellier = () => {
     return useContext(CellierContext);
 };

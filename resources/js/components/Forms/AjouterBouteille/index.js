@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import useForm from "../../../hooks/useForm";
 import { LegendDark } from "../../styles/Form.styled";
@@ -8,16 +9,15 @@ import EditionAjoutFormInput from "./EditionAjoutInput";
 import InputFile from "../../InputFile";
 import { SelectCategorie } from "../../styles/Input.styled";
 import { useCellier } from "../../../context/cellier";
-import { useNavigate, useParams } from "react-router-dom";
 
 const AjouterBouteilleForm = ({ bouteille }) => {
-    const { addBouteille, getCategories } = useCellier();
-    const navigate = useNavigate();
-    const { cellier, bouteilleId } = useParams();
     const [categories, setCategories] = useState([]);
+    const { addBouteille, getCategories, modifierBouteille } = useCellier();
+    const { cellier, bouteilleId } = useParams();
+    const navigate = useNavigate();
 
-    // récupération des catégories de vin pour le select
     useEffect(() => {
+        // récupération des catégories de vin pour populer le <select>
         getCategories().then(({ data }) => setCategories(data));
     }, []);
 
@@ -27,27 +27,44 @@ const AjouterBouteilleForm = ({ bouteille }) => {
         nom: bouteille?.nom || "",
         pays: bouteille?.pays || "",
         description: bouteille?.description || "",
-        date_achat: "",
-        prix_achat: "",
+        date_achat: bouteille?.date_achat || "",
+        prix_achat: bouteille?.prix_achat || "",
         url_saq: bouteille?.url_saq || "",
-        note: "",
-        commentaire: "",
-        quantite: "",
+        note: bouteille?.note || "",
+        commentaire: bouteille?.commentaire || "",
+        quantite: bouteille?.quantite || "",
         millesime: bouteille?.millesime || "",
         format: bouteille?.format || "",
         url_img:
             bouteille?.url_img ||
             "https://res.cloudinary.com/vino-project/image/upload/v1639165462/bouteilleBlack_lz3rkm.png",
         categorie_id: bouteille?.categorie_id || "",
-        categorie: bouteille?.categorie || ""
+        categorie: bouteille?.categorie || "",
     };
 
-
-    // FORM LOGIC ON SUBMIT
+    /**
+     * Ajouter une bouteille
+     * @param {object} values
+     * @returns {void}
+     */
     const ajouterBouteille = async (values) => {
         try {
-            await addBouteille(values);
+            await addBouteille(bouteilleId, values);
             navigate(`/${cellier}`);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    /**
+     * Editer une bouteille
+     * @param {object} values
+     * @returns {void}
+     */
+    const editerBouteille = async (values) => {
+        try {
+            await modifierBouteille(bouteilleId, values);
+            navigate(`/${cellier}/${bouteilleId}`);
         } catch (error) {
             console.error(error);
         }
@@ -62,11 +79,17 @@ const AjouterBouteilleForm = ({ bouteille }) => {
         handleBlur,
         handleImageChange,
         isSubmitting,
-    } = useForm(initialValues, ajouterBouteille, ajouterBouteilleFormValidate);
+    } = useForm(
+        initialValues,
+        bouteilleId ? editerBouteille : ajouterBouteille, // mode édition ou ajout
+        ajouterBouteilleFormValidate
+    );
 
     return (
         <FormAjout onSubmit={handleFormSubmit}>
-            <LegendDark>{bouteilleId ? 'Éditer une bouteille' : 'Nouvelle Bouteille'}</LegendDark>
+            <LegendDark>
+                {bouteilleId ? "Éditer une bouteille" : "Nouvelle Bouteille"}
+            </LegendDark>
             <EditionAjoutFormInput
                 type="text"
                 id="nom"
@@ -178,7 +201,11 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 onBlur={handleBlur}
                 error={errors?.description}
             />
-            <SelectCategorie name="categorie_id" value={values.categorie_id} onChange={handleFormChange}>
+            <SelectCategorie
+                name="categorie_id"
+                value={values.categorie_id}
+                onChange={handleFormChange}
+            >
                 <option>Catégorie</option>
                 {categories.map((categorie) => (
                     <option key={categorie.id} value={categorie.id}>
