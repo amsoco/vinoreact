@@ -55,6 +55,10 @@ export const AdminSection = styled.section`
             margin:auto;
             width:75%;
         }
+        >div {
+            display:flex;
+            justify-content:space-between;
+        }
     
         >h4 {
             text-align:center;
@@ -70,6 +74,7 @@ export const AdminSection = styled.section`
             border-bottom: 1px solid #303031;
             font-style: italic;
             min-width:240px;
+            margin-bottom:20px;
         }
 
         >ul {
@@ -79,7 +84,9 @@ export const AdminSection = styled.section`
             }
         }
 
-
+        button {
+            margin-left:10px;
+        }
 
  
 
@@ -90,10 +97,11 @@ export const AdminSection = styled.section`
 
 export const AdminAside = styled.aside`
     width: 260px;
+    min-width:200px;
     height: 100vh;
     background:#303031;
     color:#fff;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
     >h4 {
         padding: 0px 20px;
@@ -123,5 +131,11 @@ export const AdminAside = styled.aside`
             align-self:flex-end;
         }
     } 
+
+    @media (max-width: 550px) {
+        position:absolute;
+        left:-300px;
+
+    }
 
 `

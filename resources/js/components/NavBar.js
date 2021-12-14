@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavBarCountainer } from "./styles/Navbar.styled.js";
 import { Link, useParams } from "react-router-dom";
 import LogoVino from "../assets/svg/logo.svg";
@@ -19,6 +19,7 @@ const navBar = (props) => {
     const [setWidth, setWitdthState] = useState("0px");
     const [setTanslateMenu, setStateTranslateMenu] = useState("0");
     const params = useParams()
+    const [setHeight, setStateHeightMenu] = useState(window.innerHeight - 60);
 
     // ou clic on ouvre le menu
     const ouvrirMenu = (props) => {
@@ -39,7 +40,22 @@ const navBar = (props) => {
         setWitdthState(setActive === "active" ? "0" : "100%");
 
         setStateTranslateMenu(setActive === "active" ? "0" : "400px");
+    };
 
+    useEffect(() => {
+        // https://www.pluralsight.com/guides/how-to-cleanup-event-listeners-react
+        // listener sur windows dans le useEffect doit être supprimé dans la clean up fonction du useEffect
+        // sans quoi le listener continue d'être actif même si tu quittes la page --> memory leak et crash de l'app
+        window.addEventListener('resize', menuSizing);
+        return function cleanupListener() {
+            window.removeEventListener('resize', menuSizing);
+        }
+    });
+
+    // trouver la mesure de l'écran pour ne pas dépasser la hauteur visible.
+    const menuSizing = (e) => {
+        const height = window.innerHeight - 60;
+        setStateHeightMenu(height)
     };
     return (
         <NavBarCountainer
@@ -49,6 +65,8 @@ const navBar = (props) => {
             translateUp={setTranslateUp}
             display={setDisplay}
             translateMenu={setTanslateMenu}
+            menuHeight={setHeight}
+
         >
             <nav>
                 <div onClick={ouvrirMenu}>
