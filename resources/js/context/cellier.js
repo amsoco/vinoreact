@@ -10,8 +10,11 @@ export const CellierProvider = ({ children }) => {
     // const [{ loading }, dispatch] = useReducer(uiReducer, { loading: true });
 
     // récupérer toutes les bouteilles d'un cellier par Id
-    const getBouteillesCellier = async (cellierId) => {
-        const bouteilles = await Http.get(`bouteilles/cell/${cellierId}`);
+    const getBouteillesCellier = async (cellierId, pageNum) => {
+        const bouteilles = await Http.get(
+            `bouteilles/cell/${cellierId}/?page=${pageNum}`
+        );
+
         return bouteilles;
     };
 
@@ -25,6 +28,7 @@ export const CellierProvider = ({ children }) => {
     const searchWiki = (search) => Http.get(`search/${search}`);
 
     // ajouter une bouteille au cellier
+
     const addBouteille = (bouteille) =>
         Http.post("bouteilles/create", bouteille);
 
@@ -47,6 +51,11 @@ export const CellierProvider = ({ children }) => {
     const updateQty = (bouteilleId, quantite) =>
         Http.put(`bouteilles/editField/${bouteilleId}`, { quantite });
 
+    // mise à jour d'une bouteille
+    const modifierBouteille = async () => {
+        console.log("modifier");
+    };
+
     return (
         <CellierContext.Provider
             value={{
@@ -57,6 +66,7 @@ export const CellierProvider = ({ children }) => {
                 uploadImage,
                 getCategories,
                 updateQty,
+                modifierBouteille,
             }}
         >
             {children}

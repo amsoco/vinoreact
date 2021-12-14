@@ -33,7 +33,8 @@ class BouteilleController extends Controller
      */
     public function showCellier(Request $request)
     {
-        return Bouteille::all()->where('cellier_id', $request->id);
+        $bouteilles = Bouteille::where('cellier_id', $request->id)->paginate(5);
+        return $bouteilles;
     }
 
 
@@ -52,7 +53,7 @@ class BouteilleController extends Controller
             'date_achat' => 'required|date_format:"Y-m-d"',
             'prix_achat' => 'regex:/^\d+(\.\d{1,2})?$/',
             // 'url_saq' => 'string|max:255',
-            // 'note' => 'integer|max:10',
+            'note' => 'integer|max:10',
             // 'commentaire' => 'string|max:255',
             'quantite' => 'required|integer|min:0',
             'millesime' => 'date_format:"Y"',
@@ -123,9 +124,9 @@ class BouteilleController extends Controller
             'description' => 'string|max:255',
             'date_achat' => 'required|date_format:"Y"',
             'prix_achat' => 'regex:/^\d+(\.\d{1,2})?$/',
-            'url_saq' => 'string|max:255',
+            //'url_saq' => 'string|max:255',
             'note' => 'integer|max:10',
-            'commentaire' => 'string|max:255',
+            //'commentaire' => 'string|max:255',
             'quantite' => 'required|integer|min:0',
             'millesime' => 'date_format:"Y"',
             'format' => 'string|max:255',
