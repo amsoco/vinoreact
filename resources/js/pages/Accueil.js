@@ -25,10 +25,9 @@ const Accueil = () => {
     };
 
     useEffect(() => {
-        if (user?.privilege_id === 2)  navigate("/admin");
+        if (user?.privilege_id === 2) navigate("/admin");
     }, []);
-    
-    
+
     return (
         <AccueilMain>
             <img src={TacheHaut} alt="Tache Rouge haut" />
