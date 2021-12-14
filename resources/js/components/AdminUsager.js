@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../context/user";
-//import { ModalStyled , BackDrop } from "./styles/Modal.styled";
+//import styled from "styled-components";
 import Pagination from "./Pagination";
 import PropTypes from 'prop-types';
 import { useAdmin } from "../pages/Admin";
@@ -19,6 +19,7 @@ import Typography from '@material-ui/core/Typography';
 import TableFooter from '@material-ui/core/TableFooter';
 
 
+// Les styles du Modal 
 const style = {
     position: 'absolute',
     top: '50%',
@@ -30,6 +31,11 @@ const style = {
     'border-radius': '2px',
     boxShadow: 24,
     p: 4,
+}
+
+// Pour définir l'espacement des boutons dans modal
+const styleButton = {
+  'margin': '10px',
 }
 
 
@@ -44,14 +50,13 @@ Pagination.propTypes = {
 const AdminUsager = () => {
     const { searchUsager } = useUser();
     const { deleteUsager } = useUser();
-    const [usagers, setUsagers] = useState([]);
+    const [usagerNom, setNomUsager] = useState();
     const [open, setOpen] = useState(false);
     const handleOpen = (id) => setOpen(true);
     const handleClose = () => setOpen(false);
     const [setUsager, setUsagerState] = useState("Monsieur");
     const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
-    //const [setRoute, setRouteState] = useState("user");
+    const [rowsPerPage, setRowsPerPage] = useState(10);
     const { RouteAdmin } = useAdmin();
     const { getUsagers } = useUser();
     const [search, setSearch] = useState("");
@@ -80,20 +85,23 @@ const AdminUsager = () => {
         });
     };
 
+    /*
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
-      page > 0 ? Math.max(0, (1 + page) * rowsPerPage - usagers.length) : 0;
+      page > 0 ? Math.max(0, (1 + page) * rowsPerPage - results?.length) : 0;
   
     const handleChangePage = (event, newPage) => {
       setPage(newPage);
     };
   
     const handleChangeRowsPerPage = (event) => {
-      setRowsPerPage(parseInt(event.target.value, 10));
+      setRowsPerPage(parseInt(event.target.value));
       setPage(0);
     };
+    */
 
-    console.log(results)
+
+    console.log(results?.length)
     
     return (
         <div>
@@ -126,37 +134,41 @@ const AdminUsager = () => {
                     <TableCell align="right">{result?.email}</TableCell>
                     <TableCell align="right">{result?.privilege_id}</TableCell>
                     <TableCell align="right">
+  
                         <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutUsager', result?.id ,result?.name, result?.email, result?.privilege_id)}>
                             Modifier
                         </Button>
+
                         <Button variant="outlined" size='small' onClick={() => {
                             handleOpen()
                             setUsagerState(result?.id)
+                            setNomUsager(result?.name)
                             }} >
                             Delete
                         </Button>
+  
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
             <TableFooter>
             <TableRow>
-              <Pagination
-                rowsPerPageOptions={[5, 10, 25, { label: 'Tous', value: -1 }]}
+              {/* <Pagination
+                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
                 colSpan={3}
-                count={usagers?.length}
+                count={results?.length || 20}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 SelectProps={{
                     inputProps: {
-                    'aria-label': 'Rangée par page',
+                      'aria-label': 'rows per page',
                     },
                     native: true,
                 }}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 ActionsComponent={Pagination}
-              />
+              /> */}
                 </TableRow>
             </TableFooter>
           </Table>
@@ -172,21 +184,23 @@ const AdminUsager = () => {
             Attention
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Voulez-vous vraiment effacer cette usager ?
+            Voulez-vous vraiment effacer {usagerNom} ?
           </Typography>
-          <Button variant="outlined" size='small' onClick={handleClose}>Non</Button>
-          <Button variant="outlined" size='small' onClick={() => {
 
+          <Button variant="outlined" size='small' onClick={handleClose}>Non</Button>
+          <Button style={styleButton} variant="outlined" size='small' onClick={() => {
             deleteUsager(setUsager)
             getUsagersAdmin();
             handleClose();
             }} >Oui</Button>
+
         </Box>
         </Modal>
         </div>
       );
     
 }
+
 
 
 export default AdminUsager;
