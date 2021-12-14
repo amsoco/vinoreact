@@ -48,8 +48,9 @@ const AjouterBouteilleForm = ({ bouteille }) => {
      * @returns {void}
      */
     const ajouterBouteille = async (values) => {
+        console.log('ajout', values)
         try {
-            await addBouteille(bouteilleId, values);
+            await addBouteille(values);
             navigate(`/${cellier}`);
         } catch (error) {
             console.error(error);
@@ -70,6 +71,7 @@ const AjouterBouteilleForm = ({ bouteille }) => {
         }
     };
 
+    console.log('bouteille', bouteille)
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
     const {
         handleFormSubmit,
