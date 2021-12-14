@@ -3,7 +3,7 @@ import styled from "styled-components";
 // la page cellier
 export const CellierBouteilleSection = styled.section`
     margin: 0px 20px 0px 20px;
-    border-top: 1px solid #d8d8d8;
+    //border-top: 1px solid #d8d8d8;
     padding: 20px 10px 20px 10px;
 
     img {

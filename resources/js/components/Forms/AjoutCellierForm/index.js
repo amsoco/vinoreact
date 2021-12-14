@@ -1,7 +1,7 @@
 import React from "react";
 import FormInput from "../FormInput";
 import { Button } from "../../styles/Button.styled";
-import { Form } from "../../styles/Form.styled";
+import { FormMonCompte } from "../../styles/Form.styled";
 import { Legend2 } from "../../styles/Form.styled";
 import useForm from "../../../hooks/useForm";
 import Http from "../../../HttpClient";
@@ -35,7 +35,7 @@ const AddCellierForm = () => {
         isSubmitting,
     } = useForm(initialValues, registerCellier, addCellierFormValidate);
     return (
-        <Form onSubmit={handleFormSubmit}>
+        <FormMonCompte onSubmit={handleFormSubmit}>
             <Legend2>Nouveau cellier</Legend2>
             <FormInput
                 type="text"
@@ -58,7 +58,7 @@ const AddCellierForm = () => {
             >
                 AJOUTER
             </Button>
-        </Form>
+        </FormMonCompte>
     );
 };
 

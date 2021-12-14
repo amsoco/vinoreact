@@ -25,7 +25,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 500,
+    width: 300,
     bgcolor: 'background.paper',
     border: '2px solid #303031',
     'border-radius': '2px',
@@ -39,12 +39,12 @@ const styleButton = {
 }
 
 
-Pagination.propTypes = {
-    count: PropTypes.number.isRequired,
-    onPageChange: PropTypes.func.isRequired,
-    page: PropTypes.number.isRequired,
-    rowsPerPage: PropTypes.number.isRequired,
-};
+// Pagination.propTypes = {
+//     count: PropTypes.number.isRequired,
+//     onPageChange: PropTypes.func.isRequired,
+//     page: PropTypes.number.isRequired,
+//     rowsPerPage: PropTypes.number.isRequired,
+// };
 
 // Admin Usager
 const AdminUsager = () => {
@@ -106,7 +106,7 @@ const AdminUsager = () => {
     return (
         <div>
             <div>
-                <h4>Les usagers de vino</h4>
+                <h4>Les usagers</h4>
                 <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutUsager')}>Ajouter</Button>
             </div>
         <input type="text" id="rechercheAdmin" name="rechercher" placeholder='Recherche' value={search} onChange={(e) => setSearch(e.target.value)}/>
@@ -128,7 +128,7 @@ const AdminUsager = () => {
                     key={result?.name}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                    <TableCell component="th" scope="usager">
+                    <TableCell scope="usager">
                     {result?.name}
                     </TableCell>
                     <TableCell align="right">{result?.email}</TableCell>

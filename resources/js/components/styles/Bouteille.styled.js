@@ -67,8 +67,5 @@ export const BouteilleSection = styled.section`
         margin-top: 10px;
     }
     
-    // button dans accordeon modifier.
-    & div>button {
-        //margin-top:200px;
-    }
+
 `
