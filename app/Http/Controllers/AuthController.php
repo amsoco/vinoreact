@@ -110,7 +110,7 @@ class AuthController extends Controller
     {
         $user = User::find($id);
 
-        // pour get user de l'admin ne fonctionne pas ... PAG
+        //pour get user de l'admin ne fonctionne pas ... PAG
         //return User::all()->where('id', $user->id);
         return $user;
     }
