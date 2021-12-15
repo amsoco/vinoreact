@@ -71,8 +71,6 @@ const AdminWikiVin = () => {
     }, [debouncedSearch]);
 
 
-
-
     return (
         <div>
         <div>
@@ -88,8 +86,9 @@ const AdminWikiVin = () => {
                 <TableCell>Nom</TableCell>
                 <TableCell align="right">Pays</TableCell>
                 <TableCell align="right">Description</TableCell>
+                <TableCell align="right">Millesime</TableCell>
                 <TableCell align="right">Image</TableCell>
-                
+                <TableCell align="right">Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -104,6 +103,7 @@ const AdminWikiVin = () => {
                     </TableCell>
                     <TableCell align="right">{result?.pays}</TableCell>
                     <TableCell align="right">{result?.description}</TableCell>
+                    <TableCell align="right">{result?.millesime}</TableCell>
                     <TableCell align="right"><img style={{height:"50px"}} src={result?.url_img}/> </TableCell>
                     <TableCell align="right">
   
