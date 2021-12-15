@@ -13,31 +13,22 @@ const filDariane = ({ children }) => {
                 <span>Accueil</span>
             </Link>
 
-            <span>/</span>
-            <Link to={`/${searchParams.cellier}`}>
-                <span>{searchParams.cellier}</span>
-            </Link>
-            <span>/</span>
+            {searchParams.cellier && (
+                <Link to={`/${searchParams.cellier}`}>
+                    <span>/ {searchParams.cellier}</span>
+                </Link>
+            )}
 
             <span>
-                {searchParams.bouteilleId ? searchParams.bouteilleId : ""}
+                {searchParams.bouteilleId
+                    ? "/ " + searchParams.bouteilleId
+                    : ""}
             </span>
 
-            {pathname.includes("mon-compte") && <span>mon compte</span>}
+            {pathname.includes("mon-compte") && <span>/ mon compte</span>}
 
-            {/* Accueil / cellier-tito */}
-            {searchParams.cellier && (
-                <>
-                    <span>/</span>
-                </>
-            )}
             {pathname.includes("nouvelle-bouteille") && (
-                <span>ajouter bouteille</span>
-            )}
-
-            {/* Accueil / cellier-tito / 1 */}
-            {searchParams.bouteilleId && (
-                <span>{searchParams.bouteilleId || ""}</span>
+                <span>/ ajouter bouteille</span>
             )}
         </FilDariane>
     );

@@ -127,7 +127,7 @@ const AdminUsager = () => {
                 
                 { results?.map((result) => (
                   <TableRow
-                      key={result?.name}
+                      key={result.id}
                       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                       >
                       <TableCell scope="usager">
