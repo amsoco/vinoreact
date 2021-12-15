@@ -1,18 +1,18 @@
-import React, { useState, useRef, useContext, createContext, useEffect } from "react";
-import { useNavigate } from "react-router";
+import React, { useState, useRef, useContext, createContext, useEffect, Children } from "react";
 import { AdminMain, AdminAside, AdminNav, AdminSection, AdminAsidePetit } from "../components/styles/Admin.styled";
 import LogoVino from "./../assets/svg/logoBlanc.svg";
 import { useUser } from "../context/user";
-import AdminUsager from "../components/AdminUsager";
-import AdminWikiVin from "../components/AdminWikiVin";
-import AdminAjoutUsager from "../components/AdminAjoutUsager";
+// import AdminUsager from "../components/AdminUsager";
+// import AdminWikiVin from "../components/AdminWikiVin";
+// import AdminAjoutUsager from "../components/AdminAjoutUsager";
+import { Link } from "react-router-dom";
 
 
 // création du contexte
 const AdminContext = createContext();
 
 
-const Admin = () => {
+const Admin = ({children}) => {
     const { user } = useUser();
     const { logout } = useUser();
     //const navigate = useNavigate();
@@ -37,41 +37,28 @@ const Admin = () => {
         <AdminMain>
             <AdminAsidePetit>
                 <h4>vino</h4>
-                <p onClick={() => RouteAdmin('user')}>Utilisateur</p>
-                <p onClick={() => RouteAdmin('wikiVin')}>Wiki Vin</p>
+                <Link to={`/admin/usager`}>Utilisateur</Link>
+                <Link to={`/admin/wiki-vin`}>Wiki Vino</Link>
             </AdminAsidePetit>
             <AdminAside>
                 <div>
                     <img src={LogoVino} alt="logo vino" />
                 </div>
                 <h4>Menu Admin</h4>
-                <p onClick={() => RouteAdmin('user')}>Utilisateur</p>
-                <p onClick={() => RouteAdmin('wikiVin')}>Wiki Vin</p>
+                <Link to={`/admin/usager`}>Utilisateur</Link>
+                <Link to={`/admin/wiki-vin`}>Wiki Vino</Link>
             </AdminAside>
             <div>
                 <AdminNav>
                     <h4>{user?.name}</h4>
                     <p onClick={() => logout()}>Logout</p>
                 </AdminNav>
-                <AdminContext.Provider value={{RouteAdmin}} >
+                {/* <AdminContext.Provider value={{RouteAdmin}} > */}
                     <AdminSection >
-                    
-                    {(() => {
-
-                        switch (setRoute) {
-                            case "user":   return <AdminUsager/>;
-                            case "wikiVin": return <AdminWikiVin/>;
-                            case "AjoutUsager" : return <AdminAjoutUsager 
-                                id={setUsagerId} 
-                                nom={setUsagerNom} 
-                                email={setUsagerCourriel} 
-                                privilege={setUsagerPrivilege} 
-                            />;
-                        }
-
-                    })()}
+                        {children}
+                                            
                     </AdminSection>
-                </AdminContext.Provider>
+                {/* </AdminContext.Provider> */}
             </div> 
         </AdminMain>
 
@@ -82,6 +69,6 @@ const Admin = () => {
 };
 
 export default Admin;
-export const useAdmin = () => {
-    return useContext(AdminContext);
-};
+// export const useAdmin = () => {
+//     return useContext(AdminContext);
+// };

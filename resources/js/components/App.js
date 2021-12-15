@@ -8,6 +8,7 @@ import RequireAuth from "./RequireAuth";
 import CircleLoader from "./CircleLoader";
 import GlobalFonts from "../../fonts/fonts";
 
+
 // lazy load les pages que le user demande au lieu de charger le bundle JS/CSS de toute l'app
 const SeConnecter = lazy(() => import("../pages/SeConnecter"));
 const CreerCompte = lazy(() => import("../pages/CreerCompte"));
@@ -18,7 +19,12 @@ const Cellier = lazy(() => import("../pages/Cellier"));
 const Bouteille = lazy(() => import("../pages/Bouteille"));
 const AjouterBouteille = lazy(() => import("../pages/AjouterBouteille"));
 const ModifierBouteille = lazy(() => import("../pages/ModifierBouteille"));
-const Admin = lazy(() => import("../pages/Admin"));
+const AdminUsager = lazy(() => import("./AdminUsager"));
+const AdminWikiVin = lazy(() => import("./AdminWikiVin"));
+const AdminAccueil = lazy(() => import("./AdminAccueil"));
+const AdminAjoutUsager = lazy(() => import("./AdminAjoutUsager"));
+
+
 
 const App = () => (
     // le user connecté est rendu disponible dans toute l'app via context
@@ -42,14 +48,38 @@ const App = () => (
                             <CircleLoader />
                         </div>
                     }
-                >
+                    >
                     <Routes>
                         <Route path="/" element={<SeConnecter />} />
                         <Route
                             path="/admin"
                             element={
                                 <RequireAuth>
-                                    <Admin />
+                                    <AdminAccueil/>
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="/admin/usager"
+                            element={
+                                <RequireAuth>
+                                    <AdminUsager/>
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="/admin/usager/:id"
+                            element={
+                                <RequireAuth>
+                                    <AdminAjoutUsager/>
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="/admin/wiki-vin"
+                            element={
+                                <RequireAuth>
+                                   <AdminWikiVin/>
                                 </RequireAuth>
                             }
                         />

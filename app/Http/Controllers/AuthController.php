@@ -109,7 +109,10 @@ class AuthController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return User::all()->where('id', $user->id);
+
+        // pour get user de l'admin ne fonctionne pas ... PAG
+        //return User::all()->where('id', $user->id);
+        return $user;
     }
 
     /**

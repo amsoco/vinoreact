@@ -12,7 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-
+import Admin from "../pages/Admin";
 
 
 // composante Admin Wiki Vin
@@ -37,18 +37,20 @@ const AdminWikiVin = () => {
 
 
     return (
-        <div>
-        <div>
-            <h4>Wiki Vino</h4>
-        </div>
-    {/* <input type="text" id="rechercheAdmin" name="rechercher" placeholder='Recherche'/> */}
-    {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}
-    <Recherche
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-  
-    </div>
+        <Admin>
+            <div>
+            <div>
+                <h4>Wiki Vino</h4>
+            </div>
+            {/* <input type="text" id="rechercheAdmin" name="rechercher" placeholder='Recherche'/> */}
+            {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}
+            <Recherche
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                            />
+    
+            </div>
+        </Admin>
     )
 
 }

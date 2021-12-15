@@ -96,8 +96,20 @@ export const UserProvider = ({ children }) => {
     };
     //put('/user/edit/{id}
 
+
+    /**
+     * Récupérer une usager par id
+     * @param {number} id
+     * @returns {object}
+     */
+     const getUsager = async (id) => {
+         const usager = Http.get(`/user/${id}`);
+         return usager;
+     }
+     
+
     return (
-        <UserContext.Provider value={{ user, login, register, logout, getUsagers, deleteUsager, updateUsager, searchUsager }}>
+        <UserContext.Provider value={{ user, login, register, logout, getUsagers, deleteUsager, updateUsager, searchUsager, getUsager}}>
             {children}
         </UserContext.Provider>
     );
