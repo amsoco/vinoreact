@@ -23,6 +23,7 @@ const AdminUsager = lazy(() => import("./AdminUsager"));
 const AdminWikiVin = lazy(() => import("./AdminWikiVin"));
 const AdminAccueil = lazy(() => import("./AdminAccueil"));
 const AdminAjoutUsager = lazy(() => import("./AdminAjoutUsager"));
+const AdminAjoutBouteille = lazy(() => import("./AdminAjoutBouteille"));
 
 
 
@@ -77,10 +78,34 @@ const App = () => (
                             }
                         />
                         <Route
+                            path="/admin/usager/ajouter"
+                            element={
+                                <RequireAuth>
+                                    <AdminAjoutUsager/>
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
                             path="/admin/wiki-vin"
                             element={
                                 <RequireAuth>
                                    <AdminWikiVin/>
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="/admin/wiki-vin/:id"
+                            element={
+                                <RequireAuth>
+                                   <AdminAjoutBouteille/>
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="/admin/wiki-vin/ajouter"
+                            element={
+                                <RequireAuth>
+                                   <AdminAjoutBouteille/>
                                 </RequireAuth>
                             }
                         />

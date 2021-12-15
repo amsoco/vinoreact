@@ -20,6 +20,8 @@ import TableFooter from '@material-ui/core/TableFooter';
 import Admin from "../pages/Admin";
 import { Link } from "react-router-dom";
 
+
+
 // Les styles du Modal 
 const style = {
     position: 'absolute',
@@ -109,7 +111,8 @@ const AdminUsager = () => {
           <div>
               <div>
                   <h4>Les usagers</h4>
-                  {/* <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutUsager')}>Ajouter</Button> */}
+                  <Button variant="outlined" size='small'><Link to={`/admin/usager/ajouter`}>Ajouter</Link></Button>
+
               </div>
           <input type="text" id="rechercheAdmin" name="rechercher" placeholder='Recherche' value={search} onChange={(e) => setSearch(e.target.value)}/>
           {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}

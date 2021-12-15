@@ -184,7 +184,7 @@ export const AdminAside = styled.aside`
     background:#303031;
     color:#fff;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    padding-left:20px;
+    //padding-left:20px;
 
     >h4 {
         padding: 0px 20px;
@@ -201,7 +201,7 @@ export const AdminAside = styled.aside`
     }
 
     &>a:hover{
-        background:#fff;
+        background:#49494b;
     }
 
     >p {

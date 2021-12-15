@@ -19,6 +19,7 @@ import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
 import TableFooter from '@material-ui/core/TableFooter';
 import Admin from "../pages/Admin";
+import { Link } from "react-router-dom";
 
 
 // Les styles du Modal 
@@ -77,6 +78,7 @@ const AdminWikiVin = () => {
           <div>
           <div>
               <h4>Wiki Vino</h4>
+              <Button variant="outlined" size='small'><Link to={`/admin/wiki-vin/ajouter`}>Ajouter</Link></Button>
           </div>
           <input type="text" id="rechercheAdmin" name="rechercher" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Recherche'/>
       {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}
@@ -108,9 +110,7 @@ const AdminWikiVin = () => {
                       <TableCell align="right">{result?.millesime}</TableCell>
                       <TableCell align="right"><img style={{height:"50px"}} src={result?.url_img}/> </TableCell>
                       <TableCell align="right">
-    
-                          <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutBouteilleWiki', result)}>
-                              Modifier
+                      <Button variant="outlined" size='small'><Link to={`/admin/wiki-vin/${result?.id}`}>Modifier</Link>
                           </Button>
 
                           <Button variant="outlined" size='small' onClick={() => {

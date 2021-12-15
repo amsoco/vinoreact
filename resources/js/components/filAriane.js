@@ -15,7 +15,7 @@ const filDariane = ({ children }) => {
 
             {searchParams.cellier && (
                 <Link to={`/${searchParams.cellier}`}>
-                    <span>/ {searchParams.cellier}</span>
+                    <span>/{searchParams.cellier}</span>
                 </Link>
             )}
 

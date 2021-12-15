@@ -1,29 +1,65 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
-import useForm from "../../../hooks/useForm";
-import { LegendDark } from "../../styles/Form.styled";
-import { Button } from "../../styles/Button.styled";
-import ajouterBouteilleFormValidate from "./ajouterBouteilleFormValidate";
-import EditionAjoutFormInput from "./EditionAjoutInput";
-import InputFile from "../../InputFile";
-import { SelectCategorie } from "../../styles/Input.styled";
-import { useCellier } from "../../../context/cellier";
-import { useAdmin } from "../pages/Admin";
+import React, { useEffect, useState } from "react";
+import { AjoutModifUsager, Countainer } from "./styles/AjoutModifUsager.styled";
+import {Form} from "./styles/Form.styled";
+import { Button } from "./styles/Button.styled";
+import EditionAjoutFormInput from "./Forms/AjouterBouteille/EditionAjoutInput";
+import { useUser } from "../context/user";
+import { useCellier } from "../context/cellier";
+import useForm from "../hooks/useForm";
+import registerFormValidate from "./Forms/RegisterForm/registerFormValidate";
+import ajouterBouteilleFormValidate from "./Forms/AjouterBouteille/ajouterBouteilleFormValidate";
+import Admin from "../pages/Admin";
+import { useNavigate, useParams } from "react-router";
+import { SelectCategorie } from "./styles/Input.styled";
+import InputFile from "./InputFile";
 
 const AdminAjoutBouteille = ({ bouteille }) => {
     const [categories, setCategories] = useState([]);
-    const { addBouteille, getCategories, modifierBouteille } = useCellier();
-    const { cellier, bouteilleId } = useParams();
-    const navigate = useNavigate();
-    const { RouteAdmin } = useAdmin();
+    //const [laBouteille, setBouteille] = useState("")
+    const { addBouteille, getCategories, modifierBouteille, getBouteille } = useCellier();
+    const { admin , wki , id } = useParams();
+    const [values, setValues] = useState(initialValues);
 
     useEffect(() => {
+        setValues(initialValues)
+    }, [initialValues])
+
+    const [initialValues, setInitialValues] = useState({
+        nom:  "",
+        pays:  "",
+        description:  "",
+        url_saq:  "",
+        format:  "",
+        millesime:  "",
+        url_img: "https://res.cloudinary.com/vino-project/image/upload/v1639165462/bouteilleBlack_lz3rkm.png",
+        categorie_id:  "",
+        categorie:  "",
+
+});
+
+
+    useEffect(() => {
+        let isSubscribed = true;
+        if(id) {
+            // getBouteille(id).then(({ data: { nom, pays, description, url_saq, format, millesime, url_img, categorie_id, categorie } }) => {
+            getBouteille(id).then(( {data} ) => {
+                const {bouteille, categorie} = data;
+                const {nom, pays, description, url_saq, format, millesime, url_img, categorie_id} = bouteille;
+                console.log(nom)
+                setInitialValues({
+                    nom, pays, description, url_saq, format, millesime, url_img, categorie_id, categorie
+                });
+            });
+        }
         // récupération des catégories de vin pour populer le <select>
         getCategories().then(({ data }) => setCategories(data));
+        return () => (isSubscribed = false);
     }, []);
 
+
     // INITIAL FORM STATE
+    
+    /*
     let initialValues = {
         
         nom: bouteille?.nom || "",
@@ -38,6 +74,7 @@ const AdminAjoutBouteille = ({ bouteille }) => {
         categorie_id: bouteille?.categorie_id || "",
         categorie: bouteille?.categorie || "",
     };
+    */
 
     /**
      * Ajouter une bouteille dans Wiki_vin  
@@ -68,35 +105,38 @@ const AdminAjoutBouteille = ({ bouteille }) => {
         } */
     };
 
-    console.log('bouteille', bouteille)
+   // console.log('bouteille', bouteille)
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
+    
     const {
         handleFormSubmit,
         handleFormChange,
-        values,
+        //values,
         errors,
-        handleBlur,
+        //handleBlur,
         handleImageChange,
         isSubmitting,
     } = useForm(
         initialValues,
-        bouteille.id ? editerBouteille : ajouterBouteille, // mode édition ou ajout
+        bouteille?.id ? editerBouteille : ajouterBouteille, // mode édition ou ajout
         ajouterBouteilleFormValidate
     );
 
     return (
-        <FormAjout onSubmit={handleFormSubmit}>
-            <LegendDark>
-                {bouteille.id ? "Éditer une bouteille" : "Nouvelle Bouteille"}
-            </LegendDark>
-            <EditionAjoutFormInput
+        <Admin>
+            <Countainer>
+                <div>
+                    <h4>{id ? "Modifier Bouteille" : "Ajouter Bouteille"}</h4>
+                </div>
+                <AjoutModifUsager onSubmit={handleFormSubmit}>
+             <EditionAjoutFormInput
                 type="text"
                 id="nom"
                 name="nom"
                 placeholder="Nom"
-                value={values.nom}
+                value={ values?.nom || ""}
                 onChange={handleFormChange}
-                onBlur={handleBlur}
+               // onBlur={handleBlur}
                 error={errors?.nom}
             />
             <EditionAjoutFormInput
@@ -104,9 +144,9 @@ const AdminAjoutBouteille = ({ bouteille }) => {
                 id="pays"
                 name="pays"
                 placeholder="Pays"
-                value={values.pays}
+                value={ values?.pays || ""}
                 onChange={handleFormChange}
-                onBlur={handleBlur}
+               // onBlur={handleBlur}
                 error={errors?.pays}
             />
             <EditionAjoutFormInput
@@ -114,9 +154,9 @@ const AdminAjoutBouteille = ({ bouteille }) => {
                 id="description"
                 name="description"
                 placeholder="Description"
-                value={values.description}
+                value={values?.description || ""}
                 onChange={handleFormChange}
-                onBlur={handleBlur}
+               // onBlur={handleBlur}
                 error={errors?.description}
             />
             <EditionAjoutFormInput
@@ -124,9 +164,9 @@ const AdminAjoutBouteille = ({ bouteille }) => {
                 id="url_saq"
                 name="url_saq"
                 placeholder="Url SAQ"
-                value={values.url_saq}
+                value={values?.url_saq || ""}
                 onChange={handleFormChange}
-                onBlur={handleBlur}
+                //onBlur={handleBlur}
                 error={errors?.url_saq}
             />
             <EditionAjoutFormInput
@@ -134,9 +174,9 @@ const AdminAjoutBouteille = ({ bouteille }) => {
                 id="format"
                 name="format"
                 placeholder="Format"
-                value={values.format}
+                value={values?.format || ""}
                 onChange={handleFormChange}
-                onBlur={handleBlur}
+               // onBlur={handleBlur}
                 error={errors?.format}
             />
             <EditionAjoutFormInput
@@ -144,16 +184,17 @@ const AdminAjoutBouteille = ({ bouteille }) => {
                 id="millesime"
                 name="millesime"
                 placeholder="Millesime"
-                value={values.millesime}
+                value={values?.millesime || ""}
                 onChange={handleFormChange}
-                onBlur={handleBlur}
+              //  onBlur={handleBlur}
                 error={errors?.millesime}
             />
 
             <SelectCategorie
                 name="categorie_id"
-                value={values.categorie_id}
+                value={values?.categorie_id}
                 onChange={handleFormChange}
+                value={values?.categorie_id || ""}
             >
                 <option>Catégorie</option>
                 {categories.map((categorie) => (
@@ -166,29 +207,27 @@ const AdminAjoutBouteille = ({ bouteille }) => {
                 id="url_img"
                 name="url_img"
                 onImageChange={(img) => handleImageChange(img)}
-                existingImg={values.url_img}
+                existingImg={values?.url_img}
             />
 
             <Button
                 type="submit"
                 bg="#303031"
                 color="#fff"
+
                 bgHover="white"
                 colorHover="#303030"
                 disabled={isSubmitting}
             >
-                {bouteille.id ? "Éditer" : "Ajouter"}
-            </Button>
-        </FormAjout>
+                {bouteille?.id ? "Éditer" : "Ajouter"}
+            </Button> 
+        </AjoutModifUsager>
+        </Countainer>
+        </Admin>
     );
+
+    
 };
 
-export default AjouterBouteilleForm;
+export default AdminAjoutBouteille;
 
-const FormAjout = styled.form`
-    width: 100%;
-
-    ${Button} {
-        margin: 60px 0;
-    }
-`;
