@@ -70,8 +70,7 @@ const AjouterBouteilleForm = ({ bouteille }) => {
             console.error(error);
         }
     };
-
-    console.log('bouteille', bouteille)
+    
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
     const {
         handleFormSubmit,
