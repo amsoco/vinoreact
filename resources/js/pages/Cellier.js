@@ -13,10 +13,6 @@ const Cellier = () => {
     const [setOpacity, setOpacityState] = useState("0");
     const [pageNum, setPageNum] = useState(1);
     const [search, setSearch] = useState("");
-    const { isLoading, bouteilles, hasMore } = displayBoutCellier(
-        search,
-        pageNum
-    );
 
     // https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
     useEffect(() => {
@@ -31,10 +27,13 @@ const Cellier = () => {
     const updateBouteille = async (bouteilleId, qte) => {
         // Cette request mettra à jour le nombre de bouteilles que l'utilisateur a défini auparavant dans Bouteille.js
         await updateQty(bouteilleId, qte);
-        getBouteilles();
         localStorage.removeItem("updateQte");
         localStorage.removeItem("bouteilleId");
     };
+    const { isLoading, bouteilles, hasMore } = displayBoutCellier(
+        search,
+        pageNum
+    );
 
     const observer = useRef();
     const derniereBouteilleRef = useCallback(
