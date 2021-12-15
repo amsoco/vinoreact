@@ -9,12 +9,14 @@ import EditionAjoutFormInput from "./EditionAjoutInput";
 import InputFile from "../../InputFile";
 import { SelectCategorie } from "../../styles/Input.styled";
 import { useCellier } from "../../../context/cellier";
+import { useAdmin } from "../pages/Admin";
 
-const AjouterBouteilleForm = ({ bouteille }) => {
+const AdminAjoutBouteille = ({ bouteille }) => {
     const [categories, setCategories] = useState([]);
     const { addBouteille, getCategories, modifierBouteille } = useCellier();
     const { cellier, bouteilleId } = useParams();
     const navigate = useNavigate();
+    const { RouteAdmin } = useAdmin();
 
     useEffect(() => {
         // récupération des catégories de vin pour populer le <select>
@@ -23,18 +25,13 @@ const AjouterBouteilleForm = ({ bouteille }) => {
 
     // INITIAL FORM STATE
     let initialValues = {
-        cellier_id: JSON.parse(localStorage.getItem("cellier")).id,
+        
         nom: bouteille?.nom || "",
         pays: bouteille?.pays || "",
         description: bouteille?.description || "",
-        date_achat: bouteille?.date_achat || "",
-        prix_achat: bouteille?.prix_achat || "",
         url_saq: bouteille?.url_saq || "",
-        note: bouteille?.note || "",
-        commentaire: bouteille?.commentaire || "",
-        quantite: bouteille?.quantite || "",
-        millesime: bouteille?.millesime || "",
         format: bouteille?.format || "",
+        millesime: bouteille?.millesime || "",
         url_img:
             bouteille?.url_img ||
             "https://res.cloudinary.com/vino-project/image/upload/v1639165462/bouteilleBlack_lz3rkm.png",
@@ -43,18 +40,18 @@ const AjouterBouteilleForm = ({ bouteille }) => {
     };
 
     /**
-     * Ajouter une bouteille
+     * Ajouter une bouteille dans Wiki_vin  
      * @param {object} values
      * @returns {void}
      */
     const ajouterBouteille = async (values) => {
-        console.log('ajout', values)
+        /* console.log('ajout', values)
         try {
             await addBouteille(values);
             navigate(`/${cellier}`);
         } catch (error) {
             console.error(error);
-        }
+        } */
     };
 
     /**
@@ -63,12 +60,12 @@ const AjouterBouteilleForm = ({ bouteille }) => {
      * @returns {void}
      */
     const editerBouteille = async (values) => {
-        try {
+        /* try {
             await modifierBouteille(bouteilleId, values);
             navigate(`/${cellier}/${bouteilleId}`);
         } catch (error) {
             console.error(error);
-        }
+        } */
     };
 
     console.log('bouteille', bouteille)
@@ -83,14 +80,14 @@ const AjouterBouteilleForm = ({ bouteille }) => {
         isSubmitting,
     } = useForm(
         initialValues,
-        bouteilleId ? editerBouteille : ajouterBouteille, // mode édition ou ajout
+        bouteille.id ? editerBouteille : ajouterBouteille, // mode édition ou ajout
         ajouterBouteilleFormValidate
     );
 
     return (
         <FormAjout onSubmit={handleFormSubmit}>
             <LegendDark>
-                {bouteilleId ? "Éditer une bouteille" : "Nouvelle Bouteille"}
+                {bouteille.id ? "Éditer une bouteille" : "Nouvelle Bouteille"}
             </LegendDark>
             <EditionAjoutFormInput
                 type="text"
@@ -113,24 +110,14 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 error={errors?.pays}
             />
             <EditionAjoutFormInput
-                type="date"
-                id="date_achat"
-                name="date_achat"
-                value={values.date_achat}
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Description"
+                value={values.description}
                 onChange={handleFormChange}
                 onBlur={handleBlur}
-                error={errors?.date_achat}
-            />
-            <EditionAjoutFormInput
-                type="number"
-                id="prix_achat"
-                name="prix_achat"
-                placeholder="Prix"
-                step=".01"
-                value={values.prix_achat}
-                onChange={handleFormChange}
-                onBlur={handleBlur}
-                error={errors?.prix_achat}
+                error={errors?.description}
             />
             <EditionAjoutFormInput
                 type="text"
@@ -141,47 +128,6 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 onChange={handleFormChange}
                 onBlur={handleBlur}
                 error={errors?.url_saq}
-            />
-            <EditionAjoutFormInput
-                type="number"
-                id="note"
-                name="note"
-                max="5"
-                placeholder="Note sur 5"
-                value={values.note}
-                onChange={handleFormChange}
-                onBlur={handleBlur}
-                error={errors?.note}
-            />
-            <EditionAjoutFormInput
-                type="text"
-                id="commentaire"
-                name="commentaire"
-                placeholder="Commentaire"
-                value={values.commentaire}
-                onChange={handleFormChange}
-                onBlur={handleBlur}
-                error={errors?.commentaire}
-            />
-            <EditionAjoutFormInput
-                type="number"
-                id="quantite"
-                name="quantite"
-                placeholder="Quantite"
-                value={values.quantite}
-                onChange={handleFormChange}
-                onBlur={handleBlur}
-                error={errors?.quantite}
-            />
-            <EditionAjoutFormInput
-                type="text"
-                id="millesime"
-                name="millesime"
-                placeholder="Millesime"
-                value={values.millesime}
-                onChange={handleFormChange}
-                onBlur={handleBlur}
-                error={errors?.millesime}
             />
             <EditionAjoutFormInput
                 type="text"
@@ -195,14 +141,15 @@ const AjouterBouteilleForm = ({ bouteille }) => {
             />
             <EditionAjoutFormInput
                 type="text"
-                id="description"
-                name="description"
-                placeholder="Description"
-                value={values.description}
+                id="millesime"
+                name="millesime"
+                placeholder="Millesime"
+                value={values.millesime}
                 onChange={handleFormChange}
                 onBlur={handleBlur}
-                error={errors?.description}
+                error={errors?.millesime}
             />
+
             <SelectCategorie
                 name="categorie_id"
                 value={values.categorie_id}
@@ -230,7 +177,7 @@ const AjouterBouteilleForm = ({ bouteille }) => {
                 colorHover="#303030"
                 disabled={isSubmitting}
             >
-                {bouteilleId ? "Éditer" : "Ajouter"}
+                {bouteille.id ? "Éditer" : "Ajouter"}
             </Button>
         </FormAjout>
     );

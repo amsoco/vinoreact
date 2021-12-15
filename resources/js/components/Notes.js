@@ -57,7 +57,7 @@ const Notes = ({ note, bouteilleId }) => {
                     value={noteBouteille || note}
                 >
                     {[...Array(5)].map((_, i) => (
-                        <option value={i + 1}>{i + 1}</option>
+                        <option key={i} value={i + 1}>{i + 1}</option>
                     ))}
                 </Select>
             </div>
