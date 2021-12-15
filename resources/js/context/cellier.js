@@ -33,7 +33,15 @@ export const CellierProvider = ({ children }) => {
      * @param {string} search
      * @returns {array}
      */
-    const searchWiki = (search) => Http.get(`search/${search}`);
+    const searchWiki = (search) => Http.get(`searchWiki/${search}`);
+
+    /**
+     * Rechercher une bouteille dans le wiki
+     * @param {string} search
+     * @returns {array}
+     */
+    const searchCellier = (cellierId, search) =>
+        Http.get(`/bouteilles/${cellierId}/${search}`);
 
     /**
      * Ajouter une bouteille dans un cellier
@@ -111,6 +119,7 @@ export const CellierProvider = ({ children }) => {
                 getCategories,
                 modifierBouteille,
                 searchWiki,
+                searchCellier,
                 supprimerBouteille,
                 updateNoteBouteille,
                 uploadImage,

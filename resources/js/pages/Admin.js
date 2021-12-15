@@ -22,6 +22,9 @@ const Admin = ({children}) => {
     const [setUsagerCourriel, setUsagerCourrielState] = useState("");
     const [setUsagerPrivilege, setUsagerPrivilegeState] = useState(1);
 
+    const [setBouteille, setBouteilleState] = useState("");
+
+
     const RouteAdmin = (route, id, nom, email, privilege) => {
         setRouteState(route)
         setUsagerIdState(id)
@@ -29,6 +32,13 @@ const Admin = ({children}) => {
         setUsagerCourrielState(email)
         setUsagerPrivilegeState(privilege)
     }
+
+    const RouteAdminWiki = (route, bouteille) => {
+        setRouteState(route)
+        setBouteille(bouteille)
+        
+    }
+
 
 
 

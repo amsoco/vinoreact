@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/bouteilles/edit/{id}', [BouteilleController::class, 'update']);
     Route::put('/bouteilles/editField/{id}', [BouteilleController::class, 'updateField']);
     Route::delete('/bouteilles/{id}', [BouteilleController::class, 'destroy']);
+    Route::get('/bouteilles/{id}/{search}', [BouteilleController::class, 'search']);
 
     Route::get('/categories', [CategorieController::class, 'index']);
     Route::get('/cellier', [CellierController::class, 'index']);
@@ -47,7 +48,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/wiki', [Wiki_vinController::class, 'index']);
     Route::get('/wiki/{id}', [Wiki_vinController::class, 'show']);
-    Route::get('/search/{search}', [Wiki_vinController::class, 'search']);
+    Route::get('/searchWiki/{search}', [Wiki_vinController::class, 'search']);
 
     Route::get('/user', [AuthController::class, 'me']);
     Route::get('/users', [AuthController::class, 'index']);
