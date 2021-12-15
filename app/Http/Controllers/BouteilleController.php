@@ -37,7 +37,19 @@ class BouteilleController extends Controller
         return $bouteilles;
     }
 
-
+        /**
+     * Search the request in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $bouteilles = Bouteille::where('cellier_id', $request->id)
+        ->where('nom', 'LIKE', '%' . $request->search . '%')
+        ->orWhere('pays', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        return $bouteilles;
+    }
     /**
      * Store a newly created resource in storage.
      *

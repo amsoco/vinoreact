@@ -2,24 +2,21 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useCellier } from "../context/cellier";
 import { useUser } from "../context/user";
 import Layout from "../components/Layout";
-import CellierBouteille from "../components/CellierBouteille";
 import Recherche from "../components/Recherche";
 import BackUp from "../components/BackUp";
 import CircleLoader from "../components/CircleLoader";
+import displayBoutCellier from "../hooks/displayBoutCellier";
 
 const Cellier = () => {
-    const { getBouteillesCellier, loading, updateQty } = useCellier();
+    const { getBouteillesCellier, updateQty } = useCellier();
     const { user } = useUser();
     const [setOpacity, setOpacityState] = useState("0");
     const [pageNum, setPageNum] = useState(1);
-    const [contentLoading, setContentLoading] = useState(true);
-    const [bouteilles, setBouteilles] = useState([]);
-    const [hasMore, setHasMore] = useState(false);
-    const { id, nom_cellier } = JSON.parse(localStorage.getItem("cellier"));
-    const [nomCellier] = useState(nom_cellier);
     const [search, setSearch] = useState("");
-    const [scroll, setScroll] = useState(0);
-    const [isLoading, setIsLoading] = useState(true);
+    const { isLoading, bouteilles, hasMore } = displayBoutCellier(
+        search,
+        pageNum
+    );
 
     // https://stackoverflow.com/questions/53949393/cant-perform-a-react-state-update-on-an-unmounted-component
     useEffect(() => {
@@ -38,29 +35,6 @@ const Cellier = () => {
         localStorage.removeItem("updateQte");
         localStorage.removeItem("bouteilleId");
     };
-
-    // https://medium.com/suyeonme/react-how-to-implement-an-infinite-scroll-749003e9896a
-    useEffect(() => {
-        setIsLoading(true);
-        getBouteillesCellier(id, pageNum).then((res) => {
-            setBouteilles((prev) => {
-                return [
-                    ...new Set([
-                        ...prev,
-                        ...res.data.data.map((d) => (
-                            <CellierBouteille
-                                key={d.id}
-                                bouteille={d}
-                                cellier={nomCellier}
-                            />
-                        )),
-                    ]),
-                ];
-            });
-            setHasMore(res.data.data.length > 0);
-            setIsLoading(false);
-        });
-    }, [id, pageNum]);
 
     const observer = useRef();
     const derniereBouteilleRef = useCallback(
@@ -96,7 +70,6 @@ const Cellier = () => {
             setOpacityState("0");
         }
     };
-
     return (
         <Layout>
             {isLoading && bouteilles <= 0 ? (
@@ -119,7 +92,9 @@ const Cellier = () => {
                     <Recherche
                         placeholder="Rechercher dans mon cellier"
                         value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onChange={(e) => (
+                            setSearch(e.target.value), setPageNum(1)
+                        )}
                     />
 
                     {!bouteilles.length && (

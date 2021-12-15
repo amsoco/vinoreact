@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavBarCountainer } from "./styles/Navbar.styled.js";
 import { Link, useParams } from "react-router-dom";
 import LogoVino from "../assets/svg/logo.svg";
@@ -7,6 +7,7 @@ import Accordeon from "./Accordeon";
 import { useUser } from "../context/user";
 import { Button } from "./styles/Button.styled";
 import Holder from "../components/Holder.js";
+import ListCelliers from "../components/ListCelliers";
 
 const navBar = (props) => {
     const { logout } = useUser();
@@ -18,8 +19,7 @@ const navBar = (props) => {
     const [setDisplay, setStateDisplay] = useState("");
     const [setWidth, setWitdthState] = useState("0px");
     const [setTanslateMenu, setStateTranslateMenu] = useState("0");
-    const params = useParams()
-    const [setHeight, setStateHeightMenu] = useState(window.innerHeight - 60);
+    const params = useParams();
 
     // ou clic on ouvre le menu
     const ouvrirMenu = (props) => {
@@ -40,22 +40,15 @@ const navBar = (props) => {
         setWitdthState(setActive === "active" ? "0" : "100%");
 
         setStateTranslateMenu(setActive === "active" ? "0" : "400px");
-    };
 
-    useEffect(() => {
-        // https://www.pluralsight.com/guides/how-to-cleanup-event-listeners-react
-        // listener sur windows dans le useEffect doit être supprimé dans la clean up fonction du useEffect
-        // sans quoi le listener continue d'être actif même si tu quittes la page --> memory leak et crash de l'app
-        window.addEventListener('resize', menuSizing);
-        return function cleanupListener() {
-            window.removeEventListener('resize', menuSizing);
-        }
-    });
-
-    // trouver la mesure de l'écran pour ne pas dépasser la hauteur visible.
-    const menuSizing = (e) => {
-        const height = window.innerHeight - 60;
-        setStateHeightMenu(height)
+        // useEffect(() => {
+        //     if (localStorage.getItem("cellier")) {
+        //         const { id, nom_cellier } = JSON.parse(
+        //             localStorage.getItem("cellier")
+        //         );
+        //         setCellier(nom_cellier);
+        //     }
+        // }, []);
     };
     return (
         <NavBarCountainer
@@ -65,8 +58,6 @@ const navBar = (props) => {
             translateUp={setTranslateUp}
             display={setDisplay}
             translateMenu={setTanslateMenu}
-            menuHeight={setHeight}
-
         >
             <nav>
                 <div onClick={ouvrirMenu}>
@@ -74,18 +65,19 @@ const navBar = (props) => {
                     <div></div>
                     <div></div>
                 </div>
-                <img src={LogoVino} alt="logo vino" />
+                <img src={LogoVino} alt="chevronBlack" />
                 <Link to={`/${params.cellier}/nouvelle-bouteille`}>
                     <img src={CercleX} alt="chevronBlack" />
                 </Link>
             </nav>
+            {/* <ul style={{ width: `${setWidth}` }} > */}
             <ul>
                 <h4>Menu vino</h4>
                 <li>
-                    <Accordeon
+                    {/* <Accordeon
                         titre="Recherche détaillé"
                         content="formulaire de recherche"
-                    ></Accordeon>
+                    ></Accordeon> */}
                 </li>
                 <li>
                     <Link to="/mon-compte">
@@ -95,7 +87,27 @@ const navBar = (props) => {
                 <li>
                     <p onClick={() => logout()}>Logout</p>
                 </li>
-
+                {/* <li><Accordeon titre='Prix' content="patate"></Accordeon></li>
+                <li><Accordeon titre='Cépage' content="patate"></Accordeon></li>
+                <li><Accordeon titre='Pays' content="patate"></Accordeon></li>
+                <li><Accordeon titre="Date d'achat" content="patate"></Accordeon></li>
+                <li><Accordeon titre='Rupture de stock' content="patate"></Accordeon></li> */}
+                {/* <li>
+                    <Link to="/">Mon Compte</Link>
+                </li> */}
+                {/* <li>
+                <Button
+                    bg="#fff"
+                    color="#303031"
+                    colorHover="#fff"
+                    bgHover="#303031"
+                >
+                    RAFRAICHIR
+                </Button>
+                <Button bg="#303031" color="#fff">
+                    RECHERCHE
+                </Button>
+                </li> */}
             </ul>
         </NavBarCountainer>
     );

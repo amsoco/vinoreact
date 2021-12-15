@@ -9,19 +9,21 @@ import Http from "../../../HttpClient";
 import addCellierFormValidate from "./addCellierFormValidate";
 import { useNavigate } from "react-router";
 import { slugify } from "../../../helpers/slugify";
+import { useUser } from "../../../context/user";
 
 const AddCellierForm = () => {
     const navigate = useNavigate();
     const user = sessionStorage.getItem("user");
+    const { getMe } = useUser();
     // INITIAL FORM STATE
     const initialValues = {
         nom_cellier: "",
         user_id: user,
     };
     const registerCellier = async (values) => {
-        await Http.post(`cellier/create`, values);
         const { data } = await Http.post(`cellier/create`, values);
         localStorage.setItem("cellier", JSON.stringify(data));
+        getMe();
         const slug = slugify(data.nom_cellier);
         navigate(`/${slug}`);
     };
