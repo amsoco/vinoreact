@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { AjoutModifUsager, Countainer } from "./styles/AjoutModifUsager.styled";
-//import {Form} from "./styles/Form.styled";
 import { Button } from "./styles/Button.styled";
 import EditionAjoutFormInput from "./Forms/AjouterBouteille/EditionAjoutInput";
 import { useUser } from "../context/user";
@@ -9,14 +8,15 @@ import registerFormValidate from "./Forms/RegisterForm/registerFormValidate";
 import registerFormValidateUpdate from "./Forms/RegisterForm/registerFormValidateUpdate";
 import Admin from "../pages/Admin";
 import { useNavigate, useParams } from "react-router";
-import { ConstructionOutlined } from "@mui/icons-material";
+
 
 // composante Pour ajouter et modifier usager
 const AdminAjoutUsager = () => {
-    const navigate = useNavigate()
-    const { getUsager, updateUsager } = useUser();
+    const navigate = useNavigate();
+    const { getUsager, updateUsager, register } = useUser();
     const { id } = useParams();
     const [usager, setUsager] = useState({
+        type:'usagerEdit',
         id: "",
         name: "",
         email: "",
@@ -26,19 +26,20 @@ const AdminAjoutUsager = () => {
     if (id) {
         useEffect(() => {
             getUsager(id).then(({ data: usager }) => {
-                setUsager({
+                setUsager((prevState) => ({
+                    ...prevState,
                     id: usager.id,
                     name: usager.name,
                     email: usager.email,
-                });
+                }));
             });
-        }, [])
+        }, []);
 
         const initialValues = usager;
 
         const registerUser = async (values) => {
-            await updateUsager(values);
-            navigate('/admin/usager')
+            updateUsager(values);
+            navigate("/admin/usager");
         };
 
         // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
@@ -93,7 +94,7 @@ const AdminAjoutUsager = () => {
     } else {
         const initialValues = {
             id: "",
-            name:  "",
+            name: "",
             email: "",
             privilege_id: 1,
             password: "",
@@ -102,8 +103,8 @@ const AdminAjoutUsager = () => {
         };
 
         const registerUser = async (values) => {
-            const data = await register(values);
-            RouteAdmin("user");
+            await register(values);
+            navigate("/admin/usager");
         };
 
         // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
