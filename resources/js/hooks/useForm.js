@@ -6,9 +6,11 @@ const useForm = (initialValues, formLogic, validate) => {
     const [isSubmitting, setSubmitting] = useState(false);
     const [touched, setTouched] = useState([]);
 
-    useEffect(() => {
-        setValues(initialValues)
-    }, [initialValues])
+    if (initialValues.type === "usagerEdit") {
+        useEffect(() => {
+            setValues(initialValues);
+        }, [initialValues]);
+    }
 
     // useEffect executé automatiquement quand le composant mounts
     // mais c'est uniquement si le form est en train d'être soumis que l'on envoie les données au serveur
@@ -71,7 +73,7 @@ const useForm = (initialValues, formLogic, validate) => {
                 prix_achat: parseFloat(event.target.value),
             }));
         } else {
-            console.log(event.target.name)
+            console.log(event.target.name);
             // on set dans le state du hook dynamiquement le nom de l'input avec la valeur entrée
             setValues((values) => ({
                 ...values,
