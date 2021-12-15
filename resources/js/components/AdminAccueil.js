@@ -7,7 +7,7 @@ const AdminAccueil = () => {
     return (
         <Admin>
             <div>
-                <p>Admin Bonjour</p>
+                <h4>Admin Bonjour</h4>
 
             </div>
         </Admin>
