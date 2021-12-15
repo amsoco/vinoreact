@@ -11,66 +11,45 @@ import Admin from "../pages/Admin";
 import { useNavigate, useParams } from "react-router";
 import { ConstructionOutlined } from "@mui/icons-material";
 
-
 // composante Pour ajouter et modifier usager
 const AdminAjoutUsager = () => {
-    const { user } = useUser();
-    const { register } = useUser();
-    const { getUsager} = useUser();
-    const { updateUsager } = useUser();
+    const navigate = useNavigate()
+    const { getUsager, updateUsager } = useUser();
     const { id } = useParams();
-    const [usager, setUsagerState] = useState({});
+    const [usager, setUsager] = useState({
+        id: "",
+        name: "",
+        email: "",
+    });
 
-    
-    
-    useEffect(() => {
-        let isSubscribed = true;
-        getUsager(id).then(({data}) => {
-            //const usager = {};
-            const usager = data;
-           
-           // console.log(usager, 'usager')
-            console.log(data, 'data')
-            setUsagerState(usager)
-        });
-        return () => (isSubscribed = false);
-    }, []);
+    // mode edition
+    if (id) {
+        useEffect(() => {
+            getUsager(id).then(({ data: usager }) => {
+                setUsager({
+                    id: usager.id,
+                    name: usager.name,
+                    email: usager.email,
+                });
+            });
+        }, [])
 
+        const initialValues = usager;
 
-    if (usager.id) {
-
-        
-
-        console.log('1')
-        const initialValues = {
-            id : usager.id || "",
-            name:  usager.name || "",
-            email:  usager.email || "" ,
-        };
-        console.log('2')
-    
-        
-        console.log(usager.name, 'name')
-        //console.log(setUsager)
         const registerUser = async (values) => {
-            const data = await updateUsager(values);
-                //RouteAdmin('user')
+            await updateUsager(values);
+            navigate('/admin/usager')
         };
 
-
-        console.log(values , "values")
-
-    // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
-    const {
-        handleFormSubmit,
-        handleFormChange,
-        values,
-        errors,
-        handleBlur,
-        isSubmitting,
-    } = useForm(initialValues, registerUser, registerFormValidateUpdate);
-
-    console.log(errors, "error")
+        // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
+        const {
+            handleFormSubmit,
+            handleFormChange,
+            values,
+            errors,
+            handleBlur,
+            isSubmitting,
+        } = useForm(initialValues, registerUser, registerFormValidateUpdate);
 
         return (
             <Admin>
@@ -79,7 +58,6 @@ const AdminAjoutUsager = () => {
                         <h4>Modifier Usager</h4>
                     </div>
                     <AjoutModifUsager onSubmit={handleFormSubmit}>
-
                         <EditionAjoutFormInput
                             type="text"
                             id="name"
@@ -99,51 +77,44 @@ const AdminAjoutUsager = () => {
                             error={errors?.email}
                         />
                         <Button
-                        type="submit"
-                        bg="#303031"
-                        color="#fff"
-                        bgHover="white"
-                        colorHover="#303030"
-                        disabled={isSubmitting}
-                    >
-                    Modifier
-                    </Button>
-                </AjoutModifUsager>
-            </Countainer>
-        </Admin>
-        )
-    
-
+                            type="submit"
+                            bg="#303031"
+                            color="#fff"
+                            bgHover="white"
+                            colorHover="#303030"
+                            disabled={isSubmitting}
+                        >
+                            Modifier
+                        </Button>
+                    </AjoutModifUsager>
+                </Countainer>
+            </Admin>
+        );
     } else {
-
-        
-
         const initialValues = {
-            id : usager?.id || "",
-            name:  usager?.name || "",
-            email:  usager?.email || "",
+            id: "",
+            name:  "",
+            email: "",
             privilege_id: 1,
             password: "",
             nom_cellier: "",
             password_confirmation: "",
         };
-    
-    
+
         const registerUser = async (values) => {
             const data = await register(values);
-            RouteAdmin('user')
+            RouteAdmin("user");
         };
 
-
-    // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
-    const {
-        handleFormSubmit,
-        handleFormChange,
-        values,
-        errors,
-        handleBlur,
-        isSubmitting,
-    } = useForm(initialValues, registerUser, registerFormValidate);
+        // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
+        const {
+            handleFormSubmit,
+            handleFormChange,
+            values,
+            errors,
+            handleBlur,
+            isSubmitting,
+        } = useForm(initialValues, registerUser, registerFormValidate);
         return (
             <Admin>
                 <Countainer>
@@ -206,14 +177,12 @@ const AdminAjoutUsager = () => {
                             colorHover="#303030"
                             disabled={isSubmitting}
                         >
-                        AJOUTER
+                            AJOUTER
                         </Button>
                     </AjoutModifUsager>
-            </Countainer>
-        </Admin>
-        )
-    
+                </Countainer>
+            </Admin>
+        );
     }
-
-}
+};
 export default AdminAjoutUsager;

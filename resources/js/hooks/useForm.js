@@ -6,6 +6,10 @@ const useForm = (initialValues, formLogic, validate) => {
     const [isSubmitting, setSubmitting] = useState(false);
     const [touched, setTouched] = useState([]);
 
+    useEffect(() => {
+        setValues(initialValues)
+    }, [initialValues])
+
     // useEffect executé automatiquement quand le composant mounts
     // mais c'est uniquement si le form est en train d'être soumis que l'on envoie les données au serveur
     useEffect(() => {
