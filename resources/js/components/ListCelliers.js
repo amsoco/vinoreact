@@ -21,7 +21,7 @@ const ListCelliers = () => {
     return (
         <ListCelliersCountainer>
             <ul>
-                {user?.celliers.map((cellier) => {
+                {user?.celliers?.map((cellier) => {
                     return (
                         <li
                             key={cellier.id}
