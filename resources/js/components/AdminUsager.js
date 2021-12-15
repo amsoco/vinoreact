@@ -136,7 +136,7 @@ const AdminUsager = () => {
                       <TableCell align="right">{result?.email}</TableCell>
                       <TableCell align="right">{result?.privilege_id}</TableCell>
                       <TableCell align="right">
-                      <Button variant="outlined" size='small'><Link to={`/admin/usager/${result?.id}`}>Utilisateur</Link> </Button>
+                      <Button variant="outlined" size='small'><Link to={`/admin/usager/${result.id}`}>Utilisateur</Link> </Button>
                           {/* <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutUsager', result?.id ,result?.name, result?.email, result?.privilege_id)}>
                               Modifier
                           </Button> */}
