@@ -18,6 +18,7 @@ import Box from '@material-ui/core/Box';
 import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
 import TableFooter from '@material-ui/core/TableFooter';
+import Admin from "../pages/Admin";
 
 
 // Les styles du Modal 
@@ -72,110 +73,112 @@ const AdminWikiVin = () => {
 
 
     return (
-        <div>
-        <div>
-            <h4>Wiki Vino</h4>
-        </div>
-    <input type="text" id="rechercheAdmin" name="rechercher" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Recherche'/>
-    {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}
+      <Admin>
+          <div>
+          <div>
+              <h4>Wiki Vino</h4>
+          </div>
+          <input type="text" id="rechercheAdmin" name="rechercher" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Recherche'/>
+      {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}
+      
+      <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Nom</TableCell>
+                  <TableCell align="right">Pays</TableCell>
+                  <TableCell align="right">Description</TableCell>
+                  <TableCell align="right">Millesime</TableCell>
+                  <TableCell align="right">Image</TableCell>
+                  <TableCell align="right">Action</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                
+                { resultsWiki?.map((result) => (
+                  <TableRow
+                      key={result?.id}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                      >
+                      <TableCell scope="cellier">
+                      {result?.nom}
+                      </TableCell>
+                      <TableCell align="right">{result?.pays}</TableCell>
+                      <TableCell align="right">{result?.description}</TableCell>
+                      <TableCell align="right">{result?.millesime}</TableCell>
+                      <TableCell align="right"><img style={{height:"50px"}} src={result?.url_img}/> </TableCell>
+                      <TableCell align="right">
     
-    <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Nom</TableCell>
-                <TableCell align="right">Pays</TableCell>
-                <TableCell align="right">Description</TableCell>
-                <TableCell align="right">Millesime</TableCell>
-                <TableCell align="right">Image</TableCell>
-                <TableCell align="right">Action</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              
-              { resultsWiki?.map((result) => (
-                <TableRow
-                    key={result?.id}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                    <TableCell scope="cellier">
-                    {result?.nom}
+                          <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutBouteilleWiki', result)}>
+                              Modifier
+                          </Button>
+
+                          <Button variant="outlined" size='small' onClick={() => {
+                              handleOpen()
+                              setBouteilleState(result?.id)
+                              setNomBouteille(result?.nom)
+                              }} >
+                              Delete
+                          </Button>
+    
                     </TableCell>
-                    <TableCell align="right">{result?.pays}</TableCell>
-                    <TableCell align="right">{result?.description}</TableCell>
-                    <TableCell align="right">{result?.millesime}</TableCell>
-                    <TableCell align="right"><img style={{height:"50px"}} src={result?.url_img}/> </TableCell>
-                    <TableCell align="right">
-  
-                        <Button variant="outlined" size='small' onClick={() => RouteAdmin('AjoutBouteilleWiki', result)}>
-                            Modifier
-                        </Button>
+                  </TableRow>
+                ))}
+              </TableBody>
+              <TableFooter>
+              <TableRow>
 
-                        <Button variant="outlined" size='small' onClick={() => {
-                            handleOpen()
-                            setBouteilleState(result?.id)
-                            setNomBouteille(result?.nom)
-                            }} >
-                            Delete
-                        </Button>
-  
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-            <TableFooter>
-            <TableRow>
+                {/* <Pagination
+                  rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                  colSpan={3}
+                  count={results?.length || 20}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                      inputProps: {
+                        'aria-label': 'rows per page',
+                      },
+                      native: true,
+                  }}
+                  onPageChange={handleChangePage}
+                  onRowsPerPageChange={handleChangeRowsPerPage}
+                  ActionsComponent={Pagination}
+                /> */}
 
-              {/* <Pagination
-                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                colSpan={3}
-                count={results?.length || 20}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                SelectProps={{
-                    inputProps: {
-                      'aria-label': 'rows per page',
-                    },
-                    native: true,
-                }}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-                ActionsComponent={Pagination}
-              /> */}
-
-                </TableRow>
-            </TableFooter>
-          </Table>
-        </TableContainer>
+                  </TableRow>
+              </TableFooter>
+            </Table>
+          </TableContainer>
 
 
-        <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-        >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Attention
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Voulez-vous vraiment effacer {nomBouteille} ?
-          </Typography>
+          <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+          >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Attention
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Voulez-vous vraiment effacer {nomBouteille} ?
+            </Typography>
 
-          <Button variant="outlined" size='small' onClick={handleClose}>Non</Button>
-          <Button style={styleButton} variant="outlined" size='small' onClick={() => {
-            supprimerBouteille(setBouteille)
-            //getBouteillesAdmin(); 
-            handleClose();
-            }} >Oui</Button>
+            <Button variant="outlined" size='small' onClick={handleClose}>Non</Button>
+            <Button style={styleButton} variant="outlined" size='small' onClick={() => {
+              supprimerBouteille(setBouteille)
+              //getBouteillesAdmin(); 
+              handleClose();
+              }} >Oui</Button>
 
-        </Box>
-        </Modal>
-    
+          </Box>
+          </Modal>
+      
 
-    
-    </div>
+      
+      </div>
+    </Admin>
     )
 
 }

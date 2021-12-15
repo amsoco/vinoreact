@@ -190,6 +190,13 @@ export const AdminAside = styled.aside`
         margin: 40px 0px;
     }
 
+    &>a {
+        color:#fff; 
+        padding: 15px 0px 5px 20px;
+        cursor:pointer;
+        font-size:1rem;
+        display:block;
+    }
 
     >p {
         line-height:20px;
@@ -234,9 +241,14 @@ export const AdminAsidePetit = styled.aside`
         justify-content:space-between;
         padding:20px 30px 0px 30px ;
 
-        p {
+
+        &>a {
             margin-left:20px;
-            line-height:30px;
+            line-height:18px;
+            color:#FFF; 
+            cursor:pointer;
+            font-size:1rem;
+            display:block;
         }
     }
 `

@@ -70,7 +70,7 @@ const Bouteille = () => {
                     <div>
                         <p>{bouteille?.pays}</p>
                         <p>{bouteille?.prix_achat} $</p>
-                        <p>{categorie ? categorie : "Type inconnu"}</p>
+                        <p>{categorie? categorie : "Type inconnu"}</p>
                         <p>
                             {bouteille.millesime
                                 ? bouteille.millesime

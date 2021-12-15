@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import { useNavigate } from "react-router";
 import { Select } from "../components/styles/Input.styled";
 import { AccueilMain } from "../components/styles/Accueil.styled";
@@ -12,6 +12,11 @@ import { slugify } from "../helpers/slugify";
 const Accueil = () => {
     const { user } = useUser();
     const navigate = useNavigate();
+
+   
+    useEffect(() => {
+        if(user.privilege_id === 2) navigate('/admin')
+    }, []);
 
     const onSelectChange = (e) => {
         const selectedCellier = user.celliers.find(
