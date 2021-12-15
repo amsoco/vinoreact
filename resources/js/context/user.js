@@ -97,7 +97,19 @@ export const UserProvider = ({ children }) => {
     //put('/user/edit/{id}
 
     return (
-        <UserContext.Provider value={{ user, login, register, logout, getUsagers, deleteUsager, updateUsager, searchUsager }}>
+        <UserContext.Provider
+            value={{
+                user,
+                login,
+                register,
+                logout,
+                getUsagers,
+                deleteUsager,
+                updateUsager,
+                searchUsager,
+                getMe,
+            }}
+        >
             {children}
         </UserContext.Provider>
     );
