@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Wiki_vin;
 use Illuminate\Http\Request;
-use App\Models\Categorie;
+
 
 class Wiki_vinController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Afficher la liste des bouteilles du Wiki_vin.
      *
      * @return \Illuminate\Http\Response
      */
@@ -19,17 +19,7 @@ class Wiki_vinController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Créer une nouvelle bouteille dans le Wiki_vin.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -59,7 +49,7 @@ class Wiki_vinController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Afficher une bouteille du Wiki_vin.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -70,18 +60,7 @@ class Wiki_vinController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Wiki_vin  $wiki_vin
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Wiki_vin $wiki_vin)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Modifier une bouteille du Wiki_vin.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Wiki_vin  $wiki_vin
@@ -112,15 +91,13 @@ class Wiki_vinController extends Controller
     }
 
     /**
-     * Search the request in storage.
+     * Rechercher une ou des bouteilles dans le Wiki_vin par nom.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function search($key)
     {
-        //return Wiki_vin::where('nom', 'LIKE', '%' .$key. '%')->limit(2)->get();
-
         $vins = Wiki_vin::join('categories', 'categories.id', '=', 'wiki_vins.categorie_id')
             ->where('wiki_vins.nom', 'LIKE', '%' . $key . '%')
             ->limit(5)
@@ -130,9 +107,8 @@ class Wiki_vinController extends Controller
         return $vins;
     }
 
-
     /**
-     * Remove the specified resource from storage.
+     * Supprimer une bouteille du Wiki_vin.
      *
      * @param  \App\Models\Wiki_vin  $wiki_vin
      * @return \Illuminate\Http\Response
@@ -141,4 +117,5 @@ class Wiki_vinController extends Controller
     {
         return Wiki_vin::where('id', $id)->delete();
     }
+
 }
