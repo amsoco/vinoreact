@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../context/user";
-//import styled from "styled-components";
-import Pagination from "./Pagination";
-//import { useAdmin } from "../pages/Admin";
+import TablePagination from "@mui/material/TablePagination";
 import useDebounce from "../hooks/useDebounce";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -87,7 +85,6 @@ const AdminUsager = () => {
         setPage(0);
     };
 
-
     return (
         <Admin>
             <div>
@@ -117,12 +114,12 @@ const AdminUsager = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {(rowsPerPage > 0
-                                ? results?.slice(
+                            {(rowsPerPage > 0 && !search
+                                ? results.slice(
                                       page * rowsPerPage,
                                       page * rowsPerPage + rowsPerPage
                                   )
-                                : results
+                                : (results)
                             ).map((result) => {
                                 return (
                                     <TableRow
@@ -171,7 +168,8 @@ const AdminUsager = () => {
                         </TableBody>
                         <TableFooter>
                             <TableRow>
-                                <Pagination
+                                <TablePagination
+                                    style={{ display: "flex" }}
                                     rowsPerPageOptions={[
                                         5,
                                         10,
@@ -179,9 +177,13 @@ const AdminUsager = () => {
                                         { label: "All", value: -1 },
                                     ]}
                                     colSpan={3}
-                                    count={results?.length || 20}
+                                    count={results?.length}
                                     rowsPerPage={rowsPerPage}
-                                    page={page}
+                                    page={
+                                        page > 0 && results.length < rowsPerPage
+                                            ? 0
+                                            : page
+                                    }
                                     SelectProps={{
                                         inputProps: {
                                             "aria-label": "rows per page",
@@ -192,7 +194,6 @@ const AdminUsager = () => {
                                     onRowsPerPageChange={
                                         handleChangeRowsPerPage
                                     }
-                                    ActionsComponent={Pagination}
                                 />
                             </TableRow>
                         </TableFooter>

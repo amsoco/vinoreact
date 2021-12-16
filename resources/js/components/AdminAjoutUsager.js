@@ -9,14 +9,13 @@ import registerFormValidateUpdate from "./Forms/RegisterForm/registerFormValidat
 import Admin from "../pages/Admin";
 import { useNavigate, useParams } from "react-router-dom";
 
-
 // composante Pour ajouter et modifier usager
 const AdminAjoutUsager = () => {
     const navigate = useNavigate();
     const { getUsager, updateUsager, register } = useUser();
     const { id } = useParams();
     const [usager, setUsager] = useState({
-        type:'usagerEdit',
+        type: "usagerEdit",
         id: "",
         name: "",
         email: "",
@@ -25,6 +24,7 @@ const AdminAjoutUsager = () => {
     // mode edition
     if (id) {
         useEffect(() => {
+            let isSubscribed = true;
             getUsager(id).then(({ data: usager }) => {
                 setUsager((prevState) => ({
                     ...prevState,
@@ -33,6 +33,7 @@ const AdminAjoutUsager = () => {
                     email: usager.email,
                 }));
             });
+            return () => (isSubscribed = false);
         }, []);
 
         const initialValues = usager;
