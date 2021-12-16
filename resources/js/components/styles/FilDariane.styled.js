@@ -4,6 +4,7 @@ export const FilDariane = styled.div`
     font-size: 0.833rem;
 
     span {
-        padding: 3px;
+        margin-left: 1px;
+        margin-right: 1px;
     }
 `;

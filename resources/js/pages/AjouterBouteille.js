@@ -114,18 +114,18 @@ const AjouterBouteille = () => {
                         <h2>{selectedBouteille.nom}</h2>
                         <p>Ajouter à ton cellier</p>
                         <DetailBouteille>
-                            <p>
-                                <span>Pays</span>
-                                <span>{selectedBouteille.pays}</span>
-                            </p>
-                            <p>
-                                <span>Catégorie</span>
-                                <span>{selectedBouteille.categorie}</span>
-                            </p>
-                            <p>
-                                <span>Format</span>
-                                <span>{selectedBouteille.format}</span>
-                            </p>
+                            <div>
+                                <div>
+                                    <p>Pays</p>
+                                    <p>Catégorie</p>
+                                    <p>Format</p>
+                                </div>
+                                <div>
+                                    <p>{selectedBouteille.pays}</p>
+                                    <p>{selectedBouteille.categorie}</p>
+                                    <p>{selectedBouteille.format}</p>
+                                </div>
+                            </div>
                             <Accordeon
                                 titre="Description"
                                 content={selectedBouteille.description}
