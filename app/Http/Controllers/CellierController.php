@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CellierController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Afficher une liste des celliers.
      *
      * @return \Illuminate\Http\Response
      */
@@ -18,7 +18,7 @@ class CellierController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Créer un nouveau cellier.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -37,7 +37,7 @@ class CellierController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Afficher un cellier.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -48,7 +48,7 @@ class CellierController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Afficher le formulaire pour modifier un cellier.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -59,7 +59,7 @@ class CellierController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Modifier un cellier.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -79,7 +79,7 @@ class CellierController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Supprimer un cellier.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -88,4 +88,5 @@ class CellierController extends Controller
     {
         return Cellier::where('id', $id)->delete();
     }
+
 }

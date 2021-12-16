@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Illuminate\Http\Response;
+use Illuminate\Http\Response;
 use App\Models\Bouteille;
 use App\Models\Categorie;
 use App\Models\Wiki_vin;
@@ -12,12 +12,11 @@ use Illuminate\Support\Facades\Auth;
 use cloudinary\Api\Upload\UploadApi;
 
 
-
 class BouteilleController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
+     * Afficher la liste des bouteilles.
      *
      * @return \Illuminate\Http\Response
      */
@@ -27,7 +26,7 @@ class BouteilleController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Afficher les bouteilles d'un cellier.
      *
      * @return \Illuminate\Http\Response
      */
@@ -37,8 +36,8 @@ class BouteilleController extends Controller
         return $bouteilles;
     }
 
-        /**
-     * Search the request in storage.
+    /**
+     * Rechercher les bouteilles dans un cellier par nom ou par pays.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -50,8 +49,9 @@ class BouteilleController extends Controller
         ->orWhere('pays', 'LIKE', '%' . $request->search . '%')->paginate(5);
         return $bouteilles;
     }
+
     /**
-     * Store a newly created resource in storage.
+     * Créer une nouvelle bouteille dans un cellier.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -94,7 +94,7 @@ class BouteilleController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Afficher une bouteille.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -111,7 +111,7 @@ class BouteilleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Afficher le formulaire pour modifier une bouteille.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -122,7 +122,7 @@ class BouteilleController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Modifier une bouteille.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -164,8 +164,9 @@ class BouteilleController extends Controller
             'cellier_id' => $request->cellier_id,
         ]);
     }
+
     /**
-     * Update the specified field in storage.
+     * Modifier un champ spécifique (note, quantité, commentaire) d'une bouteille.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -198,7 +199,7 @@ class BouteilleController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Supprimer une bouteille.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -207,4 +208,5 @@ class BouteilleController extends Controller
     {
         return Bouteille::where('id', $id)->delete();
     }
+
 }
