@@ -97,7 +97,8 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return User::all();
+        $users = User::all();
+        return $users;
     }
 
     /**
