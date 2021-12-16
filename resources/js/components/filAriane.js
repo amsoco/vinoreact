@@ -9,18 +9,18 @@ const filDariane = ({children}) => {
   // composant fil d'ariane aka navigation aka breadcrumbs
   return (
     <FilDariane>
-      <Link to=" / celliers">
+      <Link to="/celliers">
         <span>Accueil</span>
       </Link>
 
       {searchParams.cellier && (
-        <Link to={` / ${searchParams.cellier}`}>
+        <Link to={`/${searchParams.cellier}`}>
           <span>/{searchParams.cellier}</span>
         </Link>
       )}
 
       <span>
-        {searchParams.bouteilleId ? " / " + searchParams.bouteilleId : ""}
+        {searchParams.bouteilleId ? "/" + searchParams.bouteilleId : ""}
       </span>
 
       {pathname.includes("mon-compte") && <span>/mon compte</span>}

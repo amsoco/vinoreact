@@ -24,6 +24,7 @@ const AdminWikiVin = lazy(() => import("./AdminWikiVin"));
 const AdminAccueil = lazy(() => import("./AdminAccueil"));
 const AdminAjoutUsager = lazy(() => import("./AdminAjoutUsager"));
 const AdminAjoutBouteille = lazy(() => import("./AdminAjoutBouteille"));
+const NotFound = lazy(() => import("../pages/NotFound"));
 
 
 
@@ -155,7 +156,7 @@ const App = () => (
                                 </RequireAuth>
                             }
                         />
-                        {/* <Route path="*" element={<NotFound />} /> */}
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Suspense>
             </CellierProvider>

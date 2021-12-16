@@ -239,8 +239,10 @@ export default AjouterBouteilleForm;
 
 const FormAjout = styled.form`
     width: 100%;
+    padding-left:20px;
+    padding-right:20px;
 
     ${Button} {
-        margin: 60px 0;
+        margin: 60px 0 20px 0;
     }
 `;
