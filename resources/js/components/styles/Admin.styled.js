@@ -7,9 +7,10 @@ export const AdminMain = styled.main`
     justify-content:space-between;
     font-family:GothamMedium;
     align-items:stretch;
+    min-height:100vh;
 
     >div {
-
+        
         flex-grow:2;
         display: flex;
         flex-direction:column;
@@ -48,9 +49,11 @@ export const AdminSection = styled.section`
     font-family:GothamMedium;
     flex-grow:2;
     margin: 60px;
+    
 
     @media (max-width: 900px) {
         margin: 10px;
+        
         &>div {
             div {
                 width:95%;
@@ -265,7 +268,7 @@ export const AdminAsidePetit = styled.aside`
         }
 
         >h4 {
-            margin-top:13px;
+            margin-top:2px;
         }
     }
 `

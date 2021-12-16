@@ -54,7 +54,6 @@ const InputFile = ({ existingImg, onImageChange }) => {
                     alt="Image par défaut"
                 />
             )}
-
             <input
                 type="file"
                 onChange={({ target }) => {
