@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { AjoutModifUsager, Countainer } from "./styles/AjoutModifUsager.styled";
-import {Form} from "./styles/Form.styled";
+
 import { Button } from "./styles/Button.styled";
 import EditionAjoutFormInput from "./Forms/AjouterBouteille/EditionAjoutInput";
-import { useUser } from "../context/user";
+
 import { useCellier } from "../context/cellier";
 import useForm from "../hooks/useForm";
-import registerFormValidate from "./Forms/RegisterForm/registerFormValidate";
+
 import ajouterBouteilleFormValidateWiki from "./Forms/AjouterBouteille/ajouterBouteilleFormValidateWiki";
 import Admin from "../pages/Admin";
-import { useNavigate, useParams } from "react-router";
+import {  useParams } from "react-router";
 import { SelectCategorie } from "./styles/Input.styled";
 import InputFile from "./InputFile";
 
@@ -19,11 +19,11 @@ import InputFile from "./InputFile";
 const AdminAjoutBouteille = () => {
     const [categories, setCategories] = useState([]);
     const { 
-        addBouteille,
+        
         getCategories,
         addBouteilleWiki,
         modifierBouteilleWiki,
-        supprimerBouteilleWiki,
+        
         getBouteilleWiki,
         } = useCellier();
     const { admin , wiki , id } = useParams();
@@ -105,7 +105,6 @@ const AdminAjoutBouteille = () => {
         navigate('admin/wiki-vino');
     };
 
-    console.log(errors)
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
     
     const {
@@ -130,101 +129,101 @@ const AdminAjoutBouteille = () => {
                     <h4>{id ? "Modifier Bouteille" : "Ajouter Bouteille"}</h4>
                 </div>
                 <AjoutModifUsager onSubmit={handleFormSubmit}>
-             <EditionAjoutFormInput
-                type="text"
-                id="nom"
-                name="nom"
-                placeholder="Nom"
-                value={values?.nom}
-                onChange={handleFormChange}
-               // onBlur={handleBlur}
-                error={errors?.nom}
-            />
-            <EditionAjoutFormInput
-                type="text"
-                id="pays"
-                name="pays"
-                placeholder="Pays"
-                value={values?.pays}
-                onChange={handleFormChange}
-               // onBlur={handleBlur}
-                error={errors?.pays}
-            />
-            <EditionAjoutFormInput
-                type="text"
-                id="description"
-                name="description"
-                placeholder="Description"
-                value={values?.description}
-                onChange={handleFormChange}
-               // onBlur={handleBlur}
-                error={errors?.description}
-            />
-            <EditionAjoutFormInput
-                type="text"
-                id="url_saq"
-                name="url_saq"
-                placeholder="Url SAQ"
-                value={values?.url_saq}
-                onChange={handleFormChange}
-                //onBlur={handleBlur}
-                error={errors?.url_saq}
-            />
-            <EditionAjoutFormInput
-                type="text"
-                id="format"
-                name="format"
-                placeholder="Format"
-                value={values?.format }
-                onChange={handleFormChange}
-               // onBlur={handleBlur}
-                error={errors?.format}
-            />
-            <EditionAjoutFormInput
-                type="text"
-                id="millesime"
-                name="millesime"
-                placeholder="Millesime"
-                value={values?.millesime }
-                onChange={handleFormChange}
-              //  onBlur={handleBlur}
-                error={errors?.millesime}
-            />
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="nom"
+                        name="nom"
+                        placeholder="Nom"
+                        value={values?.nom}
+                        onChange={handleFormChange}
+                    // onBlur={handleBlur}
+                        error={errors?.nom}
+                    />
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="pays"
+                        name="pays"
+                        placeholder="Pays"
+                        value={values?.pays}
+                        onChange={handleFormChange}
+                    // onBlur={handleBlur}
+                        error={errors?.pays}
+                    />
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="description"
+                        name="description"
+                        placeholder="Description"
+                        value={values?.description}
+                        onChange={handleFormChange}
+                    // onBlur={handleBlur}
+                        error={errors?.description}
+                    />
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="url_saq"
+                        name="url_saq"
+                        placeholder="Url SAQ"
+                        value={values?.url_saq}
+                        onChange={handleFormChange}
+                        //onBlur={handleBlur}
+                        error={errors?.url_saq}
+                    />
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="format"
+                        name="format"
+                        placeholder="Format"
+                        value={values?.format }
+                        onChange={handleFormChange}
+                    // onBlur={handleBlur}
+                        error={errors?.format}
+                    />
+                    <EditionAjoutFormInput
+                        type="text"
+                        id="millesime"
+                        name="millesime"
+                        placeholder="Millesime"
+                        value={values?.millesime }
+                        onChange={handleFormChange}
+                    //  onBlur={handleBlur}
+                        error={errors?.millesime}
+                    />
 
-            <SelectCategorie
-                name="categorie_id"
-                value={values?.categorie_id}
-                onChange={handleFormChange}
-                value={values?.categorie_id}
-            >
-                <option>Catégorie</option>
-                {categories.map((categorie) => (
-                    <option key={categorie.id} value={categorie.id}>
-                        {categorie.nom}
-                    </option>
-                ))}
-            </SelectCategorie>
-            { values.url_img && (
-                <InputFile
-                id="url_img"
-                name="url_img"
-                onImageChange={(img) => handleImageChange(img)}
-                existingImg={values?.url_img}
-                />) 
-            }
-           
-            <Button
-                type="submit"
-                bg="#303031"
-                color="#fff"
-                bgHover="white"
-                colorHover="#303030"
-                disabled={isSubmitting}
-            >
-                {laBouteille?.id ? "Éditer" : "Ajouter"}
-            </Button> 
-        </AjoutModifUsager>
-        </Countainer>
+                    <SelectCategorie
+                        name="categorie_id"
+                        value={values?.categorie_id}
+                        onChange={handleFormChange}
+                        value={values?.categorie_id}
+                    >
+                        <option>Catégorie</option>
+                        {categories.map((categorie) => (
+                            <option key={categorie.id} value={categorie.id}>
+                                {categorie.nom}
+                            </option>
+                        ))}
+                    </SelectCategorie>
+                    { values.url_img && (
+                        <InputFile
+                        id="url_img"
+                        name="url_img"
+                        onImageChange={(img) => handleImageChange(img)}
+                        existingImg={values?.url_img}
+                        />) 
+                }
+                
+                    <Button
+                        type="submit"
+                        bg="#303031"
+                        color="#fff"
+                        bgHover="white"
+                        colorHover="#303030"
+                        disabled={isSubmitting}
+                    >
+                        {laBouteille?.id ? "Éditer" : "Ajouter"}
+                    </Button> 
+                </AjoutModifUsager>
+            </Countainer>
         </Admin>
     );
 
