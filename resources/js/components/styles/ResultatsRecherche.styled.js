@@ -101,11 +101,6 @@ export const BouteilleSelectionnee = styled.article`
     }
 
 
-    button:last-of-type {
-        margin-top:20px;
-    }
-
-
 `;
 
 export const DetailBouteille = styled.div`

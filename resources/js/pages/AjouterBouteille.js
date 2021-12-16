@@ -5,6 +5,7 @@ import { useCellier } from "../context/cellier";
 import useDebounce from "../hooks/useDebounce";
 import { Button } from "../components/styles/Button.styled";
 import Accordeon from "../components/Accordeon";
+import styled from "styled-components";
 import {
     ResultatsRecherche,
     Resultat,
@@ -160,20 +161,29 @@ const AjouterBouteille = () => {
             return (
                 <Layout>
                     <AjouterBouteilleForm bouteille={selectedBouteille} />
-
-                    <Button
-                        bg="#fff"
-                        color="#303031"
-                        bgHover="#303031"
-                        colorHover="#fff"
-                        borderColor="#303031"
-                        onClick={() => setStep(1)}
-                    >
-                        RETOUR
-                    </Button>
+                    <CountainerExtreme>
+                        <Button 
+                            bg="#fff"
+                            color="#303031"
+                            bgHover="#303031"
+                            colorHover="#fff"
+                            borderColor="#303031"
+                            onClick={() => setStep(1)}
+                        >
+                            RETOUR
+                        </Button>
+                    </CountainerExtreme>
                 </Layout>
             );
     }
 };
 
-export default AjouterBouteille;
+export default AjouterBouteille
+
+const CountainerExtreme = styled.form`
+    padding-left:20px;
+    padding-right:20px;
+
+`
+
+;

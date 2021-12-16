@@ -43,6 +43,7 @@ const MainLayout = styled.main`
         display: block;
     }
 
+
     // ici problème css a régler (input ne strech pas comme le reste)
     @media (min-width: 760px) {
         input {
