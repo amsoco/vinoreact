@@ -94,7 +94,7 @@ const AdminWikiVin = () => {
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Recherche"
                 />
-                {(resultsWiki.length > 1 ? 
+                {(resultsWiki.length > 0 ? 
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
@@ -170,14 +170,14 @@ const AdminWikiVin = () => {
                         <TableFooter>
                             <TableRow>
                                 <TablePagination
-                                    style={{ display: "flex" }}
+                                    style={{ display: "flex", width: '100%' }}
                                     rowsPerPageOptions={[
                                         5,
                                         10,
                                         25,
                                         { label: "All", value: -1 },
                                     ]}
-                                    colSpan={3}
+                                    colSpan={6}
                                     count={resultsWiki?.length}
                                     rowsPerPage={rowsPerPage}
                                     page={
@@ -200,7 +200,7 @@ const AdminWikiVin = () => {
                         </TableFooter>
                     </Table>
                 </TableContainer>
-                : <h5 style={{'text-align':'center' , 'margin-top': '40px'}}> Aucun Résultat</h5>)}
+                : <h5 style={{textAlign:'center' , marginTop: '40px'}}> Aucun Résultat</h5>)}
                 <Modal
                     open={open}
                     onClose={handleClose}
