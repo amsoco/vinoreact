@@ -149,7 +149,7 @@ const AdminUsager = () => {
                                                 <Link
                                                     to={`/admin/usager/${result.id}`}
                                                 >
-                                                    Utilisateur
+                                                    Modifier
                                                 </Link>{" "}
                                             </Button>
 

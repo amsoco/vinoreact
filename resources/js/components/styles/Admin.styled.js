@@ -23,6 +23,9 @@ export const AdminNav = styled.nav`
     justify-content: space-between;
     padding-left:20px;
     padding-right:20px;
+    margin-bottom:20px;
+
+
 
     >p {
         cursor:pointer;
@@ -41,6 +44,7 @@ export const AdminNav = styled.nav`
     }
 `
 export const AdminSection = styled.section`
+
     font-family:GothamMedium;
     flex-grow:2;
     margin: 60px;
@@ -94,6 +98,7 @@ export const AdminSection = styled.section`
         }
 
         button {
+            margin-top:10px;
             margin-left:10px;
         }
 
@@ -155,8 +160,9 @@ export const AdminSection = styled.section`
             /*
             Label the data
             */
+            
             td:nth-of-type(1):before { 
-                content: "Nom"; 
+                content: "nom"; 
             }
             td:nth-of-type(2):before { 
                 content: "Courriel"; 
@@ -189,6 +195,7 @@ export const AdminAside = styled.aside`
     >h4 {
         padding: 0px 20px;
         margin: 40px 0px;
+        
     }
 
     &>a {
@@ -255,6 +262,10 @@ export const AdminAsidePetit = styled.aside`
             cursor:pointer;
             font-size:1rem;
             display:block;
+        }
+
+        >h4 {
+            margin-top:13px;
         }
     }
 `
