@@ -36,7 +36,26 @@ class Wiki_vinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'pays' => 'required|string|max:255',
+            'description' => 'string|max:255',
+             'url_saq' => 'string|max:255',
+            'millesime' => 'date_format:"Y"',
+            'format' => 'string|max:255',
+            'categorie_id' => 'integer|required',
+        ]);
+
+        return Wiki_vin::create([
+            'nom' => $request->nom,
+            'pays' => $request->pays,
+            'description' => $request->description,
+            'url_saq' => $request->url_saq,
+            'millesime' => $request->millesime,
+            'format' => $request->format,
+            'url_img' => $request->url_saq,
+            'categorie_id' => $request->categorie_id,
+        ]);
     }
 
     /**
@@ -70,7 +89,26 @@ class Wiki_vinController extends Controller
      */
     public function update(Request $request, Wiki_vin $wiki_vin)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'pays' => 'required|string|max:255',
+            'description' => 'string|max:255',
+            'url_saq' => 'string|max:255',
+            'millesime' => 'date_format:"Y"',
+            'format' => 'string|max:255',
+            'categorie_id' => 'integer|required',
+        ]);
+
+        return Wiki_vin::where('id', $request->id)->update([
+            'nom' => $request->nom,
+            'pays' => $request->pays,
+            'description' => $request->description,
+            'url_saq' => $request->url_saq,
+            'millesime' => $request->millesime,
+            'format' => $request->format,
+            'url_img' => $request->url_saq,
+            'categorie_id' => $request->categorie_id,
+        ]);
     }
 
     /**
@@ -99,8 +137,8 @@ class Wiki_vinController extends Controller
      * @param  \App\Models\Wiki_vin  $wiki_vin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Wiki_vin $wiki_vin)
+    public function destroy($id)
     {
-        //
+        return Wiki_vin::where('id', $id)->delete();
     }
 }
