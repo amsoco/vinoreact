@@ -57,7 +57,7 @@ export const RechercheVins = styled.section`
         margin: auto;
         text-align: center;
         width: 98%;
-        max-width:500px;
+        max-width:400px;
         margin-top: 40px;
     }
 
@@ -100,6 +100,10 @@ export const BouteilleSelectionnee = styled.article`
         margin-right: auto;
     }
 
+    button:last-of-type {
+        margin-top:20px;
+    }
+
 
 `;
 
@@ -128,4 +132,6 @@ export const DetailBouteille = styled.div`
     p:first-of-type {
         margin-top:20px;
     }
+
+
 `;
