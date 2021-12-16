@@ -24,6 +24,8 @@ export const AdminNav = styled.nav`
     padding-left:20px;
     padding-right:20px;
 
+
+
     >p {
         cursor:pointer;
     }
@@ -94,6 +96,145 @@ export const AdminSection = styled.section`
         }
 
         button {
+            margin-top:10px;
+            margin-left:10px;
+        }
+
+        &>div {
+            min-width:600px;
+        }
+
+        @media (max-width: 900px) {
+
+            &>div {
+                min-width:300px;
+                margin-top:20px;
+                margin-left:10px;
+            }
+
+            &>input {
+                margin-left:10px;
+                margin-right:10px;
+                width:300px
+            }
+
+            table, thead, tbody, th, td, tr { 
+                display: block; 
+            }
+            
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr { 
+                border: 1px solid #ccc; 
+                
+            }
+            
+            td { 
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee; 
+                position: relative;
+                padding-left: 50%;
+                text-align: right; 
+            }
+            
+            td:before { 
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 20px;
+                left: 10px;
+                width: 45%; 
+                padding-right: 10px; 
+                white-space: nowrap;
+                text-align:left;
+            }
+            
+            /*
+            Label the data
+            */
+            td:nth-of-type(1):before { 
+                content: "Nom"; 
+            }
+            td:nth-of-type(2):before { 
+                content: "Courriel"; 
+                
+            }
+            td:nth-of-type(3):before {
+                 content: "Privilège"; 
+            }
+            td:nth-of-type(4):before { 
+                content: "Action"; 
+            }
+
+            td>button {
+                margin-top:10px;
+            }
+
+        }
+   }
+`
+
+export const AdminSectionVin = styled.section`
+    font-family:GothamMedium;
+    flex-grow:2;
+    margin: 60px;
+
+    @media (max-width: 900px) {
+        margin: 10px;
+        &>div {
+            div {
+                width:95%;
+            }
+        }
+    }
+
+
+   >div {
+
+        >ul,
+        >div {
+            margin:auto;
+            //width:75%;
+        }
+        >div {
+            display:flex;
+            justify-content:space-between;
+        }
+    
+        >h4 {
+            text-align:center;
+        }
+
+
+        >input {
+            display:block;
+            margin:auto;
+            margin-top:20px;
+            width:75%;
+            //background: #f8f8f8;
+            border:none;
+            padding: 10px;
+            border-bottom: 1px solid #303031;
+            font-style: italic;
+            min-width:240px;
+            margin-bottom:20px;
+        }
+
+        >ul {
+            margin-top :40px;
+            li {
+                padding-top:10px;
+            }
+        }
+
+        button {
+            margin-top:10px;
             margin-left:10px;
         }
 

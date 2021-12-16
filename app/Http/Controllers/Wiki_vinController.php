@@ -106,7 +106,7 @@ class Wiki_vinController extends Controller
             'url_saq' => $request->url_saq,
             'millesime' => $request->millesime,
             'format' => $request->format,
-            'url_img' => $request->url_saq,
+            'url_img' => $request->url_img,
             'categorie_id' => $request->categorie_id,
         ]);
     }

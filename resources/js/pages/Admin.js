@@ -63,12 +63,9 @@ const Admin = ({children}) => {
                     <h4>{user?.name}</h4>
                     <p onClick={() => logout()}>Logout</p>
                 </AdminNav>
-                {/* <AdminContext.Provider value={{RouteAdmin}} > */}
                     <AdminSection >
                         {children}
-                                            
                     </AdminSection>
-                {/* </AdminContext.Provider> */}
             </div> 
         </AdminMain>
 
@@ -79,6 +76,3 @@ const Admin = ({children}) => {
 };
 
 export default Admin;
-// export const useAdmin = () => {
-//     return useContext(AdminContext);
-// };
