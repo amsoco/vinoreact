@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCellier } from "../context/cellier";
 import useDebounce from "../hooks/useDebounce";
-
+import TablePagination from "@mui/material/TablePagination";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -11,7 +11,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import Pagination from "./Pagination";
 import Box from "@material-ui/core/Box";
 import Modal from "@material-ui/core/Modal";
 import Typography from "@material-ui/core/Typography";
@@ -108,8 +107,8 @@ const AdminWikiVin = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {(rowsPerPage > 0
-                                ? resultsWiki?.slice(
+                            {(rowsPerPage > 0 && !search
+                                ? resultsWiki.slice(
                                       page * rowsPerPage,
                                       page * rowsPerPage + rowsPerPage
                                   )
@@ -167,11 +166,22 @@ const AdminWikiVin = () => {
                         </TableBody>
                         <TableFooter>
                             <TableRow>
-                                <Pagination
+                                <TablePagination
+                                    style={{ display: "flex" }}
+                                    rowsPerPageOptions={[
+                                        5,
+                                        10,
+                                        25,
+                                        { label: "All", value: -1 },
+                                    ]}
                                     colSpan={3}
-                                    count={resultsWiki?.length || 20}
+                                    count={resultsWiki?.length}
                                     rowsPerPage={rowsPerPage}
-                                    page={page}
+                                    page={
+                                        page > 0 && resultsWiki.length < rowsPerPage
+                                            ? 0
+                                            : page
+                                    }
                                     SelectProps={{
                                         inputProps: {
                                             "aria-label": "rows per page",
@@ -182,7 +192,6 @@ const AdminWikiVin = () => {
                                     onRowsPerPageChange={
                                         handleChangeRowsPerPage
                                     }
-                                    ActionsComponent={Pagination}
                                 />
                             </TableRow>
                         </TableFooter>

@@ -9,7 +9,7 @@ import useForm from "../hooks/useForm";
 
 import ajouterBouteilleFormValidateWiki from "./Forms/AjouterBouteille/ajouterBouteilleFormValidateWiki";
 import Admin from "../pages/Admin";
-import {  useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { SelectCategorie } from "./styles/Input.styled";
 import InputFile from "./InputFile";
 
@@ -19,95 +19,90 @@ import InputFile from "./InputFile";
 const AdminAjoutBouteille = () => {
     const [categories, setCategories] = useState([]);
     const navigate = useNavigate();
-    const { 
-        
+    const {
         getCategories,
         addBouteilleWiki,
         modifierBouteilleWiki,
-        
+
         getBouteilleWiki,
-        } = useCellier();
-    const { admin , wiki , id } = useParams();
+    } = useCellier();
+    const { admin, wiki, id } = useParams();
     const [laBouteille, setBouteille] = useState({
-        type: 'editBouteille',
+        type: "editBouteille",
         id: "",
-        nom:  "",
-        pays:  "",
-        description:  "",
-        url_saq:  "",
-        format:  "",
-        millesime:  "",
+        nom: "",
+        pays: "",
+        description: "",
+        url_saq: "",
+        format: "",
+        millesime: "",
         //url_img: "https://res.cloudinary.com/vino-project/image/upload/v1639165462/bouteilleBlack_lz3rkm.png",
         url_img: "",
-        categorie_id:  "",
-        categorie:  "",
-
+        categorie_id: "",
+        categorie: "",
     });
 
+    // récupération des catégories de vin pour populer le <select>
     useEffect(() => {
+        let isSubscribed = true
         getCategories().then(({ data }) => setCategories(data));
+        return () => (isSubscribed = false);
     }, []);
 
-    if(id) {
+    if (id) {
         useEffect(() => {
             let isSubscribed = true;
-                getBouteilleWiki(id).then(( {data } ) => {
-                    const bouteille = data;
-                    console.log(bouteille)
-                    setBouteille({
-                        type:  'editBouteille',
-                        id: bouteille.id,
-                        nom: bouteille.nom,
-                        pays: bouteille.pays,
-                        description: bouteille.description,
-                        url_saq: bouteille.url_saq,
-                        format: bouteille.format,
-                        millesime: bouteille.millesime,
-                        url_img: bouteille.url_img,
-                        categorie_id: bouteille.categorie_id,
-                        categorie: bouteille.categorie,
-                    });
+            getBouteilleWiki(id).then(({ data }) => {
+                const bouteille = data;
+                console.log(bouteille);
+                setBouteille({
+                    type: "editBouteille",
+                    id: bouteille.id,
+                    nom: bouteille.nom,
+                    pays: bouteille.pays,
+                    description: bouteille.description,
+                    url_saq: bouteille.url_saq,
+                    format: bouteille.format,
+                    millesime: bouteille.millesime,
+                    url_img: bouteille.url_img,
+                    categorie_id: bouteille.categorie_id,
+                    categorie: bouteille.categorie,
                 });
-        
-            // récupération des catégories de vin pour populer le <select>
-            
+            });
+
             return () => (isSubscribed = false);
         }, []);
     }
 
-
     const initialValues = laBouteille;
-    
 
     /**
-     * Ajouter une bouteille dans Wiki_vin  
+     * Ajouter une bouteille dans Wiki_vin
      * @param {object} values
      * @returns {void}
      */
     const ajouterBouteilleWiki = async (values) => {
-        console.log(values)
+        console.log(values);
         try {
             await addBouteilleWiki(values);
-            
         } catch (error) {
             console.error(error);
-        } 
-        navigate('/admin/wiki-vin');
-    };    
+        }
+        navigate("/admin/wiki-vin");
+    };
 
     /**
      * Editer une bouteille
      * @param {object} values
-     * 
      * @returns {void}
      */
     const editerBouteilleWiki = async (values) => {
         await modifierBouteilleWiki(id, values);
-        navigate('/admin/wiki-vin');
+        navigate("/admin/wiki-vin");
     };
 
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
-    
+
     const {
         handleFormSubmit,
         handleFormChange,
@@ -121,7 +116,6 @@ const AdminAjoutBouteille = () => {
         id ? editerBouteilleWiki : ajouterBouteilleWiki, // mode édition ou ajout
         ajouterBouteilleFormValidateWiki
     );
-
 
     return (
         <Admin>
@@ -137,7 +131,7 @@ const AdminAjoutBouteille = () => {
                         placeholder="Nom"
                         value={values?.nom}
                         onChange={handleFormChange}
-                    // onBlur={handleBlur}
+                        // onBlur={handleBlur}
                         error={errors?.nom}
                     />
                     <EditionAjoutFormInput
@@ -147,7 +141,7 @@ const AdminAjoutBouteille = () => {
                         placeholder="Pays"
                         value={values?.pays}
                         onChange={handleFormChange}
-                    // onBlur={handleBlur}
+                        // onBlur={handleBlur}
                         error={errors?.pays}
                     />
                     <EditionAjoutFormInput
@@ -157,7 +151,7 @@ const AdminAjoutBouteille = () => {
                         placeholder="Description"
                         value={values?.description}
                         onChange={handleFormChange}
-                    // onBlur={handleBlur}
+                        // onBlur={handleBlur}
                         error={errors?.description}
                     />
                     <EditionAjoutFormInput
@@ -175,9 +169,9 @@ const AdminAjoutBouteille = () => {
                         id="format"
                         name="format"
                         placeholder="Format"
-                        value={values?.format }
+                        value={values?.format}
                         onChange={handleFormChange}
-                    // onBlur={handleBlur}
+                        // onBlur={handleBlur}
                         error={errors?.format}
                     />
                     <EditionAjoutFormInput
@@ -185,9 +179,9 @@ const AdminAjoutBouteille = () => {
                         id="millesime"
                         name="millesime"
                         placeholder="Millesime"
-                        value={values?.millesime }
+                        value={values?.millesime}
                         onChange={handleFormChange}
-                    //  onBlur={handleBlur}
+                        //  onBlur={handleBlur}
                         error={errors?.millesime}
                     />
 
@@ -204,15 +198,15 @@ const AdminAjoutBouteille = () => {
                             </option>
                         ))}
                     </SelectCategorie>
-                    { values.url_img && (
+                    {values.url_img && (
                         <InputFile
-                        id="url_img"
-                        name="url_img"
-                        onImageChange={(img) => handleImageChange(img)}
-                        existingImg={values?.url_img}
-                        />) 
-                }
-                
+                            id="url_img"
+                            name="url_img"
+                            onImageChange={(img) => handleImageChange(img)}
+                            existingImg={values?.url_img}
+                        />
+                    )}
+
                     <Button
                         type="submit"
                         bg="#303031"
@@ -222,14 +216,11 @@ const AdminAjoutBouteille = () => {
                         disabled={isSubmitting}
                     >
                         {laBouteille?.id ? "Éditer" : "Ajouter"}
-                    </Button> 
+                    </Button>
                 </AjoutModifUsager>
             </Countainer>
         </Admin>
     );
-
-    
 };
 
 export default AdminAjoutBouteille;
-
