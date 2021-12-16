@@ -7,7 +7,7 @@ import useForm from "../hooks/useForm";
 import registerFormValidate from "./Forms/RegisterForm/registerFormValidate";
 import registerFormValidateUpdate from "./Forms/RegisterForm/registerFormValidateUpdate";
 import Admin from "../pages/Admin";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 // composante Pour ajouter et modifier usager
