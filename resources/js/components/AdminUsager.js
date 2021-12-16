@@ -66,6 +66,7 @@ const AdminUsager = () => {
         }
     }, [debouncedSearch]);
 
+
     const getUsagersAdmin = () => {
         getUsagers().then(({ data }) => {
             setResults(data);
@@ -85,6 +86,8 @@ const AdminUsager = () => {
         setPage(0);
     };
 
+    console.log('serach', results)
+
     return (
         <Admin>
             <div>
@@ -102,104 +105,119 @@ const AdminUsager = () => {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
-                {(results.length > 1 ? 
-                <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Nom</TableCell>
-                                <TableCell align="right">Courriel</TableCell>
-                                <TableCell align="right">Privilège</TableCell>
-                                <TableCell align="right">Action</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {(rowsPerPage > 0 && !search
-                                ? results.slice(
-                                      page * rowsPerPage,
-                                      page * rowsPerPage + rowsPerPage
-                                  )
-                                : (results)
-                            ).map((result) => {
-                                return (
-                                    <TableRow
-                                        key={result.id}
-                                        sx={{
-                                            "&:last-child td, &:last-child th":
-                                                { border: 0 },
-                                        }}
-                                    >
-                                        <TableCell scope="usager">
-                                            {result?.name}
-                                        </TableCell>
-                                        <TableCell align="right">
-                                            {result?.email}
-                                        </TableCell>
-                                        <TableCell align="right">
-                                            {result?.privilege_id}
-                                        </TableCell>
-                                        <TableCell align="right">
-                                            <Button
-                                                variant="outlined"
-                                                size="small"
-                                            >
-                                                <Link
-                                                    to={`/admin/usager/${result.id}`}
+                {results.length > 0 ? (
+                    <TableContainer component={Paper}>
+                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Nom</TableCell>
+                                    <TableCell align="right">
+                                        Courriel
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        Privilège
+                                    </TableCell>
+                                    <TableCell align="right">Action</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {(rowsPerPage > 0
+                                    ? results.slice(
+                                          page * rowsPerPage,
+                                          page * rowsPerPage + rowsPerPage
+                                      )
+                                    : results
+                                ).map((result) => {
+                                  console.log('result', result)
+                                    return (
+                                        <TableRow
+                                            key={result.id}
+                                            sx={{
+                                                "&:last-child td, &:last-child th":
+                                                    { border: 0 },
+                                            }}
+                                        >
+                                            <TableCell scope="usager">
+                                                {result?.name}
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                {result?.email}
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                {result?.privilege_id}
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                <Button
+                                                    variant="outlined"
+                                                    size="small"
                                                 >
-                                                    Modifier
-                                                </Link>{" "}
-                                            </Button>
+                                                    <Link
+                                                        to={`/admin/usager/${result.id}`}
+                                                    >
+                                                        Modifier
+                                                    </Link>{" "}
+                                                </Button>
 
-                                            <Button
-                                                variant="outlined"
-                                                size="small"
-                                                onClick={() => {
-                                                    handleOpen();
-                                                    setUsagerState(result?.id);
-                                                    setNomUsager(result?.name);
-                                                }}
-                                            >
-                                                Delete
-                                            </Button>
-                                        </TableCell>
-                                    </TableRow>
-                                );
-                            })}
-                        </TableBody>
-                        <TableFooter>
-                            <TableRow>
-                                <TablePagination
-                                    style={{ display: "flex" }}
-                                    rowsPerPageOptions={[
-                                        5,
-                                        10,
-                                        25,
-                                        { label: "All", value: -1 },
-                                    ]}
-                                    colSpan={3}
-                                    count={results?.length}
-                                    rowsPerPage={rowsPerPage}
-                                    page={
-                                        page > 0 && results.length < rowsPerPage
-                                            ? 0
-                                            : page
-                                    }
-                                    SelectProps={{
-                                        inputProps: {
-                                            "aria-label": "rows per page",
-                                        },
-                                        native: true,
-                                    }}
-                                    onPageChange={handleChangePage}
-                                    onRowsPerPageChange={
-                                        handleChangeRowsPerPage
-                                    }
-                                />
-                            </TableRow>
-                        </TableFooter>
-                    </Table>
-                </TableContainer>
-                : <h5 style={{'text-align':'center' , 'margin-top': '40px'}}> Aucun Résultat</h5>)}
+                                                <Button
+                                                    variant="outlined"
+                                                    size="small"
+                                                    onClick={() => {
+                                                        handleOpen();
+                                                        setUsagerState(
+                                                            result?.id
+                                                        );
+                                                        setNomUsager(
+                                                            result?.name
+                                                        );
+                                                    }}
+                                                >
+                                                    Delete
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    );
+                                })}
+                            </TableBody>
+                            <TableFooter>
+                                <TableRow>
+                                    <TablePagination
+                                        style={{ display: "flex" }}
+                                        rowsPerPageOptions={[
+                                            5,
+                                            10,
+                                            25,
+                                            { label: "All", value: -1 },
+                                        ]}
+                                        colSpan={12}
+                                        count={results?.length}
+                                        rowsPerPage={rowsPerPage}
+                                        page={
+                                            page > 0 &&
+                                            results.length < rowsPerPage
+                                                ? 0
+                                                : page
+                                        }
+                                        SelectProps={{
+                                            inputProps: {
+                                                "aria-label": "rows per page",
+                                            },
+                                            native: true,
+                                        }}
+                                        onPageChange={handleChangePage}
+                                        onRowsPerPageChange={
+                                            handleChangeRowsPerPage
+                                        }
+                                    />
+                                </TableRow>
+                            </TableFooter>
+                        </Table>
+                    </TableContainer>
+                ) : (
+                    <h5 style={{ textAlign: "center", marginTop: "40px" }}>
+                        {" "}
+                        Aucun Résultat
+                    </h5>
+                )}
                 <Modal
                     open={open}
                     onClose={handleClose}
