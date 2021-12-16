@@ -29,12 +29,13 @@ export const CellierProvider = ({ children }) => {
         Http.get(`bouteilles/${bouteilleId}`);
 
     /**
-     * Rechercher une bouteille dans le wiki
-     * @param {string} search
-     * @returns {array}
+     * Récupérer les Bouteilles Wiki
+     * @returns {object}
      */
-    const searchWiki = (search) => Http.get(`searchWiki/${search}`);
-
+     const getBouteillesWiki  = async () => {
+        const bouteilles = await Http.get(`wiki/`);
+        return bouteilles;
+    };
     /**
      * Rechercher une bouteille dans le wiki
      * @param {string} search
@@ -91,6 +92,31 @@ export const CellierProvider = ({ children }) => {
     const modifierBouteille = (bouteilleId, update) =>
         Http.put(`/bouteilles/edit/${bouteilleId}`, update);
 
+
+    // Wiki ........
+    const addBouteilleWiki = (bouteille) =>
+        Http.post("wiki/create", bouteille);
+
+    const modifierBouteilleWiki = (bouteilleId, update) =>
+        Http.put(`/wiki/edit/${bouteilleId}`, update);
+
+    const supprimerBouteilleWiki = async (bouteilleId) => {
+        console.log(bouteilleId)
+        Http.delete(`wiki/${bouteilleId}`);
+    }
+
+
+    const getBouteilleWiki = async (bouteilleId) =>
+        Http.get(`wiki/${bouteilleId}`);
+
+    
+    /**
+     * Rechercher une bouteille dans le wiki
+     * @param {string} search
+     * @returns {array}
+     */
+     const searchWiki = (search) => Http.get(`searchWiki/${search}`);
+
     /**
      * Supprimer une bouteille
      * @param {number} bouteilleId
@@ -124,6 +150,11 @@ export const CellierProvider = ({ children }) => {
                 updateNoteBouteille,
                 uploadImage,
                 updateQty,
+                getBouteillesWiki,
+                addBouteilleWiki,
+                modifierBouteilleWiki,
+                supprimerBouteilleWiki,
+                getBouteilleWiki,
             }}
         >
             {children}

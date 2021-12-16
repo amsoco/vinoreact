@@ -42,11 +42,13 @@ const styleButton = {
 }
 
 
+
 // composante Admin Wiki Vin
 const AdminWikiVin = () => {
     const [resultsWiki, setResultsWiki] = useState();
     const { searchWiki } = useCellier();
-    const { supprimerBouteille } = useCellier();
+    const { getBouteillesWiki } = useCellier();
+    const { supprimerBouteilleWiki} = useCellier();
     const [search, setSearch] = useState("");
     const debouncedSearch = useDebounce(search, 500);
     const [isSearching, setIsSearching] = useState(false);
@@ -62,12 +64,15 @@ const AdminWikiVin = () => {
             setIsSearching(true);
             searchWiki(debouncedSearch).then((results) => {
                 setIsSearching(false);
-                console.log(results);
                 setResultsWiki(results.data);
-                console.log(resultsWiki);
-                
             });
-        } 
+
+          
+        } else {
+          getBouteillesWiki().then((results) => {
+            setResultsWiki(results.data);
+        });
+        }
         setIsSearching(false);
 
     }, [debouncedSearch]);
@@ -76,14 +81,12 @@ const AdminWikiVin = () => {
     return (
       <Admin>
           <div>
-          <div>
-              <h4>Wiki Vino</h4>
-              <Button variant="outlined" size='small'><Link to={`/admin/wiki-vin/ajouter`}>Ajouter</Link></Button>
-          </div>
+            <div>
+                <h4>Wiki Vino</h4>
+                <Button variant="outlined" size='small'><Link to={`/admin/wiki-vin/ajouter`}>Ajouter</Link></Button>
+            </div>
           <input type="text" id="rechercheAdmin" name="rechercher" value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Recherche'/>
-      {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}
-      
-      <TableContainer component={Paper}>
+          <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
@@ -96,7 +99,6 @@ const AdminWikiVin = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                
                 { resultsWiki?.map((result) => (
                   <TableRow
                       key={result?.id}
@@ -113,13 +115,13 @@ const AdminWikiVin = () => {
                       <Button variant="outlined" size='small'><Link to={`/admin/wiki-vin/${result?.id}`}>Modifier</Link>
                           </Button>
 
-                          <Button variant="outlined" size='small' onClick={() => {
-                              handleOpen()
-                              setBouteilleState(result?.id)
-                              setNomBouteille(result?.nom)
-                              }} >
-                              Delete
-                          </Button>
+                        <Button variant="outlined" size='small' onClick={() => {
+                            handleOpen()
+                            setBouteilleState(result?.id)
+                            setNomBouteille(result?.nom)
+                            }} >
+                            Delete
+                        </Button>
     
                     </TableCell>
                   </TableRow>
@@ -167,16 +169,17 @@ const AdminWikiVin = () => {
 
             <Button variant="outlined" size='small' onClick={handleClose}>Non</Button>
             <Button style={styleButton} variant="outlined" size='small' onClick={() => {
-              supprimerBouteille(setBouteille)
-              //getBouteillesAdmin(); 
+              console.log(setBouteille)
+              supprimerBouteilleWiki(setBouteille)
+              getBouteillesWiki().then((results) => {
+                setResultsWiki(results.data);
+              });
               handleClose();
               }} >Oui</Button>
 
           </Box>
           </Modal>
-      
 
-      
       </div>
     </Admin>
     )
