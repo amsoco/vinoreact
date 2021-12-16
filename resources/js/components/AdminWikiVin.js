@@ -94,6 +94,7 @@ const AdminWikiVin = () => {
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Recherche"
                 />
+                {(resultsWiki.length > 1 ? 
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
@@ -106,6 +107,7 @@ const AdminWikiVin = () => {
                                 <TableCell align="right">Action</TableCell>
                             </TableRow>
                         </TableHead>
+                        
                         <TableBody>
                             {(rowsPerPage > 0 && !search
                                 ? resultsWiki.slice(
@@ -164,6 +166,7 @@ const AdminWikiVin = () => {
                                 </TableRow>
                             ))}
                         </TableBody>
+                        
                         <TableFooter>
                             <TableRow>
                                 <TablePagination
@@ -197,7 +200,7 @@ const AdminWikiVin = () => {
                         </TableFooter>
                     </Table>
                 </TableContainer>
-
+                : <h5 style={{'text-align':'center' , 'margin-top': '40px'}}> Aucun Résultat</h5>)}
                 <Modal
                     open={open}
                     onClose={handleClose}

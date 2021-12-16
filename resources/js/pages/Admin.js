@@ -3,7 +3,7 @@ import { AdminMain, AdminAside, AdminNav, AdminSection, AdminAsidePetit } from "
 import LogoVino from "./../assets/svg/logoBlanc.svg";
 import { useUser } from "../context/user";
 // import AdminUsager from "../components/AdminUsager";
-// import AdminWikiVin from "../components/AdminWikiVin";
+import AdminWikiVin from "../components/AdminWikiVin";
 // import AdminAjoutUsager from "../components/AdminAjoutUsager";
 import { Link } from "react-router-dom";
 
@@ -16,31 +16,13 @@ const Admin = ({children}) => {
     const { user } = useUser();
     const { logout } = useUser();
     //const navigate = useNavigate();
-    const [setRoute, setRouteState] = useState("user");
-    const [setUsagerId, setUsagerIdState] = useState("");
-    const [setUsagerNom, setUsagerNomState] = useState("");
-    const [setUsagerCourriel, setUsagerCourrielState] = useState("");
-    const [setUsagerPrivilege, setUsagerPrivilegeState] = useState(1);
+    // const [setRoute, setRouteState] = useState("user");
+    // const [setUsagerId, setUsagerIdState] = useState("");
+    // const [setUsagerNom, setUsagerNomState] = useState("");
+    // const [setUsagerCourriel, setUsagerCourrielState] = useState("");
+    // const [setUsagerPrivilege, setUsagerPrivilegeState] = useState(1);
 
     const [setBouteille, setBouteilleState] = useState("");
-
-
-    const RouteAdmin = (route, id, nom, email, privilege) => {
-        setRouteState(route)
-        setUsagerIdState(id)
-        setUsagerNomState(nom)
-        setUsagerCourrielState(email)
-        setUsagerPrivilegeState(privilege)
-    }
-
-    const RouteAdminWiki = (route, bouteille) => {
-        setRouteState(route)
-        setBouteille(bouteille)
-        
-    }
-
-
-
 
     return (
 
@@ -63,12 +45,9 @@ const Admin = ({children}) => {
                     <h4>{user?.name}</h4>
                     <p onClick={() => logout()}>Logout</p>
                 </AdminNav>
-                {/* <AdminContext.Provider value={{RouteAdmin}} > */}
-                    <AdminSection >
+                    <AdminSection>
                         {children}
-                                            
                     </AdminSection>
-                {/* </AdminContext.Provider> */}
             </div> 
         </AdminMain>
 
@@ -79,6 +58,3 @@ const Admin = ({children}) => {
 };
 
 export default Admin;
-// export const useAdmin = () => {
-//     return useContext(AdminContext);
-// };

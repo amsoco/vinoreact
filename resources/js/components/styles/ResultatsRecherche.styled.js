@@ -52,15 +52,24 @@ export const RechercheVins = styled.section`
     margin-left: auto;
     margin-right: auto;
 
+    h3,
     h2 {
-        margin: 40px 0;
+        margin: auto;
         text-align: center;
+        width: 98%;
+        max-width:400px;
+        margin-top: 40px;
     }
 
     button {
+        margin-top: 40px;
         max-width: 90%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    input {
+        margin-top: 80px;
     }
 `;
 
@@ -73,31 +82,56 @@ export const BouteilleSelectionnee = styled.article`
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    padding-left:20px;
+    padding-right:20px;
 
     img {
+        margin-top:40px;
         max-height: 70vh;
         display: block;
     }
 
     h2 {
-        margin: 40px 0;
+        text-align:center;
+        margin-top: 40px;
+        margin-bottom: 10px;
         max-width: 420px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    p {
-        text-align: center;
+    button:last-of-type {
+        margin-top:20px;
     }
+
+
 `;
 
 export const DetailBouteille = styled.div`
     width: 100%;
     margin-bottom: 40px;
+    display:flex;
+    flex-direction: column;
 
-    p {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 0;
+    >div {
+        display:flex;
+        width:100%;   
+        justify-content:space-between; 
+     }
+    >div>div:last-of-type p {
+        text-align: right;
     }
+    p {
+        padding-top: 10px;
+    }
+
+    p:last-of-type {
+        margin-bottom:10px;
+    }
+
+    p:first-of-type {
+        margin-top:20px;
+    }
+
+
 `;

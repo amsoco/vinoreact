@@ -12,20 +12,27 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    /**
+     * Enregistrer un nouvel usager et créer son cellier.
+     *
+     * @param  Request  $request
+     * @return response
+     */
     public function register(Request $request)
     {
+        //valider les champs requis pour enregistrer un nouvel usager
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
         ]);
-
+        //créer un nouvel usager
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
-
+        //créer le cellier du nouvel usager
         $cellier = Cellier::create([
             'nom_cellier' => $request->nom_cellier,
             'user_id' => $user->id,
@@ -41,7 +48,12 @@ class AuthController extends Controller
         return response($response, 201);
     }
 
-
+    /**
+     * Connexion de l'usager.
+     *
+     * @param  Request  $request
+     * @return response
+     */
     public function login(Request $request)
     {
         $request->validate([
@@ -66,6 +78,12 @@ class AuthController extends Controller
         ]));
     }
 
+    /**
+     * Récupérer l'utilisateur connecté et son cellier.
+     *
+     * @param  Request  $request
+     * @return response
+     */
     public function me(Request $request)
     {
         $user = $request->user()->only(['id', 'name', 'email', 'privilege_id']);
@@ -83,17 +101,20 @@ class AuthController extends Controller
         return response()->json([], 401);
     }
 
-
+    /**
+     * Déconnexion de l'usager.
+     *
+     * @param  Request  $request
+     */
     public function logout(Request $request)
     {
         Auth::logout();
     }
 
-
     /**
-     * Liste des usagers 
+     * Récupérer la liste des usagers.
      *
-     * @return \Illuminate\Http\Response
+     * @return $users
      */
     public function index()
     {
@@ -102,22 +123,19 @@ class AuthController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Afficher un usager.
      *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     * @return $user
      */
     public function show($id)
     {
         $user = User::find($id);
-
-        //pour get user de l'admin ne fonctionne pas ... PAG
-        //return User::all()->where('id', $user->id);
         return $user;
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Afficher le formulaire pour modifier un usager.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -128,7 +146,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Modifier un usager.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\User  $user
@@ -136,6 +154,7 @@ class AuthController extends Controller
      */
     public function update(Request $request)
     {
+        //si l'email n'est pas modifié, effacer le champ pour le remettre car il est unique
         $user = User::where('id', $request->id)->first();
         if ($request->email == $user->email){
             User::where('id', $request->id)->update([
@@ -145,18 +164,16 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
-            //'password' => 'required|string|min:8|confirmed',
         ]);
 
         return User::where('id', $request->id)->update([
             'name' => $request->name,
             'email' => $request->email,
-            //'password' => Hash::make($request->password),
         ]);
     }
 
     /**
-     * Supprimer un usager
+     * Supprimer un usager.
      * 
      * @param  int  $id 
      * @return \Illuminate\Http\Response
@@ -166,23 +183,17 @@ class AuthController extends Controller
         return User::where('id', $id)->delete();
     }
 
-        /**
-     * Search the request in storage.
+    /**
+     * Rechercher un usager.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function search($key)
     {
-        //return Wiki_vin::where('nom', 'LIKE', '%' .$key. '%')->limit(2)->get();
-
         $usagers = User::where('name', 'LIKE', '%' .$key. '%')->limit(20)->get();
-
-
         return $usagers;
     }
-
-
 
 
 }

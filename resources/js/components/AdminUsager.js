@@ -102,7 +102,7 @@ const AdminUsager = () => {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
-                {/* <TextField id="standard-basic" label="Standard" variant="standard" /> */}
+                {(results.length > 1 ? 
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
@@ -146,7 +146,7 @@ const AdminUsager = () => {
                                                 <Link
                                                     to={`/admin/usager/${result.id}`}
                                                 >
-                                                    Utilisateur
+                                                    Modifier
                                                 </Link>{" "}
                                             </Button>
 
@@ -199,6 +199,7 @@ const AdminUsager = () => {
                         </TableFooter>
                     </Table>
                 </TableContainer>
+                : <h5 style={{'text-align':'center' , 'margin-top': '40px'}}> Aucun Résultat</h5>)}
                 <Modal
                     open={open}
                     onClose={handleClose}

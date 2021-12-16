@@ -5,6 +5,7 @@ import { useCellier } from "../context/cellier";
 import useDebounce from "../hooks/useDebounce";
 import { Button } from "../components/styles/Button.styled";
 import Accordeon from "../components/Accordeon";
+import styled from "styled-components";
 import {
     ResultatsRecherche,
     Resultat,
@@ -82,7 +83,7 @@ const AjouterBouteille = () => {
                             onChange={(e) => setSearch(e.target.value)}
                         />
 
-                        <h2>OU</h2>
+                        <h3>OU</h3>
                         <Button
                             bg="#303031"
                             color="#fff"
@@ -91,7 +92,7 @@ const AjouterBouteille = () => {
                             borderColor="#303031"
                             onClick={() => setStep(3)}
                         >
-                            Aller au formulaire d'ajout
+                            Formulaire d'ajout
                         </Button>
 
                         <ResultatsRecherche>
@@ -114,18 +115,18 @@ const AjouterBouteille = () => {
                         <h2>{selectedBouteille.nom}</h2>
                         <p>Ajouter à ton cellier</p>
                         <DetailBouteille>
-                            <p>
-                                <span>Pays</span>
-                                <span>{selectedBouteille.pays}</span>
-                            </p>
-                            <p>
-                                <span>Catégorie</span>
-                                <span>{selectedBouteille.categorie}</span>
-                            </p>
-                            <p>
-                                <span>Format</span>
-                                <span>{selectedBouteille.format}</span>
-                            </p>
+                            <div>
+                                <div>
+                                    <p>Pays</p>
+                                    <p>Catégorie</p>
+                                    <p>Format</p>
+                                </div>
+                                <div>
+                                    <p>{selectedBouteille.pays}</p>
+                                    <p>{selectedBouteille.categorie}</p>
+                                    <p>{selectedBouteille.format}</p>
+                                </div>
+                            </div>
                             <Accordeon
                                 titre="Description"
                                 content={selectedBouteille.description}
@@ -160,20 +161,29 @@ const AjouterBouteille = () => {
             return (
                 <Layout>
                     <AjouterBouteilleForm bouteille={selectedBouteille} />
-
-                    <Button
-                        bg="#fff"
-                        color="#303031"
-                        bgHover="#303031"
-                        colorHover="#fff"
-                        borderColor="#303031"
-                        onClick={() => setStep(1)}
-                    >
-                        RETOUR
-                    </Button>
+                    <CountainerExtreme>
+                        <Button 
+                            bg="#fff"
+                            color="#303031"
+                            bgHover="#303031"
+                            colorHover="#fff"
+                            borderColor="#303031"
+                            onClick={() => setStep(1)}
+                        >
+                            RETOUR
+                        </Button>
+                    </CountainerExtreme>
                 </Layout>
             );
     }
 };
 
-export default AjouterBouteille;
+export default AjouterBouteille
+
+const CountainerExtreme = styled.form`
+    padding-left:20px;
+    padding-right:20px;
+
+`
+
+;

@@ -17,6 +17,7 @@ import InputFile from "./InputFile";
 
 */
 const AdminAjoutBouteille = () => {
+
     const [categories, setCategories] = useState([]);
     const navigate = useNavigate();
     const {
