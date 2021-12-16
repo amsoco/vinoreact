@@ -91,7 +91,7 @@ const AdminAjoutBouteille = () => {
         } catch (error) {
             console.error(error);
         } 
-        navigate('admin/wiki-vino');
+        navigate('admin/wiki-vin');
     };    
 
     /**
@@ -101,8 +101,9 @@ const AdminAjoutBouteille = () => {
      * @returns {void}
      */
     const editerBouteilleWiki = async (values) => {
+        console.log('vvv', values)
         await modifierBouteilleWiki(id, values);
-        navigate('admin/wiki-vino');
+        navigate('admin/wiki-vin');
     };
 
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation

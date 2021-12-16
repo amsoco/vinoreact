@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "../context/user";
 //import styled from "styled-components";
 import Pagination from "./Pagination";
-import PropTypes from "prop-types";
 //import { useAdmin } from "../pages/Admin";
 import useDebounce from "../hooks/useDebounce";
 import Table from "@material-ui/core/Table";
@@ -38,13 +37,6 @@ const style = {
 const styleButton = {
     margin: "10px",
 };
-
-// Pagination.propTypes = {
-//     count: PropTypes.number.isRequired,
-//     onPageChange: PropTypes.func.isRequired,
-//     page: PropTypes.number.isRequired,
-//     rowsPerPage: PropTypes.number.isRequired,
-// };
 
 // Admin Usager
 const AdminUsager = () => {
@@ -130,7 +122,7 @@ const AdminUsager = () => {
                                       page * rowsPerPage,
                                       page * rowsPerPage + rowsPerPage
                                   )
-                                : rows
+                                : results
                             ).map((result) => {
                                 return (
                                     <TableRow

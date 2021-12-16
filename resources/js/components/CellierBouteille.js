@@ -33,7 +33,7 @@ const CellierBouteille = ({ bouteille, cellier }) => {
                         <img
                             src={url_img}
                             style={{ display: isLoading ? "none" : "block" }}
-                            onLoad={() => setIsLoading(false)}             
+                            onLoad={() => setIsLoading(false)}              
                             alt={nom}
                         />
                         <div>
