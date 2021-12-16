@@ -2,24 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCellier } from "../context/cellier";
 import useDebounce from "../hooks/useDebounce";
-<<<<<<< HEAD
-import Recherche from "./Recherche";
-import { useAdmin } from "../pages/Admin";
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import Box from '@material-ui/core/Box';
-import Modal from '@material-ui/core/Modal';
-import Typography from '@material-ui/core/Typography';
-import TableFooter from '@material-ui/core/TableFooter';
-=======
 
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -34,7 +16,6 @@ import Box from "@material-ui/core/Box";
 import Modal from "@material-ui/core/Modal";
 import Typography from "@material-ui/core/Typography";
 import TableFooter from "@material-ui/core/TableFooter";
->>>>>>> upstream/main
 import Admin from "../pages/Admin";
 
 // Les styles du Modal
