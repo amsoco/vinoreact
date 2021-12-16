@@ -9,7 +9,7 @@ import useForm from "../hooks/useForm";
 
 import ajouterBouteilleFormValidateWiki from "./Forms/AjouterBouteille/ajouterBouteilleFormValidateWiki";
 import Admin from "../pages/Admin";
-import {  useParams } from "react-router";
+import {  useParams, useNavigate } from "react-router-dom";
 import { SelectCategorie } from "./styles/Input.styled";
 import InputFile from "./InputFile";
 
@@ -19,6 +19,7 @@ import InputFile from "./InputFile";
 const AdminAjoutBouteille = () => {
 
     const [categories, setCategories] = useState([]);
+    const navigate = useNavigate();
     const { 
         
         getCategories,
@@ -92,7 +93,7 @@ const AdminAjoutBouteille = () => {
         } catch (error) {
             console.error(error);
         } 
-        navigate('admin/wiki-vino');
+        navigate('/admin/wiki-vin');
     };    
 
     /**
@@ -103,7 +104,7 @@ const AdminAjoutBouteille = () => {
      */
     const editerBouteilleWiki = async (values) => {
         await modifierBouteilleWiki(id, values);
-        navigate('admin/wiki-vino');
+        navigate('/admin/wiki-vin');
     };
 
     // USEFORM HOOK: prend les champs initiaux du form, la logique de soumission du form et la validation
