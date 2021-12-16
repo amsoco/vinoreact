@@ -82,7 +82,7 @@ const AjouterBouteille = () => {
                             onChange={(e) => setSearch(e.target.value)}
                         />
 
-                        <h2>OU</h2>
+                        <h3>OU</h3>
                         <Button
                             bg="#303031"
                             color="#fff"
@@ -91,7 +91,7 @@ const AjouterBouteille = () => {
                             borderColor="#303031"
                             onClick={() => setStep(3)}
                         >
-                            Aller au formulaire d'ajout
+                            Formulaire d'ajout
                         </Button>
 
                         <ResultatsRecherche>

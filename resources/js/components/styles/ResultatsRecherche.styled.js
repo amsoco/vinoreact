@@ -52,15 +52,24 @@ export const RechercheVins = styled.section`
     margin-left: auto;
     margin-right: auto;
 
+    h3,
     h2 {
-        margin: 40px 0;
+        margin: auto;
         text-align: center;
+        width: 98%;
+        max-width:500px;
+        margin-top: 40px;
     }
 
     button {
+        margin-top: 40px;
         max-width: 90%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    input {
+        margin-top: 80px;
     }
 `;
 
